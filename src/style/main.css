@@ -1,0 +1,22 @@
+:root{
+    --backgroundDarkBlue: #041E2F;
+    --backgroundPurple: #A666A0;
+    --backgroundPurpleHover: #b46dad;
+    --backgroundBlue: #082C43;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    height: auto;
+    width: 100%;
+}
+body{
+    background: var(--backgroundBlue) !important;
+}
+/* nav{
+    background: var(--backgroundDarkBlue) !important;
+
+} */
