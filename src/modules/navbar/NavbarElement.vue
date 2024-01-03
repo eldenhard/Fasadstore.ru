@@ -22,12 +22,11 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+            <router-link to="/" class="nav-link" exact>Главная</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">О компании</a>
+            <router-link to="/about" class="nav-link" exact>О компании</router-link>
           </li>
-
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -40,16 +39,26 @@
               Продукция
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <router-link to="/products/action" class="dropdown-item" exact>Action</router-link>
+              </li>
+              <li>
+                <router-link to="/products/another-action" class="dropdown-item" exact
+                  >Another action</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact
+                  >Something else here</router-link
+                >
+              </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Объекты</a>
+            <router-link to="/objects" class="nav-link" exact>Объекты</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Контакты</a>
+            <router-link to="/contacts" class="nav-link" exact>Контакты</router-link>
           </li>
         </ul>
         <ButtonPurple :title="'Запросить звонок'">Заказ звонка</ButtonPurple>
@@ -75,71 +84,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-active {
+  color: white;
+  border-bottom: 2px solid white;
+}
+
 .navbar_color {
   width: max(150px, 9vw);
 }
 
-.effect {
-  text-align: center;
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  color: #fff;
-  font-family: 'Montserrat', Helvetica, sans-serif;
-  font-size: 18px;
-  outline: none;
-  background: var(--backgroundPurple);
-  color: white;
-  min-width: 10%;
-  width: auto;
-  overflow: hidden;
-  border-radius: none;
-  border: none;
-  padding: 3px;
-
-  &:focus {
-    background: var(--backgroundPurpleHover);
-    color: rgb(226, 226, 226);
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    transform: translateY(-1px);
+@media screen and (max-width: 900px) {
+  .router-link-active {
+    color: white;
+    border-bottom: none;
   }
-
-  &:hover {
-    background: var(--backgroundPurpleHover);
-    color: rgb(226, 226, 226);
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    transform: translateY(-1px);
-  }
-}
-
-.effect.effect-1 {
-  transition: all 0.2s linear 0s;
-}
-
-.effect.effect-1:before {
-  content: '→';
-  font-family: FontAwesome;
-  font-size: 15px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  right: 0;
-  top: 0;
-  opacity: 0;
-  height: 100%;
-  width: 40px;
-  transition: all 0.2s linear 0s;
-}
-
-.effect.effect-1:hover {
-  text-indent: -20px;
-}
-
-.effect.effect-1:hover:before {
-  opacity: 1;
-  text-indent: 0px;
 }
 </style>

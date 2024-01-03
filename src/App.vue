@@ -5,7 +5,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div>
-    <HomeView />
+    <RouterView />
+
+    <!-- <HomeView /> -->
   </div>
 
   <!-- <nav>

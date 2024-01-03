@@ -15,7 +15,6 @@ const pinia = createPinia()
 
 // Если у вас есть дополнительные модули, добавьте их сюда
 // pinia.use(yourStoreModule)
-
 app.use(pinia)
 app.use(router)
 

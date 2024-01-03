@@ -11,7 +11,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Окна ALUTECH</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
@@ -27,7 +27,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Алюминевые раздвижные двери</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
@@ -43,7 +43,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Остекление помещений</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
@@ -59,7 +59,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Остекление фасадов</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
@@ -75,7 +75,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Остекление фасадов</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
@@ -91,7 +91,7 @@
             <div class="card__header">
               <div class="card__header-text">
                 <h3 class="card__title">Остекление фасадов</h3>
-                <span class="card__status">Алютех</span>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
