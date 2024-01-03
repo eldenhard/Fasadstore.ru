@@ -1,20 +1,23 @@
-:root{
-    --backgroundDarkBlue: #041E2F;
-    --backgroundPurple: #A666A0;
-    --backgroundPurpleHover: #b46dad;
-    --backgroundBlue: #082C43;
+:root {
+  --backgroundDarkBlue: #041e2f;
+  --backgroundPurple: #7a4e76;
+  --backgroundPurpleHover: #b46dad;
+  --backgroundBlue: #082c43;
+  --backgroundBlack: #111111;
+
+  --colorGrey: rgb(212, 212, 212);
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-img{
-    height: auto;
-    width: 100%;
+img {
+  height: auto;
+  width: 100%;
 }
-body{
-    background: var(--backgroundBlue) !important;
+body {
+  background: var(--backgroundBlue) !important;
 }
 /* nav{
     background: var(--backgroundDarkBlue) !important;
