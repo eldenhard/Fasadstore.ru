@@ -1,9 +1,9 @@
 <template>
-  <div class="container-block">
+  <div class="container-block" >
     <div class="direction_description">
       <p>НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
     </div>
-    <ul class="cards">
+    <ul class="cards" style="margin-top: 4%;">
       <li>
         <a class="card">
           <img src="./assets/direc1.jpg" class="card__image" alt="" />
@@ -107,9 +107,9 @@
 <style scoped>
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  margin: 4rem 5vw;
+  /* margin: 4rem 5vw; */
   padding: 0;
   list-style-type: none;
 }
@@ -117,7 +117,7 @@
 .card {
   position: relative;
   display: block;
-  height: 100%;
+  height: 40vh !important;
   border-radius: calc(8 * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -203,5 +203,6 @@
     white-space: nowrap;
     margin-top: 4%;
   }
+
 }
 </style>
