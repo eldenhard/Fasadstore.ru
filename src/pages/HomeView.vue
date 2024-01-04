@@ -1,9 +1,11 @@
 <template>
   <div>
-    <ModalVue />
+
     <NavbarElement />
+    <!-- <ModalVue /> -->
     <SliderElement />
     <DirectionWork />
+    <ContactForm />
     <Footer />
   </div>
 </template>
@@ -15,6 +17,7 @@ import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import ModalVue from '../modules/modal/Modal.vue'
 import SliderElement from '../modules/slider/SliderElement.vue'
 import DirectionWork from '../components/DirectionJob/DirectionWork.vue'
+import ContactForm from '../modules/contact_form/ContactForm.vue'
 import Footer from '../components/Footer/Footer.vue'
 export default {
   name: 'HomeView',
@@ -23,6 +26,7 @@ export default {
     ModalVue,
     SliderElement,
     DirectionWork,
+    ContactForm,
     Footer
   }
 }

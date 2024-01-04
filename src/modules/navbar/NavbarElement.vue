@@ -27,7 +27,7 @@
           <li class="nav-item">
             <router-link to="/about" class="nav-link" exact>О компании</router-link>
           </li>
-          <li class="nav-item dropdown">
+           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -38,7 +38,7 @@
             >
               Продукция
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
                 <router-link to="/products/action" class="dropdown-item" exact>Action</router-link>
               </li>

@@ -1,44 +1,31 @@
 <template>
-  <div
-    class="modal fade"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-    v-if="isModalOpen"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-            @click="closeModal"
-          >
-            Закрыть
-          </button>
-          <button type="button" class="btn btn-primary">Отправить</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <Dialog :visible="isModalOpen" modal header="Header" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+    
+            <p class="m-0">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium esse minima voluptatibus voluptate, repellat repudiandae quia voluptates commodi quasi sed, quos natus quibusdam blanditiis dolorum sunt rerum quae? Deleniti, eligendi!
+                <!-- <InputUIElementVue :field_name="'Имя'"/>
+                <InputUIElementVue :field_name="'Телефон'"/> -->
+            </p>
+            <template #footer>
+                <Button label="Ok" icon="pi pi-check"  />
+            </template>
+        </Dialog>
 </template>
 
 <script>
 import { ref } from 'vue'
 import { useModalStore } from '../../store/store'
 
+import InputUIElementVue from '../../ui/Input/InputUIElement.vue'
 export default {
+  components: {
+    InputUIElementVue,
+  },
+  props: {
+    visible: {
+        visible: Boolean
+    }
+  },
   setup() {
     const isModalOpen = ref(useModalStore().isModalOpen)
 

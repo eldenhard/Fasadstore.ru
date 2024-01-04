@@ -7,7 +7,6 @@ export const useModalStore = defineStore('modal', {
   actions: {
     openModal() {
       this.isModalOpen = true
-      let modalCreate = new bootstrap.Modal(document.getElementById('modalElementId'), show())
     },
     closeModal() {
       this.isModalOpen = false

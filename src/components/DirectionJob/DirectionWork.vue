@@ -1,9 +1,17 @@
 <template>
-  <div class="container-block" >
+  <div class="container-block">
     <div class="direction_description">
       <p>НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
     </div>
-    <ul class="cards" style="margin-top: 4%;">
+
+    <div class="container">
+
+     
+<Calendar v-model="date" />
+
+  </div>
+
+    <ul class="cards" style="margin-top: 4%">
       <li>
         <a class="card">
           <img src="./assets/direc1.jpg" class="card__image" alt="" />
@@ -101,10 +109,41 @@
         </a>
       </li>
     </ul>
+
+
+
+
   </div>
 </template>
 
+<script>
+// import DeferredContent from 'primevue/deferredcontent';
+// import Dialog from 'primevue/dialog';
+import InputUIElement from '@/ui/Input/InputUIElement.vue';
+import Modal from '@/modules/modal/Modal.vue';
+import { ref, nextTick } from 'vue'
+export default {
+  components: { Modal, InputUIElement },
+  setup() {
+    const date = ref()
+
+  
+
+    return {
+      date
+
+    }
+  }
+}
+</script>
+
 <style scoped>
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -187,6 +226,7 @@
   width: 75%;
   margin: 0 auto;
 }
+
 .direction_description {
   color: white;
   margin-top: 4%;
@@ -203,6 +243,5 @@
     white-space: nowrap;
     margin-top: 4%;
   }
-
 }
 </style>
