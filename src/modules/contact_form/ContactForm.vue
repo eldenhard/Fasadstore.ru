@@ -77,6 +77,7 @@ html {
     height: auto;
     position: relative;
     overflow: hidden;
+    margin-top: 8%;
 }
 
 .container {
@@ -99,7 +100,7 @@ html {
 }
 
 .right_side {
-    width: 25vw;
+    width: 30vw;
     overflow: hidden;
 }
 
@@ -114,12 +115,13 @@ html {
         width: 100%;
         height: 100%;
         object-fit: cover;
-
+        object-position: 0 0; /* Добавлен этот стиль */
+        border-radius: 8px;
     }
 }
 
 /* Добавленный код для мобильных устройств */
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 850px) {
     .container {
         flex-direction: column-reverse;
     }
@@ -151,7 +153,7 @@ html {
 
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1630px) {
     .block {
         flex-direction: column-reverse;
     }
@@ -174,7 +176,7 @@ html {
     }
 
     .line {
-        margin: -4% 4% 0 4%;
+        margin: 1% 4% 0 4%;
     }
 }
 

@@ -6,8 +6,7 @@
 
     <div class="container">
 
-     
-<Calendar v-model="date" />
+
 
   </div>
 
@@ -161,6 +160,9 @@ export default {
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
+  /* background: #082C43; */
+    box-shadow: -31px 31px 65px #041724,
+        31px -31px 65px #0c4162;
 }
 
 .card__image {
@@ -228,7 +230,7 @@ export default {
 }
 
 .direction_description {
-  color: white;
+  color: var(--colorBlue);
   margin-top: 4%;
   font-family: 'Montserrat', Helvetica, sans-serif;
   font-size: max(20px, 2vw);

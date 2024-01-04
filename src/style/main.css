@@ -9,6 +9,8 @@
 
   --backgroundBlack: #111111;
   --colorGrey: rgb(212, 212, 212);
+  /* --colorBlue: rgb(175, 197, 238); */
+  --colorBlue: rgb(202, 217, 245);
 }
 
 img {
