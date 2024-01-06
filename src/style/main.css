@@ -11,6 +11,7 @@
   --colorGrey: rgb(212, 212, 212);
   /* --colorBlue: rgb(175, 197, 238); */
   --colorBlue: rgb(202, 217, 245);
+  --colorRed: #E61818;
 }
 
 img {
