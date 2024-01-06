@@ -23,10 +23,11 @@
                 </div>
             </div>
             <div class="right_text">
-                <img src="./assets/3.jpg" alt="">
-                <div class="image-overlay">
-                    <p class="description_overlay">Раздвижные панорамные !!!!</p>
-                </div>
+                <!-- <img src="./assets/3.jpg" alt=""> -->
+                <iframe width="100" height="100" src="https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- <div class="image-overlay">
+                    <p class="description_overlay"></p>
+                </div> -->
             </div>
 
         </section>
@@ -80,8 +81,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 export default {
-    name: 'swiper-example-loop-group',
-    title: 'Loop mode with multiple slides per group',
+
     components: {
         Swiper,
         SwiperSlide
@@ -111,9 +111,10 @@ export default {
   margin: 0 auto;
 }
 
-img {
+img, iframe {
   height: 100%;
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 8px !important;
 }
 
 .container-block {
@@ -191,6 +192,8 @@ img {
   position: absolute;
   display: flex;
   justify-content: center;
+  border-radius: 8px;
+
   align-items: flex-end;
   bottom: 0;
   left: 0;

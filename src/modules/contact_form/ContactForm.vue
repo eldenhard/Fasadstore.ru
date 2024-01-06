@@ -78,6 +78,7 @@ html {
     position: relative;
     overflow: hidden;
     margin-top: 8%;
+    border-radius: 8px;
 }
 
 .container {
@@ -97,6 +98,8 @@ html {
     flex: 1;
     display: flex;
     flex-direction: column;
+    border-radius: 8px !important;
+
 }
 
 .right_side {
@@ -189,6 +192,8 @@ html {
     position: relative;
     margin-top: 4%;
     background: #1f1f1f;
+    border-radius: 8px !important;
+
 }
 
 .form__group {

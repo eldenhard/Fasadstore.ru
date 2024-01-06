@@ -3,12 +3,9 @@
     <div class="direction_description">
       <p>НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
     </div>
-
-    <div class="container">
-
-
-
-  </div>
+<div class="container_accordion">
+  <DirectionWorkMobile v-if="isMobile"/>
+</div>
 
     <ul class="cards" style="margin-top: 4%">
       <li>
@@ -120,28 +117,43 @@
 // import Dialog from 'primevue/dialog';
 import InputUIElement from '@/ui/Input/InputUIElement.vue';
 import Modal from '@/modules/modal/Modal.vue';
-import { ref, nextTick } from 'vue'
+import DirectionWorkMobile from './DirectionWorkMobile.vue';
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 export default {
-  components: { Modal, InputUIElement },
+  components: { Modal, InputUIElement,DirectionWorkMobile },
   setup() {
     const date = ref()
+    const isMobile = ref(window.innerWidth < 900);
 
-  
+    const handleResize = () => {
+      isMobile.value = window.innerWidth < 900;
+    };
+
+    onMounted(() => {
+      window.addEventListener('resize', handleResize);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize);
+    });
 
     return {
-      date
-
-    }
+      date,
+      isMobile
+    };
   }
 }
 </script>
 
 <style scoped>
-.container{
-  display: flex;
+
+.container_accordion{
+  margin: 0;
+  width: 100%;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100vw;
+  justify-content: center; */
+  /* width: 100vw; */
 }
 .cards {
   display: grid;
@@ -247,6 +259,14 @@ export default {
   .direction_description {
     text-align: center;
     white-space: nowrap;
+    margin-top: 4%;
+  }
+  .cards{
+    display: none;
+  }
+
+  .container-block{
+    width: 90%;
     margin-top: 4%;
   }
 }
