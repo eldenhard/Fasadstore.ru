@@ -4,8 +4,10 @@
     <NavbarElement />
     <!-- <ModalVue /> -->
     <SliderElement />
-    <DirectionWork />
     <MiniAbout />
+    <DirectionWork />
+
+  
     <PartnerElementVue />
     <ContactForm />
     <Footer />

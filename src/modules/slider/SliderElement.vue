@@ -118,8 +118,11 @@ export default {
 }
 
 .left_text_carousel {
-  background: rgb(1, 1, 2);
-  background: linear-gradient(177deg, rgba(1, 1, 2, 1) 7%, rgba(8, 44, 67, 1) 89%);
+  /* background: rgb(1, 1, 2); */
+  /* background: linear-gradient(177deg, rgba(1, 1, 2, 1) 7%, rgba(8, 44, 67, 1) 89%); */
+/* background: linear-gradient(177deg, rgba(1,1,2,1) 7%, rgba(4,24,37,1) 89%); */
+background: rgb(1,3,5);
+background: linear-gradient(177deg, rgba(1,3,5,1) 7%, rgba(4,21,33,1) 89%);
   height: 100%;
   z-index: 1;
   display: flex;

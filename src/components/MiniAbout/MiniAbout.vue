@@ -1,36 +1,43 @@
 <template>
-    <div class="block">
-        <section class="left_block">
-            <div class="block_1">
-                <img src="./assets/stanok.jpg" alt="алюминевые системы изготовление" style="border-radius: 8px;">
-            </div>
-            <div class="block_2">
-                <img src="./assets/propizvodstvo.webp" alt="станок" style="border-radius: 8px;">
+    <div class="main_bg">
 
-            </div>
-            <div class="block_3">
-                <div style="padding-left: 3%; border-left:1px solid var(--colorRed);">
-                    <p>Алюминиевые системы изготовит и установит алюминиевые конструкции. Выполняем монтаж в Москве и
-                        области,
-                        даем официальную гарантию на изделие и установку. Дверные и оконные, панорамные системы для дома,
-                        коммерческих и общественных объектов.
-                    </p>
+
+        <div class="block">
+            <section class="left_block">
+                <div class="block_1">
+                    <img src="./assets/stanok.jpg" alt="алюминевые системы изготовление" style="border-radius: 8px;">
                 </div>
-            </div>
-        </section>
-        <section class="right_block">
-            <div class="text_block">
-                <h1 class="name_company">Алюминиевые системы</h1>
-                <h5> Наша готова эффективно реализовать любые виды проектов Алютех</h5>
-                <p> Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется.
-                    Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых
-                    материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность.
-                </p>
-                <router-link to="/about"> 
-                    <ButtonPurple style="margin-top: 4%;">Подробнее о компании &#10132;</ButtonPurple>
-                </router-link>
-            </div>
-        </section>
+                <div class="block_2">
+                    <img src="./assets/propizvodstvo.webp" alt="станок" style="border-radius: 8px;">
+
+                </div>
+                <div class="block_3">
+                    <div style="padding-left: 3%; border-left:1px solid var(--colorRed);">
+                        <p>Алюминиевые системы изготовит и установит алюминиевые конструкции. Выполняем монтаж в Москве и
+                            области,
+                            даем официальную гарантию на изделие и установку. Дверные и оконные, панорамные системы для
+                            дома,
+                            коммерческих и общественных объектов.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="right_block">
+                <div class="text_block">
+                    <h1 class="name_company">Алюминиевые системы</h1>
+                    <h5> Наша компания готова эффективно реализовать любые виды проектов Алютех</h5>
+                    <p> Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется.
+                        Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других
+                        новых
+                        материалов придает внешнему виду здания индивидуальный характер, особую архитектурную
+                        выразительность.
+                    </p>
+                    <router-link to="/about">
+                        <ButtonPurple style="margin-top: 4%;">Подробнее о компании &#10132;</ButtonPurple>
+                    </router-link>
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -44,6 +51,12 @@ export default {
 </script>
 
 <style scoped>
+.main_bg {
+    width: 100%;
+    background: rgb(4, 21, 33);
+    background: linear-gradient(177deg, rgba(4, 21, 33, 1) 7%, rgba(8, 44, 67, 1) 89%);
+}
+
 .name_company {
     color: white;
     font-family: 'Arial black', sans-serif;
@@ -59,6 +72,7 @@ img {
     -webkit-box-shadow: -10px 12px 11px 0px rgba(0, 0, 0, 0.33);
     -moz-box-shadow: -10px 12px 11px 0px rgba(0, 0, 0, 0.33);
     box-shadow: -10px 12px 11px 0px rgba(0, 0, 0, 0.33);
+    height: 100%;
 }
 
 .text_block p {
@@ -73,7 +87,8 @@ img {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 5%;
-    margin-top: 4%;
+    padding-top: 4%;
+
 }
 
 .left_block {
@@ -109,5 +124,56 @@ img {
     -webkit-box-shadow: -10px -7px 11px 0px rgba(0, 0, 0, 0.51);
     -moz-box-shadow: -10px -7px 11px 0px rgba(0, 0, 0, 0.51);
     box-shadow: -10px -7px 11px 0px rgba(0, 0, 0, 0.51);
+
+}
+
+@media screen and (max-width: 1500px) {
+    .block_2 {
+        display: none;
+    }
+
+    .block_3 {
+        margin: 0;
+    }
+
+    .left_block {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* column-gap: 4%;
+    grid-template-areas: "second "
+                        "third"; */
+    }
+}
+
+@media screen and (max-width: 900px) {
+    h1 {
+        text-align: center;
+    }
+
+    .block_1 {
+        display: none !important;
+    }
+
+    .block_2 {
+        display: none !important;
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column-reverse;
+        position: relative;
+        width: 90%;
+        margin-top: 10%;
+    }
+
+    .left_block {
+        margin: 8% auto;
+
+    }
+
+    .block_3 {
+        margin: 0 auto;
+        width: 100% !important;
+    }
 
 }</style>
