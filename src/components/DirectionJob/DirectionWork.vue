@@ -161,10 +161,14 @@ export default {
   text-decoration: none;
   cursor: pointer;
   /* background: #082C43; */
-    box-shadow: -31px 31px 65px #041724,
+  box-shadow: -31px 31px 65px #041724,
         31px -31px 65px #0c4162;
+    transition: 0.3s box-shadow ease-in-out;
 }
-
+.card:hover{
+  box-shadow: -31px 31px 65px #041724,
+        21px -21px 55px #196797;
+}
 .card__image {
   width: 100%;
   height: auto;
