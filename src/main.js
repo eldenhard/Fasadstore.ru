@@ -17,7 +17,6 @@ import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
 
-
 const app = createApp(App)
 const pinia = createPinia()
 

@@ -1,8 +1,7 @@
 <template>
     <div class="main_bg">
 
-
-        <div class="block">
+        <div class="block" >
             <section class="left_block">
                 <div class="block_1">
                     <img src="./assets/stanok.jpg" alt="алюминевые системы изготовление" style="border-radius: 8px;">
@@ -33,7 +32,9 @@
                         выразительность.
                     </p>
                     <router-link to="/about">
-                        <ButtonPurple style="margin-top: 4%;">Подробнее о компании &#10132;</ButtonPurple>
+                        <ButtonPurple style="margin-top: 4%;">
+                            Подробнее о компании &#10132;
+                        </ButtonPurple>
                     </router-link>
                 </div>
             </section>
@@ -43,16 +44,40 @@
 
 <script>
 import ButtonPurple from '@/ui/ButtonPurple.vue';
+// import { vScrollReveal } from 'vue-scroll-reveal';
+// import { createScrollRevealDirective } from 'vue-scroll-reveal';
+import { ref } from 'vue'
 export default {
-    components: {
-        ButtonPurple
-    }
-}
+    components: { ButtonPurple, },
+
+};
+
 </script>
 
 <style scoped>
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.scroll-to-top.show {
+    display: block;
+    opacity: 1;
+}
+
 .main_bg {
     width: 100%;
+    padding-top: 8%;
     background: rgb(4, 21, 33);
     background: linear-gradient(177deg, rgba(4, 21, 33, 1) 7%, rgba(8, 44, 67, 1) 89%);
 }
@@ -163,7 +188,7 @@ img {
         flex-direction: column-reverse;
         position: relative;
         width: 90%;
-        /* margin-top: 10%; */
+
     }
 
     .left_block {
@@ -176,4 +201,5 @@ img {
         width: 100% !important;
     }
 
-}</style>
+}
+</style>

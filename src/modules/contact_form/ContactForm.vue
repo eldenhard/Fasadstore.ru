@@ -159,6 +159,7 @@ html {
     .block {
         flex-direction: column-reverse;
         width: 90%;
+        margin-top: 16%;
     }
 }
 @media screen and (max-width: 1630px) {

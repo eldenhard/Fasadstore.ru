@@ -21,7 +21,8 @@
     "swiper": "^11.0.5",
     "vue": "^3.3.11",
     "vue-awesome-swiper": "^5.0.1",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue-scroll-reveal": "git+https://github.com/tserkov/vue-scroll-reveal.git#v2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.3.3",

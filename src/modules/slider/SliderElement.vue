@@ -142,6 +142,8 @@ export default {
     grid-template-rows: auto 0.4fr !important;
     padding-top: 6%;
     margin-top: 10%;
+    height: 65vh;
+  
   }
 
   .appear {
@@ -170,6 +172,9 @@ export default {
     max-height: 25vh;
 
   }
-
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}
 }
 </style>
