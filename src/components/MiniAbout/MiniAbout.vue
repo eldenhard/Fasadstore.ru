@@ -163,7 +163,7 @@ img {
         flex-direction: column-reverse;
         position: relative;
         width: 90%;
-        margin-top: 10%;
+        /* margin-top: 10%; */
     }
 
     .left_block {
