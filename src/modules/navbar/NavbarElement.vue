@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; top: 0; z-index: 10; right: 0; left: 0;">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-dark"
+    style="position: fixed; top: 0; z-index: 10; right: 0; left: 0"
+  >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img
@@ -27,7 +30,7 @@
           <li class="nav-item">
             <router-link to="/about" class="nav-link" exact>О компании</router-link>
           </li>
-           <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -38,7 +41,7 @@
             >
               Продукция
             </a>
-           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
                 <router-link to="/products/action" class="dropdown-item" exact>Action</router-link>
               </li>
@@ -60,8 +63,17 @@
           <li class="nav-item">
             <router-link to="/contacts" class="nav-link" exact>Контакты</router-link>
           </li>
+          <li class="nav-item" style="display: flex; align-items: center">
+            &nbsp; &nbsp;&nbsp;&nbsp;<img src="./assets/whatsapp2.png" alt="whatsapp" class="whtsapp"/>
+          </li>
         </ul>
-        <ButtonPurple :title="'Запросить звонок'">Заказ звонка</ButtonPurple>
+        <div class="section_phone">
+          <a href="tel:+74957655026">
+            <img src="./assets/phone-call.png" alt="" /> +7(495) 765-50-26</a
+          >
+
+          <!-- <ButtonPurple :title="'Запросить звонок'">Заказ звонка</ButtonPurple> -->
+        </div>
       </div>
     </div>
   </nav>
@@ -84,6 +96,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.section_phone {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+}
+.section_phone a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+.nav-item img {
+  cursor: pointer;
+  height: 25px !important;
+  width: 25px !important;
+}
+.nav-item a:hover {
+  color: white;
+  color: lightgray;
+  font-size: 16px;
+  text-decoration: none;
+}
+.section_phone img {
+  cursor: pointer;
+  height: 25px !important;
+  width: 25px !important;
+}
+.section_phone:hover {
+  color: red;
+}
+
 .router-link-active {
   color: white;
   border-bottom: 2px solid white;
@@ -97,6 +140,11 @@ export default {
   .router-link-active {
     color: white;
     border-bottom: none;
+  }
+  .section_phone,
+  .whtsapp
+  {
+    display: none;
   }
 }
 </style>

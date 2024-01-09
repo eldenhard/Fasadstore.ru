@@ -1,13 +1,11 @@
 <template>
   <div>
-
     <NavbarElement />
     <!-- <ModalVue /> -->
     <SliderElement />
     <MiniAbout />
     <DirectionWork />
-
-  
+    <mobilePhone />
     <PartnerElementVue />
     <ContactForm />
     <Footer />
@@ -26,6 +24,7 @@ import ContactForm from '../modules/contact_form/ContactForm.vue'
 import Footer from '../components/Footer/Footer.vue'
 import PartnerElementVue from '../modules/partner/PartnerElement.vue'
 import MiniAbout from '@/components/MiniAbout/MiniAbout.vue'
+import mobilePhone from '@/modules/mobile_phone/mobilePhone.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -36,7 +35,8 @@ export default {
     MiniAbout,
     PartnerElementVue,
     ContactForm,
-    Footer
+    Footer,
+    mobilePhone
   }
 }
 </script>
