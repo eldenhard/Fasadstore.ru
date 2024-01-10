@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img
-          src="C:\Users\Asus\Desktop\Alutech\aluproject\src\assets\logo.webp"
+          src="./assets/logo.webp"
           alt="Логотип компании"
           class="navbar_color"
         />
@@ -64,15 +64,13 @@
             <router-link to="/contacts" class="nav-link" exact>Контакты</router-link>
           </li>
           <li class="nav-item" style="display: flex; align-items: center">
-            &nbsp; &nbsp;&nbsp;&nbsp;<img src="./assets/whatsapp2.png" alt="whatsapp" class="whtsapp"/>
+            &nbsp; &nbsp;&nbsp;&nbsp;<img src="./assets/whatsapp.png" alt="whatsapp" class="whtsapp"/>
           </li>
         </ul>
         <div class="section_phone">
-          <a href="tel:+74957655026">
-            <img src="./assets/phone-call.png" alt="" /> +7(495) 765-50-26</a
-          >
-
-          <!-- <ButtonPurple :title="'Запросить звонок'">Заказ звонка</ButtonPurple> -->
+          <a href="tel:+74957655026" class="phone">
+            <img src="./assets/phone-call.png" alt="phone company"/> +7(495) 765-50-26
+            </a>
         </div>
       </div>
     </div>
@@ -135,7 +133,18 @@ export default {
 .navbar_color {
   width: max(150px, 9vw);
 }
-
+.phone{
+  transition: 0.5s color ease;
+  &:hover{
+    color: grey;
+  }
+}
+.whtsapp{
+  transition: 0.5s transform ease;
+  &:hover{
+    transform: translateY(-5px);
+  }
+}
 @media screen and (max-width: 900px) {
   .router-link-active {
     color: white;

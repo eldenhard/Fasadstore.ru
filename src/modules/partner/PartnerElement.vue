@@ -84,6 +84,9 @@
         <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
       </swiper>
     </section>
+
+   <StrongAside style="margin-top: 10%;"/>
+
   </div>
 </template>
 
@@ -93,11 +96,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-
+import StrongAside from './StrongAside.vue'
 export default {
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    StrongAside
   },
   setup() {
     return {
@@ -168,7 +172,7 @@ iframe {
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(0 0, 100% 0, 0 90%);
+    clip-path: polygon(0 0, 100% 0, 0 40%);
     background-color: rgb(194, 194, 194);
     z-index: 1;
   }

@@ -1,21 +1,31 @@
 <template>
-  <div>
-    <ModalVue />
+  <div style="background: white;">
     <NavbarElement />
-    <div></div>
+    <mobilePhone />
+
+    <FullDescriptionCompany />
+    <Footer />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
-import ModalVue from '../modules/modal/Modal.vue'
+import FullDescriptionCompany from '@/components/FullDescriptionCompany/FullDescriptionCompany.vue'
+import Footer from '@/components/Footer/Footer.vue'
+import mobilePhone from '@/modules/mobile_phone/mobilePhone.vue'
+
+    
 
 export default {
   name: 'HomeView',
   components: {
     NavbarElement,
-    ModalVue
+    mobilePhone,
+    FullDescriptionCompany,
+    Footer,
   }
 }
 </script>
+
+

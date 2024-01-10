@@ -209,11 +209,10 @@
 // import DeferredContent from 'primevue/deferredcontent';
 // import Dialog from 'primevue/dialog';
 import InputUIElement from '@/ui/Input/InputUIElement.vue'
-import Modal from '@/modules/modal/Modal.vue'
 import DirectionWorkMobile from './DirectionWorkMobile.vue'
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 export default {
-  components: { Modal, InputUIElement, DirectionWorkMobile },
+  components: {  InputUIElement, DirectionWorkMobile },
   setup() {
     const date = ref()
     const isMobile = ref(window.innerWidth < 900)
