@@ -4,7 +4,7 @@
     style="position: fixed; top: 0; z-index: 10; right: 0; left: 0"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img
           src="./assets/logo.webp"
           alt="Логотип компании"
