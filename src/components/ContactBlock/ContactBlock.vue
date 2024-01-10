@@ -19,7 +19,7 @@
 
 <style lang="scss" scoped>
 .img_block {
-    height: 55vh;
+    height: 50vh;
     width: 100%;
     background: url(./assets/backgroundContact.jpg);
     background-repeat: no-repeat;
@@ -58,4 +58,11 @@
         }
 
     }
-}</style>
+}
+
+@media screen and (max-width: 900px) {
+    .overlay_block {
+        width: 80% !important;
+    }
+}
+</style>
