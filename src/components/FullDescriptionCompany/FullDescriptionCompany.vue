@@ -131,10 +131,13 @@ export default {
 
 .first_img {
     grid-area: first_img;
+    border-radius: 8px;
 }
 
 .second_img {
     grid-area: second_img;
+    border-radius: 8px;
+
 }
 
 .text_block_grid {

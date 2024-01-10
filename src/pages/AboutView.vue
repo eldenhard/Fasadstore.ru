@@ -4,6 +4,7 @@
     <mobilePhone />
 
     <FullDescriptionCompany />
+    <ThreeBlock />
     <Footer />
   </div>
 </template>
@@ -14,7 +15,7 @@ import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import FullDescriptionCompany from '@/components/FullDescriptionCompany/FullDescriptionCompany.vue'
 import Footer from '@/components/Footer/Footer.vue'
 import mobilePhone from '@/modules/mobile_phone/mobilePhone.vue'
-
+import ThreeBlock from '@/components/FullDescriptionCompany/ThreeBlock.vue'
     
 
 export default {
@@ -23,6 +24,7 @@ export default {
     NavbarElement,
     mobilePhone,
     FullDescriptionCompany,
+    ThreeBlock,
     Footer,
   }
 }
