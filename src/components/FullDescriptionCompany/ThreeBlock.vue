@@ -5,11 +5,11 @@
                 <div class="square floor">
                     <div class="overlay">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)"
-                            class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            class="bi bi-bag-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0" />
                             <path
-                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
-                            <path
-                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
                         </svg>
                         <p class="descriptio_text">
                             Стоимость работ фиксируется
@@ -292,7 +292,8 @@
 @media screen and (max-width: 1450px) {
     .black_three_block {
         width: 95%;
-        .black_bl{
+
+        .black_bl {
             width: 30vw;
         }
     }
@@ -315,21 +316,23 @@
         width: 100%;
         margin-top: 4%;
     }
+
     .black_three_block {
         width: 95%;
         flex-direction: column;
-        .black_bl{
-            width:auto;
+
+        .black_bl {
+            width: auto;
             margin-top: 4%;
             height: auto;
-   
-            
+
+
         }
     }
-    .black{
-        h3{
+
+    .black {
+        h3 {
             padding-top: 10%;
         }
     }
-}
-</style>
+}</style>
