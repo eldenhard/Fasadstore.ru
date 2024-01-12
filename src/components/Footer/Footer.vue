@@ -158,7 +158,6 @@ li a:hover {
   font-size: 15px;
   line-height: 24px;
   color: #737373;
-  margin-top: 4%;
 }
 
 .site-footer hr {
