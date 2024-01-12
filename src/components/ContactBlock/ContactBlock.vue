@@ -341,6 +341,11 @@ export default {
     }
 }
 
+@media screen and (max-width: 1300px) {
+    .form_block{
+        width: 90%;
+    }
+}
 @media screen and (max-width: 900px) {
     .overlay_block {
         width: 80% !important;
@@ -364,4 +369,18 @@ export default {
     .three_elements {
         height: auto;
     }
-}</style>
+    .form_block{
+        flex-direction: column;
+        width: 100%;
+        .form{
+            width: 90%;
+            margin: 0 auto;
+  
+        }
+        .black_block{
+            width: 100%;
+            margin: 0;
+        }
+    }
+}
+</style>
