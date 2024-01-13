@@ -43,17 +43,41 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-                <router-link to="/products/action" class="dropdown-item" exact>Action</router-link>
+                <router-link to="/products/action" class="dropdown-item" exact>Алюминевые окна</router-link>
               </li>
               <li>
-                <router-link to="/products/another-action" class="dropdown-item" exact
-                  >Another action</router-link
+                <router-link to="/products/another-action" class="dropdown-item" exact>Алюминевые двери</router-link
                 >
               </li>
               <li>
-                <router-link to="/products/something-else" class="dropdown-item" exact
-                  >Something else here</router-link
-                >
+                <router-link to="/products/something-else" class="dropdown-item" exact>Алюминевые раздвижные двери</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление фасадов</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление террас и балконов</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Окна ПВХ</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Деревянные окна</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Гаражные ворота</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление котеджей</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Фурнитура</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Зимние сады</router-link>
+              </li>
+              <li>
+                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление котеджей</router-link>
               </li>
             </ul>
           </li>

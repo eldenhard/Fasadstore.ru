@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import FullDescriptionCompany from '@/components/FullDescriptionCompany/FullDescriptionCompany.vue'
 import Footer from '@/components/Footer/Footer.vue'
@@ -28,7 +28,12 @@ export default {
     ThreeBlock,
     WomanBlock,
     Footer,
-  }
+  },
+  // setup(){
+  //   onBeforeMount(() => {
+  //     window.scrollTo(0,0)
+  //   })
+  // }
 }
 </script>
 

@@ -9,7 +9,7 @@
 </template>
   
 <script>
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
 
 import Footer from '@/components/Footer/Footer.vue'
@@ -24,7 +24,13 @@ export default {
         mobilePhone,
         ContactBlock,
         Footer,
-    }
+    },
+    setup(){
+    // onBeforeMount(() => {
+    //   // Устанавливаем скролл в самое верхнее положение перед монтированием компонента
+    //   window.scrollTo(0, 0);
+    // });
+  }
 }
 </script>
   

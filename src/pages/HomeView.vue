@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import SliderElement from '../modules/slider/SliderElement.vue'
@@ -35,6 +35,12 @@ export default {
     ContactForm,
     Footer,
     mobilePhone
-  }
+  },
+  // setup(){
+  //   onBeforeMount(() => {
+  //     // Устанавливаем скролл в самое верхнее положение перед монтированием компонента
+  //     window.scrollTo(0, 0);
+  //   });
+  // }
 }
 </script>

@@ -28,7 +28,12 @@ const router = createRouter({
     // which is lazy-loaded when the route is visited.
     // component: () => import('../views/AboutView.vue')
     // }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    // Возвращаем желаемую позицию прокрутки
+    return { top: 0 };
+  },
+  
 })
 
 export default router
