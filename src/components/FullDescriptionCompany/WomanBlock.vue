@@ -1,16 +1,24 @@
 <template>
-    <div class="two_color_block">
-        <div class="left_block">
-            <h2>Наши специалисты c 2008 года установили более <br> 1870 дверей, окон и фасадов</h2>
-            <p>Больше 350 заказчиков используют или просто наслаждаются нашими алюминиевыми конструкциями.</p>
-            <ButtonPurple>Контактная информация</ButtonPurple>
-        </div>
-        <div class="right_block">
-            <h2>Воплотим вашу мечту о качественном загородном доме</h2>
-            <p>Чтобы вы уже через несколько месяцев смогли наслаждаться природой, спокойствием и лучшей жизнью в новом доме
-                с вашей семьей</p>
-            <ButtonPurple>Получить коммерческое предложение</ButtonPurple>
+    <div class="w_block">
 
+
+        <div class="two_color_block">
+            <div class="left_block">
+                <h2>Наши специалисты c 2008 года установили более <br> 1870 дверей, окон и фасадов</h2>
+                <p>Больше 350 заказчиков используют или просто наслаждаются нашими алюминиевыми конструкциями.</p>
+                <ButtonPurple>Контактная информация</ButtonPurple>
+            </div>
+            <div class="right_block">
+                <h2>Воплотим вашу мечту о качественном загородном доме</h2>
+                <p>Чтобы вы уже через несколько месяцев смогли наслаждаться природой, спокойствием и лучшей жизнью в новом
+                    доме
+                    с вашей семьей</p>
+                <ButtonPurple>Получить коммерческое предложение</ButtonPurple>
+
+            </div>
+            <div class="woman_block">
+                <img src="./assets/girl_right.png" alt="">
+            </div>
         </div>
     </div>
 </template>
@@ -25,36 +33,84 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .two_color_block {
     background: #F3F3F3;
-    height: 35vh;
+    min-height: 40vh;
     margin-top: 10%;
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.two_color_block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(49% 0, 100% 0, 100% 100%, 52% 100%);
-    -webkit-box-shadow: -14px 16px 8px 0px rgba(34, 60, 80, 0.54);
-    -moz-box-shadow: -14px 16px 8px 0px rgba(34, 60, 80, 0.54);
-    box-shadow: -14px 16px 8px 0px rgba(34, 60, 80, 0.54);
-    background-color: #823D7B;
-    z-index: 1;
+.left_block{
+    padding: 8% 8% 1% 8%;
+    height: auto;
+}
+.right_block{
+    padding: 8% 25% 0 8%;
+    height: auto;
 }
 
-.left_block,
+
 .right_block {
-    padding: 8%;
+    background: rgb(156, 69, 147);
+    background: radial-gradient(circle, rgba(156, 69, 147, 1) 0%, rgba(94, 49, 90, 1) 71%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%);
+
+
+    h2,
+    p {
+        color: rgb(241, 241, 241);
+    }
+}
+.w_block{
+    position: relative;
+    box-sizing: border-box;
+    height: 50vh;
+    .woman_block {
+    position: absolute;
+    right: 0;
+    top: -5vh;
+    height:  55vh !important;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
 }
 
+@media screen and (max-width: 900px){
+    .w_block{
+        margin: 20% 0 48% 0;
+    }
+    .two_color_block {
+        grid-template-columns: 1fr;
+    }
+    .woman_block{
+        display: none;
+    }
+    .right_block {
+    background: rgb(156, 69, 147);
+    background: radial-gradient(circle, rgba(156, 69, 147, 1) 0%, rgba(94, 49, 90, 1) 71%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button{
+            margin-left: 25% !important;
+            margin-bottom: 4%;
+        }
 
+    }
+    .left_block{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+ 
 
+}
 </style>
