@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "host": "vite --host",
-    "deploy": "vite build && gh-pages -d dist"
+    "host": "vite --host"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
