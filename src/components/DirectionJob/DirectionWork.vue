@@ -10,7 +10,7 @@
     <ul class="cards" style="margin-top: 4%">
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/alum_window.png" class="card__image" alt="Алюминевые окна" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -19,14 +19,15 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Окна премиум-класса теплые, созданные по индивидуальным
+              заказам и сочетающие в себе стиль и надежность.
             </p>
           </div>
         </a>
       </li>
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/alum_doors.jpg" class="card__image" alt="Алюминевые двери" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -35,14 +36,15 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Двери АЛЮТЕХ придадут индивидуальность Вашему дому.
+              Обладают повышенной тепло- и звукоизоляцией.
             </p>
           </div>
         </a>
       </li>
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/alum_razd_door.png" class="card__image" alt="Алюминевые раздвижные двери" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -51,7 +53,8 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Раздвижные двери для частных домов и коттеджей. Комфортное
+              открывание. Максимальная площадь остекления
             </p>
           </div>
         </a>
@@ -74,7 +77,7 @@
       </li>
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/terrace.jpg" class="card__image" alt="Остекление террас и балконов" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -83,7 +86,8 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Портальные теплые конструкции для террас и веранд. Панорамное
+              остекление в сдвижных и складывающихся системах
             </p>
           </div>
         </a>
@@ -138,7 +142,7 @@
       </li>
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/villa.png" class="card__image" alt="Остекление котеджей" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -147,7 +151,8 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Предлагаем все виды остекления для коттеджей и загородных домов
+              под ключ
             </p>
           </div>
         </a>
@@ -180,7 +185,7 @@
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Остекление зимних садов под ключ. Зимние сады от производителя, все виды систем
             </p>
           </div>
         </a>
@@ -212,7 +217,7 @@ import InputUIElement from '@/ui/Input/InputUIElement.vue'
 import DirectionWorkMobile from './DirectionWorkMobile.vue'
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 export default {
-  components: {  InputUIElement, DirectionWorkMobile },
+  components: { InputUIElement, DirectionWorkMobile },
   setup() {
     const date = ref()
     const isMobile = ref(window.innerWidth < 900)
@@ -246,6 +251,7 @@ export default {
   justify-content: center; */
   /* width: 100vw; */
 }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
@@ -269,11 +275,13 @@ export default {
     31px -31px 65px #0c4162;
   transition: 0.3s box-shadow ease-in-out;
 }
+
 .card:hover {
   box-shadow:
     -31px 31px 65px #041724,
     21px -21px 55px #196797;
 }
+
 .card__image {
   width: 100%;
   height: auto;
@@ -325,8 +333,8 @@ export default {
 .card__description {
   padding: 0 2em 2em;
   margin: 0;
-  color: black;
-  font-family: 'MockFlowFont';
+  color: rgb(29, 29, 29);
+  font-weight: 500;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -354,6 +362,7 @@ export default {
     white-space: nowrap;
     margin-top: 4%;
   }
+
   .cards {
     display: none;
   }
