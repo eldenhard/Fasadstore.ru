@@ -4,8 +4,9 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
+  // base: '/deploy-vite-project',
 export default defineConfig({
-  base: '/deploy-vite-project',
+  base: '/Fasadstore.ru',
   plugins: [
     vue(),
   ],
