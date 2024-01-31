@@ -6,8 +6,8 @@
     <div class="container_accordion">
       <DirectionWorkMobile v-if="isMobile" />
     </div>
-
     <ul class="cards" style="margin-top: 4%">
+      <!-- Алюминевые окна -->
       <li>
         <a class="card">
           <img src="./assets/alum_window.png" class="card__image" alt="Алюминевые окна" />
@@ -25,23 +25,7 @@
           </div>
         </a>
       </li>
-      <li>
-        <a class="card">
-          <img src="./assets/alum_doors.jpg" class="card__image" alt="Алюминевые двери" />
-          <div class="card__overlay">
-            <div class="card__header">
-              <div class="card__header-text">
-                <h3 class="card__title">Алюминевые двери</h3>
-                <span class="card__status">Алютех (ALUTECH)</span>
-              </div>
-            </div>
-            <p class="card__description">
-              Двери АЛЮТЕХ придадут индивидуальность Вашему дому.
-              Обладают повышенной тепло- и звукоизоляцией.
-            </p>
-          </div>
-        </a>
-      </li>
+      <!-- Алюминевые раздвижные двери -->
       <li>
         <a class="card">
           <img src="./assets/alum_razd_door.png" class="card__image" alt="Алюминевые раздвижные двери" />
@@ -59,29 +43,14 @@
           </div>
         </a>
       </li>
-      <li>
-        <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
-          <div class="card__overlay">
-            <div class="card__header">
-              <div class="card__header-text">
-                <h3 class="card__title">Остекление фасадов</h3>
-                <span class="card__status">Алютех (ALUTECH)</span>
-              </div>
-            </div>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
-            </p>
-          </div>
-        </a>
-      </li>
+      <!-- Остекление террас и балконов -->
       <li>
         <a class="card">
           <img src="./assets/terrace.jpg" class="card__image" alt="Остекление террас и балконов" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
-                <h3 class="card__title">Остекление террас и балконов</h3>
+                <h3 class="card__title">Остекление террас и беседок</h3>
                 <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
@@ -92,54 +61,7 @@
           </div>
         </a>
       </li>
-      <li>
-        <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
-          <div class="card__overlay">
-            <div class="card__header">
-              <div class="card__header-text">
-                <h3 class="card__title">Окна ПВХ</h3>
-                <span class="card__status">Рехау (REHAU)</span>
-              </div>
-            </div>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
-            </p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
-          <div class="card__overlay">
-            <div class="card__header">
-              <div class="card__header-text">
-                <h3 class="card__title">Деревянные окна</h3>
-                <span class="card__status">Россия</span>
-              </div>
-            </div>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
-            </p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
-          <div class="card__overlay">
-            <div class="card__header">
-              <div class="card__header-text">
-                <h3 class="card__title">Гаражные ворота</h3>
-                <span class="card__status">Алютех (ALUTECH)</span>
-              </div>
-            </div>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
-            </p>
-          </div>
-        </a>
-      </li>
+      <!-- Котеджи -->
       <li>
         <a class="card">
           <img src="./assets/villa.png" class="card__image" alt="Остекление котеджей" />
@@ -157,26 +79,28 @@
           </div>
         </a>
       </li>
-
+      <!-- Алюминевые двери  -->
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/alum_doors.jpg" class="card__image" alt="Алюминевые двери" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
-                <h3 class="card__title">Фурнитура</h3>
-                <span class="card__status">Германия</span>
+                <h3 class="card__title">Алюминевые двери</h3>
+                <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Двери АЛЮТЕХ придадут индивидуальность Вашему дому.
+              Обладают повышенной тепло- и звукоизоляцией.
             </p>
           </div>
         </a>
       </li>
+      <!-- Зимний сад -->
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/winter_garden.jpg" class="card__image" alt="Зимние сады" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -185,23 +109,116 @@
               </div>
             </div>
             <p class="card__description">
-              Остекление зимних садов под ключ. Зимние сады от производителя, все виды систем
+              Остекление зимних садов под ключ
             </p>
           </div>
         </a>
       </li>
+      <!-- Остекление фасадов -->
       <li>
         <a class="card">
-          <img src="./assets/direc1.jpg" class="card__image" alt="" />
+          <img src="./assets/fasad.jpg" class="card__image" alt="Остекление фасадов, витражи" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
-                <h3 class="card__title">Остекление котеджей</h3>
+                <h3 class="card__title">Остекление фасадов, витражи</h3>
                 <span class="card__status">Алютех (ALUTECH)</span>
               </div>
             </div>
             <p class="card__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?
+              Витражное (панорамное) остекление
+              для сплошного многоэтажного остекления
+
+            </p>
+          </div>
+        </a>
+      </li>
+      <!-- Деревянные окна -->
+      <li>
+        <a class="card">
+          <img src="./assets/wood.jpg" class="card__image" alt="Деревянные окна" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <div class="card__header-text">
+                <h3 class="card__title">Деревянные окна</h3>
+                <span class="card__status">Россия</span>
+              </div>
+            </div>
+            <p class="card__description">
+              Окна из массива дуба, лиственницы, сосны.
+              Дерево-алюминий и алюмо-дерево
+
+            </p>
+          </div>
+        </a>
+      </li>
+      <!-- Гаражные ворота -->
+      <li>
+        <a class="card">
+          <img src="./assets/garage_doors.jpg" class="card__image" alt="Гаражные ворота" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <div class="card__header-text">
+                <h3 class="card__title">Гаражные ворота</h3>
+                <span class="card__status">Алютех (ALUTECH)</span>
+              </div>
+            </div>
+            <p class="card__description">
+              Гаражные секционные ворота – одно из самых популярных и современных решений, максимально удобны в
+              эксплуатации
+            </p>
+          </div>
+        </a>
+      </li>
+      <!-- Окна ПВХ -->
+      <li>
+        <a class="card">
+          <img src="./assets/window_pvh.jpg" class="card__image" alt="Окна ПВХ" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <div class="card__header-text">
+                <h3 class="card__title">Окна ПВХ</h3>
+                <span class="card__status">Рехау (REHAU)</span>
+              </div>
+            </div>
+            <p class="card__description">
+              Немецкие пластиковые окна «Рехау» — гарантия качества, надежности
+            </p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Фурнитура -->
+      <li>
+        <a class="card">
+          <img src="./assets/accessories.png" class="card__image" alt="Фурнитура" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <div class="card__header-text">
+                <h3 class="card__title">Фурнитура</h3>
+                <span class="card__status">Германия</span>
+              </div>
+            </div>
+            <p class="card__description">
+              Широкий ассортимент ведущих производителей фурнитуры для алюминиевых окон и дверей
+            </p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Стеклопакеты -->
+      <li>
+        <a class="card">
+          <img src="./assets/double_glazing.jpg" class="card__image" alt="Стеклопакеты" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <div class="card__header-text">
+                <h3 class="card__title">Стеклопакеты</h3>
+                <span class="card__status">Алютех (ALUTECH)</span>
+              </div>
+            </div>
+            <p class="card__description">
+              Виды стеклопакетов и их функциональность
             </p>
           </div>
         </a>
@@ -356,6 +373,9 @@ export default {
   line-height: 1em;
 }
 
+img{
+  filter: brightness(89%);
+}
 @media screen and (max-width: 900px) {
   .direction_description {
     text-align: center;

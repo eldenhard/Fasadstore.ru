@@ -22,6 +22,8 @@ export default {
   border-width: 0;
   box-sizing: border-box;
   color: #dfdfdf !important;
+  // box-shadow: 2px 2px 5px grey;
+
   cursor: pointer;
   display: inline-block;
   font-family: 'Montserrat', Helvetica, sans-serif;

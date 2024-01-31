@@ -1,7 +1,7 @@
 <template>
   <div class="container-block">
     <h3 align="center">Оконная компания</h3>
-    <p align="center" style="color: rgb(83, 83, 83)">
+    <p align="center" style="color: rgb(83, 83, 83); font-weight: 700; padding: .2% 2% 0;">
       Бесплатная консультация со специалистом по пластиковым окнам
     </p>
 
