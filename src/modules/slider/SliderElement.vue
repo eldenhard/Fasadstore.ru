@@ -146,7 +146,7 @@ export default {
 .rows {
   width: 98%;
   background: white;
-  height: 5px;
+  height: 3px;
   transition: width 1s ease-in;
 }
 
