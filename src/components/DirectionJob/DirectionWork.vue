@@ -325,7 +325,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 2em;
-  padding: 2em;
+  padding: 1.5em;
   border-radius: calc(20 * 1px) 0 0 0;
   background-color: white;
   transform: translateY(-100%);
@@ -337,14 +337,15 @@ export default {
 }
 
 .card__title {
-  font-size: 1em;
+  font-size: 1.1em;
   margin: 0 0 0.3em;
-  color: #6a515e;
+  color: #1b1b1b;
 }
 
 .card__status {
-  font-size: 0.8em;
-  color: #d7bdca;
+  font-size: 1em;
+  font-weight: normal;
+  color: #363636;
 }
 
 .card__description {

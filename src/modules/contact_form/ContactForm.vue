@@ -4,9 +4,9 @@
       <section class="left_side">
         <div class="header_container">
           <p class="text_description">
-            ЗАКАЖИТЕ БЕСПЛАТНЫЙ ВЫЕЗД <br />
-            ИНЖЕНЕРА-ЗАМЕРЩИКА И ОБСУДИТЕ <br />
-            ВСЕ ВОПРОСЫ ЛИЧНО
+            Закажите бесплатный выезд <br />
+            инженера-замерщика и обсудите <br />
+            все вопросы лично
           </p>
         </div>
         <div class="line"></div>
@@ -146,7 +146,7 @@ html {
   padding: 4% 4% 0 4%;
   color: rgb(226, 226, 226);
   letter-spacing: 1px;
-  font-size: 3vh;
+  font-size: 2.5vh;
   font-weight: 700;
 
   &:first-letter {
@@ -180,11 +180,9 @@ html {
   }
 
   .text_description {
-    letter-spacing: none;
+    font-family: 'Montserrat', sans-serif;
     font-size: 3vh;
-    f &:first-letter {
-      font-size: 3vh;
-    }
+   
   }
 
   .line {

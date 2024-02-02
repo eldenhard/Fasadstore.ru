@@ -1,8 +1,8 @@
 <template>
   <div class="container-block">
-    <h3 align="center">Оконная компания</h3>
+    <h3 align="center">ПРОДУКЦИЯ  АЛЮТЕХ</h3>
     <p align="center" style="color: rgb(83, 83, 83); font-weight: 700; padding: .2% 2% 0;">
-      Бесплатная консультация со специалистом по пластиковым окнам
+      Виды открывания и фурнитуры
     </p>
 
     <section class="line_element">
@@ -12,28 +12,31 @@
     </section>
     <section class="three_photo">
       <div class="right_text">
-        <img src="./assets/1.jpg" alt="" />
+        <iframe width="100" height="150" src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Jh31k0fbGZZQcyRU"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <!-- <img src="./assets/1.jpg" alt="" />
         <div class="image-overlay">
           <p class="description_overlay">Алюминевые раздвижные двери</p>
-        </div>
+        </div> -->
       </div>
       <div class="right_text">
-        <img src="./assets/2.jpg" alt="" style="z-index: 34" />
+        <iframe width="100" height="150" src="https://www.youtube.com/embed/RkZb4nDh0wo?si=xBfEvrelFB0anSqv"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <!-- <img src="./assets/2.jpg" alt="" style="z-index: 34" />
         <div class="image-overlay">
           <p class="description_overlay">Раздвижные панорамные двери</p>
-        </div>
+        </div> -->
       </div>
       <div class="right_text">
         <!-- <img src="./assets/3.jpg" alt=""> -->
-        <iframe
-          width="100"
-          height="100"
-          src="https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9"
-          title="YouTube video player"
-          frameborder="0"
+        <iframe width="100" height="100" src="https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9"
+          title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+          allowfullscreen></iframe>
         <!-- <div class="image-overlay">
                     <p class="description_overlay"></p>
                 </div> -->
@@ -44,15 +47,8 @@
         <p>НАШИ ПАРТНЕРЫ</p>
         <div class="line"></div>
       </div>
-      <swiper
-        class="swiper"
-        :modules="modules"
-        :slides-per-view="1"
-        :space-between="10"
-        :pagination="{ clickable: true }"
-        :grab-cursor="true"
-        :loop="true"
-        :breakpoints="{
+      <swiper class="swiper" :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }"
+        :grab-cursor="true" :loop="true" :breakpoints="{
           '640': {
             slidesPerView: 2,
             spaceBetween: 20
@@ -65,27 +61,21 @@
             slidesPerView: 5,
             spaceBetween: 50
           }
-        }"
-        :autoplay="{
-          delay: 3500,
-          disableOnInteraction: false
-        }"
-      >
-        <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide>
+        }" :autoplay="{
+  delay: 3500,
+  disableOnInteraction: false
+}">
+        <!-- <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide> -->
         <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/roto.jpg" alt="" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/алютех.png" alt="" /> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/giesse.jpg" alt="" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/agc.jpg" alt="" /></swiper-slide>
 
-        <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
       </swiper>
     </section>
 
-   <StrongAside style="margin-top: 10%;"/>
+    <StrongAside style="margin-top: 10%;" />
 
   </div>
 </template>
@@ -196,13 +186,15 @@ iframe {
 
 .partners-section {
   display: flex;
-  flex-direction: column; /* Изменение направления флексбокса на колонку */
+  flex-direction: column;
+  /* Изменение направления флексбокса на колонку */
 }
 
 .right_text {
   position: relative;
   cursor: pointer;
   transition: 0.2s transform ease-in-out;
+
   &:hover {
     transform: translateY(-10px);
   }
@@ -235,13 +227,14 @@ iframe {
     text-align: center;
     white-space: nowrap;
     margin-top: 4%;
+
     .line {
       margin: 0 auto;
       width: 25vw;
     }
   }
+
   .container-block {
     width: 90%;
   }
-}
-</style>
+}</style>

@@ -31,7 +31,7 @@
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <img src="./assets/alum_window.png" alt="Алюминевые окна" />
+          <img src="./assets/alum_razd_door.png" alt="Алюминевые раздвижные двер" />
           <p style="margin-top: 4vh; font-weight: 600;">
             Раздвижные двери для частных домов и коттеджей. Комфортное
             открывание. Максимальная площадь остекления
@@ -131,7 +131,7 @@
       <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <img src="./assets/alum_window.png" alt="Остекление фасадов, витражи" />
+          <img src="./assets/fasad.jpg" alt="Остекление фасадов, витражи" />
           <p style="margin-top: 4vh; font-weight: 600;">
             Витражное (панорамное) остекление
             для сплошного многоэтажного остекления
@@ -229,7 +229,7 @@
       <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <img src="./assets/garage_doors.jpg" alt="Стеклопакеты" />
+          <img src="./assets/double_glazing.jpg" alt="Стеклопакеты" />
           <p style="margin-top: 4vh; font-weight: 600;">
             Виды стеклопакетов и их функциональность
           </p>

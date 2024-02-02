@@ -8,12 +8,14 @@
         class="active"
         aria-current="true"
         aria-label="Slide 1"
+        style="border-radius: 50% !important; height: 10px; width: 10px"
       ></button>
       <button
         type="button"
         data-bs-target="#carouselExampleCaptions"
         data-bs-slide-to="1"
         aria-label="Slide 2"
+        style="border-radius: 50% !important; height: 10px; width: 10px"
       ></button>
     </div>
     <div class="carousel-inner">
@@ -142,9 +144,9 @@ export default {
 }
 
 .rows {
-  width: max(50px, 25%);
+  width: 98%;
   background: white;
-  height: 10px;
+  height: 5px;
   transition: width 1s ease-in;
 }
 
