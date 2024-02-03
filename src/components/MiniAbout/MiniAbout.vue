@@ -3,7 +3,7 @@
     <div class="block">
       <section class="left_block">
         <div class="block_1">
-          <img src="./assets/stanok.jpg" alt="алюминевые системы изготовление" style="border-radius: 8px" />
+          <img src="./assets/stanok.webp" alt="алюминевые системы изготовление" style="border-radius: 8px" />
         </div>
         <div class="block_2">
           <img src="./assets/propizvodstvo.webp" alt="станок" style="border-radius: 8px" />

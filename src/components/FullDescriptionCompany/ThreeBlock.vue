@@ -52,7 +52,7 @@
                 <section class="black">
                     <h3>ООО "Алюминевые системы"</h3>
                     <p>Мы помогаем создавать лицо города</p>
-                </section>3
+                </section>
                 <div class="black_three_block">
                     <div class="black_bl bl1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B"
@@ -242,6 +242,7 @@
         color: white;
         font-size: 3vh;
         font-weight: bold;
+        text-align: center;
     }
 }
 

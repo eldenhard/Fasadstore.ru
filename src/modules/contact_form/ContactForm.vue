@@ -86,6 +86,7 @@ html {
   position: relative;
   overflow: hidden;
   margin-top: 8%;
+
   border-radius: 8px;
 }
 

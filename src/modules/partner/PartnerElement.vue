@@ -66,12 +66,12 @@
   disableOnInteraction: false
 }">
         <!-- <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide> -->
-        <swiper-slide class="slide"><img src="./assets/fapim.png" alt="" /> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/roto.jpg" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/алютех.png" alt="" /> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/giesse.jpg" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/agc.jpg" alt="" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/siegenia.png" alt="" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/fapim.webp" alt="фапим"/> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/vorne.webp" alt="ворне"/></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/aluteh.webp" alt="алютех"/> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/giesse.webp" alt="гиес"/></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/siegenia.webp" alt="сиениа"/></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/drhahn.webp" alt="доктор хан"/></swiper-slide>
       </swiper>
     </section>
 
