@@ -1,6 +1,6 @@
 <template>
   <div class="container-block">
-    <h3 align="center">ПРОДУКЦИЯ  АЛЮТЕХ</h3>
+    <h3 align="center">ПРОДУКЦИЯ АЛЮТЕХ</h3>
     <p align="center" style="color: rgb(83, 83, 83); font-weight: 700; padding: .2% 2% 0;">
       Виды открывания и фурнитуры
     </p>
@@ -71,7 +71,7 @@
         <swiper-slide class="slide"><img src="./assets/алютех.png" alt="" /> </swiper-slide>
         <swiper-slide class="slide"><img src="./assets/giesse.jpg" alt="" /></swiper-slide>
         <swiper-slide class="slide"><img src="./assets/agc.jpg" alt="" /></swiper-slide>
-
+        <swiper-slide class="slide"><img src="./assets/siegenia.png" alt="" /></swiper-slide>
       </swiper>
     </section>
 
@@ -237,4 +237,5 @@ iframe {
   .container-block {
     width: 90%;
   }
-}</style>
+}
+</style>

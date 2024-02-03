@@ -9,20 +9,37 @@
                         проектирования до монтажа и обслуживания систем. </p>
                 </div>
                 <div class="right_aside">
-                    <p>Почему стоит выбрать алюминиевые окна?</p>
+                    <p>Почему стоит выбрать окна из алюминия?</p>
                     <div class="raiting">
-                        <label for="">Прочность
-                            <meter value=1></meter>
-                        </label>
-                        <label for="">Лёгкость
-                            <meter value=0.8></meter>
-                        </label>
-                        <label for="">Стильный дизайн
-                            <meter value=0.95></meter>
-                        </label>
-                        <label for="">Экологичность
-                            <meter value=0.98></meter>
-                        </label>
+                        <section class="alumanium">
+                            <p>
+                                <strong>Алюминий</strong>
+                            </p>
+                            <span>Срок службы: <strong>50 лет</strong></span>
+                            <br>
+                            <span>Экологичность: <strong>Не выделяет вредных веществ</strong></span>
+                            <br>
+                            <span>Поддерживает горение: <strong>Не поддерживает</strong></span>
+                            <br><br>
+                            <span>Прочность: <meter value=1></meter></span>
+                            <br>
+                            <span>Стильный дизайн: <meter value=1></meter></span>
+                        </section>
+                        <section class="pvh">
+                            <p>
+                                <strong>ПВХ</strong>
+                            </p>
+                            <span>Срок службы: <strong>20 лет</strong></span>
+                            <br>
+                            <span>Экологичность: <strong>Выделяет формальдегид</strong></span>
+                            <br>
+                            <span>Поддерживает горение: <strong>При горении выделяются опасные вещества</strong></span>
+                            <br><br>
+                            <span>Прочность: <meter value=0.4></meter></span>
+                            <br>
+                            <span>Стильный дизайн: <meter value=0.5></meter></span>
+                        </section>
+
                     </div>
                 </div>
             </div>
@@ -87,14 +104,18 @@ main {
 }
 
 .content_block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
     width: 95%;
     gap: 5%;
     margin: 0 auto;
 
 }
+.life{
+    font-size: 3vh !important;
+    color: rgb(223, 223, 223) !important;
 
+}
 .left_aside {
     grid-area: 'description';
     position: relative;
@@ -102,13 +123,14 @@ main {
 
     h4 {
         text-align: left;
-        color: rgb(236, 236, 236);
+        color: rgb(174, 186, 209);
         font-weight: bold;
+        font-size: 4vh;
     }
 
     p {
         color: var(--colorGrey);
-        padding-top: 5%;
+        padding-top: 2%;
         font-size: 1.2rem;
         font-family: 'Montserrat', sans-serif;
 
@@ -121,7 +143,8 @@ main {
 
     p {
         color: rgb(236, 236, 236);
-        font-size: 1.5rem;
+        font-size: 2rem;
+        padding-top: 4%;
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
 
@@ -130,7 +153,31 @@ main {
 
 .raiting {
     display: flex;
-    flex-direction: column;
+
+    background: rgba(128, 130, 163, 0.14);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+    justify-content: space-between;
+    padding: 2%;
+
+    .alumanium,
+    .pvh {
+        min-width: 30vw;
+        gap: 10px !important;
+        p {
+            text-align: center;
+
+            string {
+                text-align: center;
+            }
+        }
+        span{
+            font-size: 2vh;
+            color: aliceblue;
+        }
+    }
 
     meter {
         width: 100%;
@@ -256,8 +303,10 @@ label {
             color: rgb(83, 83, 83);
         }
     }
-    .white_block{
+
+    .white_block {
         margin-top: 16%;
     }
 
-}</style>
+}
+</style>

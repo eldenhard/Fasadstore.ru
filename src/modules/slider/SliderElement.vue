@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="right_text">
-            <img src="../slider/assets/first.jpg" class="d-block w-100" />
+            <img src="../slider/assets/first.jpg" class="d-block w-100" alt="Раздвижные двери АЛЮТЕХ"/>
             <div class="image-overlay"></div>
           </div>
         </div>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="right_text">
-            <img src="../slider/assets/second.jpg" class="d-block w-100" />
+            <img src="../slider/assets/second.jpg" class="d-block w-100" alt="окна АЛЮТЕХ"/>
             <div class="image-overlay"></div>
           </div>
         </div>

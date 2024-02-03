@@ -117,7 +117,7 @@
       <!-- Остекление фасадов -->
       <li>
         <a class="card">
-          <img src="./assets/fasad.jpg" class="card__image" alt="Остекление фасадов, витражи" />
+          <img src="./assets/fasad.png" class="card__image" alt="Остекление фасадов, витражи" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -155,7 +155,7 @@
       <!-- Гаражные ворота -->
       <li>
         <a class="card">
-          <img src="./assets/garage_doors.jpg" class="card__image" alt="Гаражные ворота" />
+          <img src="./assets/garage_doors.png" class="card__image" alt="Гаражные ворота" style="height: 90% !important;"/>
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -209,7 +209,7 @@
       <!-- Стеклопакеты -->
       <li>
         <a class="card">
-          <img src="./assets/double_glazing.jpg" class="card__image" alt="Стеклопакеты" />
+          <img src="./assets/double_glazing.png" class="card__image" alt="Стеклопакеты" />
           <div class="card__overlay">
             <div class="card__header">
               <div class="card__header-text">
@@ -281,7 +281,7 @@ export default {
 .card {
   position: relative;
   display: block;
-  height: 40vh !important;
+  height: 45vh !important;
   border-radius: calc(8 * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -301,6 +301,7 @@ export default {
 
 .card__image {
   width: 100%;
+  min-height: 80%;
   height: auto;
 }
 
