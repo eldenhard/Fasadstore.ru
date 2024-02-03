@@ -7,6 +7,9 @@ import vue from '@vitejs/plugin-vue'
   // base: '/deploy-vite-project',
 export default defineConfig({
   base: '/Fasadstore.ru',
+  build: {
+    minify: false,
+  },
   plugins: [
     vue(),
   ],

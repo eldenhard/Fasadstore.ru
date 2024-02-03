@@ -123,7 +123,7 @@ main {
 
     h4 {
         text-align: left;
-        color: rgb(174, 186, 209);
+        color: rgb(205, 219, 247);
         font-weight: bold;
         font-size: 4vh;
     }
@@ -275,6 +275,15 @@ label {
 }
 
 @media screen and (max-width: 920px) {
+    .left_aside{
+        h4{
+            color: rgb(255, 255, 255);
+        }
+    }
+    .raiting{
+        display: flex;
+        flex-direction: column;
+    }
     .content_block {
         grid-template-columns: 1fr;
         grid-template-columns: 'description'
