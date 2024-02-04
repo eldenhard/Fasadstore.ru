@@ -2118,21 +2118,21 @@ to {
     justify-content: center;
     align-items: center;
 }
-}.description_second[data-v-7ec5dc7c] {
+}.description_second[data-v-ae6b0c90] {
   color: white;
   text-decoration: none;
 }
-a[data-v-7ec5dc7c] {
+a[data-v-ae6b0c90] {
   transition: color 0.4s ease;
 }
-a[data-v-7ec5dc7c]:hover {
+a[data-v-ae6b0c90]:hover {
   color: rgb(192, 192, 192);
 }
-.yandex-container[data-v-7ec5dc7c] {
-  height: 45vh;
+.yandex-container[data-v-ae6b0c90] {
+  height: 50vh;
   margin-bottom: -4%;
 }
-.img_block[data-v-7ec5dc7c] {
+.img_block[data-v-ae6b0c90] {
   height: 50vh;
   width: 100%;
   background: url(/Fasadstore.ru/assets/backgroundContact-aFpqU3_L.jpg);
@@ -2141,7 +2141,7 @@ a[data-v-7ec5dc7c]:hover {
   background-position: center center;
   position: relative;
 }
-.img_block .overlay[data-v-7ec5dc7c] {
+.img_block .overlay[data-v-ae6b0c90] {
   background: rgba(59, 59, 59, 0.5);
   background: linear-gradient(0deg, rgba(59, 59, 59, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
   position: absolute;
@@ -2152,27 +2152,27 @@ a[data-v-7ec5dc7c]:hover {
   align-items: center;
   flex-direction: column;
 }
-.img_block .overlay .overlay_block[data-v-7ec5dc7c] {
+.img_block .overlay .overlay_block[data-v-ae6b0c90] {
   width: 40%;
   margin: 0 auto;
 }
-.img_block .overlay .overlay_block .main_description[data-v-7ec5dc7c] {
+.img_block .overlay .overlay_block .main_description[data-v-ae6b0c90] {
   color: white;
   font-weight: bold;
   font-size: 3vh;
   text-align: center;
 }
-.img_block .overlay .overlay_block .mini_description[data-v-7ec5dc7c] {
+.img_block .overlay .overlay_block .mini_description[data-v-ae6b0c90] {
   color: var(--colorGrey);
   font-size: 1.8vh;
   text-align: center;
   font-weight: 400;
 }
-.three_elements[data-v-7ec5dc7c] {
+.three_elements[data-v-ae6b0c90] {
   height: 30vh;
   background: #F3F3F3;
 }
-.action_three_block[data-v-7ec5dc7c] {
+.action_three_block[data-v-ae6b0c90] {
   width: 60%;
   margin: 0 auto;
   height: 100%;
@@ -2180,20 +2180,20 @@ a[data-v-7ec5dc7c]:hover {
   justify-content: space-evenly;
   align-items: center;
 }
-.block_thr[data-v-7ec5dc7c] {
+.block_thr[data-v-ae6b0c90] {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 30%;
   text-align: center;
 }
-.block_thr h4[data-v-7ec5dc7c] {
+.block_thr h4[data-v-ae6b0c90] {
   padding-top: 5%;
 }
-.block_thr p[data-v-7ec5dc7c] {
+.block_thr p[data-v-ae6b0c90] {
   color: grey;
 }
-.planet[data-v-7ec5dc7c] {
+.planet[data-v-ae6b0c90] {
   width: 100%;
   background: url(/Fasadstore.ru/assets/world_contact-kZLBzRKe.png);
   background-repeat: no-repeat;
@@ -2201,7 +2201,7 @@ a[data-v-7ec5dc7c]:hover {
   min-height: 60vh;
   height: auto;
 }
-.form_block[data-v-7ec5dc7c] {
+.form_block[data-v-ae6b0c90] {
   display: flex;
   justify-content: space-between;
   width: 60%;
@@ -2209,7 +2209,7 @@ a[data-v-7ec5dc7c]:hover {
   margin: 0 auto;
   height: 100%;
 }
-.form_block .form[data-v-7ec5dc7c] {
+.form_block .form[data-v-ae6b0c90] {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -2217,56 +2217,56 @@ a[data-v-7ec5dc7c]:hover {
   width: 50%;
   padding: 5% 0;
 }
-.form_block .form p[data-v-7ec5dc7c] {
+.form_block .form p[data-v-ae6b0c90] {
   font-size: 3vh;
   color: var(--backgroundBlue);
 }
-.form_block .form label[data-v-7ec5dc7c] {
+.form_block .form label[data-v-ae6b0c90] {
   color: grey;
   margin-top: 6%;
 }
-.form_block .form input[data-v-7ec5dc7c] {
+.form_block .form input[data-v-ae6b0c90] {
   border-radius: 4px;
   border: 1px solid grey;
   padding: 2%;
 }
-.form_block .form input[data-v-7ec5dc7c]:focus {
+.form_block .form input[data-v-ae6b0c90]:focus {
   outline: none;
   text-decoration: none;
   border: 2px solid var(--backgroundPurpleHover);
 }
-.form_block .form label[data-v-7ec5dc7c],
-.form_block .form input[data-v-7ec5dc7c] {
+.form_block .form label[data-v-ae6b0c90],
+.form_block .form input[data-v-ae6b0c90] {
   width: 100%;
 }
-.black_block[data-v-7ec5dc7c] {
+.black_block[data-v-ae6b0c90] {
   background: var(--backgroundDarkBlue);
   color: white;
   width: 45%;
   padding: 4%;
 }
-.black_block p[data-v-7ec5dc7c]:nth-child(1) {
+.black_block p[data-v-ae6b0c90]:nth-child(1) {
   font-size: 2.5vh;
   font-weight: bold;
   text-transform: uppercase;
 }
-.mini_block[data-v-7ec5dc7c] {
+.mini_block[data-v-ae6b0c90] {
   margin-top: 6%;
   width: 70%;
   display: flex;
   gap: 20px;
   justify-content: baseline;
 }
-.description[data-v-7ec5dc7c] {
+.description[data-v-ae6b0c90] {
   font-size: 1.5vh !important;
 }
-.social_network[data-v-7ec5dc7c] {
+.social_network[data-v-ae6b0c90] {
   width: 45%;
   margin: 4% auto 4%;
   display: flex;
   justify-content: space-between;
 }
-.social_network .network[data-v-7ec5dc7c] {
+.social_network .network[data-v-ae6b0c90] {
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -2276,60 +2276,60 @@ a[data-v-7ec5dc7c]:hover {
   align-items: center;
   cursor: pointer;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(1) {
+.social_network .network[data-v-ae6b0c90]:nth-child(1) {
   transition: 0.5s background ease-in-out;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(1):hover {
+.social_network .network[data-v-ae6b0c90]:nth-child(1):hover {
   background: #FF0000;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(2) {
+.social_network .network[data-v-ae6b0c90]:nth-child(2) {
   transition: 0.5s background ease-in-out;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(2):hover {
+.social_network .network[data-v-ae6b0c90]:nth-child(2):hover {
   background: #259CD8;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(3) {
+.social_network .network[data-v-ae6b0c90]:nth-child(3) {
   transition: 0.5s background ease-in-out;
 }
-.social_network .network[data-v-7ec5dc7c]:nth-child(3):hover {
+.social_network .network[data-v-ae6b0c90]:nth-child(3):hover {
   background: #4CAF50;
 }
 @media screen and (max-width: 1300px) {
-.form_block[data-v-7ec5dc7c] {
+.form_block[data-v-ae6b0c90] {
     width: 90%;
 }
 }
 @media screen and (max-width: 900px) {
-.yandex-container[data-v-7ec5dc7c] {
-    height: 30vh;
+.yandex-container[data-v-ae6b0c90] {
+    height: 40vh;
 }
-.overlay_block[data-v-7ec5dc7c] {
+.overlay_block[data-v-ae6b0c90] {
     width: 80% !important;
 }
-.action_three_block[data-v-7ec5dc7c] {
+.action_three_block[data-v-ae6b0c90] {
     flex-direction: column;
     width: 100%;
 }
-.block_thr[data-v-7ec5dc7c]:nth-child(1) {
+.block_thr[data-v-ae6b0c90]:nth-child(1) {
     padding-top: 4%;
 }
-.block_thr[data-v-7ec5dc7c] {
+.block_thr[data-v-ae6b0c90] {
     width: 100%;
     border-bottom: 1px solid lightgrey;
     padding: 2% 0;
 }
-.three_elements[data-v-7ec5dc7c] {
+.three_elements[data-v-ae6b0c90] {
     height: auto;
 }
-.form_block[data-v-7ec5dc7c] {
+.form_block[data-v-ae6b0c90] {
     flex-direction: column;
     width: 100%;
 }
-.form_block .form[data-v-7ec5dc7c] {
+.form_block .form[data-v-ae6b0c90] {
     width: 90%;
     margin: 0 auto;
 }
-.form_block .black_block[data-v-7ec5dc7c] {
+.form_block .black_block[data-v-ae6b0c90] {
     width: 100%;
     margin: 0;
 }
