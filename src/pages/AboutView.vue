@@ -4,7 +4,10 @@
     <mobilePhone />
 
     <FullDescriptionCompany />
+
+    <AboutCompany />
     <ThreeBlock />
+
     <WomanBlock />
     <Footer />
   </div>
@@ -18,7 +21,7 @@ import Footer from '@/components/Footer/Footer.vue'
 import mobilePhone from '@/modules/mobile_phone/mobilePhone.vue'
 import ThreeBlock from '@/components/FullDescriptionCompany/ThreeBlock.vue'
 import WomanBlock from '@/components/FullDescriptionCompany/WomanBlock.vue'
-
+import AboutCompany from '@/components/FullDescriptionCompany/AboutCompany.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -27,6 +30,7 @@ export default {
     FullDescriptionCompany,
     ThreeBlock,
     WomanBlock,
+    AboutCompany,
     Footer,
   },
   // setup(){

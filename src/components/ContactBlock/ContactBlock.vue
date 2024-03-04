@@ -81,7 +81,8 @@
                         </svg>
                         <div class="text_mini">
                             <p class="description">Адрес</p>
-                            <p class="description_second">Москва Дмитровское шоссе 157 стр. 7</p>
+                            <a class="description_second" href="https://yandex.ru/maps/-/CDBimGN~" target="_blank">Москва
+                                Дмитровское шоссе 157 стр. 7</a>
                         </div>
                     </div>
                     <div class="mini_block">
@@ -114,35 +115,81 @@
                         </div>
                     </div>
                     <div class="social_network">
-                        <a class="network" href="https://www.youtube.com/@fasadstore" target="_blank" style="color: rgb(211, 211, 211);">
-                          <i class="bi bi-youtube"
-                                    style="font-size: 1.3rem;"></i>
+                        <a class="network" href="https://www.youtube.com/@fasadstore" target="_blank"
+                            style="color: rgb(211, 211, 211);">
+                            <i class="bi bi-youtube" style="font-size: 1.3rem;"></i>
                         </a>
-                        <a class="network" href="https://t.me/aluteh_systems" target="_blank"  style="color: rgb(211, 211, 211);">
-                          <i class="bi bi-telegram" style="font-size: 1.3rem;"></i>
+                        <a class="network" href="https://t.me/aluteh_systems" target="_blank"
+                            style="color: rgb(211, 211, 211);">
+                            <i class="bi bi-telegram" style="font-size: 1.3rem;"></i>
                         </a>
-                        <a class="network" href="https://api.whatsapp.com/send/?phone=79197205872&text&type=phone_number&app_absent=0" target="_blank"  style="color: rgb(211, 211, 211);">
-                          <i class="bi bi-whatsapp" style="font-size: 1.3rem;"></i>
+                        <a class="network"
+                            href="https://api.whatsapp.com/send/?phone=79197205872&text&type=phone_number&app_absent=0"
+                            target="_blank" style="color: rgb(211, 211, 211);">
+                            <i class="bi bi-whatsapp" style="font-size: 1.3rem;"></i>
                         </a>
                     </div>
                 </div>
             </section>
         </div>
 
+
+        <YandexMap :coordinates="coordinates" :map-type="mapType" :zoom="zoom" :detailed-controls="detailedControls"
+            :controls="controls" >
+            <YandexMarker :coordinates="coordinates" :marker-id="123" :options="markerOptions" >
+
+            </YandexMarker>
+        </YandexMap>
     </div>
 </template>
 
-<script>
+
+
+<script setup>
+import ButtonPurple from '@/ui/ButtonPurple.vue';
+import { yandexMap, yandexMarker } from 'vue-yandex-maps'
+import { ref } from 'vue'
+const coordinates = [55.900572, 37.541249];
+const controls = ['fullscreenControl'];
+const zoom = 15
+const mapType = "map"
+const detailedControls = { zoomControl: { position: { right: 10, top: 50 } } };
+const markerOptions = ref({
+    iconColor: 'red',
+})
+</script>
+
+<!-- <script>
 import ButtonPurple from '@/ui/ButtonPurple.vue';
 export default {
     components: { ButtonPurple },
     setup() {
 
+        return {
+          
+        }
     },
 }
-</script>
+</script> -->
 
 <style lang="scss" scoped>
+.description_second {
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    transition: color .4s ease;
+    &:hover {
+        color: rgb(192, 192, 192);
+    }
+}
+
+.yandex-container {
+    height: 50vh;
+    margin-bottom: -4%;
+}
+
 .img_block {
     height: 50vh;
     width: 100%;
@@ -342,11 +389,16 @@ export default {
 }
 
 @media screen and (max-width: 1300px) {
-    .form_block{
+    .form_block {
         width: 90%;
     }
 }
+
 @media screen and (max-width: 900px) {
+    .yandex-container {
+        height: 40vh;
+    }
+
     .overlay_block {
         width: 80% !important;
     }
@@ -369,18 +421,20 @@ export default {
     .three_elements {
         height: auto;
     }
-    .form_block{
+
+    .form_block {
         flex-direction: column;
         width: 100%;
-        .form{
+
+        .form {
             width: 90%;
             margin: 0 auto;
-  
+
         }
-        .black_block{
+
+        .black_block {
             width: 100%;
             margin: 0;
         }
     }
-}
-</style>
+}</style>

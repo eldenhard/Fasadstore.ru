@@ -47,31 +47,28 @@
         <p>НАШИ ПАРТНЕРЫ</p>
         <div class="line"></div>
       </div>
-      <swiper class="swiper" :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }"
+      <swiper class="swiper" :modules="modules" :slides-per-view="2" :space-between="10" :pagination="{ clickable: true }"
         :grab-cursor="true" :loop="true" :breakpoints="{
-          '640': {
-            slidesPerView: 2,
+          '950': {
+            slidesPerView: 3,
             spaceBetween: 20
-          },
-          '768': {
-            slidesPerView: 4,
-            spaceBetween: 40
           },
           '1024': {
             slidesPerView: 5,
-            spaceBetween: 50
+            spaceBetween: 30
           }
         }" :autoplay="{
-  delay: 3500,
-  disableOnInteraction: false
-}">
+          delay: 3500,
+          disableOnInteraction: false
+        }">
         <!-- <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide> -->
-        <swiper-slide class="slide"><img src="./assets/fapim.webp" alt="фапим"/> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/vorne.webp" alt="ворне"/></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/aluteh.webp" alt="алютех"/> </swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/giesse.webp" alt="гиес"/></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/siegenia.webp" alt="сиениа"/></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/drhahn.webp" alt="доктор хан"/></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/fapim.webp" alt="фапим" /> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/vorne.webp" alt="ворне" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/aluteh.webp" alt="алютех" /> </swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/giesse.webp" alt="гиес" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/siegenia.webp" alt="сиениа" /></swiper-slide>
+        <swiper-slide class="slide"><img src="./assets/drhahn.webp" alt="доктор хан" /></swiper-slide>
+
       </swiper>
     </section>
 
@@ -223,6 +220,7 @@ iframe {
 }
 
 @media screen and (max-width: 900px) {
+
   .direction_description {
     text-align: center;
     white-space: nowrap;

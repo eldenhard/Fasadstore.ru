@@ -42,7 +42,7 @@
               Продукция
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li>
+              <!-- <li>
                 <router-link to="/products/action" class="dropdown-item" exact>Алюминевые окна</router-link>
               </li>
               <li>
@@ -78,7 +78,7 @@
               </li>
               <li>
                 <router-link to="/products/something-else" class="dropdown-item" exact>Остекление котеджей</router-link>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">

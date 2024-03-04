@@ -8,30 +8,36 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@popperjs/core'
 
-import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/lara-light-indigo/theme.css'
-import 'primevue/resources/primevue.min.css'
-import 'primeicons/primeicons.css'
 
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
 import Toast from 'primevue/toast'
 import ToastService from 'primevue/toastservice'
 
+import YmapPlugin from 'vue-yandex-maps'
+
 const app = createApp(App)
 const pinia = createPinia()
 
-// Если у вас есть дополнительные модули, добавьте их сюда
+const settings = {
+    apiKey: '49e1eea5-38ec-417e-abfe-8d2ab7db50dd', // Индивидуальный ключ API
+    lang: 'ru_RU', // Используемый язык
+    coordorder: 'latlong', // Порядок задания географических координат
+    debug: false, // Режим отладки
+    version: '2.1' // Версия Я.Карт
+  }
+
 // pinia.use(yourStoreModule)
 app.use(pinia)
 app.use(router)
-app.use(PrimeVue)
 app.use(ToastService)
+app.use(YmapPlugin, settings)
 
 app.component('Button', Button)
 app.component('InputText', InputText)
 app.component('Toast', Toast)
 app.component('ToastService', ToastService)
+
 // Импортируйте свои store модули здесь, если они есть
 // import { yourStoreModule } from './path/to/your/storeModule.js'
 

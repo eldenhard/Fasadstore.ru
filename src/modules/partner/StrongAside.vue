@@ -13,13 +13,13 @@
                     <div class="raiting">
                         <section class="alumanium">
                             <p>
-                                <strong>Алюминий</strong>
+                                <strong style="color: #d683ce;">Алюминий</strong>
                             </p>
-                            <span>Срок службы: <strong>50 лет</strong></span>
+                            <span>Срок службы: <strong style="color: #d683ce;">50 лет</strong></span>
                             <br>
-                            <span>Экологичность: <strong>Не выделяет вредных веществ</strong></span>
+                            <span>Экологичность: <strong><span  style="color: #d683ce;">Не выделяет</span> вредных веществ</strong></span>
                             <br>
-                            <span>Поддерживает горение: <strong>Не поддерживает</strong></span>
+                            <span>Поддерживает горение: <strong  style="color: #d683ce;">Не поддерживает</strong></span>
                             <br><br>
                             <span>Прочность: <meter value=1></meter></span>
                             <br>
@@ -27,17 +27,17 @@
                         </section>
                         <section class="pvh">
                             <p>
-                                <strong>ПВХ</strong>
+                                <strong style="color: #4285F4;">ПВХ</strong>
                             </p>
-                            <span>Срок службы: <strong>20 лет</strong></span>
+                            <span>Срок службы: <strong style="color: #4285F4;">20 лет</strong></span>
                             <br>
-                            <span>Экологичность: <strong>Выделяет формальдегид</strong></span>
+                            <span>Экологичность: <strong><span style="color: #4285F4;">Выделяет</span> формальдегид</strong></span>
                             <br>
-                            <span>Поддерживает горение: <strong>При горении выделяются опасные вещества</strong></span>
+                            <span>Поддерживает горение: <strong>При горении выделяются <span style="color: #4285F4;">опасные вещества</span></strong></span>
                             <br><br>
-                            <span>Прочность: <meter value=0.4></meter></span>
+                            <span>Прочность: <meter value=0.4 class="pvh_meter"></meter></span>
                             <br>
-                            <span>Стильный дизайн: <meter value=0.5></meter></span>
+                            <span>Стильный дизайн: <meter value=0.5 class="pvh_meter"></meter></span>
                         </section>
 
                     </div>
@@ -217,6 +217,44 @@ main {
     }
 
 }
+
+.pvh_meter{
+    width: 100%;
+        height: 20px;
+        margin-top: 2%;
+
+
+        &::-webkit-meter-bar {
+            background: transparent
+                /* Убираем фоновую обводку */
+        }
+
+        &::-webkit-meter-optimum-value {
+            background: #4285F4 !important;
+            /* Цвет заполненной части шкалы */
+        }
+
+        &::-moz-meter-bar {
+            background: transparent;
+                /* Убираем фоновую обводку */
+        }
+
+        &::-moz-meter-optimum {
+            background: #4285F4 !important;
+            /* Цвет заполненной части шкалы */
+        }
+
+        &::-ms-fill-lower {
+            background: transparent
+                /* Убираем фоновую обводку */
+        }
+
+        &::-ms-fill-upper {
+            background: #4285F4 !important;
+            /* Цвет заполненной части шкалы */
+        }
+    }
+
 
 label {
     color: var(--colorGrey);

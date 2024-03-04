@@ -71,7 +71,7 @@ export default {
 
 .main_bg {
   width: 100%;
-  padding-top: 5%;
+  padding-top: 2%;
   background: rgb(4, 21, 33);
   background: linear-gradient(177deg, rgba(4, 21, 33, 1) 7%, rgba(8, 44, 67, 1) 89%);
 }
