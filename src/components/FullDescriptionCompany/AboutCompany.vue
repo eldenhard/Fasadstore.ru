@@ -1,58 +1,61 @@
 <template>
-    <div class="grid product container">
-        <div class="column-xs-12 column-md-7">
-            <div class="product-gallery">
-                <div class="product-image">
-                    <img class="active" :src="activeImage" />
-                </div>
-                <ul class="image-list">
-                    <li class="image-item" v-for="(image, index) in images" :key="index">
-                        <img :src="image" @click="changeImage(image)" />
-                    </li>
-                </ul>
+    <section class="about">
+        <div class="about_left">
+            <div class="main_pic">
+                <img :src="activeImage" alt="">
             </div>
+            <ul class="mini_elements">
+                <li v-for="item, index in images" :key="index" class="element">
+                    <img :src="item" alt="" @click="changeImage(item)">
+                </li>
+            </ul>
         </div>
-        <div class="column-xs-12 column-md-5">
+        <div class="about_right">
             <h2>Офис ООО «Алюминиевые Системы»</h2>
-            <h6>Бизнес Центр «Гефест», г. Москва,
-                Дмитровское шоссе, 157, стр. 7, метро Лианозово 450 метров.</h6>
+            <h6>Бизнес Центр «Гефест», <br> г. Москва,
+                Дмитровское шоссе, 157, стр. 7, м. Лианозово 450 метров.</h6>
             <div class="description">
-            
-                В нашем офисе сможете посмотреть полноразмерные образцы окон и дверей из профиля
-                АЛЮТЕХ W72 , раздвижных дверей Алютех SL160.
-                Контроль качества на всех этапах проведение работ, начиная от консультации, замера, изготовления
-                изделий, монтажа и заканчивая гарантийным обслуживанием вашего остекления. Будьте уверенны,
-                обратившись в нашу компанию, мы будем прилагать максимальные усилия для реализации Вашего проекта.
-                В результате Вы получите, остекление которое будет радовать Вас долгие годы!
-                Компетентные и отзывчивые менеджеры всегда готовы оказать информационную и консультационную
-                поддержку, по всем возникающим вопросам.
-                Производство
-                Наше производство расположено: Новая Москва, съезд с ЦКА, поселение Щаповское ,квартал No266.
-                Благодаря отлаженным производственным процессам, алюминиевые конструкции, производимые
-                компанией, стали доступными для любого заказчика. Возможности производства стремительно растут,
-                поэтому мы можем предложить грамотные решения на все случаи жизни: от стандартных окон до сложных
-                конструкций, применяемых в домах с пассивным отоплением.
-                Удовлетворять любые требования наших заказчиков, архитекторов, застройщиков, обеспечивая при этом
-                безукоризненное качество.
-                Применяя высокоточное оборудование, обеспечить геометрическую форму изделия любой сложности и
-                довести его до совершенства
-                В производстве своих конструкций наша компания применяет только качественные составляющие, которые
-                произведены европейскими компаниями мирового уровня. Все наши поставщики гарантируют заводское
-                качество, безопасность и долговечность своих изделий. Благодаря 16-летнему опыту и использованию
-                немецкого оборудования мы добились высочайшего качества
-                Собственное производство позволяет нам:
-                Позволяет нам предлагать лучшие цены на рынке!
-                Работаем с разными профильными системами и фурнитурой
-                Минимальные сроки производства
-                Работаем с большими объемами и укладываемся в короткий срок
-                Все работы от проектирования до монтажа на вашем объекте!
-                Доставим заказ в любой регион страны
-                Изготовим за 7-14 дней алюминиевое остекление нужного размера и формы. Окрасим в выбранный
-                вами цвет. Укомплектуем всем необходимым, согласно ТЗ или ваших пожеланий.
+                <p>
+                    В нашем офисе сможете посмотреть полноразмерные образцы окон и дверей из профиля
+                    АЛЮТЕХ W72 , раздвижных дверей Алютех SL160.
+                    Контроль качества на всех этапах проведение работ, начиная от консультации, замера, изготовления
+                    изделий, монтажа и заканчивая гарантийным обслуживанием вашего остекления. Будьте уверенны,
+                    обратившись в нашу компанию, мы будем прилагать максимальные усилия для реализации Вашего проекта.
+                  
+                </p>
+                <p>
+                    <b>Производство</b> <br>
+                    Наше производство расположено: Новая Москва, съезд с ЦКА, поселение Щаповское ,квартал №266. <br>
+                    Благодаря отлаженным производственным процессам, алюминиевые конструкции, производимые
+                    компанией, стали доступными для любого заказчика. Возможности производства стремительно растут,
+                    поэтому мы можем предложить грамотные решения на все случаи жизни: от стандартных окон до сложных
+                    конструкций, применяемых в домах с пассивным отоплением.
+                    Удовлетворять любые требования наших заказчиков, архитекторов, застройщиков, обеспечивая при этом
+                    безукоризненное качество.
+                    Применяя высокоточное оборудование, обеспечить геометрическую форму изделия любой сложности и
+                    довести его до совершенства
+                    Благодаря 16-летнему опыту и использованию
+                    немецкого оборудования мы добились высочайшего качества
+                    Собственное производство позволяет нам:
+                <ol>
+                    <li>Предлагать лучшие цены на рынке!</li>
+                    <li>Работать с разными профильными системами и фурнитурой</li>
+                    <li>Минимальные сроки производства</li>
+                    <li>Работать с большими объемами и укладываться в короткий срок</li>
+                    <li>Все работы от проектирования до монтажа на вашем объекте!</li>
+                    <li>Доставить заказ в любой регион страны</li>
+                    <li>Изготовить за 7-14 дней алюминиевое остекление нужного размера и формы. Окрасить в выбранный вами
+                        цвет. Укомплектовать всем необходимым, согласно ТЗ или ваших пожеланий. </li>
+                </ol>
+
+                </p>
 
             </div>
         </div>
-    </div>
+
+
+
+    </section>
 </template>
 
 <script>
@@ -63,12 +66,16 @@ export default {
         const activeImage = ref(new URL('./assets/office_p.jpg', import.meta.url).href);
         const images = ref([
             new URL('./assets//office1.jpg', import.meta.url).href,
-
             new URL('./assets/office3.jpg', import.meta.url).href,
             new URL('./assets/shop.jpg', import.meta.url).href,
         ]);
 
         const changeImage = (imageSrc) => {
+            images.value.push(activeImage.value)
+            let index = images.value.indexOf(imageSrc);
+            if (index !== -1) {
+                images.value.splice(index, 1);
+            }
             activeImage.value = imageSrc;
         };
 
@@ -78,175 +85,62 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.container {
-    margin: auto;
-    padding: 0 1rem;
-    width: 70vw;
-}
-
-.grid {
+.about {
     display: flex;
-    flex-direction: column;
-    flex-flow: row wrap;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    gap: 5%;
+
+    .about_left {
+        width: 50%;
+    }
+
+    .about_right {
+        width: 50%;
+    }
 }
 
-
-ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.main_pic {
+    height: 50vh;
 }
 
-ul li {
-    margin: 0 1.75rem 0 0;
+.mini_elements {
+    display: flex;
+    gap: 2%;
+    margin-top: 2%;
+    list-style-type: none;
+    padding: 0 !important;
+
+    .element {
+        width: calc(100% / 3);
+        padding: 0;
+    }
 }
 
-a {
-    color: #888;
-    text-decoration: none;
-    transition: all 0.2s ease;
+li {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(63, 63, 63);
+    font-size: 18px;
 }
 
-a:hover {
-    color: #333;
+p {
+
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(63, 63, 63);
+    margin-top: 4%;
 }
 
-a.active {
-    color: #333;
-}
-
-
-
-
-h2 {
-    font-size: 2.125rem;
-    margin: 0;
-    font-family: 'Arial-black', sans-serif;
-}
+;
 
 img {
     max-width: 100%;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-
-
-.description {
-    border-top: 0.0625rem solid #e3dddd;
-    margin: 2rem 0;
-    padding: 1rem 0 0 0;
-}
-
-
-
-.container {
-    margin: auto;
-    padding: 0 1rem;
-    max-width: 80vw;
-}
-
-.grid>[class*=column-] {
-    padding: 1rem;
-}
-
-.grid.menu,
-.grid.product {
-    border-bottom: 0.0625rem solid #e3dddd;
-}
-
-.grid.menu>[class*=column-] {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-}
-
-.grid.product {
-    padding: 0 0 1.5rem 0;
-}
-
-.grid.second-nav>[class*=column-] {
-    padding: 0.5rem 1rem;
-}
-
-
-.product-image {
-    display: none;
-}
-
-.image-list li {
-    margin: 0;
-}
-
-@media (min-width: 62rem) {
-
-    .product-image img,
-    .image-list img {
-        width: 100%;
-    }
-
-    .product-image {
-        display: block;
-    }
-
-    .product-image img {
-        height: 52vh;
-    }
-
-    .product-image img.active {
-        display: block;
-        margin: 0 0 0.75rem 0;
-    }
-
-    .image-list {
-        display: flex;
-        overflow: hidden;
-    }
-
-    .image-list li {
-        margin: 0 0.75rem 0 0;
-        flex-basis: 100%;
-    }
-
-    .image-list li:nth-child(3) {
-        margin: 0;
-    }
-
-    .image-list img {
-        height: 10rem;
-        width: 100%;
-        transition: opacity 0.3s ease;
-        cursor: pointer;
-    }
-
-    .image-list img:hover {
-        opacity: 0.7;
-    }
-
-
-
-
-
-
-}
-
-@-webkit-keyframes fadeImg {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeImg {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    vertical-align: top;
+    height: 100%;
+    cursor: pointer;
 }
 </style>
