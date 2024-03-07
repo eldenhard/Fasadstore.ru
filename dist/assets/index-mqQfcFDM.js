@@ -57,7 +57,7 @@ const NO = () => false;
 const isOn = (key) => key.charCodeAt(0) === 111 && key.charCodeAt(1) === 110 && // uppercase letter
 (key.charCodeAt(2) > 122 || key.charCodeAt(2) < 97);
 const isModelListener = (key) => key.startsWith("onUpdate:");
-const extend$3 = Object.assign;
+const extend = Object.assign;
 const remove = (arr, el) => {
   const i2 = arr.indexOf(el);
   if (i2 > -1) {
@@ -74,9 +74,9 @@ const isRegExp = (val) => toTypeString(val) === "[object RegExp]";
 const isFunction = (val) => typeof val === "function";
 const isString = (val) => typeof val === "string";
 const isSymbol = (val) => typeof val === "symbol";
-const isObject$3 = (val) => val !== null && typeof val === "object";
+const isObject = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
-  return (isObject$3(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+  return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
@@ -151,7 +151,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString(value) || isObject$3(value)) {
+  } else if (isString(value) || isObject(value)) {
     return value;
   }
 }
@@ -179,7 +179,7 @@ function normalizeClass(value) {
         res += normalized + " ";
       }
     }
-  } else if (isObject$3(value)) {
+  } else if (isObject(value)) {
     for (const name in value) {
       if (value[name]) {
         res += name + " ";
@@ -232,8 +232,8 @@ function looseEqual(a2, b2) {
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a2, b2) : false;
   }
-  aValidType = isObject$3(a2);
-  bValidType = isObject$3(b2);
+  aValidType = isObject(a2);
+  bValidType = isObject(b2);
   if (aValidType || bValidType) {
     if (!aValidType || !bValidType) {
       return false;
@@ -257,7 +257,7 @@ function looseIndexOf(arr, val) {
   return arr.findIndex((item) => looseEqual(item, val));
 }
 const toDisplayString = (val) => {
-  return isString(val) ? val : val == null ? "" : isArray$1(val) || isObject$3(val) && (val.toString === objectToString || !isFunction(val.toString)) ? JSON.stringify(val, replacer, 2) : String(val);
+  return isString(val) ? val : val == null ? "" : isArray$1(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (val && val.__v_isRef) {
@@ -278,7 +278,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol(val)) {
     return stringifySymbol(val);
-  } else if (isObject$3(val) && !isArray$1(val) && !isPlainObject$1(val)) {
+  } else if (isObject(val) && !isArray$1(val) && !isPlainObject$1(val)) {
     return String(val);
   }
   return val;
@@ -471,7 +471,7 @@ function effect(fn, options) {
     }
   });
   if (options) {
-    extend$3(_effect, options);
+    extend(_effect, options);
     if (options.scope)
       recordEffectScope(_effect, options.scope);
   }
@@ -705,7 +705,7 @@ class BaseReactiveHandler {
     if (isRef(res)) {
       return targetIsArray && isIntegerKey(key) ? res : res.value;
     }
-    if (isObject$3(res)) {
+    if (isObject(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
     }
     return res;
@@ -1111,7 +1111,7 @@ function shallowReadonly(target) {
   );
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-  if (!isObject$3(target)) {
+  if (!isObject(target)) {
     return target;
   }
   if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
@@ -1155,8 +1155,8 @@ function markRaw(value) {
   def(value, "__v_skip", true);
   return value;
 }
-const toReactive = (value) => isObject$3(value) ? reactive(value) : value;
-const toReadonly = (value) => isObject$3(value) ? readonly(value) : value;
+const toReactive = (value) => isObject(value) ? reactive(value) : value;
+const toReadonly = (value) => isObject(value) ? readonly(value) : value;
 class ComputedRefImpl {
   constructor(getter, _setter, isReadonly2, isSSR) {
     this._setter = _setter;
@@ -1351,7 +1351,7 @@ function toRef(source, key, defaultValue) {
     return source;
   } else if (isFunction(source)) {
     return new GetterRefImpl(source);
-  } else if (isObject$3(source) && arguments.length > 1) {
+  } else if (isObject(source) && arguments.length > 1) {
     return propertyToRef(source, key, defaultValue);
   } else {
     return ref(source);
@@ -1605,7 +1605,7 @@ let activePostFlushCbs = null;
 let postFlushIndex = 0;
 const resolvedPromise = /* @__PURE__ */ Promise.resolve();
 let currentFlushPromise = null;
-function nextTick$1(fn) {
+function nextTick(fn) {
   const p2 = currentFlushPromise || resolvedPromise;
   return fn ? p2.then(this ? fn.bind(this) : fn) : p2;
 }
@@ -1662,7 +1662,7 @@ function queuePostFlushCb(cb) {
   }
   queueFlush();
 }
-function flushPreFlushCbs(instance, seen, i2 = isFlushing ? flushIndex + 1 : 0) {
+function flushPreFlushCbs(instance, seen2, i2 = isFlushing ? flushIndex + 1 : 0) {
   for (; i2 < queue.length; i2++) {
     const cb = queue[i2];
     if (cb && cb.pre) {
@@ -1675,7 +1675,7 @@ function flushPreFlushCbs(instance, seen, i2 = isFlushing ? flushIndex + 1 : 0) 
     }
   }
 }
-function flushPostFlushCbs(seen) {
+function flushPostFlushCbs(seen2) {
   if (pendingPostFlushCbs.length) {
     const deduped = [...new Set(pendingPostFlushCbs)];
     pendingPostFlushCbs.length = 0;
@@ -1703,7 +1703,7 @@ const comparator = (a2, b2) => {
   }
   return diff;
 };
-function flushJobs(seen) {
+function flushJobs(seen2) {
   isFlushPending = false;
   isFlushing = true;
   queue.sort(comparator);
@@ -1788,7 +1788,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
       const normalizedFromExtend = normalizeEmitsOptions(raw2, appContext, true);
       if (normalizedFromExtend) {
         hasExtends = true;
-        extend$3(normalized, normalizedFromExtend);
+        extend(normalized, normalizedFromExtend);
       }
     };
     if (!asMixin && appContext.mixins.length) {
@@ -1802,7 +1802,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$3(comp)) {
+    if (isObject(comp)) {
       cache.set(comp, null);
     }
     return null;
@@ -1810,9 +1810,9 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   if (isArray$1(raw)) {
     raw.forEach((key) => normalized[key] = null);
   } else {
-    extend$3(normalized, raw);
+    extend(normalized, raw);
   }
-  if (isObject$3(comp)) {
+  if (isObject(comp)) {
     cache.set(comp, normalized);
   }
   return normalized;
@@ -2174,9 +2174,9 @@ function triggerEvent(vnode, name) {
 function mountSuspense(vnode, container2, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized, rendererInternals) {
   const {
     p: patch,
-    o: { createElement: createElement3 }
+    o: { createElement: createElement2 }
   } = rendererInternals;
-  const hiddenContainer = createElement3("div");
+  const hiddenContainer = createElement2("div");
   const suspense = vnode.suspense = createSuspenseBoundary(
     vnode,
     parentSuspense,
@@ -2218,7 +2218,7 @@ function mountSuspense(vnode, container2, anchor, parentComponent, parentSuspens
     suspense.resolve(false, true);
   }
 }
-function patchSuspense(n1, n2, container2, anchor, parentComponent, namespace, slotScopeIds, optimized, { p: patch, um: unmount, o: { createElement: createElement3 } }) {
+function patchSuspense(n1, n2, container2, anchor, parentComponent, namespace, slotScopeIds, optimized, { p: patch, um: unmount, o: { createElement: createElement2 } }) {
   const suspense = n2.suspense = n1.suspense;
   suspense.vnode = n2;
   n2.el = n1.el;
@@ -2268,7 +2268,7 @@ function patchSuspense(n1, n2, container2, anchor, parentComponent, namespace, s
       }
       suspense.deps = 0;
       suspense.effects.length = 0;
-      suspense.hiddenContainer = createElement3("div");
+      suspense.hiddenContainer = createElement2("div");
       if (isInFallback) {
         patch(
           null,
@@ -2883,8 +2883,8 @@ function createPathGetter(ctx, path) {
     return cur;
   };
 }
-function traverse(value, depth, currentDepth = 0, seen) {
-  if (!isObject$3(value) || value["__v_skip"]) {
+function traverse(value, depth, currentDepth = 0, seen2) {
+  if (!isObject(value) || value["__v_skip"]) {
     return value;
   }
   if (depth && depth > 0) {
@@ -2893,24 +2893,24 @@ function traverse(value, depth, currentDepth = 0, seen) {
     }
     currentDepth++;
   }
-  seen = seen || /* @__PURE__ */ new Set();
-  if (seen.has(value)) {
+  seen2 = seen2 || /* @__PURE__ */ new Set();
+  if (seen2.has(value)) {
     return value;
   }
-  seen.add(value);
+  seen2.add(value);
   if (isRef(value)) {
-    traverse(value.value, depth, currentDepth, seen);
+    traverse(value.value, depth, currentDepth, seen2);
   } else if (isArray$1(value)) {
     for (let i2 = 0; i2 < value.length; i2++) {
-      traverse(value[i2], depth, currentDepth, seen);
+      traverse(value[i2], depth, currentDepth, seen2);
     }
   } else if (isSet(value) || isMap(value)) {
     value.forEach((v2) => {
-      traverse(v2, depth, currentDepth, seen);
+      traverse(v2, depth, currentDepth, seen2);
     });
   } else if (isPlainObject$1(value)) {
     for (const key in value) {
-      traverse(value[key], depth, currentDepth, seen);
+      traverse(value[key], depth, currentDepth, seen2);
     }
   }
   return value;
@@ -3293,7 +3293,7 @@ function defineComponent(options, extraOptions) {
   return isFunction(options) ? (
     // #8326: extend call and options.name access are considered side-effects
     // by Rollup, so we have to wrap it in a pure-annotated IIFE.
-    /* @__PURE__ */ (() => extend$3({ name: options.name }, extraOptions, { setup: options }))()
+    /* @__PURE__ */ (() => extend({ name: options.name }, extraOptions, { setup: options }))()
   ) : options;
 }
 const isAsyncWrapper = (i2) => !!i2.type.__asyncLoader;
@@ -3456,10 +3456,10 @@ const KeepAliveImpl = {
         p: patch,
         m: move,
         um: _unmount,
-        o: { createElement: createElement3 }
+        o: { createElement: createElement2 }
       }
     } = sharedContext;
-    const storageContainer = createElement3("div");
+    const storageContainer = createElement2("div");
     sharedContext.activate = (vnode, container2, anchor, namespace, optimized) => {
       const instance2 = vnode.component;
       move(vnode, container2, anchor, 0, parentSuspense);
@@ -3718,7 +3718,7 @@ function renderList(source, renderItem, cache, index2) {
     for (let i2 = 0; i2 < source; i2++) {
       ret[i2] = renderItem(i2 + 1, i2, void 0, cached && cached[i2]);
     }
-  } else if (isObject$3(source)) {
+  } else if (isObject(source)) {
     if (source[Symbol.iterator]) {
       ret = Array.from(
         source,
@@ -3816,7 +3816,7 @@ const getPublicInstance = (i2) => {
 const publicPropertiesMap = (
   // Move PURE marker to new line to workaround compiler discarding it
   // due to type annotation
-  /* @__PURE__ */ extend$3(/* @__PURE__ */ Object.create(null), {
+  /* @__PURE__ */ extend(/* @__PURE__ */ Object.create(null), {
     $: (i2) => i2,
     $el: (i2) => i2.vnode.el,
     $data: (i2) => i2.data,
@@ -3832,7 +3832,7 @@ const publicPropertiesMap = (
       i2.effect.dirty = true;
       queueJob(i2.update);
     }),
-    $nextTick: (i2) => i2.n || (i2.n = nextTick$1.bind(i2.proxy)),
+    $nextTick: (i2) => i2.n || (i2.n = nextTick.bind(i2.proxy)),
     $watch: (i2) => instanceWatch.bind(i2)
   })
 );
@@ -3934,7 +3934,7 @@ const PublicInstanceProxyHandlers = {
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
-const RuntimeCompiledPublicInstanceProxyHandlers = /* @__PURE__ */ extend$3(
+const RuntimeCompiledPublicInstanceProxyHandlers = /* @__PURE__ */ extend(
   {},
   PublicInstanceProxyHandlers,
   {
@@ -3965,7 +3965,7 @@ function defineSlots() {
 }
 function defineModel() {
 }
-function withDefaults(props, defaults2) {
+function withDefaults(props, defaults) {
   return null;
 }
 function useSlots() {
@@ -4027,23 +4027,23 @@ function normalizePropsOrEmits(props) {
     {}
   ) : props;
 }
-function mergeDefaults(raw, defaults2) {
+function mergeDefaults(raw, defaults) {
   const props = normalizePropsOrEmits(raw);
-  for (const key in defaults2) {
+  for (const key in defaults) {
     if (key.startsWith("__skip"))
       continue;
     let opt = props[key];
     if (opt) {
       if (isArray$1(opt) || isFunction(opt)) {
-        opt = props[key] = { type: opt, default: defaults2[key] };
+        opt = props[key] = { type: opt, default: defaults[key] };
       } else {
-        opt.default = defaults2[key];
+        opt.default = defaults[key];
       }
     } else if (opt === null) {
-      opt = props[key] = { default: defaults2[key] };
+      opt = props[key] = { default: defaults[key] };
     } else
       ;
-    if (opt && defaults2[`__skip_${key}`]) {
+    if (opt && defaults[`__skip_${key}`]) {
       opt.skipFactory = true;
     }
   }
@@ -4054,7 +4054,7 @@ function mergeModels(a2, b2) {
     return a2 || b2;
   if (isArray$1(a2) && isArray$1(b2))
     return a2.concat(b2);
-  return extend$3({}, normalizePropsOrEmits(a2), normalizePropsOrEmits(b2));
+  return extend({}, normalizePropsOrEmits(a2), normalizePropsOrEmits(b2));
 }
 function createPropsRestProxy(props, excludedKeys) {
   const ret = {};
@@ -4138,7 +4138,7 @@ function applyOptions(instance) {
   }
   if (dataOptions) {
     const data3 = dataOptions.call(publicThis, publicThis);
-    if (!isObject$3(data3))
+    if (!isObject(data3))
       ;
     else {
       instance.data = reactive(data3);
@@ -4226,7 +4226,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
   for (const key in injectOptions) {
     const opt = injectOptions[key];
     let injected;
-    if (isObject$3(opt)) {
+    if (isObject(opt)) {
       if ("default" in opt) {
         injected = inject(
           opt.from || key,
@@ -4267,7 +4267,7 @@ function createWatcher(raw, ctx, publicThis, key) {
     }
   } else if (isFunction(raw)) {
     watch(getter, raw.bind(publicThis));
-  } else if (isObject$3(raw)) {
+  } else if (isObject(raw)) {
     if (isArray$1(raw)) {
       raw.forEach((r2) => createWatcher(r2, ctx, publicThis, key));
     } else {
@@ -4304,7 +4304,7 @@ function resolveMergedOptions(instance) {
     }
     mergeOptions$1(resolved, base, optionMergeStrategies);
   }
-  if (isObject$3(base)) {
+  if (isObject(base)) {
     cache.set(base, resolved);
   }
   return resolved;
@@ -4368,7 +4368,7 @@ function mergeDataFn(to, from) {
     return from;
   }
   return function mergedDataFn() {
-    return extend$3(
+    return extend(
       isFunction(to) ? to.call(this, this) : to,
       isFunction(from) ? from.call(this, this) : from
     );
@@ -4391,14 +4391,14 @@ function mergeAsArray(to, from) {
   return to ? [...new Set([].concat(to, from))] : from;
 }
 function mergeObjectOptions(to, from) {
-  return to ? extend$3(/* @__PURE__ */ Object.create(null), to, from) : from;
+  return to ? extend(/* @__PURE__ */ Object.create(null), to, from) : from;
 }
 function mergeEmitsOrPropsOptions(to, from) {
   if (to) {
     if (isArray$1(to) && isArray$1(from)) {
       return [.../* @__PURE__ */ new Set([...to, ...from])];
     }
-    return extend$3(
+    return extend(
       /* @__PURE__ */ Object.create(null),
       normalizePropsOrEmits(to),
       normalizePropsOrEmits(from != null ? from : {})
@@ -4412,7 +4412,7 @@ function mergeWatchOptions(to, from) {
     return from;
   if (!from)
     return to;
-  const merged = extend$3(/* @__PURE__ */ Object.create(null), to);
+  const merged = extend(/* @__PURE__ */ Object.create(null), to);
   for (const key in from) {
     merged[key] = mergeAsArray(to[key], from[key]);
   }
@@ -4443,9 +4443,9 @@ let uid$1 = 0;
 function createAppAPI(render2, hydrate2) {
   return function createApp2(rootComponent, rootProps = null) {
     if (!isFunction(rootComponent)) {
-      rootComponent = extend$3({}, rootComponent);
+      rootComponent = extend({}, rootComponent);
     }
-    if (rootProps != null && !isObject$3(rootProps)) {
+    if (rootProps != null && !isObject(rootProps)) {
       rootProps = null;
     }
     const context = createAppContext();
@@ -4774,7 +4774,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     const extendProps = (raw2) => {
       hasExtends = true;
       const [props, keys] = normalizePropsOptions(raw2, appContext, true);
-      extend$3(normalized, props);
+      extend(normalized, props);
       if (keys)
         needCastKeys.push(...keys);
     };
@@ -4789,7 +4789,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$3(comp)) {
+    if (isObject(comp)) {
       cache.set(comp, EMPTY_ARR);
     }
     return EMPTY_ARR;
@@ -4806,7 +4806,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
       const normalizedKey = camelize(key);
       if (validatePropName(normalizedKey)) {
         const opt = raw[key];
-        const prop = normalized[normalizedKey] = isArray$1(opt) || isFunction(opt) ? { type: opt } : extend$3({}, opt);
+        const prop = normalized[normalizedKey] = isArray$1(opt) || isFunction(opt) ? { type: opt } : extend({}, opt);
         if (prop) {
           const booleanIndex = getTypeIndex(Boolean, prop.type);
           const stringIndex = getTypeIndex(String, prop.type);
@@ -4826,7 +4826,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   const res = [normalized, needCastKeys];
-  if (isObject$3(comp)) {
+  if (isObject(comp)) {
     cache.set(comp, res);
   }
   return res;
@@ -4914,7 +4914,7 @@ const updateSlots = (instance, children, optimized) => {
       if (optimized && type === 1) {
         needDeletionCheck = false;
       } else {
-        extend$3(slots, children);
+        extend(slots, children);
         if (!optimized && type === 1) {
           delete slots._;
         }
@@ -5221,7 +5221,7 @@ function createHydrationFunctions(rendererInternals) {
   };
   const hydrateElement = (el, vnode, parentComponent, parentSuspense, slotScopeIds, optimized) => {
     optimized = optimized || !!vnode.dynamicChildren;
-    const { type, props, patchFlag, shapeFlag, dirs, transition: transition2 } = vnode;
+    const { type, props, patchFlag, shapeFlag, dirs, transition } = vnode;
     const forcePatch = type === "input" || type === "option";
     if (forcePatch || patchFlag !== -1) {
       if (dirs) {
@@ -5229,10 +5229,10 @@ function createHydrationFunctions(rendererInternals) {
       }
       let needCallTransitionHooks = false;
       if (isTemplateNode(el)) {
-        needCallTransitionHooks = needTransition(parentSuspense, transition2) && parentComponent && parentComponent.vnode.props && parentComponent.vnode.props.appear;
+        needCallTransitionHooks = needTransition(parentSuspense, transition) && parentComponent && parentComponent.vnode.props && parentComponent.vnode.props.appear;
         const content = el.content.firstChild;
         if (needCallTransitionHooks) {
-          transition2.beforeEnter(content);
+          transition.beforeEnter(content);
         }
         replaceNode(content, el, parentComponent);
         vnode.el = el = content;
@@ -5298,7 +5298,7 @@ function createHydrationFunctions(rendererInternals) {
       if ((vnodeHooks = props && props.onVnodeMounted) || dirs || needCallTransitionHooks) {
         queueEffectWithSuspense(() => {
           vnodeHooks && invokeVNodeHook(vnodeHooks, parentComponent, vnode);
-          needCallTransitionHooks && transition2.enter(el);
+          needCallTransitionHooks && transition.enter(el);
           dirs && invokeDirectiveHook(vnode, null, parentComponent, "mounted");
         }, parentSuspense);
       }
@@ -5632,7 +5632,7 @@ function baseCreateRenderer(options, createHydrationFns) {
   const mountElement = (vnode, container2, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
     let el;
     let vnodeHook;
-    const { props, shapeFlag, transition: transition2, dirs } = vnode;
+    const { props, shapeFlag, transition, dirs } = vnode;
     el = vnode.el = hostCreateElement(
       vnode.type,
       namespace,
@@ -5683,15 +5683,15 @@ function baseCreateRenderer(options, createHydrationFns) {
     if (dirs) {
       invokeDirectiveHook(vnode, null, parentComponent, "beforeMount");
     }
-    const needCallTransitionHooks = needTransition(parentSuspense, transition2);
+    const needCallTransitionHooks = needTransition(parentSuspense, transition);
     if (needCallTransitionHooks) {
-      transition2.beforeEnter(el);
+      transition.beforeEnter(el);
     }
     hostInsert(el, container2, anchor);
     if ((vnodeHook = props && props.onVnodeMounted) || needCallTransitionHooks || dirs) {
       queuePostRenderEffect(() => {
         vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
-        needCallTransitionHooks && transition2.enter(el);
+        needCallTransitionHooks && transition.enter(el);
         dirs && invokeDirectiveHook(vnode, null, parentComponent, "mounted");
       }, parentSuspense);
     }
@@ -6177,18 +6177,18 @@ function baseCreateRenderer(options, createHydrationFns) {
     const effect2 = instance.effect = new ReactiveEffect(
       componentUpdateFn,
       NOOP,
-      () => queueJob(update2),
+      () => queueJob(update),
       instance.scope
       // track it in component's effect scope
     );
-    const update2 = instance.update = () => {
+    const update = instance.update = () => {
       if (effect2.dirty) {
         effect2.run();
       }
     };
-    update2.id = instance.uid;
+    update.id = instance.uid;
     toggleRecurse(instance, true);
-    update2();
+    update();
   };
   const updateComponentPreRender = (instance, nextVNode, optimized) => {
     nextVNode.component = instance;
@@ -6479,7 +6479,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
   };
   const move = (vnode, container2, anchor, moveType, parentSuspense = null) => {
-    const { el, type, transition: transition2, children, shapeFlag } = vnode;
+    const { el, type, transition, children, shapeFlag } = vnode;
     if (shapeFlag & 6) {
       move(vnode.component.subTree, container2, anchor, moveType);
       return;
@@ -6504,14 +6504,14 @@ function baseCreateRenderer(options, createHydrationFns) {
       moveStaticNode(vnode, container2, anchor);
       return;
     }
-    const needTransition2 = moveType !== 2 && shapeFlag & 1 && transition2;
+    const needTransition2 = moveType !== 2 && shapeFlag & 1 && transition;
     if (needTransition2) {
       if (moveType === 0) {
-        transition2.beforeEnter(el);
+        transition.beforeEnter(el);
         hostInsert(el, container2, anchor);
-        queuePostRenderEffect(() => transition2.enter(el), parentSuspense);
+        queuePostRenderEffect(() => transition.enter(el), parentSuspense);
       } else {
-        const { leave, delayLeave, afterLeave } = transition2;
+        const { leave, delayLeave, afterLeave } = transition;
         const remove222 = () => hostInsert(el, container2, anchor);
         const performLeave = () => {
           leave(el, () => {
@@ -6596,7 +6596,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
   };
   const remove22 = (vnode) => {
-    const { type, el, anchor, transition: transition2 } = vnode;
+    const { type, el, anchor, transition } = vnode;
     if (type === Fragment) {
       {
         removeFragment(el, anchor);
@@ -6609,12 +6609,12 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
     const performRemove = () => {
       hostRemove(el);
-      if (transition2 && !transition2.persisted && transition2.afterLeave) {
-        transition2.afterLeave();
+      if (transition && !transition.persisted && transition.afterLeave) {
+        transition.afterLeave();
       }
     };
-    if (vnode.shapeFlag & 1 && transition2 && !transition2.persisted) {
-      const { leave, delayLeave } = transition2;
+    if (vnode.shapeFlag & 1 && transition && !transition.persisted) {
+      const { leave, delayLeave } = transition;
       const performLeave = () => leave(el, performRemove);
       if (delayLeave) {
         delayLeave(vnode.el, performRemove, performLeave);
@@ -6635,13 +6635,13 @@ function baseCreateRenderer(options, createHydrationFns) {
     hostRemove(end);
   };
   const unmountComponent = (instance, parentSuspense, doRemove) => {
-    const { bum, scope, update: update2, subTree, um } = instance;
+    const { bum, scope, update, subTree, um } = instance;
     if (bum) {
       invokeArrayFns(bum);
     }
     scope.stop();
-    if (update2) {
-      update2.active = false;
+    if (update) {
+      update.active = false;
       unmount(subTree, instance, parentSuspense, doRemove);
     }
     if (um) {
@@ -6719,11 +6719,11 @@ function baseCreateRenderer(options, createHydrationFns) {
 function resolveChildrenNamespace({ type, props }, currentNamespace) {
   return currentNamespace === "svg" && type === "foreignObject" || currentNamespace === "mathml" && type === "annotation-xml" && props && props.encoding && props.encoding.includes("html") ? void 0 : currentNamespace;
 }
-function toggleRecurse({ effect: effect2, update: update2 }, allowed) {
-  effect2.allowRecurse = update2.allowRecurse = allowed;
+function toggleRecurse({ effect: effect2, update }, allowed) {
+  effect2.allowRecurse = update.allowRecurse = allowed;
 }
-function needTransition(parentSuspense, transition2) {
-  return (!parentSuspense || parentSuspense && !parentSuspense.pendingBranch) && transition2 && !transition2.persisted;
+function needTransition(parentSuspense, transition) {
+  return (!parentSuspense || parentSuspense && !parentSuspense.pendingBranch) && transition && !transition.persisted;
 }
 function traverseStaticChildren(n1, n2, shallow = false) {
   const ch1 = n1.children;
@@ -7200,14 +7200,14 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
     if (klass && !isString(klass)) {
       props.class = normalizeClass(klass);
     }
-    if (isObject$3(style)) {
+    if (isObject(style)) {
       if (isProxy(style) && !isArray$1(style)) {
-        style = extend$3({}, style);
+        style = extend({}, style);
       }
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$3(type) ? 4 : isFunction(type) ? 2 : 0;
+  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -7222,7 +7222,7 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
 function guardReactiveProps(props) {
   if (!props)
     return null;
-  return isProxy(props) || InternalObjectKey in props ? extend$3({}, props) : props;
+  return isProxy(props) || InternalObjectKey in props ? extend({}, props) : props;
 }
 function cloneVNode(vnode, extraProps, mergeRef = false) {
   const { props, ref: ref3, patchFlag, children } = vnode;
@@ -7561,7 +7561,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
     } else {
       instance.render = setupResult;
     }
-  } else if (isObject$3(setupResult)) {
+  } else if (isObject(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else
     ;
@@ -7586,8 +7586,8 @@ function finishComponentSetup(instance, isSSR, skipOptions) {
       if (template) {
         const { isCustomElement, compilerOptions } = instance.appContext.config;
         const { delimiters, compilerOptions: componentCompilerOptions } = Component;
-        const finalCompilerOptions = extend$3(
-          extend$3(
+        const finalCompilerOptions = extend(
+          extend(
             {
               isCustomElement,
               delimiters
@@ -7693,7 +7693,7 @@ const computed = (getterOrOptions, debugOptions) => {
 function h$1(type, propsOrChildren, children) {
   const l2 = arguments.length;
   if (l2 === 2) {
-    if (isObject$3(propsOrChildren) && !isArray$1(propsOrChildren)) {
+    if (isObject(propsOrChildren) && !isArray$1(propsOrChildren)) {
       if (isVNode(propsOrChildren)) {
         return createVNode(type, null, [propsOrChildren]);
       }
@@ -7846,7 +7846,7 @@ const DOMTransitionPropsValidators = {
   leaveActiveClass: String,
   leaveToClass: String
 };
-const TransitionPropsValidators = Transition.props = /* @__PURE__ */ extend$3(
+const TransitionPropsValidators = Transition.props = /* @__PURE__ */ extend(
   {},
   BaseTransitionPropsValidators,
   DOMTransitionPropsValidators
@@ -7924,7 +7924,7 @@ function resolveTransitionProps(rawProps) {
       });
     };
   };
-  return extend$3(baseProps, {
+  return extend(baseProps, {
     onBeforeEnter(el) {
       callHook(onBeforeEnter, [el]);
       addTransitionClass(el, enterFromClass);
@@ -7972,7 +7972,7 @@ function resolveTransitionProps(rawProps) {
 function normalizeDuration(duration) {
   if (duration == null) {
     return null;
-  } else if (isObject$3(duration)) {
+  } else if (isObject(duration)) {
     return [NumberOf(duration.enter), NumberOf(duration.leave)];
   } else {
     const n2 = NumberOf(duration);
@@ -8103,29 +8103,29 @@ function patchClass(el, value, isSVG) {
 }
 const vShowOldKey = Symbol("_vod");
 const vShow = {
-  beforeMount(el, { value }, { transition: transition2 }) {
+  beforeMount(el, { value }, { transition }) {
     el[vShowOldKey] = el.style.display === "none" ? "" : el.style.display;
-    if (transition2 && value) {
-      transition2.beforeEnter(el);
+    if (transition && value) {
+      transition.beforeEnter(el);
     } else {
       setDisplay(el, value);
     }
   },
-  mounted(el, { value }, { transition: transition2 }) {
-    if (transition2 && value) {
-      transition2.enter(el);
+  mounted(el, { value }, { transition }) {
+    if (transition && value) {
+      transition.enter(el);
     }
   },
-  updated(el, { value, oldValue }, { transition: transition2 }) {
+  updated(el, { value, oldValue }, { transition }) {
     if (!value === !oldValue)
       return;
-    if (transition2) {
+    if (transition) {
       if (value) {
-        transition2.beforeEnter(el);
+        transition.beforeEnter(el);
         setDisplay(el, true);
-        transition2.enter(el);
+        transition.enter(el);
       } else {
-        transition2.leave(el, () => {
+        transition.leave(el, () => {
           setDisplay(el, false);
         });
       }
@@ -8528,7 +8528,7 @@ class VueElement extends BaseClass {
       this._ob.disconnect();
       this._ob = null;
     }
-    nextTick$1(() => {
+    nextTick(() => {
       if (!this._connected) {
         render$c(null, this.shadowRoot);
         this._instance = null;
@@ -8634,7 +8634,7 @@ class VueElement extends BaseClass {
     render$c(this._createVNode(), this.shadowRoot);
   }
   _createVNode() {
-    const vnode = createVNode(this._def, extend$3({}, this._props));
+    const vnode = createVNode(this._def, extend({}, this._props));
     if (!this._instance) {
       vnode.ce = (instance) => {
         this._instance = instance;
@@ -8697,7 +8697,7 @@ const moveCbKey = Symbol("_moveCb");
 const enterCbKey = Symbol("_enterCb");
 const TransitionGroupImpl = {
   name: "TransitionGroup",
-  props: /* @__PURE__ */ extend$3({}, TransitionPropsValidators, {
+  props: /* @__PURE__ */ extend({}, TransitionPropsValidators, {
     tag: String,
     moveClass: String
   }),
@@ -9124,7 +9124,7 @@ const withKeys = (fn, modifiers) => {
     }
   });
 };
-const rendererOptions = /* @__PURE__ */ extend$3({ patchProp }, nodeOps);
+const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 let enabledHydration = false;
 function ensureRenderer() {
@@ -9278,7 +9278,7 @@ const vue_runtime_esmBundler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Obj
   mergeDefaults,
   mergeModels,
   mergeProps,
-  nextTick: nextTick$1,
+  nextTick,
   normalizeClass,
   normalizeProps,
   normalizeStyle,
@@ -10261,10 +10261,10 @@ function isAliasRecord(record) {
 function mergeMetaFields(matched) {
   return matched.reduce((meta, record) => assign$1(meta, record.meta), {});
 }
-function mergeOptions(defaults2, partialOptions) {
+function mergeOptions(defaults, partialOptions) {
   const options = {};
-  for (const key in defaults2) {
-    options[key] = key in partialOptions ? partialOptions[key] : defaults2[key];
+  for (const key in defaults) {
+    options[key] = key in partialOptions ? partialOptions[key] : defaults[key];
   }
   return options;
 }
@@ -11062,7 +11062,7 @@ function createRouter(options) {
     if (!isBrowser || !scrollBehavior)
       return Promise.resolve();
     const scrollPosition = !isPush && getSavedScrollPosition(getScrollKey(to.fullPath, 0)) || (isFirstNavigation || !isPush) && history.state && history.state.scroll || null;
-    return nextTick$1().then(() => scrollBehavior(to, from, scrollPosition)).then((position) => position && scrollToPosition(position)).catch((err) => triggerError(err, to, from));
+    return nextTick().then(() => scrollBehavior(to, from, scrollPosition)).then((position) => position && scrollToPosition(position)).catch((err) => triggerError(err, to, from));
   }
   const go = (delta) => routerHistory.go(delta);
   let started;
@@ -11155,6 +11155,58 @@ function extractChangingRecords(to, from) {
   }
   return [leavingRecords, updatingRecords, enteringRecords];
 }
+const scriptRel = "modulepreload";
+const assetsURL = function(dep) {
+  return "/Fasadstore.ru/" + dep;
+};
+const seen = {};
+const __vitePreload = function preload(baseModule, deps, importerUrl) {
+  let promise = Promise.resolve();
+  if (deps && deps.length > 0) {
+    const links = document.getElementsByTagName("link");
+    promise = Promise.all(deps.map((dep) => {
+      dep = assetsURL(dep);
+      if (dep in seen)
+        return;
+      seen[dep] = true;
+      const isCss = dep.endsWith(".css");
+      const cssSelector = isCss ? '[rel="stylesheet"]' : "";
+      const isBaseRelative = !!importerUrl;
+      if (isBaseRelative) {
+        for (let i2 = links.length - 1; i2 >= 0; i2--) {
+          const link2 = links[i2];
+          if (link2.href === dep && (!isCss || link2.rel === "stylesheet")) {
+            return;
+          }
+        }
+      } else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
+        return;
+      }
+      const link = document.createElement("link");
+      link.rel = isCss ? "stylesheet" : scriptRel;
+      if (!isCss) {
+        link.as = "script";
+        link.crossOrigin = "";
+      }
+      link.href = dep;
+      document.head.appendChild(link);
+      if (isCss) {
+        return new Promise((res, rej) => {
+          link.addEventListener("load", res);
+          link.addEventListener("error", () => rej(new Error(`Unable to preload CSS for ${dep}`)));
+        });
+      }
+    }));
+  }
+  return promise.then(() => baseModule()).catch((err) => {
+    const e2 = new Event("vite:preloadError", { cancelable: true });
+    e2.payload = err;
+    window.dispatchEvent(e2);
+    if (!e2.defaultPrevented) {
+      throw err;
+    }
+  });
+};
 var isVue2 = false;
 /*!
  * pinia v2.1.7
@@ -11326,7 +11378,7 @@ function createSetupStore($id, setup, options = {}, pinia2, hot, isOptionsStore)
       };
     }
     const myListenerId = activeListener = Symbol();
-    nextTick$1().then(() => {
+    nextTick().then(() => {
       if (activeListener === myListenerId) {
         isListening = true;
       }
@@ -11520,29 +11572,29 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$k = {
+const _sfc_main$e = {
   props: {
     title: {
       type: String
     }
   }
 };
-const _hoisted_1$r = {
+const _hoisted_1$l = {
   class: "button-48",
   role: "button"
 };
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("button", _hoisted_1$r, [
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("button", _hoisted_1$l, [
     createBaseVNode("span", null, [
       renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ])
   ]);
 }
-const ButtonPurple = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__scopeId", "data-v-8a13860b"]]);
-const _imports_0$8 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
-const _imports_1$5 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARLSURBVFiFtZddbJNVGMd/z+naSkeXkMlGp/uQ6HCgQgI4dVzN4VhHKIIUY0jUCy80KBcGpzFC0BgCJibceOENIXIjY0CHbAgJEgMmBgkfQ0gUYQPn2CcKW23X9n28cCvr2pVudP+rnuc85/3/+vTtOecRVSUTeVu9zpyws9pS8RmoUFEP4BmZ7hKVLguuGNFA1Bk+0VLXEs7kuXI/AF+zr1Ats1VhA+DOiBbuCuwVY20LrAp0TwnA3+h3BO2RBoEPgJkZGo/XoMJOV8S+Y9+6fcMZA/iafYUxlSZRqZqicYJU9LRNdG2qaiQB1AdWP21UjgDF2TAfo5uWaP0R36G2CQF8zb5CyzJnpsE8DmGMtXRsJczoB3+j3xFTaZpGc4DimEqTv9HvSAII2iMNqX5zT+4cXpv3KpsWvYsn1zN+etISlaqgPdJwb6w6WvqrjHvbS90lbK/6nIdsTgB+vnWGHWe/eGAIYNAY6/HAqkC3AVDLbB1vDvDm/Nfj5gBLCxfz8Iz8bADMHPHEeFu9zpFNJkE2sTFvVnlCzIhheUlNNgBQ2OBt9TpNTthZTYodriyvFOeYbz+qmuLqrAAA7pyws9pYKr5Us/2h/pSrbGJDkKwQWCo+Y6Ai1eTf4X/ouHsjIRa1onx5bhdKZgfY/WSgwoycail1ofdiwvhk549c7GubIHvyUlGP4d6RmqTWjqMMx+6dIZWFSyl0FWQNAPAYIDTRbHewh32/74+P3Q43DYs3p3w5pyojKpfTJRz8I8AvPWfj47K8UjYufCdb/l22J9ZXPCfCknRZZ3vO8bynErfj/39ribuYAlcBbf2XiFrRhFxv2Qrqy+oYCN2mPzSQ1l1UfrU9ub5iLkJdusSIFaGt7xJVRS/Ey/9YXhnLiqq4fuc6vf/2AbCkYDHvLdpIWV4pNSUvsiB/Pv2hAbqDPSmfq8hRqT/kqxGV42lRR/RIbhFbKj9m9ozZCfHzvRe4FexmWVEVM+25Sev2XPmGwLXDyRUArxm6PeuUQFcmAJ1Df/HRT5/QfqcjIb5o9kJWlL6U0hyYaNe4G3WGT5gf3tgdsmB7JgAAA6EBNp/6kN2X9xCMBjNa036nPSkmsLelriVsACxn+Gvgz0whYhrj8PUjbDy5ie87jjMYGZowt+nqwVSb16AYaxuMuZKtPPTy2wJfZQoxVjaxsSB/PpVznuWZ/KcwYqNzqJOW9qOc772QlK+w5bvVBz8DyBkNRiP2b+32yJQAYhrjYl9bRtu0ip52DTt2jI7jVzK7Y3j5VMwnqZs20bVje4R4BVBZN93mlmj94XG9gagqtcdqcx1BVy8wYzqc0zUmBsAZdNWPM78B7FLRT4HUN5PMNKiwxTXsqJ6oR8wBUJV1iP6G6AGJ2Q40r2k6M5pQe6x2pz3oekvgfeDRDI0n15yuPPDK3O/W7L+WLtHf6HeE7BEvKgsUyjFWOSrlgIMHaM//A+PDshJTh69fAAAAAElFTkSuQmCC";
-const _imports_2$2 = "data:image/png;base64,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";
-const _sfc_main$j = {
+const ButtonPurple = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-8a13860b"]]);
+const _imports_0$5 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
+const _imports_1$3 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARLSURBVFiFtZddbJNVGMd/z+naSkeXkMlGp/uQ6HCgQgI4dVzN4VhHKIIUY0jUCy80KBcGpzFC0BgCJibceOENIXIjY0CHbAgJEgMmBgkfQ0gUYQPn2CcKW23X9n28cCvr2pVudP+rnuc85/3/+vTtOecRVSUTeVu9zpyws9pS8RmoUFEP4BmZ7hKVLguuGNFA1Bk+0VLXEs7kuXI/AF+zr1Ats1VhA+DOiBbuCuwVY20LrAp0TwnA3+h3BO2RBoEPgJkZGo/XoMJOV8S+Y9+6fcMZA/iafYUxlSZRqZqicYJU9LRNdG2qaiQB1AdWP21UjgDF2TAfo5uWaP0R36G2CQF8zb5CyzJnpsE8DmGMtXRsJczoB3+j3xFTaZpGc4DimEqTv9HvSAII2iMNqX5zT+4cXpv3KpsWvYsn1zN+etISlaqgPdJwb6w6WvqrjHvbS90lbK/6nIdsTgB+vnWGHWe/eGAIYNAY6/HAqkC3AVDLbB1vDvDm/Nfj5gBLCxfz8Iz8bADMHPHEeFu9zpFNJkE2sTFvVnlCzIhheUlNNgBQ2OBt9TpNTthZTYodriyvFOeYbz+qmuLqrAAA7pyws9pYKr5Us/2h/pSrbGJDkKwQWCo+Y6Ai1eTf4X/ouHsjIRa1onx5bhdKZgfY/WSgwoycail1ofdiwvhk549c7GubIHvyUlGP4d6RmqTWjqMMx+6dIZWFSyl0FWQNAPAYIDTRbHewh32/74+P3Q43DYs3p3w5pyojKpfTJRz8I8AvPWfj47K8UjYufCdb/l22J9ZXPCfCknRZZ3vO8bynErfj/39ribuYAlcBbf2XiFrRhFxv2Qrqy+oYCN2mPzSQ1l1UfrU9ub5iLkJdusSIFaGt7xJVRS/Ey/9YXhnLiqq4fuc6vf/2AbCkYDHvLdpIWV4pNSUvsiB/Pv2hAbqDPSmfq8hRqT/kqxGV42lRR/RIbhFbKj9m9ozZCfHzvRe4FexmWVEVM+25Sev2XPmGwLXDyRUArxm6PeuUQFcmAJ1Df/HRT5/QfqcjIb5o9kJWlL6U0hyYaNe4G3WGT5gf3tgdsmB7JgAAA6EBNp/6kN2X9xCMBjNa036nPSkmsLelriVsACxn+Gvgz0whYhrj8PUjbDy5ie87jjMYGZowt+nqwVSb16AYaxuMuZKtPPTy2wJfZQoxVjaxsSB/PpVznuWZ/KcwYqNzqJOW9qOc772QlK+w5bvVBz8DyBkNRiP2b+32yJQAYhrjYl9bRtu0ip52DTt2jI7jVzK7Y3j5VMwnqZs20bVje4R4BVBZN93mlmj94XG9gagqtcdqcx1BVy8wYzqc0zUmBsAZdNWPM78B7FLRT4HUN5PMNKiwxTXsqJ6oR8wBUJV1iP6G6AGJ2Q40r2k6M5pQe6x2pz3oekvgfeDRDI0n15yuPPDK3O/W7L+WLtHf6HeE7BEvKgsUyjFWOSrlgIMHaM//A+PDshJTh69fAAAAAElFTkSuQmCC";
+const _imports_2 = "data:image/png;base64,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";
+const _sfc_main$d = {
   components: { ButtonPurple },
   setup() {
     const openModal = () => {
@@ -11551,23 +11603,23 @@ const _sfc_main$j = {
     return { openModal };
   }
 };
-const _withScopeId$9 = (n2) => (pushScopeId("data-v-17d4acf0"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$q = {
+const _withScopeId$5 = (n2) => (pushScopeId("data-v-17d4acf0"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$k = {
   class: "navbar navbar-expand-lg navbar-dark bg-dark",
   style: { "position": "fixed", "top": "0", "z-index": "10", "right": "0", "left": "0" }
 };
-const _hoisted_2$i = { class: "container-fluid" };
-const _hoisted_3$h = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ createBaseVNode("a", {
+const _hoisted_2$d = { class: "container-fluid" };
+const _hoisted_3$c = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("a", {
   class: "navbar-brand",
   href: "/"
 }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_0$8,
+    src: _imports_0$5,
     alt: "Логотип компании",
     class: "navbar_color"
   })
 ], -1));
-const _hoisted_4$g = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ createBaseVNode("button", {
+const _hoisted_4$b = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("button", {
   class: "navbar-toggler",
   type: "button",
   "data-bs-toggle": "collapse",
@@ -11578,14 +11630,14 @@ const _hoisted_4$g = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ create
 }, [
   /* @__PURE__ */ createBaseVNode("span", { class: "navbar-toggler-icon" })
 ], -1));
-const _hoisted_5$h = {
+const _hoisted_5$c = {
   class: "collapse navbar-collapse",
   id: "navbarTogglerDemo02"
 };
-const _hoisted_6$e = { class: "navbar-nav me-auto mb-2 mb-lg-0" };
-const _hoisted_7$a = { class: "nav-item" };
-const _hoisted_8$8 = { class: "nav-item" };
-const _hoisted_9$5 = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ createBaseVNode("li", { class: "nav-item dropdown" }, [
+const _hoisted_6$b = { class: "navbar-nav me-auto mb-2 mb-lg-0" };
+const _hoisted_7$7 = { class: "nav-item" };
+const _hoisted_8$5 = { class: "nav-item" };
+const _hoisted_9$3 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("li", { class: "nav-item dropdown" }, [
   /* @__PURE__ */ createBaseVNode("a", {
     class: "nav-link dropdown-toggle",
     href: "#",
@@ -11599,40 +11651,40 @@ const _hoisted_9$5 = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ create
     "aria-labelledby": "navbarDropdownMenuLink"
   })
 ], -1));
-const _hoisted_10$3 = { class: "nav-item" };
-const _hoisted_11$3 = { class: "nav-item" };
-const _hoisted_12$4 = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ createBaseVNode("li", {
+const _hoisted_10$1 = { class: "nav-item" };
+const _hoisted_11$1 = { class: "nav-item" };
+const _hoisted_12$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("li", {
   class: "nav-item",
   style: { "display": "flex", "align-items": "center" }
 }, [
   /* @__PURE__ */ createTextVNode("      "),
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_1$5,
+    src: _imports_1$3,
     alt: "whatsapp",
     class: "whtsapp"
   })
 ], -1));
-const _hoisted_13$4 = /* @__PURE__ */ _withScopeId$9(() => /* @__PURE__ */ createBaseVNode("div", { class: "section_phone" }, [
+const _hoisted_13$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("div", { class: "section_phone" }, [
   /* @__PURE__ */ createBaseVNode("a", {
     href: "tel:+74957655026",
     class: "phone"
   }, [
     /* @__PURE__ */ createBaseVNode("img", {
-      src: _imports_2$2,
+      src: _imports_2,
       alt: "phone company"
     }),
     /* @__PURE__ */ createTextVNode(" +7(495) 765-50-26 ")
   ])
 ], -1));
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_router_link = resolveComponent("router-link");
-  return openBlock(), createElementBlock("nav", _hoisted_1$q, [
-    createBaseVNode("div", _hoisted_2$i, [
-      _hoisted_3$h,
-      _hoisted_4$g,
-      createBaseVNode("div", _hoisted_5$h, [
-        createBaseVNode("ul", _hoisted_6$e, [
-          createBaseVNode("li", _hoisted_7$a, [
+  return openBlock(), createElementBlock("nav", _hoisted_1$k, [
+    createBaseVNode("div", _hoisted_2$d, [
+      _hoisted_3$c,
+      _hoisted_4$b,
+      createBaseVNode("div", _hoisted_5$c, [
+        createBaseVNode("ul", _hoisted_6$b, [
+          createBaseVNode("li", _hoisted_7$7, [
             createVNode(_component_router_link, {
               to: "/",
               class: "nav-link",
@@ -11644,7 +11696,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          createBaseVNode("li", _hoisted_8$8, [
+          createBaseVNode("li", _hoisted_8$5, [
             createVNode(_component_router_link, {
               to: "/about",
               class: "nav-link",
@@ -11656,8 +11708,8 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          _hoisted_9$5,
-          createBaseVNode("li", _hoisted_10$3, [
+          _hoisted_9$3,
+          createBaseVNode("li", _hoisted_10$1, [
             createVNode(_component_router_link, {
               to: "/objects",
               class: "nav-link",
@@ -11669,7 +11721,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          createBaseVNode("li", _hoisted_11$3, [
+          createBaseVNode("li", _hoisted_11$1, [
             createVNode(_component_router_link, {
               to: "/contacts",
               class: "nav-link",
@@ -11681,17 +11733,17 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          _hoisted_12$4
+          _hoisted_12$1
         ]),
-        _hoisted_13$4
+        _hoisted_13$1
       ])
     ])
   ]);
 }
-const NavbarElement = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__scopeId", "data-v-17d4acf0"]]);
-const _imports_0$7 = "/Fasadstore.ru/assets/first-wAVONG7y.webp";
-const _imports_1$4 = "/Fasadstore.ru/assets/second-qsV866gv.webp";
-const _sfc_main$i = {
+const NavbarElement = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-17d4acf0"]]);
+const _imports_0$4 = "/Fasadstore.ru/assets/first-wAVONG7y.webp";
+const _imports_1$2 = "/Fasadstore.ru/assets/second-qsV866gv.webp";
+const _sfc_main$c = {
   components: { ButtonPurple },
   setup() {
     const show = ref(false);
@@ -11703,8 +11755,8 @@ const _sfc_main$i = {
     return { show };
   }
 };
-const _withScopeId$8 = (n2) => (pushScopeId("data-v-e596d093"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$p = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("div", { class: "carousel-indicators" }, [
+const _withScopeId$4 = (n2) => (pushScopeId("data-v-e596d093"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$j = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "carousel-indicators" }, [
   /* @__PURE__ */ createBaseVNode("button", {
     type: "button",
     "data-bs-target": "#carouselExampleCaptions",
@@ -11722,63 +11774,63 @@ const _hoisted_1$p = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ create
     style: { "border-radius": "50% !important", "height": "10px", "width": "10px" }
   })
 ], -1));
-const _hoisted_2$h = { class: "carousel-inner" };
-const _hoisted_3$g = {
+const _hoisted_2$c = { class: "carousel-inner" };
+const _hoisted_3$b = {
   class: "carousel-item active",
   "data-bs-interval": "10000"
 };
-const _hoisted_4$f = { class: "block_carousel" };
-const _hoisted_5$g = { class: "left_text_carousel" };
-const _hoisted_6$d = { class: "content" };
-const _hoisted_7$9 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Раздвижные двери Алютех", -1));
-const _hoisted_8$7 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
-const _hoisted_9$4 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей. ", -1));
-const _hoisted_10$2 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_11$2 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
+const _hoisted_4$a = { class: "block_carousel" };
+const _hoisted_5$b = { class: "left_text_carousel" };
+const _hoisted_6$a = { class: "content" };
+const _hoisted_7$6 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Раздвижные двери Алютех", -1));
+const _hoisted_8$4 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
+const _hoisted_9$2 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей. ", -1));
+const _hoisted_10 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_11 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_0$7,
+    src: _imports_0$4,
     class: "d-block w-100 h-100",
     alt: "Раздвижные двери АЛЮТЕХ"
   }),
   /* @__PURE__ */ createBaseVNode("div", { class: "image-overlay" })
 ], -1));
-const _hoisted_12$3 = {
+const _hoisted_12 = {
   class: "carousel-item",
   "data-bs-interval": "10000"
 };
-const _hoisted_13$3 = { class: "block_carousel active" };
-const _hoisted_14$2 = { class: "left_text_carousel" };
-const _hoisted_15$1 = { class: "content" };
-const _hoisted_16$1 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Окна Алютех", -1));
-const _hoisted_17$1 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
-const _hoisted_18$1 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_19$1 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют. ", -1));
-const _hoisted_20$1 = /* @__PURE__ */ _withScopeId$8(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
+const _hoisted_13 = { class: "block_carousel active" };
+const _hoisted_14 = { class: "left_text_carousel" };
+const _hoisted_15 = { class: "content" };
+const _hoisted_16 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Окна Алютех", -1));
+const _hoisted_17 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
+const _hoisted_18 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_19 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют. ", -1));
+const _hoisted_20 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_1$4,
+    src: _imports_1$2,
     class: "d-block w-100 h-100",
     alt: "окна АЛЮТЕХ"
   }),
   /* @__PURE__ */ createBaseVNode("div", { class: "image-overlay" })
 ], -1));
-const _hoisted_21$1 = /* @__PURE__ */ createStaticVNode('<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" data-v-e596d093><span class="carousel-control-prev-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Previous</span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" data-v-e596d093><span class="carousel-control-next-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Next</span></button>', 2);
-function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_21 = /* @__PURE__ */ createStaticVNode('<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" data-v-e596d093><span class="carousel-control-prev-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Previous</span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" data-v-e596d093><span class="carousel-control-next-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Next</span></button>', 2);
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ButtonPurple = resolveComponent("ButtonPurple");
   return _cache[0] || (setBlockTracking(-1), _cache[0] = createBaseVNode("div", {
     id: "carouselExampleCaptions",
     class: "carousel slide",
     "data-bs-ride": "carousel"
   }, [
-    _hoisted_1$p,
-    createBaseVNode("div", _hoisted_2$h, [
-      createBaseVNode("div", _hoisted_3$g, [
-        createBaseVNode("div", _hoisted_4$f, [
-          createBaseVNode("div", _hoisted_5$g, [
-            createBaseVNode("div", _hoisted_6$d, [
-              _hoisted_7$9,
-              _hoisted_8$7,
-              _hoisted_9$4,
-              _hoisted_10$2,
+    _hoisted_1$j,
+    createBaseVNode("div", _hoisted_2$c, [
+      createBaseVNode("div", _hoisted_3$b, [
+        createBaseVNode("div", _hoisted_4$a, [
+          createBaseVNode("div", _hoisted_5$b, [
+            createBaseVNode("div", _hoisted_6$a, [
+              _hoisted_7$6,
+              _hoisted_8$4,
+              _hoisted_9$2,
+              _hoisted_10,
               createVNode(_component_ButtonPurple, { title: "Подробнее о разделе" }, {
                 default: withCtx(() => [
                   createTextVNode("Узнать больше")
@@ -11787,17 +11839,17 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
               })
             ])
           ]),
-          _hoisted_11$2
+          _hoisted_11
         ])
       ]),
-      createBaseVNode("div", _hoisted_12$3, [
-        createBaseVNode("div", _hoisted_13$3, [
-          createBaseVNode("div", _hoisted_14$2, [
-            createBaseVNode("div", _hoisted_15$1, [
-              _hoisted_16$1,
-              _hoisted_17$1,
-              _hoisted_18$1,
-              _hoisted_19$1,
+      createBaseVNode("div", _hoisted_12, [
+        createBaseVNode("div", _hoisted_13, [
+          createBaseVNode("div", _hoisted_14, [
+            createBaseVNode("div", _hoisted_15, [
+              _hoisted_16,
+              _hoisted_17,
+              _hoisted_18,
+              _hoisted_19,
               createVNode(_component_ButtonPurple, { title: "Подробнее о разделе" }, {
                 default: withCtx(() => [
                   createTextVNode("Узнать больше")
@@ -11806,7156 +11858,38 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
               })
             ])
           ]),
-          _hoisted_20$1
+          _hoisted_20
         ])
       ])
     ]),
-    _hoisted_21$1
+    _hoisted_21
   ]), setBlockTracking(1), _cache[0]);
 }
-const SliderElement = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-e596d093"]]);
-const _sfc_main$h = {
-  props: {
-    field_name: {
-      name: String
-    }
-  },
-  setup() {
-    let element = ref();
-    return {
-      element
-    };
-  }
-};
-const _hoisted_1$o = { class: "flex flex-column gap-2" };
-const _hoisted_2$g = /* @__PURE__ */ createBaseVNode("label", { for: "username" }, "Username", -1);
-const _hoisted_3$f = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_4$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_5$f = /* @__PURE__ */ createBaseVNode("small", { id: "username-help" }, "Enter your username to reset your password.", -1);
-function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_InputText = resolveComponent("InputText");
-  return openBlock(), createElementBlock("div", _hoisted_1$o, [
-    _hoisted_2$g,
-    createTextVNode(),
-    _hoisted_3$f,
-    createVNode(_component_InputText, {
-      id: "username",
-      modelValue: _ctx.value,
-      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value = $event),
-      "aria-describedby": "username-help"
-    }, null, 8, ["modelValue"]),
-    createTextVNode(),
-    _hoisted_4$e,
-    _hoisted_5$f
-  ]);
-}
-const InputUIElement = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g]]);
-const _imports_0$6 = "/Fasadstore.ru/assets/alum_window-Xw8His7z.png";
-const _imports_1$3 = "/Fasadstore.ru/assets/alum_razd_door-X9xbNXQu.png";
-const _imports_2$1 = "/Fasadstore.ru/assets/terrace-2X71dqDn.jpg";
-const _imports_3$1 = "/Fasadstore.ru/assets/villa-ezXuALqy.png";
-const _imports_4$1 = "/Fasadstore.ru/assets/alum_doors-3QXslBT6.jpg";
-const _imports_5$1 = "/Fasadstore.ru/assets/winter_garden-rJSKNdLT.jpg";
-const _imports_6 = "/Fasadstore.ru/assets/fasad-ASvyyLf6.png";
-const _imports_7 = "/Fasadstore.ru/assets/wood-jT6Zskn3.jpg";
-const _imports_8 = "/Fasadstore.ru/assets/garage_doors-anqpxoBR.png";
-const _imports_9 = "/Fasadstore.ru/assets/window_pvh-mvs_hG1e.jpg";
-const _imports_10 = "/Fasadstore.ru/assets/accessories-dYqSNIPz.png";
-const _imports_11 = "/Fasadstore.ru/assets/double_glazing-Ir1RwSVH.png";
-const _sfc_main$g = {
-  components: { ButtonPurple }
-};
-const _withScopeId$7 = (n2) => (pushScopeId("data-v-5d6cdf08"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$n = {
-  class: "accordion",
-  id: "accordionExample"
-};
-const _hoisted_2$f = { class: "accordion-item" };
-const _hoisted_3$e = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingOne"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseOne",
-    "aria-expanded": "true",
-    "aria-controls": "collapseOne"
-  }, " Алюминевые окна ")
-], -1));
-const _hoisted_4$d = {
-  id: "collapseOne",
-  class: "accordion-collapse collapse show",
-  "aria-labelledby": "headingOne",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_5$e = { class: "accordion-body" };
-const _hoisted_6$c = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_0$6,
-  alt: "Алюминевые окна"
-}, null, -1));
-const _hoisted_7$8 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Окна премиум-класса теплые, созданные по индивидуальным заказам и сочетающие в себе стиль и надежность ", -1));
-const _hoisted_8$6 = {
-  class: "accordion",
-  id: "accordionExample2"
-};
-const _hoisted_9$3 = { class: "accordion-item" };
-const _hoisted_10$1 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingTwo"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseTwo",
-    "aria-expanded": "false",
-    "aria-controls": "collapseTwo"
-  }, " Алюминевые раздвижные двери ")
-], -1));
-const _hoisted_11$1 = {
-  id: "collapseTwo",
-  class: "accordion-collapse collapse show",
-  "aria-labelledby": "headingTwo",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_12$2 = { class: "accordion-body" };
-const _hoisted_13$2 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_1$3,
-  alt: "Алюминевые раздвижные двер"
-}, null, -1));
-const _hoisted_14$1 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления ", -1));
-const _hoisted_15 = {
-  class: "accordion",
-  id: "accordionExample3"
-};
-const _hoisted_16 = { class: "accordion-item" };
-const _hoisted_17 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingThree"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseThree",
-    "aria-expanded": "false",
-    "aria-controls": "collapseThree"
-  }, " Остекление террас и балконов ")
-], -1));
-const _hoisted_18 = {
-  id: "collapseThree",
-  class: "accordion-collapse collapse show",
-  "aria-labelledby": "headingThree",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_19 = { class: "accordion-body" };
-const _hoisted_20 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_2$1,
-  alt: "Остекление террас и балконов"
-}, null, -1));
-const _hoisted_21 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах ", -1));
-const _hoisted_22 = { class: "accordion-item" };
-const _hoisted_23 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingFour"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseFour",
-    "aria-expanded": "false",
-    "aria-controls": "collapseFour"
-  }, " Остекление котеджей ")
-], -1));
-const _hoisted_24 = {
-  id: "collapseFour",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingFour",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_25 = { class: "accordion-body" };
-const _hoisted_26 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_3$1,
-  alt: "Остекление котеджей"
-}, null, -1));
-const _hoisted_27 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Предлагаем все виды остекления для коттеджей и загородных домов под ключ ", -1));
-const _hoisted_28 = { class: "accordion-item" };
-const _hoisted_29 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingFive"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseFive",
-    "aria-expanded": "false",
-    "aria-controls": "collapseFive"
-  }, " Алюминевые двери ")
-], -1));
-const _hoisted_30 = {
-  id: "collapseFive",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingFive",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_31 = { class: "accordion-body" };
-const _hoisted_32 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_4$1,
-  alt: "Алюминевые двери"
-}, null, -1));
-const _hoisted_33 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией. ", -1));
-const _hoisted_34 = { class: "accordion-item" };
-const _hoisted_35 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingSix"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseSix",
-    "aria-expanded": "false",
-    "aria-controls": "collapseSix"
-  }, " Зимние сады ")
-], -1));
-const _hoisted_36 = {
-  id: "collapseSix",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingSix",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_37 = { class: "accordion-body" };
-const _hoisted_38 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_5$1,
-  alt: "Зимние сады"
-}, null, -1));
-const _hoisted_39 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Остекление зимних садов под ключ ", -1));
-const _hoisted_40 = { class: "accordion-item" };
-const _hoisted_41 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingSeven"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseSeven",
-    "aria-expanded": "false",
-    "aria-controls": "collapseSeven"
-  }, " Остекление фасадов, витражи ")
-], -1));
-const _hoisted_42 = {
-  id: "collapseSeven",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingSeven",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_43 = { class: "accordion-body" };
-const _hoisted_44 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_6,
-  alt: "Остекление фасадов, витражи"
-}, null, -1));
-const _hoisted_45 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Витражное (панорамное) остекление для сплошного многоэтажного остекления ", -1));
-const _hoisted_46 = { class: "accordion-item" };
-const _hoisted_47 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingEight"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseEight",
-    "aria-expanded": "false",
-    "aria-controls": "collapseEight"
-  }, " Деревянные окна ")
-], -1));
-const _hoisted_48 = {
-  id: "collapseEight",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingEight",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_49 = { class: "accordion-body" };
-const _hoisted_50 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_7,
-  alt: "Деревянные окна"
-}, null, -1));
-const _hoisted_51 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево ", -1));
-const _hoisted_52 = { class: "accordion-item" };
-const _hoisted_53 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingNine"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseNine",
-    "aria-expanded": "false",
-    "aria-controls": "collapseNine"
-  }, " Гаражные ворота ")
-], -1));
-const _hoisted_54 = {
-  id: "collapseNine",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingNine",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_55 = { class: "accordion-body" };
-const _hoisted_56 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_8,
-  alt: "Гаражные ворота"
-}, null, -1));
-const _hoisted_57 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Гаражные секционные ворота – одно из самых популярных и современных решений, максимально удобны в эксплуатации ", -1));
-const _hoisted_58 = { class: "accordion-item" };
-const _hoisted_59 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingTen"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseTen",
-    "aria-expanded": "false",
-    "aria-controls": "collapseTen"
-  }, " Окна ПВХ ")
-], -1));
-const _hoisted_60 = {
-  id: "collapseTen",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingTen",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_61 = { class: "accordion-body" };
-const _hoisted_62 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_9,
-  alt: "Окна ПВХ"
-}, null, -1));
-const _hoisted_63 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Немецкие пластиковые окна «Рехау» — гарантия качества, надежности ", -1));
-const _hoisted_64 = { class: "accordion-item" };
-const _hoisted_65 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingEleven"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseEleven",
-    "aria-expanded": "false",
-    "aria-controls": "collapseEleven"
-  }, " Фурнитура ")
-], -1));
-const _hoisted_66 = {
-  id: "collapseEleven",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingEleven",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_67 = { class: "accordion-body" };
-const _hoisted_68 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_10,
-  alt: "Фурнитура"
-}, null, -1));
-const _hoisted_69 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Широкий ассортимент ведущих производителей фурнитуры для алюминиевых окон и дверей ", -1));
-const _hoisted_70 = { class: "accordion-item" };
-const _hoisted_71 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("h2", {
-  class: "accordion-header",
-  id: "headingTwelve"
-}, [
-  /* @__PURE__ */ createBaseVNode("button", {
-    class: "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseTwelve",
-    "aria-expanded": "false",
-    "aria-controls": "collapseTwelve"
-  }, " Стеклопакеты ")
-], -1));
-const _hoisted_72 = {
-  id: "collapseTwelve",
-  class: "accordion-collapse collapse",
-  "aria-labelledby": "headingTwelve",
-  "data-bs-parent": "#accordionExample"
-};
-const _hoisted_73 = { class: "accordion-body" };
-const _hoisted_74 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_11,
-  alt: "Стеклопакеты"
-}, null, -1));
-const _hoisted_75 = /* @__PURE__ */ _withScopeId$7(() => /* @__PURE__ */ createBaseVNode("p", { style: { "margin-top": "4vh", "font-weight": "600" } }, " Виды стеклопакетов и их функциональность ", -1));
-function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_ButtonPurple = resolveComponent("ButtonPurple");
-  return openBlock(), createElementBlock("div", null, [
-    createBaseVNode("div", _hoisted_1$n, [
-      createBaseVNode("div", _hoisted_2$f, [
-        _hoisted_3$e,
-        createBaseVNode("div", _hoisted_4$d, [
-          createBaseVNode("div", _hoisted_5$e, [
-            _hoisted_6$c,
-            _hoisted_7$8,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ])
-    ]),
-    createBaseVNode("div", _hoisted_8$6, [
-      createBaseVNode("div", _hoisted_9$3, [
-        _hoisted_10$1,
-        createBaseVNode("div", _hoisted_11$1, [
-          createBaseVNode("div", _hoisted_12$2, [
-            _hoisted_13$2,
-            _hoisted_14$1,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ])
-    ]),
-    createBaseVNode("div", _hoisted_15, [
-      createBaseVNode("div", _hoisted_16, [
-        _hoisted_17,
-        createBaseVNode("div", _hoisted_18, [
-          createBaseVNode("div", _hoisted_19, [
-            _hoisted_20,
-            _hoisted_21,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_22, [
-        _hoisted_23,
-        createBaseVNode("div", _hoisted_24, [
-          createBaseVNode("div", _hoisted_25, [
-            _hoisted_26,
-            _hoisted_27,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_28, [
-        _hoisted_29,
-        createBaseVNode("div", _hoisted_30, [
-          createBaseVNode("div", _hoisted_31, [
-            _hoisted_32,
-            _hoisted_33,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_34, [
-        _hoisted_35,
-        createBaseVNode("div", _hoisted_36, [
-          createBaseVNode("div", _hoisted_37, [
-            _hoisted_38,
-            _hoisted_39,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_40, [
-        _hoisted_41,
-        createBaseVNode("div", _hoisted_42, [
-          createBaseVNode("div", _hoisted_43, [
-            _hoisted_44,
-            _hoisted_45,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_46, [
-        _hoisted_47,
-        createBaseVNode("div", _hoisted_48, [
-          createBaseVNode("div", _hoisted_49, [
-            _hoisted_50,
-            _hoisted_51,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_52, [
-        _hoisted_53,
-        createBaseVNode("div", _hoisted_54, [
-          createBaseVNode("div", _hoisted_55, [
-            _hoisted_56,
-            _hoisted_57,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_58, [
-        _hoisted_59,
-        createBaseVNode("div", _hoisted_60, [
-          createBaseVNode("div", _hoisted_61, [
-            _hoisted_62,
-            _hoisted_63,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_64, [
-        _hoisted_65,
-        createBaseVNode("div", _hoisted_66, [
-          createBaseVNode("div", _hoisted_67, [
-            _hoisted_68,
-            _hoisted_69,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ]),
-      createBaseVNode("div", _hoisted_70, [
-        _hoisted_71,
-        createBaseVNode("div", _hoisted_72, [
-          createBaseVNode("div", _hoisted_73, [
-            _hoisted_74,
-            _hoisted_75,
-            createVNode(_component_ButtonPurple, { style: { "width": "100%" } }, {
-              default: withCtx(() => [
-                createTextVNode("Подробнее ➔")
-              ]),
-              _: 1
-            })
-          ])
-        ])
-      ])
-    ])
-  ]);
-}
-const DirectionWorkMobile = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-5d6cdf08"]]);
-const _sfc_main$f = {
-  components: { InputUIElement, DirectionWorkMobile },
-  setup() {
-    const date = ref();
-    const isMobile = ref(window.innerWidth < 900);
-    const handleResize = () => {
-      isMobile.value = window.innerWidth < 900;
-    };
-    onMounted(() => {
-      window.addEventListener("resize", handleResize);
-    });
-    onBeforeUnmount(() => {
-      window.removeEventListener("resize", handleResize);
-    });
-    return {
-      date,
-      isMobile
-    };
-  }
-};
-const _withScopeId$6 = (n2) => (pushScopeId("data-v-3a50b331"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$m = { class: "container-block" };
-const _hoisted_2$e = /* @__PURE__ */ _withScopeId$6(() => /* @__PURE__ */ createBaseVNode("div", { class: "direction_description" }, [
-  /* @__PURE__ */ createBaseVNode("p", null, "НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ")
-], -1));
-const _hoisted_3$d = { class: "container_accordion" };
-const _hoisted_4$c = /* @__PURE__ */ createStaticVNode('<ul class="cards" style="margin-top:4%;" data-v-3a50b331><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_0$6 + '" class="card__image" alt="Алюминевые окна" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Алюминевые окна</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Окна премиум-класса теплые, созданные по индивидуальным заказам и сочетающие в себе стиль и надежность. </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_1$3 + '" class="card__image" alt="Алюминевые раздвижные двери" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Алюминевые раздвижные двери</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_2$1 + '" class="card__image" alt="Остекление террас и балконов" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Остекление террас и беседок</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_3$1 + '" class="card__image" alt="Остекление котеджей" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Остекление котеджей</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Предлагаем все виды остекления для коттеджей и загородных домов под ключ </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_4$1 + '" class="card__image" alt="Алюминевые двери" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Алюминевые двери</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией. </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_5$1 + '" class="card__image" alt="Зимние сады" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Зимние сады</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Остекление зимних садов под ключ </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_6 + '" class="card__image" alt="Остекление фасадов, витражи" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Остекление фасадов, витражи</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Витражное (панорамное) остекление для сплошного многоэтажного остекления </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_7 + '" class="card__image" alt="Деревянные окна" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Деревянные окна</h3><span class="card__status" data-v-3a50b331>Россия</span></div></div><p class="card__description" data-v-3a50b331> Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_8 + '" class="card__image" alt="Гаражные ворота" style="height:90% !important;" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Гаражные ворота</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Гаражные секционные ворота – одно из самых популярных и современных решений, максимально удобны в эксплуатации </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_9 + '" class="card__image" alt="Окна ПВХ" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Окна ПВХ</h3><span class="card__status" data-v-3a50b331>Рехау (REHAU)</span></div></div><p class="card__description" data-v-3a50b331> Немецкие пластиковые окна «Рехау» — гарантия качества, надежности </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_10 + '" class="card__image" alt="Фурнитура" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Фурнитура</h3><span class="card__status" data-v-3a50b331>Германия</span></div></div><p class="card__description" data-v-3a50b331> Широкий ассортимент ведущих производителей фурнитуры для алюминиевых окон и дверей </p></div></a></li><li data-v-3a50b331><a class="card" data-v-3a50b331><img src="' + _imports_11 + '" class="card__image" alt="Стеклопакеты" data-v-3a50b331><div class="card__overlay" data-v-3a50b331><div class="card__header" data-v-3a50b331><div class="card__header-text" data-v-3a50b331><h3 class="card__title" data-v-3a50b331>Стеклопакеты</h3><span class="card__status" data-v-3a50b331>Алютех (ALUTECH)</span></div></div><p class="card__description" data-v-3a50b331> Виды стеклопакетов и их функциональность </p></div></a></li></ul>', 1);
-function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_DirectionWorkMobile = resolveComponent("DirectionWorkMobile");
-  return openBlock(), createElementBlock("div", _hoisted_1$m, [
-    _hoisted_2$e,
-    createBaseVNode("div", _hoisted_3$d, [
-      $setup.isMobile ? (openBlock(), createBlock(_component_DirectionWorkMobile, { key: 0 })) : createCommentVNode("", true)
-    ]),
-    _hoisted_4$c
-  ]);
-}
-const DirectionWork = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-3a50b331"]]);
-const _imports_0$5 = "/Fasadstore.ru/assets/zamer-SESB6M3P.jpg";
-const _sfc_main$e = {
-  components: { ButtonPurpleVue: ButtonPurple },
-  setup() {
-  }
-};
-const _withScopeId$5 = (n2) => (pushScopeId("data-v-19228903"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$l = { class: "block" };
-const _hoisted_2$d = { class: "container" };
-const _hoisted_3$c = { class: "left_side" };
-const _hoisted_4$b = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("div", { class: "header_container" }, [
-  /* @__PURE__ */ createBaseVNode("p", { class: "text_description" }, [
-    /* @__PURE__ */ createTextVNode(" Закажите бесплатный выезд "),
-    /* @__PURE__ */ createBaseVNode("br"),
-    /* @__PURE__ */ createTextVNode(" инженера-замерщика и обсудите "),
-    /* @__PURE__ */ createBaseVNode("br"),
-    /* @__PURE__ */ createTextVNode(" все вопросы лично ")
-  ])
-], -1));
-const _hoisted_5$d = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("div", { class: "line" }, null, -1));
-const _hoisted_6$b = { class: "input_block" };
-const _hoisted_7$7 = { action: "" };
-const _hoisted_8$5 = /* @__PURE__ */ createStaticVNode('<div class="form__group field" data-v-19228903><input type="input" class="form__field" placeholder="Имя" name="name" id="name" required data-v-19228903><label for="name" class="form__label" data-v-19228903> Имя </label></div><br data-v-19228903><div class="form__group field" data-v-19228903><input type="input" class="form__field" placeholder="Телефон" name="name" id="password" required data-v-19228903><label for="password" class="form__label" data-v-19228903> Телефон </label></div><div class="form__group" data-v-19228903><input type="checkbox" class="form-check-input" id="checkbox" data-v-19228903><label for="checkbox" class="form-check-label" style="color:rgb(204, 204, 204);" data-v-19228903> Согласие на обработку персональных данных</label></div>', 4);
-const _hoisted_12$1 = { class: "form__group" };
-const _hoisted_13$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_14 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("section", { class: "right_side" }, [
-  /* @__PURE__ */ createBaseVNode("div", { class: "img_container" }, [
-    /* @__PURE__ */ createBaseVNode("img", {
-      src: _imports_0$5,
-      alt: ""
-    })
-  ])
-], -1));
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_ButtonPurpleVue = resolveComponent("ButtonPurpleVue");
-  return openBlock(), createElementBlock("div", _hoisted_1$l, [
-    createBaseVNode("div", _hoisted_2$d, [
-      createBaseVNode("section", _hoisted_3$c, [
-        _hoisted_4$b,
-        _hoisted_5$d,
-        createBaseVNode("div", _hoisted_6$b, [
-          createBaseVNode("form", _hoisted_7$7, [
-            _hoisted_8$5,
-            createBaseVNode("div", _hoisted_12$1, [
-              createVNode(_component_ButtonPurpleVue, { style: { "width": "100%" } }, {
-                default: withCtx(() => [
-                  createTextVNode("Отправить заявку")
-                ]),
-                _: 1
-              })
-            ])
-          ]),
-          _hoisted_13$1
-        ])
-      ]),
-      _hoisted_14
-    ])
-  ]);
-}
-const ContactForm = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-19228903"]]);
-const _imports_0$4 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
-const _sfc_main$d = {};
-const _hoisted_1$k = { class: "site-footer" };
-const _hoisted_2$c = /* @__PURE__ */ createStaticVNode('<div class="container" data-v-bd50de20><div class="row" data-v-bd50de20><div class="col-sm-12 col-md-6" data-v-bd50de20><img src="' + _imports_0$4 + '" alt="Лого компании" style="width:max(200px, 10vw);" data-v-bd50de20><p class="text-justify" data-v-bd50de20> Если у Вас остались к нам вопросы, имеются предложения, или замечания по работе сайта напишите нам, мы постараемся ответить в максимально короткий срок </p><p class="text-justify" data-v-bd50de20><br data-v-bd50de20> Юридическая информация <br data-v-bd50de20> Общество с ограниченной ответственностью &quot;Алюминиевые системы&quot;<br data-v-bd50de20> ИНН/КПП: 7733336170 / 771501001<br data-v-bd50de20> ОГРН: 1197746103741<br data-v-bd50de20> Юр. и факт адрес: 127204, Москва 3-я Северная линия, д.8, кв.1<br data-v-bd50de20></p></div><div class="col-xs-6 col-md-3" data-v-bd50de20></div><div class="col-xs-6 col-md-3" data-v-bd50de20><h6 data-v-bd50de20>Контакты</h6><ul class="footer-links" data-v-bd50de20><li data-v-bd50de20><a href="tel:74957655026" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-bd50de20><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-bd50de20></path></svg> +7 495 765-50-26</a></li><li data-v-bd50de20><a href="mailto:7655026@mail.ru" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" data-v-bd50de20></path></svg> 7655026@mail.ru</a></li><li data-v-bd50de20><a href="https://yandex.ru/maps/org/alyuminiyevyye_sistemy/7284186682/reviews/?ll=37.542920%2C55.900310&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCZ5eKcsQz0JAEdOgaB7A4EtAEhIJA137Anqh8j8RmPxP%2Fu4d7D8iBgABAgMEBSgKOABAhZ8BSAFqAnJ1nQHNzEw9oAEAqAEAvQFELZXswgEcuryvkRv4yIH80wa5xLPfwwOSitn8lALMt%2F%2FpA%2BoBAPIBAPgBAIICFdC%2B0LrQvdCwINCw0LvRjtGC0LXRhYoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&amp;sll=37.564403%2C55.900919&amp;source=serp_navig&amp;sspn=0.092191%2C0.041012&amp;tab=reviews&amp;text=%D0%BE%D0%BA%D0%BD%D0%B0%20%D0%B0%D0%BB%D1%8E%D1%82%D0%B5%D1%85&amp;z=15.08" target="_blank" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" data-v-bd50de20></path></svg> Россия, Москва, Дмитровское шоссе д. 157 стр. 7</a></li><li data-v-bd50de20><br data-v-bd50de20> Расчетный счет: 40702810938000087998<br data-v-bd50de20> ПАО СБЕРБАНК г. МОСКВА<br data-v-bd50de20> БИК: 044525700<br data-v-bd50de20> Кор сч: 30101810200000000700<br data-v-bd50de20></li></ul></div></div><hr data-v-bd50de20></div>', 1);
-const _hoisted_3$b = { class: "container" };
-const _hoisted_4$a = { class: "row" };
-const _hoisted_5$c = { class: "col-md-8 col-sm-6 col-xs-12" };
-const _hoisted_6$a = { class: "copyright-text" };
-const _hoisted_7$6 = /* @__PURE__ */ createStaticVNode('<div class="col-md-4 col-sm-6 col-xs-12" data-v-bd50de20><ul class="social-icons" data-v-bd50de20><li data-v-bd50de20><a class="dribbble" href="https://www.youtube.com/@fasadstore" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" data-v-bd50de20><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="twitter" href="https://t.me/aluteh_systems" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16" data-v-bd50de20><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="linkedin" href="https://wa.me/79197205872" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-bd50de20><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-bd50de20></path></svg></i></a></li></ul></div>', 1);
-function _sfc_render$c(_ctx, _cache) {
-  return openBlock(), createElementBlock("footer", _hoisted_1$k, [
-    _hoisted_2$c,
-    createBaseVNode("div", _hoisted_3$b, [
-      createBaseVNode("div", _hoisted_4$a, [
-        createBaseVNode("div", _hoisted_5$c, [
-          createBaseVNode("p", _hoisted_6$a, " Copyright © 2008 - " + toDisplayString((/* @__PURE__ */ new Date()).getFullYear()) + " Все права защищены ", 1)
-        ]),
-        _hoisted_7$6
-      ])
-    ])
-  ]);
-}
-const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-bd50de20"]]);
-function isObject$2(obj) {
-  return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
-}
-function extend$2(target, src) {
-  if (target === void 0) {
-    target = {};
-  }
-  if (src === void 0) {
-    src = {};
-  }
-  Object.keys(src).forEach((key) => {
-    if (typeof target[key] === "undefined")
-      target[key] = src[key];
-    else if (isObject$2(src[key]) && isObject$2(target[key]) && Object.keys(src[key]).length > 0) {
-      extend$2(target[key], src[key]);
-    }
-  });
-}
-const ssrDocument = {
-  body: {},
-  addEventListener() {
-  },
-  removeEventListener() {
-  },
-  activeElement: {
-    blur() {
-    },
-    nodeName: ""
-  },
-  querySelector() {
-    return null;
-  },
-  querySelectorAll() {
-    return [];
-  },
-  getElementById() {
-    return null;
-  },
-  createEvent() {
-    return {
-      initEvent() {
-      }
-    };
-  },
-  createElement() {
-    return {
-      children: [],
-      childNodes: [],
-      style: {},
-      setAttribute() {
-      },
-      getElementsByTagName() {
-        return [];
-      }
-    };
-  },
-  createElementNS() {
-    return {};
-  },
-  importNode() {
-    return null;
-  },
-  location: {
-    hash: "",
-    host: "",
-    hostname: "",
-    href: "",
-    origin: "",
-    pathname: "",
-    protocol: "",
-    search: ""
-  }
-};
-function getDocument() {
-  const doc2 = typeof document !== "undefined" ? document : {};
-  extend$2(doc2, ssrDocument);
-  return doc2;
-}
-const ssrWindow = {
-  document: ssrDocument,
-  navigator: {
-    userAgent: ""
-  },
-  location: {
-    hash: "",
-    host: "",
-    hostname: "",
-    href: "",
-    origin: "",
-    pathname: "",
-    protocol: "",
-    search: ""
-  },
-  history: {
-    replaceState() {
-    },
-    pushState() {
-    },
-    go() {
-    },
-    back() {
-    }
-  },
-  CustomEvent: function CustomEvent2() {
-    return this;
-  },
-  addEventListener() {
-  },
-  removeEventListener() {
-  },
-  getComputedStyle() {
-    return {
-      getPropertyValue() {
-        return "";
-      }
-    };
-  },
-  Image() {
-  },
-  Date() {
-  },
-  screen: {},
-  setTimeout() {
-  },
-  clearTimeout() {
-  },
-  matchMedia() {
-    return {};
-  },
-  requestAnimationFrame(callback) {
-    if (typeof setTimeout === "undefined") {
-      callback();
-      return null;
-    }
-    return setTimeout(callback, 0);
-  },
-  cancelAnimationFrame(id) {
-    if (typeof setTimeout === "undefined") {
-      return;
-    }
-    clearTimeout(id);
-  }
-};
-function getWindow() {
-  const win = typeof window !== "undefined" ? window : {};
-  extend$2(win, ssrWindow);
-  return win;
-}
-function classesToTokens(classes2) {
-  if (classes2 === void 0) {
-    classes2 = "";
-  }
-  return classes2.trim().split(" ").filter((c2) => !!c2.trim());
-}
-function deleteProps(obj) {
-  const object = obj;
-  Object.keys(object).forEach((key) => {
-    try {
-      object[key] = null;
-    } catch (e2) {
-    }
-    try {
-      delete object[key];
-    } catch (e2) {
-    }
-  });
-}
-function nextTick(callback, delay) {
-  if (delay === void 0) {
-    delay = 0;
-  }
-  return setTimeout(callback, delay);
-}
-function now() {
-  return Date.now();
-}
-function getComputedStyle$1(el) {
-  const window2 = getWindow();
-  let style;
-  if (window2.getComputedStyle) {
-    style = window2.getComputedStyle(el, null);
-  }
-  if (!style && el.currentStyle) {
-    style = el.currentStyle;
-  }
-  if (!style) {
-    style = el.style;
-  }
-  return style;
-}
-function getTranslate(el, axis) {
-  if (axis === void 0) {
-    axis = "x";
-  }
-  const window2 = getWindow();
-  let matrix;
-  let curTransform;
-  let transformMatrix;
-  const curStyle = getComputedStyle$1(el);
-  if (window2.WebKitCSSMatrix) {
-    curTransform = curStyle.transform || curStyle.webkitTransform;
-    if (curTransform.split(",").length > 6) {
-      curTransform = curTransform.split(", ").map((a2) => a2.replace(",", ".")).join(", ");
-    }
-    transformMatrix = new window2.WebKitCSSMatrix(curTransform === "none" ? "" : curTransform);
-  } else {
-    transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,");
-    matrix = transformMatrix.toString().split(",");
-  }
-  if (axis === "x") {
-    if (window2.WebKitCSSMatrix)
-      curTransform = transformMatrix.m41;
-    else if (matrix.length === 16)
-      curTransform = parseFloat(matrix[12]);
-    else
-      curTransform = parseFloat(matrix[4]);
-  }
-  if (axis === "y") {
-    if (window2.WebKitCSSMatrix)
-      curTransform = transformMatrix.m42;
-    else if (matrix.length === 16)
-      curTransform = parseFloat(matrix[13]);
-    else
-      curTransform = parseFloat(matrix[5]);
-  }
-  return curTransform || 0;
-}
-function isObject$1(o2) {
-  return typeof o2 === "object" && o2 !== null && o2.constructor && Object.prototype.toString.call(o2).slice(8, -1) === "Object";
-}
-function isNode(node) {
-  if (typeof window !== "undefined" && typeof window.HTMLElement !== "undefined") {
-    return node instanceof HTMLElement;
-  }
-  return node && (node.nodeType === 1 || node.nodeType === 11);
-}
-function extend$1() {
-  const to = Object(arguments.length <= 0 ? void 0 : arguments[0]);
-  const noExtend = ["__proto__", "constructor", "prototype"];
-  for (let i2 = 1; i2 < arguments.length; i2 += 1) {
-    const nextSource = i2 < 0 || arguments.length <= i2 ? void 0 : arguments[i2];
-    if (nextSource !== void 0 && nextSource !== null && !isNode(nextSource)) {
-      const keysArray = Object.keys(Object(nextSource)).filter((key) => noExtend.indexOf(key) < 0);
-      for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
-        const nextKey = keysArray[nextIndex];
-        const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
-        if (desc !== void 0 && desc.enumerable) {
-          if (isObject$1(to[nextKey]) && isObject$1(nextSource[nextKey])) {
-            if (nextSource[nextKey].__swiper__) {
-              to[nextKey] = nextSource[nextKey];
-            } else {
-              extend$1(to[nextKey], nextSource[nextKey]);
-            }
-          } else if (!isObject$1(to[nextKey]) && isObject$1(nextSource[nextKey])) {
-            to[nextKey] = {};
-            if (nextSource[nextKey].__swiper__) {
-              to[nextKey] = nextSource[nextKey];
-            } else {
-              extend$1(to[nextKey], nextSource[nextKey]);
-            }
-          } else {
-            to[nextKey] = nextSource[nextKey];
-          }
-        }
-      }
-    }
-  }
-  return to;
-}
-function setCSSProperty(el, varName, varValue) {
-  el.style.setProperty(varName, varValue);
-}
-function animateCSSModeScroll(_ref) {
-  let {
-    swiper,
-    targetPosition,
-    side
-  } = _ref;
-  const window2 = getWindow();
-  const startPosition = -swiper.translate;
-  let startTime = null;
-  let time;
-  const duration = swiper.params.speed;
-  swiper.wrapperEl.style.scrollSnapType = "none";
-  window2.cancelAnimationFrame(swiper.cssModeFrameID);
-  const dir = targetPosition > startPosition ? "next" : "prev";
-  const isOutOfBound = (current, target) => {
-    return dir === "next" && current >= target || dir === "prev" && current <= target;
-  };
-  const animate = () => {
-    time = (/* @__PURE__ */ new Date()).getTime();
-    if (startTime === null) {
-      startTime = time;
-    }
-    const progress = Math.max(Math.min((time - startTime) / duration, 1), 0);
-    const easeProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
-    let currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
-    if (isOutOfBound(currentPosition, targetPosition)) {
-      currentPosition = targetPosition;
-    }
-    swiper.wrapperEl.scrollTo({
-      [side]: currentPosition
-    });
-    if (isOutOfBound(currentPosition, targetPosition)) {
-      swiper.wrapperEl.style.overflow = "hidden";
-      swiper.wrapperEl.style.scrollSnapType = "";
-      setTimeout(() => {
-        swiper.wrapperEl.style.overflow = "";
-        swiper.wrapperEl.scrollTo({
-          [side]: currentPosition
-        });
-      });
-      window2.cancelAnimationFrame(swiper.cssModeFrameID);
-      return;
-    }
-    swiper.cssModeFrameID = window2.requestAnimationFrame(animate);
-  };
-  animate();
-}
-function elementChildren(element, selector) {
-  if (selector === void 0) {
-    selector = "";
-  }
-  return [...element.children].filter((el) => el.matches(selector));
-}
-function showWarning(text) {
-  try {
-    console.warn(text);
-    return;
-  } catch (err) {
-  }
-}
-function createElement(tag, classes2) {
-  if (classes2 === void 0) {
-    classes2 = [];
-  }
-  const el = document.createElement(tag);
-  el.classList.add(...Array.isArray(classes2) ? classes2 : classesToTokens(classes2));
-  return el;
-}
-function elementPrevAll(el, selector) {
-  const prevEls = [];
-  while (el.previousElementSibling) {
-    const prev = el.previousElementSibling;
-    if (selector) {
-      if (prev.matches(selector))
-        prevEls.push(prev);
-    } else
-      prevEls.push(prev);
-    el = prev;
-  }
-  return prevEls;
-}
-function elementNextAll(el, selector) {
-  const nextEls = [];
-  while (el.nextElementSibling) {
-    const next = el.nextElementSibling;
-    if (selector) {
-      if (next.matches(selector))
-        nextEls.push(next);
-    } else
-      nextEls.push(next);
-    el = next;
-  }
-  return nextEls;
-}
-function elementStyle(el, prop) {
-  const window2 = getWindow();
-  return window2.getComputedStyle(el, null).getPropertyValue(prop);
-}
-function elementIndex(el) {
-  let child = el;
-  let i2;
-  if (child) {
-    i2 = 0;
-    while ((child = child.previousSibling) !== null) {
-      if (child.nodeType === 1)
-        i2 += 1;
-    }
-    return i2;
-  }
-  return void 0;
-}
-function elementParents(el, selector) {
-  const parents = [];
-  let parent = el.parentElement;
-  while (parent) {
-    if (selector) {
-      if (parent.matches(selector))
-        parents.push(parent);
-    } else {
-      parents.push(parent);
-    }
-    parent = parent.parentElement;
-  }
-  return parents;
-}
-function elementOuterSize(el, size2, includeMargins) {
-  const window2 = getWindow();
-  if (includeMargins) {
-    return el[size2 === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size2 === "width" ? "margin-right" : "margin-top")) + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size2 === "width" ? "margin-left" : "margin-bottom"));
-  }
-  return el.offsetWidth;
-}
-function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
-  if (swiper.params.createElements) {
-    Object.keys(checkProps).forEach((key) => {
-      if (!params[key] && params.auto === true) {
-        let element = elementChildren(swiper.el, `.${checkProps[key]}`)[0];
-        if (!element) {
-          element = createElement("div", checkProps[key]);
-          element.className = checkProps[key];
-          swiper.el.append(element);
-        }
-        params[key] = element;
-        originalParams[key] = element;
-      }
-    });
-  }
-  return params;
-}
-function classesToSelector(classes2) {
-  if (classes2 === void 0) {
-    classes2 = "";
-  }
-  return `.${classes2.trim().replace(/([\.:!+\/])/g, "\\$1").replace(/ /g, ".")}`;
-}
-function Pagination(_ref) {
-  let {
-    swiper,
-    extendParams,
-    on,
-    emit: emit2
-  } = _ref;
-  const pfx = "swiper-pagination";
-  extendParams({
-    pagination: {
-      el: null,
-      bulletElement: "span",
-      clickable: false,
-      hideOnClick: false,
-      renderBullet: null,
-      renderProgressbar: null,
-      renderFraction: null,
-      renderCustom: null,
-      progressbarOpposite: false,
-      type: "bullets",
-      // 'bullets' or 'progressbar' or 'fraction' or 'custom'
-      dynamicBullets: false,
-      dynamicMainBullets: 1,
-      formatFractionCurrent: (number) => number,
-      formatFractionTotal: (number) => number,
-      bulletClass: `${pfx}-bullet`,
-      bulletActiveClass: `${pfx}-bullet-active`,
-      modifierClass: `${pfx}-`,
-      currentClass: `${pfx}-current`,
-      totalClass: `${pfx}-total`,
-      hiddenClass: `${pfx}-hidden`,
-      progressbarFillClass: `${pfx}-progressbar-fill`,
-      progressbarOppositeClass: `${pfx}-progressbar-opposite`,
-      clickableClass: `${pfx}-clickable`,
-      lockClass: `${pfx}-lock`,
-      horizontalClass: `${pfx}-horizontal`,
-      verticalClass: `${pfx}-vertical`,
-      paginationDisabledClass: `${pfx}-disabled`
-    }
-  });
-  swiper.pagination = {
-    el: null,
-    bullets: []
-  };
-  let bulletSize;
-  let dynamicBulletIndex = 0;
-  const makeElementsArray = (el) => (Array.isArray(el) ? el : [el]).filter((e2) => !!e2);
-  function isPaginationDisabled() {
-    return !swiper.params.pagination.el || !swiper.pagination.el || Array.isArray(swiper.pagination.el) && swiper.pagination.el.length === 0;
-  }
-  function setSideBullets(bulletEl, position) {
-    const {
-      bulletActiveClass
-    } = swiper.params.pagination;
-    if (!bulletEl)
-      return;
-    bulletEl = bulletEl[`${position === "prev" ? "previous" : "next"}ElementSibling`];
-    if (bulletEl) {
-      bulletEl.classList.add(`${bulletActiveClass}-${position}`);
-      bulletEl = bulletEl[`${position === "prev" ? "previous" : "next"}ElementSibling`];
-      if (bulletEl) {
-        bulletEl.classList.add(`${bulletActiveClass}-${position}-${position}`);
-      }
-    }
-  }
-  function onBulletClick(e2) {
-    const bulletEl = e2.target.closest(classesToSelector(swiper.params.pagination.bulletClass));
-    if (!bulletEl) {
-      return;
-    }
-    e2.preventDefault();
-    const index2 = elementIndex(bulletEl) * swiper.params.slidesPerGroup;
-    if (swiper.params.loop) {
-      if (swiper.realIndex === index2)
-        return;
-      swiper.slideToLoop(index2);
-    } else {
-      swiper.slideTo(index2);
-    }
-  }
-  function update2() {
-    const rtl = swiper.rtl;
-    const params = swiper.params.pagination;
-    if (isPaginationDisabled())
-      return;
-    let el = swiper.pagination.el;
-    el = makeElementsArray(el);
-    let current;
-    let previousIndex;
-    const slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.slides.length;
-    const total = swiper.params.loop ? Math.ceil(slidesLength / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
-    if (swiper.params.loop) {
-      previousIndex = swiper.previousRealIndex || 0;
-      current = swiper.params.slidesPerGroup > 1 ? Math.floor(swiper.realIndex / swiper.params.slidesPerGroup) : swiper.realIndex;
-    } else if (typeof swiper.snapIndex !== "undefined") {
-      current = swiper.snapIndex;
-      previousIndex = swiper.previousSnapIndex;
-    } else {
-      previousIndex = swiper.previousIndex || 0;
-      current = swiper.activeIndex || 0;
-    }
-    if (params.type === "bullets" && swiper.pagination.bullets && swiper.pagination.bullets.length > 0) {
-      const bullets = swiper.pagination.bullets;
-      let firstIndex;
-      let lastIndex;
-      let midIndex;
-      if (params.dynamicBullets) {
-        bulletSize = elementOuterSize(bullets[0], swiper.isHorizontal() ? "width" : "height", true);
-        el.forEach((subEl) => {
-          subEl.style[swiper.isHorizontal() ? "width" : "height"] = `${bulletSize * (params.dynamicMainBullets + 4)}px`;
-        });
-        if (params.dynamicMainBullets > 1 && previousIndex !== void 0) {
-          dynamicBulletIndex += current - (previousIndex || 0);
-          if (dynamicBulletIndex > params.dynamicMainBullets - 1) {
-            dynamicBulletIndex = params.dynamicMainBullets - 1;
-          } else if (dynamicBulletIndex < 0) {
-            dynamicBulletIndex = 0;
-          }
-        }
-        firstIndex = Math.max(current - dynamicBulletIndex, 0);
-        lastIndex = firstIndex + (Math.min(bullets.length, params.dynamicMainBullets) - 1);
-        midIndex = (lastIndex + firstIndex) / 2;
-      }
-      bullets.forEach((bulletEl) => {
-        const classesToRemove = [...["", "-next", "-next-next", "-prev", "-prev-prev", "-main"].map((suffix) => `${params.bulletActiveClass}${suffix}`)].map((s2) => typeof s2 === "string" && s2.includes(" ") ? s2.split(" ") : s2).flat();
-        bulletEl.classList.remove(...classesToRemove);
-      });
-      if (el.length > 1) {
-        bullets.forEach((bullet) => {
-          const bulletIndex = elementIndex(bullet);
-          if (bulletIndex === current) {
-            bullet.classList.add(...params.bulletActiveClass.split(" "));
-          } else if (swiper.isElement) {
-            bullet.setAttribute("part", "bullet");
-          }
-          if (params.dynamicBullets) {
-            if (bulletIndex >= firstIndex && bulletIndex <= lastIndex) {
-              bullet.classList.add(...`${params.bulletActiveClass}-main`.split(" "));
-            }
-            if (bulletIndex === firstIndex) {
-              setSideBullets(bullet, "prev");
-            }
-            if (bulletIndex === lastIndex) {
-              setSideBullets(bullet, "next");
-            }
-          }
-        });
-      } else {
-        const bullet = bullets[current];
-        if (bullet) {
-          bullet.classList.add(...params.bulletActiveClass.split(" "));
-        }
-        if (swiper.isElement) {
-          bullets.forEach((bulletEl, bulletIndex) => {
-            bulletEl.setAttribute("part", bulletIndex === current ? "bullet-active" : "bullet");
-          });
-        }
-        if (params.dynamicBullets) {
-          const firstDisplayedBullet = bullets[firstIndex];
-          const lastDisplayedBullet = bullets[lastIndex];
-          for (let i2 = firstIndex; i2 <= lastIndex; i2 += 1) {
-            if (bullets[i2]) {
-              bullets[i2].classList.add(...`${params.bulletActiveClass}-main`.split(" "));
-            }
-          }
-          setSideBullets(firstDisplayedBullet, "prev");
-          setSideBullets(lastDisplayedBullet, "next");
-        }
-      }
-      if (params.dynamicBullets) {
-        const dynamicBulletsLength = Math.min(bullets.length, params.dynamicMainBullets + 4);
-        const bulletsOffset = (bulletSize * dynamicBulletsLength - bulletSize) / 2 - midIndex * bulletSize;
-        const offsetProp = rtl ? "right" : "left";
-        bullets.forEach((bullet) => {
-          bullet.style[swiper.isHorizontal() ? offsetProp : "top"] = `${bulletsOffset}px`;
-        });
-      }
-    }
-    el.forEach((subEl, subElIndex) => {
-      if (params.type === "fraction") {
-        subEl.querySelectorAll(classesToSelector(params.currentClass)).forEach((fractionEl) => {
-          fractionEl.textContent = params.formatFractionCurrent(current + 1);
-        });
-        subEl.querySelectorAll(classesToSelector(params.totalClass)).forEach((totalEl) => {
-          totalEl.textContent = params.formatFractionTotal(total);
-        });
-      }
-      if (params.type === "progressbar") {
-        let progressbarDirection;
-        if (params.progressbarOpposite) {
-          progressbarDirection = swiper.isHorizontal() ? "vertical" : "horizontal";
-        } else {
-          progressbarDirection = swiper.isHorizontal() ? "horizontal" : "vertical";
-        }
-        const scale = (current + 1) / total;
-        let scaleX = 1;
-        let scaleY = 1;
-        if (progressbarDirection === "horizontal") {
-          scaleX = scale;
-        } else {
-          scaleY = scale;
-        }
-        subEl.querySelectorAll(classesToSelector(params.progressbarFillClass)).forEach((progressEl) => {
-          progressEl.style.transform = `translate3d(0,0,0) scaleX(${scaleX}) scaleY(${scaleY})`;
-          progressEl.style.transitionDuration = `${swiper.params.speed}ms`;
-        });
-      }
-      if (params.type === "custom" && params.renderCustom) {
-        subEl.innerHTML = params.renderCustom(swiper, current + 1, total);
-        if (subElIndex === 0)
-          emit2("paginationRender", subEl);
-      } else {
-        if (subElIndex === 0)
-          emit2("paginationRender", subEl);
-        emit2("paginationUpdate", subEl);
-      }
-      if (swiper.params.watchOverflow && swiper.enabled) {
-        subEl.classList[swiper.isLocked ? "add" : "remove"](params.lockClass);
-      }
-    });
-  }
-  function render2() {
-    const params = swiper.params.pagination;
-    if (isPaginationDisabled())
-      return;
-    const slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.grid && swiper.params.grid.rows > 1 ? swiper.slides.length / Math.ceil(swiper.params.grid.rows) : swiper.slides.length;
-    let el = swiper.pagination.el;
-    el = makeElementsArray(el);
-    let paginationHTML = "";
-    if (params.type === "bullets") {
-      let numberOfBullets = swiper.params.loop ? Math.ceil(slidesLength / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
-      if (swiper.params.freeMode && swiper.params.freeMode.enabled && numberOfBullets > slidesLength) {
-        numberOfBullets = slidesLength;
-      }
-      for (let i2 = 0; i2 < numberOfBullets; i2 += 1) {
-        if (params.renderBullet) {
-          paginationHTML += params.renderBullet.call(swiper, i2, params.bulletClass);
-        } else {
-          paginationHTML += `<${params.bulletElement} ${swiper.isElement ? 'part="bullet"' : ""} class="${params.bulletClass}"></${params.bulletElement}>`;
-        }
-      }
-    }
-    if (params.type === "fraction") {
-      if (params.renderFraction) {
-        paginationHTML = params.renderFraction.call(swiper, params.currentClass, params.totalClass);
-      } else {
-        paginationHTML = `<span class="${params.currentClass}"></span> / <span class="${params.totalClass}"></span>`;
-      }
-    }
-    if (params.type === "progressbar") {
-      if (params.renderProgressbar) {
-        paginationHTML = params.renderProgressbar.call(swiper, params.progressbarFillClass);
-      } else {
-        paginationHTML = `<span class="${params.progressbarFillClass}"></span>`;
-      }
-    }
-    swiper.pagination.bullets = [];
-    el.forEach((subEl) => {
-      if (params.type !== "custom") {
-        subEl.innerHTML = paginationHTML || "";
-      }
-      if (params.type === "bullets") {
-        swiper.pagination.bullets.push(...subEl.querySelectorAll(classesToSelector(params.bulletClass)));
-      }
-    });
-    if (params.type !== "custom") {
-      emit2("paginationRender", el[0]);
-    }
-  }
-  function init() {
-    swiper.params.pagination = createElementIfNotDefined(swiper, swiper.originalParams.pagination, swiper.params.pagination, {
-      el: "swiper-pagination"
-    });
-    const params = swiper.params.pagination;
-    if (!params.el)
-      return;
-    let el;
-    if (typeof params.el === "string" && swiper.isElement) {
-      el = swiper.el.querySelector(params.el);
-    }
-    if (!el && typeof params.el === "string") {
-      el = [...document.querySelectorAll(params.el)];
-    }
-    if (!el) {
-      el = params.el;
-    }
-    if (!el || el.length === 0)
-      return;
-    if (swiper.params.uniqueNavElements && typeof params.el === "string" && Array.isArray(el) && el.length > 1) {
-      el = [...swiper.el.querySelectorAll(params.el)];
-      if (el.length > 1) {
-        el = el.filter((subEl) => {
-          if (elementParents(subEl, ".swiper")[0] !== swiper.el)
-            return false;
-          return true;
-        })[0];
-      }
-    }
-    if (Array.isArray(el) && el.length === 1)
-      el = el[0];
-    Object.assign(swiper.pagination, {
-      el
-    });
-    el = makeElementsArray(el);
-    el.forEach((subEl) => {
-      if (params.type === "bullets" && params.clickable) {
-        subEl.classList.add(...(params.clickableClass || "").split(" "));
-      }
-      subEl.classList.add(params.modifierClass + params.type);
-      subEl.classList.add(swiper.isHorizontal() ? params.horizontalClass : params.verticalClass);
-      if (params.type === "bullets" && params.dynamicBullets) {
-        subEl.classList.add(`${params.modifierClass}${params.type}-dynamic`);
-        dynamicBulletIndex = 0;
-        if (params.dynamicMainBullets < 1) {
-          params.dynamicMainBullets = 1;
-        }
-      }
-      if (params.type === "progressbar" && params.progressbarOpposite) {
-        subEl.classList.add(params.progressbarOppositeClass);
-      }
-      if (params.clickable) {
-        subEl.addEventListener("click", onBulletClick);
-      }
-      if (!swiper.enabled) {
-        subEl.classList.add(params.lockClass);
-      }
-    });
-  }
-  function destroy() {
-    const params = swiper.params.pagination;
-    if (isPaginationDisabled())
-      return;
-    let el = swiper.pagination.el;
-    if (el) {
-      el = makeElementsArray(el);
-      el.forEach((subEl) => {
-        subEl.classList.remove(params.hiddenClass);
-        subEl.classList.remove(params.modifierClass + params.type);
-        subEl.classList.remove(swiper.isHorizontal() ? params.horizontalClass : params.verticalClass);
-        if (params.clickable) {
-          subEl.classList.remove(...(params.clickableClass || "").split(" "));
-          subEl.removeEventListener("click", onBulletClick);
-        }
-      });
-    }
-    if (swiper.pagination.bullets)
-      swiper.pagination.bullets.forEach((subEl) => subEl.classList.remove(...params.bulletActiveClass.split(" ")));
-  }
-  on("changeDirection", () => {
-    if (!swiper.pagination || !swiper.pagination.el)
-      return;
-    const params = swiper.params.pagination;
-    let {
-      el
-    } = swiper.pagination;
-    el = makeElementsArray(el);
-    el.forEach((subEl) => {
-      subEl.classList.remove(params.horizontalClass, params.verticalClass);
-      subEl.classList.add(swiper.isHorizontal() ? params.horizontalClass : params.verticalClass);
-    });
-  });
-  on("init", () => {
-    if (swiper.params.pagination.enabled === false) {
-      disable();
-    } else {
-      init();
-      render2();
-      update2();
-    }
-  });
-  on("activeIndexChange", () => {
-    if (typeof swiper.snapIndex === "undefined") {
-      update2();
-    }
-  });
-  on("snapIndexChange", () => {
-    update2();
-  });
-  on("snapGridLengthChange", () => {
-    render2();
-    update2();
-  });
-  on("destroy", () => {
-    destroy();
-  });
-  on("enable disable", () => {
-    let {
-      el
-    } = swiper.pagination;
-    if (el) {
-      el = makeElementsArray(el);
-      el.forEach((subEl) => subEl.classList[swiper.enabled ? "remove" : "add"](swiper.params.pagination.lockClass));
-    }
-  });
-  on("lock unlock", () => {
-    update2();
-  });
-  on("click", (_s, e2) => {
-    const targetEl = e2.target;
-    const el = makeElementsArray(swiper.pagination.el);
-    if (swiper.params.pagination.el && swiper.params.pagination.hideOnClick && el && el.length > 0 && !targetEl.classList.contains(swiper.params.pagination.bulletClass)) {
-      if (swiper.navigation && (swiper.navigation.nextEl && targetEl === swiper.navigation.nextEl || swiper.navigation.prevEl && targetEl === swiper.navigation.prevEl))
-        return;
-      const isHidden = el[0].classList.contains(swiper.params.pagination.hiddenClass);
-      if (isHidden === true) {
-        emit2("paginationShow");
-      } else {
-        emit2("paginationHide");
-      }
-      el.forEach((subEl) => subEl.classList.toggle(swiper.params.pagination.hiddenClass));
-    }
-  });
-  const enable = () => {
-    swiper.el.classList.remove(swiper.params.pagination.paginationDisabledClass);
-    let {
-      el
-    } = swiper.pagination;
-    if (el) {
-      el = makeElementsArray(el);
-      el.forEach((subEl) => subEl.classList.remove(swiper.params.pagination.paginationDisabledClass));
-    }
-    init();
-    render2();
-    update2();
-  };
-  const disable = () => {
-    swiper.el.classList.add(swiper.params.pagination.paginationDisabledClass);
-    let {
-      el
-    } = swiper.pagination;
-    if (el) {
-      el = makeElementsArray(el);
-      el.forEach((subEl) => subEl.classList.add(swiper.params.pagination.paginationDisabledClass));
-    }
-    destroy();
-  };
-  Object.assign(swiper.pagination, {
-    enable,
-    disable,
-    render: render2,
-    update: update2,
-    init,
-    destroy
-  });
-}
-function Autoplay(_ref) {
-  let {
-    swiper,
-    extendParams,
-    on,
-    emit: emit2,
-    params
-  } = _ref;
-  swiper.autoplay = {
-    running: false,
-    paused: false,
-    timeLeft: 0
-  };
-  extendParams({
-    autoplay: {
-      enabled: false,
-      delay: 3e3,
-      waitForTransition: true,
-      disableOnInteraction: false,
-      stopOnLastSlide: false,
-      reverseDirection: false,
-      pauseOnMouseEnter: false
-    }
-  });
-  let timeout;
-  let raf;
-  let autoplayDelayTotal = params && params.autoplay ? params.autoplay.delay : 3e3;
-  let autoplayDelayCurrent = params && params.autoplay ? params.autoplay.delay : 3e3;
-  let autoplayTimeLeft;
-  let autoplayStartTime = (/* @__PURE__ */ new Date()).getTime();
-  let wasPaused;
-  let isTouched;
-  let pausedByTouch;
-  let touchStartTimeout;
-  let slideChanged;
-  let pausedByInteraction;
-  let pausedByPointerEnter;
-  function onTransitionEnd(e2) {
-    if (!swiper || swiper.destroyed || !swiper.wrapperEl)
-      return;
-    if (e2.target !== swiper.wrapperEl)
-      return;
-    swiper.wrapperEl.removeEventListener("transitionend", onTransitionEnd);
-    if (pausedByPointerEnter) {
-      return;
-    }
-    resume();
-  }
-  const calcTimeLeft = () => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    if (swiper.autoplay.paused) {
-      wasPaused = true;
-    } else if (wasPaused) {
-      autoplayDelayCurrent = autoplayTimeLeft;
-      wasPaused = false;
-    }
-    const timeLeft = swiper.autoplay.paused ? autoplayTimeLeft : autoplayStartTime + autoplayDelayCurrent - (/* @__PURE__ */ new Date()).getTime();
-    swiper.autoplay.timeLeft = timeLeft;
-    emit2("autoplayTimeLeft", timeLeft, timeLeft / autoplayDelayTotal);
-    raf = requestAnimationFrame(() => {
-      calcTimeLeft();
-    });
-  };
-  const getSlideDelay = () => {
-    let activeSlideEl;
-    if (swiper.virtual && swiper.params.virtual.enabled) {
-      activeSlideEl = swiper.slides.filter((slideEl) => slideEl.classList.contains("swiper-slide-active"))[0];
-    } else {
-      activeSlideEl = swiper.slides[swiper.activeIndex];
-    }
-    if (!activeSlideEl)
-      return void 0;
-    const currentSlideDelay = parseInt(activeSlideEl.getAttribute("data-swiper-autoplay"), 10);
-    return currentSlideDelay;
-  };
-  const run = (delayForce) => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    cancelAnimationFrame(raf);
-    calcTimeLeft();
-    let delay = typeof delayForce === "undefined" ? swiper.params.autoplay.delay : delayForce;
-    autoplayDelayTotal = swiper.params.autoplay.delay;
-    autoplayDelayCurrent = swiper.params.autoplay.delay;
-    const currentSlideDelay = getSlideDelay();
-    if (!Number.isNaN(currentSlideDelay) && currentSlideDelay > 0 && typeof delayForce === "undefined") {
-      delay = currentSlideDelay;
-      autoplayDelayTotal = currentSlideDelay;
-      autoplayDelayCurrent = currentSlideDelay;
-    }
-    autoplayTimeLeft = delay;
-    const speed = swiper.params.speed;
-    const proceed = () => {
-      if (!swiper || swiper.destroyed)
-        return;
-      if (swiper.params.autoplay.reverseDirection) {
-        if (!swiper.isBeginning || swiper.params.loop || swiper.params.rewind) {
-          swiper.slidePrev(speed, true, true);
-          emit2("autoplay");
-        } else if (!swiper.params.autoplay.stopOnLastSlide) {
-          swiper.slideTo(swiper.slides.length - 1, speed, true, true);
-          emit2("autoplay");
-        }
-      } else {
-        if (!swiper.isEnd || swiper.params.loop || swiper.params.rewind) {
-          swiper.slideNext(speed, true, true);
-          emit2("autoplay");
-        } else if (!swiper.params.autoplay.stopOnLastSlide) {
-          swiper.slideTo(0, speed, true, true);
-          emit2("autoplay");
-        }
-      }
-      if (swiper.params.cssMode) {
-        autoplayStartTime = (/* @__PURE__ */ new Date()).getTime();
-        requestAnimationFrame(() => {
-          run();
-        });
-      }
-    };
-    if (delay > 0) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        proceed();
-      }, delay);
-    } else {
-      requestAnimationFrame(() => {
-        proceed();
-      });
-    }
-    return delay;
-  };
-  const start = () => {
-    autoplayStartTime = (/* @__PURE__ */ new Date()).getTime();
-    swiper.autoplay.running = true;
-    run();
-    emit2("autoplayStart");
-  };
-  const stop2 = () => {
-    swiper.autoplay.running = false;
-    clearTimeout(timeout);
-    cancelAnimationFrame(raf);
-    emit2("autoplayStop");
-  };
-  const pause = (internal, reset) => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    clearTimeout(timeout);
-    if (!internal) {
-      pausedByInteraction = true;
-    }
-    const proceed = () => {
-      emit2("autoplayPause");
-      if (swiper.params.autoplay.waitForTransition) {
-        swiper.wrapperEl.addEventListener("transitionend", onTransitionEnd);
-      } else {
-        resume();
-      }
-    };
-    swiper.autoplay.paused = true;
-    if (reset) {
-      if (slideChanged) {
-        autoplayTimeLeft = swiper.params.autoplay.delay;
-      }
-      slideChanged = false;
-      proceed();
-      return;
-    }
-    const delay = autoplayTimeLeft || swiper.params.autoplay.delay;
-    autoplayTimeLeft = delay - ((/* @__PURE__ */ new Date()).getTime() - autoplayStartTime);
-    if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop)
-      return;
-    if (autoplayTimeLeft < 0)
-      autoplayTimeLeft = 0;
-    proceed();
-  };
-  const resume = () => {
-    if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop || swiper.destroyed || !swiper.autoplay.running)
-      return;
-    autoplayStartTime = (/* @__PURE__ */ new Date()).getTime();
-    if (pausedByInteraction) {
-      pausedByInteraction = false;
-      run(autoplayTimeLeft);
-    } else {
-      run();
-    }
-    swiper.autoplay.paused = false;
-    emit2("autoplayResume");
-  };
-  const onVisibilityChange = () => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    const document2 = getDocument();
-    if (document2.visibilityState === "hidden") {
-      pausedByInteraction = true;
-      pause(true);
-    }
-    if (document2.visibilityState === "visible") {
-      resume();
-    }
-  };
-  const onPointerEnter = (e2) => {
-    if (e2.pointerType !== "mouse")
-      return;
-    pausedByInteraction = true;
-    pausedByPointerEnter = true;
-    if (swiper.animating || swiper.autoplay.paused)
-      return;
-    pause(true);
-  };
-  const onPointerLeave = (e2) => {
-    if (e2.pointerType !== "mouse")
-      return;
-    pausedByPointerEnter = false;
-    if (swiper.autoplay.paused) {
-      resume();
-    }
-  };
-  const attachMouseEvents = () => {
-    if (swiper.params.autoplay.pauseOnMouseEnter) {
-      swiper.el.addEventListener("pointerenter", onPointerEnter);
-      swiper.el.addEventListener("pointerleave", onPointerLeave);
-    }
-  };
-  const detachMouseEvents = () => {
-    swiper.el.removeEventListener("pointerenter", onPointerEnter);
-    swiper.el.removeEventListener("pointerleave", onPointerLeave);
-  };
-  const attachDocumentEvents = () => {
-    const document2 = getDocument();
-    document2.addEventListener("visibilitychange", onVisibilityChange);
-  };
-  const detachDocumentEvents = () => {
-    const document2 = getDocument();
-    document2.removeEventListener("visibilitychange", onVisibilityChange);
-  };
-  on("init", () => {
-    if (swiper.params.autoplay.enabled) {
-      attachMouseEvents();
-      attachDocumentEvents();
-      start();
-    }
-  });
-  on("destroy", () => {
-    detachMouseEvents();
-    detachDocumentEvents();
-    if (swiper.autoplay.running) {
-      stop2();
-    }
-  });
-  on("_freeModeStaticRelease", () => {
-    if (pausedByTouch || pausedByInteraction) {
-      resume();
-    }
-  });
-  on("_freeModeNoMomentumRelease", () => {
-    if (!swiper.params.autoplay.disableOnInteraction) {
-      pause(true, true);
-    } else {
-      stop2();
-    }
-  });
-  on("beforeTransitionStart", (_s, speed, internal) => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    if (internal || !swiper.params.autoplay.disableOnInteraction) {
-      pause(true, true);
-    } else {
-      stop2();
-    }
-  });
-  on("sliderFirstMove", () => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    if (swiper.params.autoplay.disableOnInteraction) {
-      stop2();
-      return;
-    }
-    isTouched = true;
-    pausedByTouch = false;
-    pausedByInteraction = false;
-    touchStartTimeout = setTimeout(() => {
-      pausedByInteraction = true;
-      pausedByTouch = true;
-      pause(true);
-    }, 200);
-  });
-  on("touchEnd", () => {
-    if (swiper.destroyed || !swiper.autoplay.running || !isTouched)
-      return;
-    clearTimeout(touchStartTimeout);
-    clearTimeout(timeout);
-    if (swiper.params.autoplay.disableOnInteraction) {
-      pausedByTouch = false;
-      isTouched = false;
-      return;
-    }
-    if (pausedByTouch && swiper.params.cssMode)
-      resume();
-    pausedByTouch = false;
-    isTouched = false;
-  });
-  on("slideChange", () => {
-    if (swiper.destroyed || !swiper.autoplay.running)
-      return;
-    slideChanged = true;
-  });
-  Object.assign(swiper.autoplay, {
-    start,
-    stop: stop2,
-    pause,
-    resume
-  });
-}
-let support;
-function calcSupport() {
-  const window2 = getWindow();
-  const document2 = getDocument();
-  return {
-    smoothScroll: document2.documentElement && document2.documentElement.style && "scrollBehavior" in document2.documentElement.style,
-    touch: !!("ontouchstart" in window2 || window2.DocumentTouch && document2 instanceof window2.DocumentTouch)
-  };
-}
-function getSupport() {
-  if (!support) {
-    support = calcSupport();
-  }
-  return support;
-}
-let deviceCached;
-function calcDevice(_temp) {
-  let {
-    userAgent
-  } = _temp === void 0 ? {} : _temp;
-  const support2 = getSupport();
-  const window2 = getWindow();
-  const platform = window2.navigator.platform;
-  const ua = userAgent || window2.navigator.userAgent;
-  const device = {
-    ios: false,
-    android: false
-  };
-  const screenWidth = window2.screen.width;
-  const screenHeight = window2.screen.height;
-  const android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
-  let ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
-  const ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
-  const iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/);
-  const windows = platform === "Win32";
-  let macos = platform === "MacIntel";
-  const iPadScreens = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
-  if (!ipad && macos && support2.touch && iPadScreens.indexOf(`${screenWidth}x${screenHeight}`) >= 0) {
-    ipad = ua.match(/(Version)\/([\d.]+)/);
-    if (!ipad)
-      ipad = [0, 1, "13_0_0"];
-    macos = false;
-  }
-  if (android && !windows) {
-    device.os = "android";
-    device.android = true;
-  }
-  if (ipad || iphone || ipod) {
-    device.os = "ios";
-    device.ios = true;
-  }
-  return device;
-}
-function getDevice(overrides) {
-  if (overrides === void 0) {
-    overrides = {};
-  }
-  if (!deviceCached) {
-    deviceCached = calcDevice(overrides);
-  }
-  return deviceCached;
-}
-let browser;
-function calcBrowser() {
-  const window2 = getWindow();
-  let needPerspectiveFix = false;
-  function isSafari() {
-    const ua = window2.navigator.userAgent.toLowerCase();
-    return ua.indexOf("safari") >= 0 && ua.indexOf("chrome") < 0 && ua.indexOf("android") < 0;
-  }
-  if (isSafari()) {
-    const ua = String(window2.navigator.userAgent);
-    if (ua.includes("Version/")) {
-      const [major, minor] = ua.split("Version/")[1].split(" ")[0].split(".").map((num) => Number(num));
-      needPerspectiveFix = major < 16 || major === 16 && minor < 2;
-    }
-  }
-  return {
-    isSafari: needPerspectiveFix || isSafari(),
-    needPerspectiveFix,
-    isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window2.navigator.userAgent)
-  };
-}
-function getBrowser() {
-  if (!browser) {
-    browser = calcBrowser();
-  }
-  return browser;
-}
-function Resize(_ref) {
-  let {
-    swiper,
-    on,
-    emit: emit2
-  } = _ref;
-  const window2 = getWindow();
-  let observer = null;
-  let animationFrame = null;
-  const resizeHandler = () => {
-    if (!swiper || swiper.destroyed || !swiper.initialized)
-      return;
-    emit2("beforeResize");
-    emit2("resize");
-  };
-  const createObserver = () => {
-    if (!swiper || swiper.destroyed || !swiper.initialized)
-      return;
-    observer = new ResizeObserver((entries) => {
-      animationFrame = window2.requestAnimationFrame(() => {
-        const {
-          width: width2,
-          height
-        } = swiper;
-        let newWidth = width2;
-        let newHeight = height;
-        entries.forEach((_ref2) => {
-          let {
-            contentBoxSize,
-            contentRect,
-            target
-          } = _ref2;
-          if (target && target !== swiper.el)
-            return;
-          newWidth = contentRect ? contentRect.width : (contentBoxSize[0] || contentBoxSize).inlineSize;
-          newHeight = contentRect ? contentRect.height : (contentBoxSize[0] || contentBoxSize).blockSize;
-        });
-        if (newWidth !== width2 || newHeight !== height) {
-          resizeHandler();
-        }
-      });
-    });
-    observer.observe(swiper.el);
-  };
-  const removeObserver = () => {
-    if (animationFrame) {
-      window2.cancelAnimationFrame(animationFrame);
-    }
-    if (observer && observer.unobserve && swiper.el) {
-      observer.unobserve(swiper.el);
-      observer = null;
-    }
-  };
-  const orientationChangeHandler = () => {
-    if (!swiper || swiper.destroyed || !swiper.initialized)
-      return;
-    emit2("orientationchange");
-  };
-  on("init", () => {
-    if (swiper.params.resizeObserver && typeof window2.ResizeObserver !== "undefined") {
-      createObserver();
-      return;
-    }
-    window2.addEventListener("resize", resizeHandler);
-    window2.addEventListener("orientationchange", orientationChangeHandler);
-  });
-  on("destroy", () => {
-    removeObserver();
-    window2.removeEventListener("resize", resizeHandler);
-    window2.removeEventListener("orientationchange", orientationChangeHandler);
-  });
-}
-function Observer(_ref) {
-  let {
-    swiper,
-    extendParams,
-    on,
-    emit: emit2
-  } = _ref;
-  const observers = [];
-  const window2 = getWindow();
-  const attach = function(target, options) {
-    if (options === void 0) {
-      options = {};
-    }
-    const ObserverFunc = window2.MutationObserver || window2.WebkitMutationObserver;
-    const observer = new ObserverFunc((mutations) => {
-      if (swiper.__preventObserver__)
-        return;
-      if (mutations.length === 1) {
-        emit2("observerUpdate", mutations[0]);
-        return;
-      }
-      const observerUpdate = function observerUpdate2() {
-        emit2("observerUpdate", mutations[0]);
-      };
-      if (window2.requestAnimationFrame) {
-        window2.requestAnimationFrame(observerUpdate);
-      } else {
-        window2.setTimeout(observerUpdate, 0);
-      }
-    });
-    observer.observe(target, {
-      attributes: typeof options.attributes === "undefined" ? true : options.attributes,
-      childList: typeof options.childList === "undefined" ? true : options.childList,
-      characterData: typeof options.characterData === "undefined" ? true : options.characterData
-    });
-    observers.push(observer);
-  };
-  const init = () => {
-    if (!swiper.params.observer)
-      return;
-    if (swiper.params.observeParents) {
-      const containerParents = elementParents(swiper.hostEl);
-      for (let i2 = 0; i2 < containerParents.length; i2 += 1) {
-        attach(containerParents[i2]);
-      }
-    }
-    attach(swiper.hostEl, {
-      childList: swiper.params.observeSlideChildren
-    });
-    attach(swiper.wrapperEl, {
-      attributes: false
-    });
-  };
-  const destroy = () => {
-    observers.forEach((observer) => {
-      observer.disconnect();
-    });
-    observers.splice(0, observers.length);
-  };
-  extendParams({
-    observer: false,
-    observeParents: false,
-    observeSlideChildren: false
-  });
-  on("init", init);
-  on("destroy", destroy);
-}
-var eventsEmitter = {
-  on(events2, handler3, priority) {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (typeof handler3 !== "function")
-      return self2;
-    const method = priority ? "unshift" : "push";
-    events2.split(" ").forEach((event) => {
-      if (!self2.eventsListeners[event])
-        self2.eventsListeners[event] = [];
-      self2.eventsListeners[event][method](handler3);
-    });
-    return self2;
-  },
-  once(events2, handler3, priority) {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (typeof handler3 !== "function")
-      return self2;
-    function onceHandler() {
-      self2.off(events2, onceHandler);
-      if (onceHandler.__emitterProxy) {
-        delete onceHandler.__emitterProxy;
-      }
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-      handler3.apply(self2, args);
-    }
-    onceHandler.__emitterProxy = handler3;
-    return self2.on(events2, onceHandler, priority);
-  },
-  onAny(handler3, priority) {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (typeof handler3 !== "function")
-      return self2;
-    const method = priority ? "unshift" : "push";
-    if (self2.eventsAnyListeners.indexOf(handler3) < 0) {
-      self2.eventsAnyListeners[method](handler3);
-    }
-    return self2;
-  },
-  offAny(handler3) {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (!self2.eventsAnyListeners)
-      return self2;
-    const index2 = self2.eventsAnyListeners.indexOf(handler3);
-    if (index2 >= 0) {
-      self2.eventsAnyListeners.splice(index2, 1);
-    }
-    return self2;
-  },
-  off(events2, handler3) {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (!self2.eventsListeners)
-      return self2;
-    events2.split(" ").forEach((event) => {
-      if (typeof handler3 === "undefined") {
-        self2.eventsListeners[event] = [];
-      } else if (self2.eventsListeners[event]) {
-        self2.eventsListeners[event].forEach((eventHandler, index2) => {
-          if (eventHandler === handler3 || eventHandler.__emitterProxy && eventHandler.__emitterProxy === handler3) {
-            self2.eventsListeners[event].splice(index2, 1);
-          }
-        });
-      }
-    });
-    return self2;
-  },
-  emit() {
-    const self2 = this;
-    if (!self2.eventsListeners || self2.destroyed)
-      return self2;
-    if (!self2.eventsListeners)
-      return self2;
-    let events2;
-    let data3;
-    let context;
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-    if (typeof args[0] === "string" || Array.isArray(args[0])) {
-      events2 = args[0];
-      data3 = args.slice(1, args.length);
-      context = self2;
-    } else {
-      events2 = args[0].events;
-      data3 = args[0].data;
-      context = args[0].context || self2;
-    }
-    data3.unshift(context);
-    const eventsArray = Array.isArray(events2) ? events2 : events2.split(" ");
-    eventsArray.forEach((event) => {
-      if (self2.eventsAnyListeners && self2.eventsAnyListeners.length) {
-        self2.eventsAnyListeners.forEach((eventHandler) => {
-          eventHandler.apply(context, [event, ...data3]);
-        });
-      }
-      if (self2.eventsListeners && self2.eventsListeners[event]) {
-        self2.eventsListeners[event].forEach((eventHandler) => {
-          eventHandler.apply(context, data3);
-        });
-      }
-    });
-    return self2;
-  }
-};
-function updateSize() {
-  const swiper = this;
-  let width2;
-  let height;
-  const el = swiper.el;
-  if (typeof swiper.params.width !== "undefined" && swiper.params.width !== null) {
-    width2 = swiper.params.width;
-  } else {
-    width2 = el.clientWidth;
-  }
-  if (typeof swiper.params.height !== "undefined" && swiper.params.height !== null) {
-    height = swiper.params.height;
-  } else {
-    height = el.clientHeight;
-  }
-  if (width2 === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) {
-    return;
-  }
-  width2 = width2 - parseInt(elementStyle(el, "padding-left") || 0, 10) - parseInt(elementStyle(el, "padding-right") || 0, 10);
-  height = height - parseInt(elementStyle(el, "padding-top") || 0, 10) - parseInt(elementStyle(el, "padding-bottom") || 0, 10);
-  if (Number.isNaN(width2))
-    width2 = 0;
-  if (Number.isNaN(height))
-    height = 0;
-  Object.assign(swiper, {
-    width: width2,
-    height,
-    size: swiper.isHorizontal() ? width2 : height
-  });
-}
-function updateSlides() {
-  const swiper = this;
-  function getDirectionPropertyValue(node, label) {
-    return parseFloat(node.getPropertyValue(swiper.getDirectionLabel(label)) || 0);
-  }
-  const params = swiper.params;
-  const {
-    wrapperEl,
-    slidesEl,
-    size: swiperSize,
-    rtlTranslate: rtl,
-    wrongRTL
-  } = swiper;
-  const isVirtual = swiper.virtual && params.virtual.enabled;
-  const previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length;
-  const slides = elementChildren(slidesEl, `.${swiper.params.slideClass}, swiper-slide`);
-  const slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length;
-  let snapGrid = [];
-  const slidesGrid = [];
-  const slidesSizesGrid = [];
-  let offsetBefore = params.slidesOffsetBefore;
-  if (typeof offsetBefore === "function") {
-    offsetBefore = params.slidesOffsetBefore.call(swiper);
-  }
-  let offsetAfter = params.slidesOffsetAfter;
-  if (typeof offsetAfter === "function") {
-    offsetAfter = params.slidesOffsetAfter.call(swiper);
-  }
-  const previousSnapGridLength = swiper.snapGrid.length;
-  const previousSlidesGridLength = swiper.slidesGrid.length;
-  let spaceBetween = params.spaceBetween;
-  let slidePosition = -offsetBefore;
-  let prevSlideSize = 0;
-  let index2 = 0;
-  if (typeof swiperSize === "undefined") {
-    return;
-  }
-  if (typeof spaceBetween === "string" && spaceBetween.indexOf("%") >= 0) {
-    spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiperSize;
-  } else if (typeof spaceBetween === "string") {
-    spaceBetween = parseFloat(spaceBetween);
-  }
-  swiper.virtualSize = -spaceBetween;
-  slides.forEach((slideEl) => {
-    if (rtl) {
-      slideEl.style.marginLeft = "";
-    } else {
-      slideEl.style.marginRight = "";
-    }
-    slideEl.style.marginBottom = "";
-    slideEl.style.marginTop = "";
-  });
-  if (params.centeredSlides && params.cssMode) {
-    setCSSProperty(wrapperEl, "--swiper-centered-offset-before", "");
-    setCSSProperty(wrapperEl, "--swiper-centered-offset-after", "");
-  }
-  const gridEnabled = params.grid && params.grid.rows > 1 && swiper.grid;
-  if (gridEnabled) {
-    swiper.grid.initSlides(slides);
-  } else if (swiper.grid) {
-    swiper.grid.unsetSlides();
-  }
-  let slideSize;
-  const shouldResetSlideSize = params.slidesPerView === "auto" && params.breakpoints && Object.keys(params.breakpoints).filter((key) => {
-    return typeof params.breakpoints[key].slidesPerView !== "undefined";
-  }).length > 0;
-  for (let i2 = 0; i2 < slidesLength; i2 += 1) {
-    slideSize = 0;
-    let slide2;
-    if (slides[i2])
-      slide2 = slides[i2];
-    if (gridEnabled) {
-      swiper.grid.updateSlide(i2, slide2, slides);
-    }
-    if (slides[i2] && elementStyle(slide2, "display") === "none")
-      continue;
-    if (params.slidesPerView === "auto") {
-      if (shouldResetSlideSize) {
-        slides[i2].style[swiper.getDirectionLabel("width")] = ``;
-      }
-      const slideStyles = getComputedStyle(slide2);
-      const currentTransform = slide2.style.transform;
-      const currentWebKitTransform = slide2.style.webkitTransform;
-      if (currentTransform) {
-        slide2.style.transform = "none";
-      }
-      if (currentWebKitTransform) {
-        slide2.style.webkitTransform = "none";
-      }
-      if (params.roundLengths) {
-        slideSize = swiper.isHorizontal() ? elementOuterSize(slide2, "width", true) : elementOuterSize(slide2, "height", true);
-      } else {
-        const width2 = getDirectionPropertyValue(slideStyles, "width");
-        const paddingLeft = getDirectionPropertyValue(slideStyles, "padding-left");
-        const paddingRight = getDirectionPropertyValue(slideStyles, "padding-right");
-        const marginLeft = getDirectionPropertyValue(slideStyles, "margin-left");
-        const marginRight = getDirectionPropertyValue(slideStyles, "margin-right");
-        const boxSizing = slideStyles.getPropertyValue("box-sizing");
-        if (boxSizing && boxSizing === "border-box") {
-          slideSize = width2 + marginLeft + marginRight;
-        } else {
-          const {
-            clientWidth,
-            offsetWidth
-          } = slide2;
-          slideSize = width2 + paddingLeft + paddingRight + marginLeft + marginRight + (offsetWidth - clientWidth);
-        }
-      }
-      if (currentTransform) {
-        slide2.style.transform = currentTransform;
-      }
-      if (currentWebKitTransform) {
-        slide2.style.webkitTransform = currentWebKitTransform;
-      }
-      if (params.roundLengths)
-        slideSize = Math.floor(slideSize);
-    } else {
-      slideSize = (swiperSize - (params.slidesPerView - 1) * spaceBetween) / params.slidesPerView;
-      if (params.roundLengths)
-        slideSize = Math.floor(slideSize);
-      if (slides[i2]) {
-        slides[i2].style[swiper.getDirectionLabel("width")] = `${slideSize}px`;
-      }
-    }
-    if (slides[i2]) {
-      slides[i2].swiperSlideSize = slideSize;
-    }
-    slidesSizesGrid.push(slideSize);
-    if (params.centeredSlides) {
-      slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween;
-      if (prevSlideSize === 0 && i2 !== 0)
-        slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
-      if (i2 === 0)
-        slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
-      if (Math.abs(slidePosition) < 1 / 1e3)
-        slidePosition = 0;
-      if (params.roundLengths)
-        slidePosition = Math.floor(slidePosition);
-      if (index2 % params.slidesPerGroup === 0)
-        snapGrid.push(slidePosition);
-      slidesGrid.push(slidePosition);
-    } else {
-      if (params.roundLengths)
-        slidePosition = Math.floor(slidePosition);
-      if ((index2 - Math.min(swiper.params.slidesPerGroupSkip, index2)) % swiper.params.slidesPerGroup === 0)
-        snapGrid.push(slidePosition);
-      slidesGrid.push(slidePosition);
-      slidePosition = slidePosition + slideSize + spaceBetween;
-    }
-    swiper.virtualSize += slideSize + spaceBetween;
-    prevSlideSize = slideSize;
-    index2 += 1;
-  }
-  swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter;
-  if (rtl && wrongRTL && (params.effect === "slide" || params.effect === "coverflow")) {
-    wrapperEl.style.width = `${swiper.virtualSize + spaceBetween}px`;
-  }
-  if (params.setWrapperSize) {
-    wrapperEl.style[swiper.getDirectionLabel("width")] = `${swiper.virtualSize + spaceBetween}px`;
-  }
-  if (gridEnabled) {
-    swiper.grid.updateWrapperSize(slideSize, snapGrid);
-  }
-  if (!params.centeredSlides) {
-    const newSlidesGrid = [];
-    for (let i2 = 0; i2 < snapGrid.length; i2 += 1) {
-      let slidesGridItem = snapGrid[i2];
-      if (params.roundLengths)
-        slidesGridItem = Math.floor(slidesGridItem);
-      if (snapGrid[i2] <= swiper.virtualSize - swiperSize) {
-        newSlidesGrid.push(slidesGridItem);
-      }
-    }
-    snapGrid = newSlidesGrid;
-    if (Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1) {
-      snapGrid.push(swiper.virtualSize - swiperSize);
-    }
-  }
-  if (isVirtual && params.loop) {
-    const size2 = slidesSizesGrid[0] + spaceBetween;
-    if (params.slidesPerGroup > 1) {
-      const groups = Math.ceil((swiper.virtual.slidesBefore + swiper.virtual.slidesAfter) / params.slidesPerGroup);
-      const groupSize = size2 * params.slidesPerGroup;
-      for (let i2 = 0; i2 < groups; i2 += 1) {
-        snapGrid.push(snapGrid[snapGrid.length - 1] + groupSize);
-      }
-    }
-    for (let i2 = 0; i2 < swiper.virtual.slidesBefore + swiper.virtual.slidesAfter; i2 += 1) {
-      if (params.slidesPerGroup === 1) {
-        snapGrid.push(snapGrid[snapGrid.length - 1] + size2);
-      }
-      slidesGrid.push(slidesGrid[slidesGrid.length - 1] + size2);
-      swiper.virtualSize += size2;
-    }
-  }
-  if (snapGrid.length === 0)
-    snapGrid = [0];
-  if (spaceBetween !== 0) {
-    const key = swiper.isHorizontal() && rtl ? "marginLeft" : swiper.getDirectionLabel("marginRight");
-    slides.filter((_, slideIndex) => {
-      if (!params.cssMode || params.loop)
-        return true;
-      if (slideIndex === slides.length - 1) {
-        return false;
-      }
-      return true;
-    }).forEach((slideEl) => {
-      slideEl.style[key] = `${spaceBetween}px`;
-    });
-  }
-  if (params.centeredSlides && params.centeredSlidesBounds) {
-    let allSlidesSize = 0;
-    slidesSizesGrid.forEach((slideSizeValue) => {
-      allSlidesSize += slideSizeValue + (spaceBetween || 0);
-    });
-    allSlidesSize -= spaceBetween;
-    const maxSnap = allSlidesSize - swiperSize;
-    snapGrid = snapGrid.map((snap) => {
-      if (snap <= 0)
-        return -offsetBefore;
-      if (snap > maxSnap)
-        return maxSnap + offsetAfter;
-      return snap;
-    });
-  }
-  if (params.centerInsufficientSlides) {
-    let allSlidesSize = 0;
-    slidesSizesGrid.forEach((slideSizeValue) => {
-      allSlidesSize += slideSizeValue + (spaceBetween || 0);
-    });
-    allSlidesSize -= spaceBetween;
-    if (allSlidesSize < swiperSize) {
-      const allSlidesOffset = (swiperSize - allSlidesSize) / 2;
-      snapGrid.forEach((snap, snapIndex) => {
-        snapGrid[snapIndex] = snap - allSlidesOffset;
-      });
-      slidesGrid.forEach((snap, snapIndex) => {
-        slidesGrid[snapIndex] = snap + allSlidesOffset;
-      });
-    }
-  }
-  Object.assign(swiper, {
-    slides,
-    snapGrid,
-    slidesGrid,
-    slidesSizesGrid
-  });
-  if (params.centeredSlides && params.cssMode && !params.centeredSlidesBounds) {
-    setCSSProperty(wrapperEl, "--swiper-centered-offset-before", `${-snapGrid[0]}px`);
-    setCSSProperty(wrapperEl, "--swiper-centered-offset-after", `${swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2}px`);
-    const addToSnapGrid = -swiper.snapGrid[0];
-    const addToSlidesGrid = -swiper.slidesGrid[0];
-    swiper.snapGrid = swiper.snapGrid.map((v2) => v2 + addToSnapGrid);
-    swiper.slidesGrid = swiper.slidesGrid.map((v2) => v2 + addToSlidesGrid);
-  }
-  if (slidesLength !== previousSlidesLength) {
-    swiper.emit("slidesLengthChange");
-  }
-  if (snapGrid.length !== previousSnapGridLength) {
-    if (swiper.params.watchOverflow)
-      swiper.checkOverflow();
-    swiper.emit("snapGridLengthChange");
-  }
-  if (slidesGrid.length !== previousSlidesGridLength) {
-    swiper.emit("slidesGridLengthChange");
-  }
-  if (params.watchSlidesProgress) {
-    swiper.updateSlidesOffset();
-  }
-  swiper.emit("slidesUpdated");
-  if (!isVirtual && !params.cssMode && (params.effect === "slide" || params.effect === "fade")) {
-    const backFaceHiddenClass = `${params.containerModifierClass}backface-hidden`;
-    const hasClassBackfaceClassAdded = swiper.el.classList.contains(backFaceHiddenClass);
-    if (slidesLength <= params.maxBackfaceHiddenSlides) {
-      if (!hasClassBackfaceClassAdded)
-        swiper.el.classList.add(backFaceHiddenClass);
-    } else if (hasClassBackfaceClassAdded) {
-      swiper.el.classList.remove(backFaceHiddenClass);
-    }
-  }
-}
-function updateAutoHeight(speed) {
-  const swiper = this;
-  const activeSlides = [];
-  const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
-  let newHeight = 0;
-  let i2;
-  if (typeof speed === "number") {
-    swiper.setTransition(speed);
-  } else if (speed === true) {
-    swiper.setTransition(swiper.params.speed);
-  }
-  const getSlideByIndex = (index2) => {
-    if (isVirtual) {
-      return swiper.slides[swiper.getSlideIndexByData(index2)];
-    }
-    return swiper.slides[index2];
-  };
-  if (swiper.params.slidesPerView !== "auto" && swiper.params.slidesPerView > 1) {
-    if (swiper.params.centeredSlides) {
-      (swiper.visibleSlides || []).forEach((slide2) => {
-        activeSlides.push(slide2);
-      });
-    } else {
-      for (i2 = 0; i2 < Math.ceil(swiper.params.slidesPerView); i2 += 1) {
-        const index2 = swiper.activeIndex + i2;
-        if (index2 > swiper.slides.length && !isVirtual)
-          break;
-        activeSlides.push(getSlideByIndex(index2));
-      }
-    }
-  } else {
-    activeSlides.push(getSlideByIndex(swiper.activeIndex));
-  }
-  for (i2 = 0; i2 < activeSlides.length; i2 += 1) {
-    if (typeof activeSlides[i2] !== "undefined") {
-      const height = activeSlides[i2].offsetHeight;
-      newHeight = height > newHeight ? height : newHeight;
-    }
-  }
-  if (newHeight || newHeight === 0)
-    swiper.wrapperEl.style.height = `${newHeight}px`;
-}
-function updateSlidesOffset() {
-  const swiper = this;
-  const slides = swiper.slides;
-  const minusOffset = swiper.isElement ? swiper.isHorizontal() ? swiper.wrapperEl.offsetLeft : swiper.wrapperEl.offsetTop : 0;
-  for (let i2 = 0; i2 < slides.length; i2 += 1) {
-    slides[i2].swiperSlideOffset = (swiper.isHorizontal() ? slides[i2].offsetLeft : slides[i2].offsetTop) - minusOffset - swiper.cssOverflowAdjustment();
-  }
-}
-function updateSlidesProgress(translate2) {
-  if (translate2 === void 0) {
-    translate2 = this && this.translate || 0;
-  }
-  const swiper = this;
-  const params = swiper.params;
-  const {
-    slides,
-    rtlTranslate: rtl,
-    snapGrid
-  } = swiper;
-  if (slides.length === 0)
-    return;
-  if (typeof slides[0].swiperSlideOffset === "undefined")
-    swiper.updateSlidesOffset();
-  let offsetCenter = -translate2;
-  if (rtl)
-    offsetCenter = translate2;
-  slides.forEach((slideEl) => {
-    slideEl.classList.remove(params.slideVisibleClass, params.slideFullyVisibleClass);
-  });
-  swiper.visibleSlidesIndexes = [];
-  swiper.visibleSlides = [];
-  let spaceBetween = params.spaceBetween;
-  if (typeof spaceBetween === "string" && spaceBetween.indexOf("%") >= 0) {
-    spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiper.size;
-  } else if (typeof spaceBetween === "string") {
-    spaceBetween = parseFloat(spaceBetween);
-  }
-  for (let i2 = 0; i2 < slides.length; i2 += 1) {
-    const slide2 = slides[i2];
-    let slideOffset = slide2.swiperSlideOffset;
-    if (params.cssMode && params.centeredSlides) {
-      slideOffset -= slides[0].swiperSlideOffset;
-    }
-    const slideProgress = (offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide2.swiperSlideSize + spaceBetween);
-    const originalSlideProgress = (offsetCenter - snapGrid[0] + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide2.swiperSlideSize + spaceBetween);
-    const slideBefore = -(offsetCenter - slideOffset);
-    const slideAfter = slideBefore + swiper.slidesSizesGrid[i2];
-    const isFullyVisible = slideBefore >= 0 && slideBefore <= swiper.size - swiper.slidesSizesGrid[i2];
-    const isVisible2 = slideBefore >= 0 && slideBefore < swiper.size - 1 || slideAfter > 1 && slideAfter <= swiper.size || slideBefore <= 0 && slideAfter >= swiper.size;
-    if (isVisible2) {
-      swiper.visibleSlides.push(slide2);
-      swiper.visibleSlidesIndexes.push(i2);
-      slides[i2].classList.add(params.slideVisibleClass);
-    }
-    if (isFullyVisible) {
-      slides[i2].classList.add(params.slideFullyVisibleClass);
-    }
-    slide2.progress = rtl ? -slideProgress : slideProgress;
-    slide2.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
-  }
-}
-function updateProgress(translate2) {
-  const swiper = this;
-  if (typeof translate2 === "undefined") {
-    const multiplier = swiper.rtlTranslate ? -1 : 1;
-    translate2 = swiper && swiper.translate && swiper.translate * multiplier || 0;
-  }
-  const params = swiper.params;
-  const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
-  let {
-    progress,
-    isBeginning,
-    isEnd,
-    progressLoop
-  } = swiper;
-  const wasBeginning = isBeginning;
-  const wasEnd = isEnd;
-  if (translatesDiff === 0) {
-    progress = 0;
-    isBeginning = true;
-    isEnd = true;
-  } else {
-    progress = (translate2 - swiper.minTranslate()) / translatesDiff;
-    const isBeginningRounded = Math.abs(translate2 - swiper.minTranslate()) < 1;
-    const isEndRounded = Math.abs(translate2 - swiper.maxTranslate()) < 1;
-    isBeginning = isBeginningRounded || progress <= 0;
-    isEnd = isEndRounded || progress >= 1;
-    if (isBeginningRounded)
-      progress = 0;
-    if (isEndRounded)
-      progress = 1;
-  }
-  if (params.loop) {
-    const firstSlideIndex = swiper.getSlideIndexByData(0);
-    const lastSlideIndex = swiper.getSlideIndexByData(swiper.slides.length - 1);
-    const firstSlideTranslate = swiper.slidesGrid[firstSlideIndex];
-    const lastSlideTranslate = swiper.slidesGrid[lastSlideIndex];
-    const translateMax = swiper.slidesGrid[swiper.slidesGrid.length - 1];
-    const translateAbs = Math.abs(translate2);
-    if (translateAbs >= firstSlideTranslate) {
-      progressLoop = (translateAbs - firstSlideTranslate) / translateMax;
-    } else {
-      progressLoop = (translateAbs + translateMax - lastSlideTranslate) / translateMax;
-    }
-    if (progressLoop > 1)
-      progressLoop -= 1;
-  }
-  Object.assign(swiper, {
-    progress,
-    progressLoop,
-    isBeginning,
-    isEnd
-  });
-  if (params.watchSlidesProgress || params.centeredSlides && params.autoHeight)
-    swiper.updateSlidesProgress(translate2);
-  if (isBeginning && !wasBeginning) {
-    swiper.emit("reachBeginning toEdge");
-  }
-  if (isEnd && !wasEnd) {
-    swiper.emit("reachEnd toEdge");
-  }
-  if (wasBeginning && !isBeginning || wasEnd && !isEnd) {
-    swiper.emit("fromEdge");
-  }
-  swiper.emit("progress", progress);
-}
-function updateSlidesClasses() {
-  const swiper = this;
-  const {
-    slides,
-    params,
-    slidesEl,
-    activeIndex
-  } = swiper;
-  const isVirtual = swiper.virtual && params.virtual.enabled;
-  const gridEnabled = swiper.grid && params.grid && params.grid.rows > 1;
-  const getFilteredSlide = (selector) => {
-    return elementChildren(slidesEl, `.${params.slideClass}${selector}, swiper-slide${selector}`)[0];
-  };
-  slides.forEach((slideEl) => {
-    slideEl.classList.remove(params.slideActiveClass, params.slideNextClass, params.slidePrevClass);
-  });
-  let activeSlide;
-  let prevSlide;
-  let nextSlide;
-  if (isVirtual) {
-    if (params.loop) {
-      let slideIndex = activeIndex - swiper.virtual.slidesBefore;
-      if (slideIndex < 0)
-        slideIndex = swiper.virtual.slides.length + slideIndex;
-      if (slideIndex >= swiper.virtual.slides.length)
-        slideIndex -= swiper.virtual.slides.length;
-      activeSlide = getFilteredSlide(`[data-swiper-slide-index="${slideIndex}"]`);
-    } else {
-      activeSlide = getFilteredSlide(`[data-swiper-slide-index="${activeIndex}"]`);
-    }
-  } else {
-    if (gridEnabled) {
-      activeSlide = slides.filter((slideEl) => slideEl.column === activeIndex)[0];
-      nextSlide = slides.filter((slideEl) => slideEl.column === activeIndex + 1)[0];
-      prevSlide = slides.filter((slideEl) => slideEl.column === activeIndex - 1)[0];
-    } else {
-      activeSlide = slides[activeIndex];
-    }
-  }
-  if (activeSlide) {
-    activeSlide.classList.add(params.slideActiveClass);
-    if (gridEnabled) {
-      if (nextSlide) {
-        nextSlide.classList.add(params.slideNextClass);
-      }
-      if (prevSlide) {
-        prevSlide.classList.add(params.slidePrevClass);
-      }
-    } else {
-      nextSlide = elementNextAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
-      if (params.loop && !nextSlide) {
-        nextSlide = slides[0];
-      }
-      if (nextSlide) {
-        nextSlide.classList.add(params.slideNextClass);
-      }
-      prevSlide = elementPrevAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
-      if (params.loop && !prevSlide === 0) {
-        prevSlide = slides[slides.length - 1];
-      }
-      if (prevSlide) {
-        prevSlide.classList.add(params.slidePrevClass);
-      }
-    }
-  }
-  swiper.emitSlidesClasses();
-}
-const processLazyPreloader = (swiper, imageEl) => {
-  if (!swiper || swiper.destroyed || !swiper.params)
-    return;
-  const slideSelector = () => swiper.isElement ? `swiper-slide` : `.${swiper.params.slideClass}`;
-  const slideEl = imageEl.closest(slideSelector());
-  if (slideEl) {
-    let lazyEl = slideEl.querySelector(`.${swiper.params.lazyPreloaderClass}`);
-    if (!lazyEl && swiper.isElement) {
-      if (slideEl.shadowRoot) {
-        lazyEl = slideEl.shadowRoot.querySelector(`.${swiper.params.lazyPreloaderClass}`);
-      } else {
-        requestAnimationFrame(() => {
-          if (slideEl.shadowRoot) {
-            lazyEl = slideEl.shadowRoot.querySelector(`.${swiper.params.lazyPreloaderClass}`);
-            if (lazyEl)
-              lazyEl.remove();
-          }
-        });
-      }
-    }
-    if (lazyEl)
-      lazyEl.remove();
-  }
-};
-const unlazy = (swiper, index2) => {
-  if (!swiper.slides[index2])
-    return;
-  const imageEl = swiper.slides[index2].querySelector('[loading="lazy"]');
-  if (imageEl)
-    imageEl.removeAttribute("loading");
-};
-const preload = (swiper) => {
-  if (!swiper || swiper.destroyed || !swiper.params)
-    return;
-  let amount = swiper.params.lazyPreloadPrevNext;
-  const len = swiper.slides.length;
-  if (!len || !amount || amount < 0)
-    return;
-  amount = Math.min(amount, len);
-  const slidesPerView = swiper.params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(swiper.params.slidesPerView);
-  const activeIndex = swiper.activeIndex;
-  if (swiper.params.grid && swiper.params.grid.rows > 1) {
-    const activeColumn = activeIndex;
-    const preloadColumns = [activeColumn - amount];
-    preloadColumns.push(...Array.from({
-      length: amount
-    }).map((_, i2) => {
-      return activeColumn + slidesPerView + i2;
-    }));
-    swiper.slides.forEach((slideEl, i2) => {
-      if (preloadColumns.includes(slideEl.column))
-        unlazy(swiper, i2);
-    });
-    return;
-  }
-  const slideIndexLastInView = activeIndex + slidesPerView - 1;
-  if (swiper.params.rewind || swiper.params.loop) {
-    for (let i2 = activeIndex - amount; i2 <= slideIndexLastInView + amount; i2 += 1) {
-      const realIndex = (i2 % len + len) % len;
-      if (realIndex < activeIndex || realIndex > slideIndexLastInView)
-        unlazy(swiper, realIndex);
-    }
-  } else {
-    for (let i2 = Math.max(activeIndex - amount, 0); i2 <= Math.min(slideIndexLastInView + amount, len - 1); i2 += 1) {
-      if (i2 !== activeIndex && (i2 > slideIndexLastInView || i2 < activeIndex)) {
-        unlazy(swiper, i2);
-      }
-    }
-  }
-};
-function getActiveIndexByTranslate(swiper) {
-  const {
-    slidesGrid,
-    params
-  } = swiper;
-  const translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
-  let activeIndex;
-  for (let i2 = 0; i2 < slidesGrid.length; i2 += 1) {
-    if (typeof slidesGrid[i2 + 1] !== "undefined") {
-      if (translate2 >= slidesGrid[i2] && translate2 < slidesGrid[i2 + 1] - (slidesGrid[i2 + 1] - slidesGrid[i2]) / 2) {
-        activeIndex = i2;
-      } else if (translate2 >= slidesGrid[i2] && translate2 < slidesGrid[i2 + 1]) {
-        activeIndex = i2 + 1;
-      }
-    } else if (translate2 >= slidesGrid[i2]) {
-      activeIndex = i2;
-    }
-  }
-  if (params.normalizeSlideIndex) {
-    if (activeIndex < 0 || typeof activeIndex === "undefined")
-      activeIndex = 0;
-  }
-  return activeIndex;
-}
-function updateActiveIndex(newActiveIndex) {
-  const swiper = this;
-  const translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
-  const {
-    snapGrid,
-    params,
-    activeIndex: previousIndex,
-    realIndex: previousRealIndex,
-    snapIndex: previousSnapIndex
-  } = swiper;
-  let activeIndex = newActiveIndex;
-  let snapIndex;
-  const getVirtualRealIndex = (aIndex) => {
-    let realIndex2 = aIndex - swiper.virtual.slidesBefore;
-    if (realIndex2 < 0) {
-      realIndex2 = swiper.virtual.slides.length + realIndex2;
-    }
-    if (realIndex2 >= swiper.virtual.slides.length) {
-      realIndex2 -= swiper.virtual.slides.length;
-    }
-    return realIndex2;
-  };
-  if (typeof activeIndex === "undefined") {
-    activeIndex = getActiveIndexByTranslate(swiper);
-  }
-  if (snapGrid.indexOf(translate2) >= 0) {
-    snapIndex = snapGrid.indexOf(translate2);
-  } else {
-    const skip = Math.min(params.slidesPerGroupSkip, activeIndex);
-    snapIndex = skip + Math.floor((activeIndex - skip) / params.slidesPerGroup);
-  }
-  if (snapIndex >= snapGrid.length)
-    snapIndex = snapGrid.length - 1;
-  if (activeIndex === previousIndex && !swiper.params.loop) {
-    if (snapIndex !== previousSnapIndex) {
-      swiper.snapIndex = snapIndex;
-      swiper.emit("snapIndexChange");
-    }
-    return;
-  }
-  if (activeIndex === previousIndex && swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled) {
-    swiper.realIndex = getVirtualRealIndex(activeIndex);
-    return;
-  }
-  const gridEnabled = swiper.grid && params.grid && params.grid.rows > 1;
-  let realIndex;
-  if (swiper.virtual && params.virtual.enabled && params.loop) {
-    realIndex = getVirtualRealIndex(activeIndex);
-  } else if (gridEnabled) {
-    const firstSlideInColumn = swiper.slides.filter((slideEl) => slideEl.column === activeIndex)[0];
-    let activeSlideIndex = parseInt(firstSlideInColumn.getAttribute("data-swiper-slide-index"), 10);
-    if (Number.isNaN(activeSlideIndex)) {
-      activeSlideIndex = Math.max(swiper.slides.indexOf(firstSlideInColumn), 0);
-    }
-    realIndex = Math.floor(activeSlideIndex / params.grid.rows);
-  } else if (swiper.slides[activeIndex]) {
-    const slideIndex = swiper.slides[activeIndex].getAttribute("data-swiper-slide-index");
-    if (slideIndex) {
-      realIndex = parseInt(slideIndex, 10);
-    } else {
-      realIndex = activeIndex;
-    }
-  } else {
-    realIndex = activeIndex;
-  }
-  Object.assign(swiper, {
-    previousSnapIndex,
-    snapIndex,
-    previousRealIndex,
-    realIndex,
-    previousIndex,
-    activeIndex
-  });
-  if (swiper.initialized) {
-    preload(swiper);
-  }
-  swiper.emit("activeIndexChange");
-  swiper.emit("snapIndexChange");
-  if (swiper.initialized || swiper.params.runCallbacksOnInit) {
-    if (previousRealIndex !== realIndex) {
-      swiper.emit("realIndexChange");
-    }
-    swiper.emit("slideChange");
-  }
-}
-function updateClickedSlide(el, path) {
-  const swiper = this;
-  const params = swiper.params;
-  let slide2 = el.closest(`.${params.slideClass}, swiper-slide`);
-  if (!slide2 && swiper.isElement && path && path.length > 1 && path.includes(el)) {
-    [...path.slice(path.indexOf(el) + 1, path.length)].forEach((pathEl) => {
-      if (!slide2 && pathEl.matches && pathEl.matches(`.${params.slideClass}, swiper-slide`)) {
-        slide2 = pathEl;
-      }
-    });
-  }
-  let slideFound = false;
-  let slideIndex;
-  if (slide2) {
-    for (let i2 = 0; i2 < swiper.slides.length; i2 += 1) {
-      if (swiper.slides[i2] === slide2) {
-        slideFound = true;
-        slideIndex = i2;
-        break;
-      }
-    }
-  }
-  if (slide2 && slideFound) {
-    swiper.clickedSlide = slide2;
-    if (swiper.virtual && swiper.params.virtual.enabled) {
-      swiper.clickedIndex = parseInt(slide2.getAttribute("data-swiper-slide-index"), 10);
-    } else {
-      swiper.clickedIndex = slideIndex;
-    }
-  } else {
-    swiper.clickedSlide = void 0;
-    swiper.clickedIndex = void 0;
-    return;
-  }
-  if (params.slideToClickedSlide && swiper.clickedIndex !== void 0 && swiper.clickedIndex !== swiper.activeIndex) {
-    swiper.slideToClickedSlide();
-  }
-}
-var update = {
-  updateSize,
-  updateSlides,
-  updateAutoHeight,
-  updateSlidesOffset,
-  updateSlidesProgress,
-  updateProgress,
-  updateSlidesClasses,
-  updateActiveIndex,
-  updateClickedSlide
-};
-function getSwiperTranslate(axis) {
-  if (axis === void 0) {
-    axis = this.isHorizontal() ? "x" : "y";
-  }
-  const swiper = this;
-  const {
-    params,
-    rtlTranslate: rtl,
-    translate: translate2,
-    wrapperEl
-  } = swiper;
-  if (params.virtualTranslate) {
-    return rtl ? -translate2 : translate2;
-  }
-  if (params.cssMode) {
-    return translate2;
-  }
-  let currentTranslate = getTranslate(wrapperEl, axis);
-  currentTranslate += swiper.cssOverflowAdjustment();
-  if (rtl)
-    currentTranslate = -currentTranslate;
-  return currentTranslate || 0;
-}
-function setTranslate(translate2, byController) {
-  const swiper = this;
-  const {
-    rtlTranslate: rtl,
-    params,
-    wrapperEl,
-    progress
-  } = swiper;
-  let x = 0;
-  let y2 = 0;
-  const z = 0;
-  if (swiper.isHorizontal()) {
-    x = rtl ? -translate2 : translate2;
-  } else {
-    y2 = translate2;
-  }
-  if (params.roundLengths) {
-    x = Math.floor(x);
-    y2 = Math.floor(y2);
-  }
-  swiper.previousTranslate = swiper.translate;
-  swiper.translate = swiper.isHorizontal() ? x : y2;
-  if (params.cssMode) {
-    wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x : -y2;
-  } else if (!params.virtualTranslate) {
-    if (swiper.isHorizontal()) {
-      x -= swiper.cssOverflowAdjustment();
-    } else {
-      y2 -= swiper.cssOverflowAdjustment();
-    }
-    wrapperEl.style.transform = `translate3d(${x}px, ${y2}px, ${z}px)`;
-  }
-  let newProgress;
-  const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
-  if (translatesDiff === 0) {
-    newProgress = 0;
-  } else {
-    newProgress = (translate2 - swiper.minTranslate()) / translatesDiff;
-  }
-  if (newProgress !== progress) {
-    swiper.updateProgress(translate2);
-  }
-  swiper.emit("setTranslate", swiper.translate, byController);
-}
-function minTranslate() {
-  return -this.snapGrid[0];
-}
-function maxTranslate() {
-  return -this.snapGrid[this.snapGrid.length - 1];
-}
-function translateTo(translate2, speed, runCallbacks, translateBounds, internal) {
-  if (translate2 === void 0) {
-    translate2 = 0;
-  }
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  if (translateBounds === void 0) {
-    translateBounds = true;
-  }
-  const swiper = this;
-  const {
-    params,
-    wrapperEl
-  } = swiper;
-  if (swiper.animating && params.preventInteractionOnTransition) {
-    return false;
-  }
-  const minTranslate2 = swiper.minTranslate();
-  const maxTranslate2 = swiper.maxTranslate();
-  let newTranslate;
-  if (translateBounds && translate2 > minTranslate2)
-    newTranslate = minTranslate2;
-  else if (translateBounds && translate2 < maxTranslate2)
-    newTranslate = maxTranslate2;
-  else
-    newTranslate = translate2;
-  swiper.updateProgress(newTranslate);
-  if (params.cssMode) {
-    const isH = swiper.isHorizontal();
-    if (speed === 0) {
-      wrapperEl[isH ? "scrollLeft" : "scrollTop"] = -newTranslate;
-    } else {
-      if (!swiper.support.smoothScroll) {
-        animateCSSModeScroll({
-          swiper,
-          targetPosition: -newTranslate,
-          side: isH ? "left" : "top"
-        });
-        return true;
-      }
-      wrapperEl.scrollTo({
-        [isH ? "left" : "top"]: -newTranslate,
-        behavior: "smooth"
-      });
-    }
-    return true;
-  }
-  if (speed === 0) {
-    swiper.setTransition(0);
-    swiper.setTranslate(newTranslate);
-    if (runCallbacks) {
-      swiper.emit("beforeTransitionStart", speed, internal);
-      swiper.emit("transitionEnd");
-    }
-  } else {
-    swiper.setTransition(speed);
-    swiper.setTranslate(newTranslate);
-    if (runCallbacks) {
-      swiper.emit("beforeTransitionStart", speed, internal);
-      swiper.emit("transitionStart");
-    }
-    if (!swiper.animating) {
-      swiper.animating = true;
-      if (!swiper.onTranslateToWrapperTransitionEnd) {
-        swiper.onTranslateToWrapperTransitionEnd = function transitionEnd2(e2) {
-          if (!swiper || swiper.destroyed)
-            return;
-          if (e2.target !== this)
-            return;
-          swiper.wrapperEl.removeEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd);
-          swiper.onTranslateToWrapperTransitionEnd = null;
-          delete swiper.onTranslateToWrapperTransitionEnd;
-          if (runCallbacks) {
-            swiper.emit("transitionEnd");
-          }
-        };
-      }
-      swiper.wrapperEl.addEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd);
-    }
-  }
-  return true;
-}
-var translate = {
-  getTranslate: getSwiperTranslate,
-  setTranslate,
-  minTranslate,
-  maxTranslate,
-  translateTo
-};
-function setTransition(duration, byController) {
-  const swiper = this;
-  if (!swiper.params.cssMode) {
-    swiper.wrapperEl.style.transitionDuration = `${duration}ms`;
-    swiper.wrapperEl.style.transitionDelay = duration === 0 ? `0ms` : "";
-  }
-  swiper.emit("setTransition", duration, byController);
-}
-function transitionEmit(_ref) {
-  let {
-    swiper,
-    runCallbacks,
-    direction,
-    step
-  } = _ref;
-  const {
-    activeIndex,
-    previousIndex
-  } = swiper;
-  let dir = direction;
-  if (!dir) {
-    if (activeIndex > previousIndex)
-      dir = "next";
-    else if (activeIndex < previousIndex)
-      dir = "prev";
-    else
-      dir = "reset";
-  }
-  swiper.emit(`transition${step}`);
-  if (runCallbacks && activeIndex !== previousIndex) {
-    if (dir === "reset") {
-      swiper.emit(`slideResetTransition${step}`);
-      return;
-    }
-    swiper.emit(`slideChangeTransition${step}`);
-    if (dir === "next") {
-      swiper.emit(`slideNextTransition${step}`);
-    } else {
-      swiper.emit(`slidePrevTransition${step}`);
-    }
-  }
-}
-function transitionStart(runCallbacks, direction) {
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  const swiper = this;
-  const {
-    params
-  } = swiper;
-  if (params.cssMode)
-    return;
-  if (params.autoHeight) {
-    swiper.updateAutoHeight();
-  }
-  transitionEmit({
-    swiper,
-    runCallbacks,
-    direction,
-    step: "Start"
-  });
-}
-function transitionEnd(runCallbacks, direction) {
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  const swiper = this;
-  const {
-    params
-  } = swiper;
-  swiper.animating = false;
-  if (params.cssMode)
-    return;
-  swiper.setTransition(0);
-  transitionEmit({
-    swiper,
-    runCallbacks,
-    direction,
-    step: "End"
-  });
-}
-var transition = {
-  setTransition,
-  transitionStart,
-  transitionEnd
-};
-function slideTo(index2, speed, runCallbacks, internal, initial) {
-  if (index2 === void 0) {
-    index2 = 0;
-  }
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  if (typeof index2 === "string") {
-    index2 = parseInt(index2, 10);
-  }
-  const swiper = this;
-  let slideIndex = index2;
-  if (slideIndex < 0)
-    slideIndex = 0;
-  const {
-    params,
-    snapGrid,
-    slidesGrid,
-    previousIndex,
-    activeIndex,
-    rtlTranslate: rtl,
-    wrapperEl,
-    enabled
-  } = swiper;
-  if (swiper.animating && params.preventInteractionOnTransition || !enabled && !internal && !initial) {
-    return false;
-  }
-  const skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex);
-  let snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
-  if (snapIndex >= snapGrid.length)
-    snapIndex = snapGrid.length - 1;
-  const translate2 = -snapGrid[snapIndex];
-  if (params.normalizeSlideIndex) {
-    for (let i2 = 0; i2 < slidesGrid.length; i2 += 1) {
-      const normalizedTranslate = -Math.floor(translate2 * 100);
-      const normalizedGrid = Math.floor(slidesGrid[i2] * 100);
-      const normalizedGridNext = Math.floor(slidesGrid[i2 + 1] * 100);
-      if (typeof slidesGrid[i2 + 1] !== "undefined") {
-        if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext - (normalizedGridNext - normalizedGrid) / 2) {
-          slideIndex = i2;
-        } else if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext) {
-          slideIndex = i2 + 1;
-        }
-      } else if (normalizedTranslate >= normalizedGrid) {
-        slideIndex = i2;
-      }
-    }
-  }
-  if (swiper.initialized && slideIndex !== activeIndex) {
-    if (!swiper.allowSlideNext && (rtl ? translate2 > swiper.translate && translate2 > swiper.minTranslate() : translate2 < swiper.translate && translate2 < swiper.minTranslate())) {
-      return false;
-    }
-    if (!swiper.allowSlidePrev && translate2 > swiper.translate && translate2 > swiper.maxTranslate()) {
-      if ((activeIndex || 0) !== slideIndex) {
-        return false;
-      }
-    }
-  }
-  if (slideIndex !== (previousIndex || 0) && runCallbacks) {
-    swiper.emit("beforeSlideChangeStart");
-  }
-  swiper.updateProgress(translate2);
-  let direction;
-  if (slideIndex > activeIndex)
-    direction = "next";
-  else if (slideIndex < activeIndex)
-    direction = "prev";
-  else
-    direction = "reset";
-  if (rtl && -translate2 === swiper.translate || !rtl && translate2 === swiper.translate) {
-    swiper.updateActiveIndex(slideIndex);
-    if (params.autoHeight) {
-      swiper.updateAutoHeight();
-    }
-    swiper.updateSlidesClasses();
-    if (params.effect !== "slide") {
-      swiper.setTranslate(translate2);
-    }
-    if (direction !== "reset") {
-      swiper.transitionStart(runCallbacks, direction);
-      swiper.transitionEnd(runCallbacks, direction);
-    }
-    return false;
-  }
-  if (params.cssMode) {
-    const isH = swiper.isHorizontal();
-    const t2 = rtl ? translate2 : -translate2;
-    if (speed === 0) {
-      const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
-      if (isVirtual) {
-        swiper.wrapperEl.style.scrollSnapType = "none";
-        swiper._immediateVirtual = true;
-      }
-      if (isVirtual && !swiper._cssModeVirtualInitialSet && swiper.params.initialSlide > 0) {
-        swiper._cssModeVirtualInitialSet = true;
-        requestAnimationFrame(() => {
-          wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t2;
-        });
-      } else {
-        wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t2;
-      }
-      if (isVirtual) {
-        requestAnimationFrame(() => {
-          swiper.wrapperEl.style.scrollSnapType = "";
-          swiper._immediateVirtual = false;
-        });
-      }
-    } else {
-      if (!swiper.support.smoothScroll) {
-        animateCSSModeScroll({
-          swiper,
-          targetPosition: t2,
-          side: isH ? "left" : "top"
-        });
-        return true;
-      }
-      wrapperEl.scrollTo({
-        [isH ? "left" : "top"]: t2,
-        behavior: "smooth"
-      });
-    }
-    return true;
-  }
-  swiper.setTransition(speed);
-  swiper.setTranslate(translate2);
-  swiper.updateActiveIndex(slideIndex);
-  swiper.updateSlidesClasses();
-  swiper.emit("beforeTransitionStart", speed, internal);
-  swiper.transitionStart(runCallbacks, direction);
-  if (speed === 0) {
-    swiper.transitionEnd(runCallbacks, direction);
-  } else if (!swiper.animating) {
-    swiper.animating = true;
-    if (!swiper.onSlideToWrapperTransitionEnd) {
-      swiper.onSlideToWrapperTransitionEnd = function transitionEnd2(e2) {
-        if (!swiper || swiper.destroyed)
-          return;
-        if (e2.target !== this)
-          return;
-        swiper.wrapperEl.removeEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd);
-        swiper.onSlideToWrapperTransitionEnd = null;
-        delete swiper.onSlideToWrapperTransitionEnd;
-        swiper.transitionEnd(runCallbacks, direction);
-      };
-    }
-    swiper.wrapperEl.addEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd);
-  }
-  return true;
-}
-function slideToLoop(index2, speed, runCallbacks, internal) {
-  if (index2 === void 0) {
-    index2 = 0;
-  }
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  if (typeof index2 === "string") {
-    const indexAsNumber = parseInt(index2, 10);
-    index2 = indexAsNumber;
-  }
-  const swiper = this;
-  const gridEnabled = swiper.grid && swiper.params.grid && swiper.params.grid.rows > 1;
-  let newIndex = index2;
-  if (swiper.params.loop) {
-    if (swiper.virtual && swiper.params.virtual.enabled) {
-      newIndex = newIndex + swiper.virtual.slidesBefore;
-    } else {
-      let targetSlideIndex;
-      if (gridEnabled) {
-        const slideIndex = newIndex * swiper.params.grid.rows;
-        targetSlideIndex = swiper.slides.filter((slideEl) => slideEl.getAttribute("data-swiper-slide-index") * 1 === slideIndex)[0].column;
-      } else {
-        targetSlideIndex = swiper.getSlideIndexByData(newIndex);
-      }
-      const cols = gridEnabled ? Math.ceil(swiper.slides.length / swiper.params.grid.rows) : swiper.slides.length;
-      const {
-        centeredSlides
-      } = swiper.params;
-      let slidesPerView = swiper.params.slidesPerView;
-      if (slidesPerView === "auto") {
-        slidesPerView = swiper.slidesPerViewDynamic();
-      } else {
-        slidesPerView = Math.ceil(parseFloat(swiper.params.slidesPerView, 10));
-        if (centeredSlides && slidesPerView % 2 === 0) {
-          slidesPerView = slidesPerView + 1;
-        }
-      }
-      let needLoopFix = cols - targetSlideIndex < slidesPerView;
-      if (centeredSlides) {
-        needLoopFix = needLoopFix || targetSlideIndex < Math.ceil(slidesPerView / 2);
-      }
-      if (needLoopFix) {
-        const direction = centeredSlides ? targetSlideIndex < swiper.activeIndex ? "prev" : "next" : targetSlideIndex - swiper.activeIndex - 1 < swiper.params.slidesPerView ? "next" : "prev";
-        swiper.loopFix({
-          direction,
-          slideTo: true,
-          activeSlideIndex: direction === "next" ? targetSlideIndex + 1 : targetSlideIndex - cols + 1,
-          slideRealIndex: direction === "next" ? swiper.realIndex : void 0
-        });
-      }
-      if (gridEnabled) {
-        const slideIndex = newIndex * swiper.params.grid.rows;
-        newIndex = swiper.slides.filter((slideEl) => slideEl.getAttribute("data-swiper-slide-index") * 1 === slideIndex)[0].column;
-      } else {
-        newIndex = swiper.getSlideIndexByData(newIndex);
-      }
-    }
-  }
-  requestAnimationFrame(() => {
-    swiper.slideTo(newIndex, speed, runCallbacks, internal);
-  });
-  return swiper;
-}
-function slideNext(speed, runCallbacks, internal) {
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  const swiper = this;
-  const {
-    enabled,
-    params,
-    animating
-  } = swiper;
-  if (!enabled)
-    return swiper;
-  let perGroup = params.slidesPerGroup;
-  if (params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
-    perGroup = Math.max(swiper.slidesPerViewDynamic("current", true), 1);
-  }
-  const increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup;
-  const isVirtual = swiper.virtual && params.virtual.enabled;
-  if (params.loop) {
-    if (animating && !isVirtual && params.loopPreventsSliding)
-      return false;
-    swiper.loopFix({
-      direction: "next"
-    });
-    swiper._clientLeft = swiper.wrapperEl.clientLeft;
-    if (swiper.activeIndex === swiper.slides.length - 1 && params.cssMode) {
-      requestAnimationFrame(() => {
-        swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
-      });
-      return true;
-    }
-  }
-  if (params.rewind && swiper.isEnd) {
-    return swiper.slideTo(0, speed, runCallbacks, internal);
-  }
-  return swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
-}
-function slidePrev(speed, runCallbacks, internal) {
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  const swiper = this;
-  const {
-    params,
-    snapGrid,
-    slidesGrid,
-    rtlTranslate,
-    enabled,
-    animating
-  } = swiper;
-  if (!enabled)
-    return swiper;
-  const isVirtual = swiper.virtual && params.virtual.enabled;
-  if (params.loop) {
-    if (animating && !isVirtual && params.loopPreventsSliding)
-      return false;
-    swiper.loopFix({
-      direction: "prev"
-    });
-    swiper._clientLeft = swiper.wrapperEl.clientLeft;
-  }
-  const translate2 = rtlTranslate ? swiper.translate : -swiper.translate;
-  function normalize(val) {
-    if (val < 0)
-      return -Math.floor(Math.abs(val));
-    return Math.floor(val);
-  }
-  const normalizedTranslate = normalize(translate2);
-  const normalizedSnapGrid = snapGrid.map((val) => normalize(val));
-  let prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
-  if (typeof prevSnap === "undefined" && params.cssMode) {
-    let prevSnapIndex;
-    snapGrid.forEach((snap, snapIndex) => {
-      if (normalizedTranslate >= snap) {
-        prevSnapIndex = snapIndex;
-      }
-    });
-    if (typeof prevSnapIndex !== "undefined") {
-      prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex];
-    }
-  }
-  let prevIndex = 0;
-  if (typeof prevSnap !== "undefined") {
-    prevIndex = slidesGrid.indexOf(prevSnap);
-    if (prevIndex < 0)
-      prevIndex = swiper.activeIndex - 1;
-    if (params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
-      prevIndex = prevIndex - swiper.slidesPerViewDynamic("previous", true) + 1;
-      prevIndex = Math.max(prevIndex, 0);
-    }
-  }
-  if (params.rewind && swiper.isBeginning) {
-    const lastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
-    return swiper.slideTo(lastIndex, speed, runCallbacks, internal);
-  } else if (params.loop && swiper.activeIndex === 0 && params.cssMode) {
-    requestAnimationFrame(() => {
-      swiper.slideTo(prevIndex, speed, runCallbacks, internal);
-    });
-    return true;
-  }
-  return swiper.slideTo(prevIndex, speed, runCallbacks, internal);
-}
-function slideReset(speed, runCallbacks, internal) {
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  const swiper = this;
-  return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
-}
-function slideToClosest(speed, runCallbacks, internal, threshold) {
-  if (speed === void 0) {
-    speed = this.params.speed;
-  }
-  if (runCallbacks === void 0) {
-    runCallbacks = true;
-  }
-  if (threshold === void 0) {
-    threshold = 0.5;
-  }
-  const swiper = this;
-  let index2 = swiper.activeIndex;
-  const skip = Math.min(swiper.params.slidesPerGroupSkip, index2);
-  const snapIndex = skip + Math.floor((index2 - skip) / swiper.params.slidesPerGroup);
-  const translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
-  if (translate2 >= swiper.snapGrid[snapIndex]) {
-    const currentSnap = swiper.snapGrid[snapIndex];
-    const nextSnap = swiper.snapGrid[snapIndex + 1];
-    if (translate2 - currentSnap > (nextSnap - currentSnap) * threshold) {
-      index2 += swiper.params.slidesPerGroup;
-    }
-  } else {
-    const prevSnap = swiper.snapGrid[snapIndex - 1];
-    const currentSnap = swiper.snapGrid[snapIndex];
-    if (translate2 - prevSnap <= (currentSnap - prevSnap) * threshold) {
-      index2 -= swiper.params.slidesPerGroup;
-    }
-  }
-  index2 = Math.max(index2, 0);
-  index2 = Math.min(index2, swiper.slidesGrid.length - 1);
-  return swiper.slideTo(index2, speed, runCallbacks, internal);
-}
-function slideToClickedSlide() {
-  const swiper = this;
-  const {
-    params,
-    slidesEl
-  } = swiper;
-  const slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : params.slidesPerView;
-  let slideToIndex = swiper.clickedIndex;
-  let realIndex;
-  const slideSelector = swiper.isElement ? `swiper-slide` : `.${params.slideClass}`;
-  if (params.loop) {
-    if (swiper.animating)
-      return;
-    realIndex = parseInt(swiper.clickedSlide.getAttribute("data-swiper-slide-index"), 10);
-    if (params.centeredSlides) {
-      if (slideToIndex < swiper.loopedSlides - slidesPerView / 2 || slideToIndex > swiper.slides.length - swiper.loopedSlides + slidesPerView / 2) {
-        swiper.loopFix();
-        slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]);
-        nextTick(() => {
-          swiper.slideTo(slideToIndex);
-        });
-      } else {
-        swiper.slideTo(slideToIndex);
-      }
-    } else if (slideToIndex > swiper.slides.length - slidesPerView) {
-      swiper.loopFix();
-      slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]);
-      nextTick(() => {
-        swiper.slideTo(slideToIndex);
-      });
-    } else {
-      swiper.slideTo(slideToIndex);
-    }
-  } else {
-    swiper.slideTo(slideToIndex);
-  }
-}
-var slide = {
-  slideTo,
-  slideToLoop,
-  slideNext,
-  slidePrev,
-  slideReset,
-  slideToClosest,
-  slideToClickedSlide
-};
-function loopCreate(slideRealIndex) {
-  const swiper = this;
-  const {
-    params,
-    slidesEl
-  } = swiper;
-  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
-    return;
-  const initSlides = () => {
-    const slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);
-    slides.forEach((el, index2) => {
-      el.setAttribute("data-swiper-slide-index", index2);
-    });
-  };
-  const gridEnabled = swiper.grid && params.grid && params.grid.rows > 1;
-  const slidesPerGroup = params.slidesPerGroup * (gridEnabled ? params.grid.rows : 1);
-  const shouldFillGroup = swiper.slides.length % slidesPerGroup !== 0;
-  const shouldFillGrid = gridEnabled && swiper.slides.length % params.grid.rows !== 0;
-  const addBlankSlides = (amountOfSlides) => {
-    for (let i2 = 0; i2 < amountOfSlides; i2 += 1) {
-      const slideEl = swiper.isElement ? createElement("swiper-slide", [params.slideBlankClass]) : createElement("div", [params.slideClass, params.slideBlankClass]);
-      swiper.slidesEl.append(slideEl);
-    }
-  };
-  if (shouldFillGroup) {
-    if (params.loopAddBlankSlides) {
-      const slidesToAdd = slidesPerGroup - swiper.slides.length % slidesPerGroup;
-      addBlankSlides(slidesToAdd);
-      swiper.recalcSlides();
-      swiper.updateSlides();
-    } else {
-      showWarning("Swiper Loop Warning: The number of slides is not even to slidesPerGroup, loop mode may not function properly. You need to add more slides (or make duplicates, or empty slides)");
-    }
-    initSlides();
-  } else if (shouldFillGrid) {
-    if (params.loopAddBlankSlides) {
-      const slidesToAdd = params.grid.rows - swiper.slides.length % params.grid.rows;
-      addBlankSlides(slidesToAdd);
-      swiper.recalcSlides();
-      swiper.updateSlides();
-    } else {
-      showWarning("Swiper Loop Warning: The number of slides is not even to grid.rows, loop mode may not function properly. You need to add more slides (or make duplicates, or empty slides)");
-    }
-    initSlides();
-  } else {
-    initSlides();
-  }
-  swiper.loopFix({
-    slideRealIndex,
-    direction: params.centeredSlides ? void 0 : "next"
-  });
-}
-function loopFix(_temp) {
-  let {
-    slideRealIndex,
-    slideTo: slideTo2 = true,
-    direction,
-    setTranslate: setTranslate2,
-    activeSlideIndex,
-    byController,
-    byMousewheel
-  } = _temp === void 0 ? {} : _temp;
-  const swiper = this;
-  if (!swiper.params.loop)
-    return;
-  swiper.emit("beforeLoopFix");
-  const {
-    slides,
-    allowSlidePrev,
-    allowSlideNext,
-    slidesEl,
-    params
-  } = swiper;
-  const {
-    centeredSlides
-  } = params;
-  swiper.allowSlidePrev = true;
-  swiper.allowSlideNext = true;
-  if (swiper.virtual && params.virtual.enabled) {
-    if (slideTo2) {
-      if (!params.centeredSlides && swiper.snapIndex === 0) {
-        swiper.slideTo(swiper.virtual.slides.length, 0, false, true);
-      } else if (params.centeredSlides && swiper.snapIndex < params.slidesPerView) {
-        swiper.slideTo(swiper.virtual.slides.length + swiper.snapIndex, 0, false, true);
-      } else if (swiper.snapIndex === swiper.snapGrid.length - 1) {
-        swiper.slideTo(swiper.virtual.slidesBefore, 0, false, true);
-      }
-    }
-    swiper.allowSlidePrev = allowSlidePrev;
-    swiper.allowSlideNext = allowSlideNext;
-    swiper.emit("loopFix");
-    return;
-  }
-  let slidesPerView = params.slidesPerView;
-  if (slidesPerView === "auto") {
-    slidesPerView = swiper.slidesPerViewDynamic();
-  } else {
-    slidesPerView = Math.ceil(parseFloat(params.slidesPerView, 10));
-    if (centeredSlides && slidesPerView % 2 === 0) {
-      slidesPerView = slidesPerView + 1;
-    }
-  }
-  const slidesPerGroup = params.slidesPerGroupAuto ? slidesPerView : params.slidesPerGroup;
-  let loopedSlides = slidesPerGroup;
-  if (loopedSlides % slidesPerGroup !== 0) {
-    loopedSlides += slidesPerGroup - loopedSlides % slidesPerGroup;
-  }
-  loopedSlides += params.loopAdditionalSlides;
-  swiper.loopedSlides = loopedSlides;
-  const gridEnabled = swiper.grid && params.grid && params.grid.rows > 1;
-  if (slides.length < slidesPerView + loopedSlides) {
-    showWarning("Swiper Loop Warning: The number of slides is not enough for loop mode, it will be disabled and not function properly. You need to add more slides (or make duplicates) or lower the values of slidesPerView and slidesPerGroup parameters");
-  } else if (gridEnabled && params.grid.fill === "row") {
-    showWarning("Swiper Loop Warning: Loop mode is not compatible with grid.fill = `row`");
-  }
-  const prependSlidesIndexes = [];
-  const appendSlidesIndexes = [];
-  let activeIndex = swiper.activeIndex;
-  if (typeof activeSlideIndex === "undefined") {
-    activeSlideIndex = swiper.getSlideIndex(slides.filter((el) => el.classList.contains(params.slideActiveClass))[0]);
-  } else {
-    activeIndex = activeSlideIndex;
-  }
-  const isNext = direction === "next" || !direction;
-  const isPrev = direction === "prev" || !direction;
-  let slidesPrepended = 0;
-  let slidesAppended = 0;
-  const cols = gridEnabled ? Math.ceil(slides.length / params.grid.rows) : slides.length;
-  const activeColIndex = gridEnabled ? slides[activeSlideIndex].column : activeSlideIndex;
-  const activeColIndexWithShift = activeColIndex + (centeredSlides && typeof setTranslate2 === "undefined" ? -slidesPerView / 2 + 0.5 : 0);
-  if (activeColIndexWithShift < loopedSlides) {
-    slidesPrepended = Math.max(loopedSlides - activeColIndexWithShift, slidesPerGroup);
-    for (let i2 = 0; i2 < loopedSlides - activeColIndexWithShift; i2 += 1) {
-      const index2 = i2 - Math.floor(i2 / cols) * cols;
-      if (gridEnabled) {
-        const colIndexToPrepend = cols - index2 - 1;
-        for (let i3 = slides.length - 1; i3 >= 0; i3 -= 1) {
-          if (slides[i3].column === colIndexToPrepend)
-            prependSlidesIndexes.push(i3);
-        }
-      } else {
-        prependSlidesIndexes.push(cols - index2 - 1);
-      }
-    }
-  } else if (activeColIndexWithShift + slidesPerView > cols - loopedSlides) {
-    slidesAppended = Math.max(activeColIndexWithShift - (cols - loopedSlides * 2), slidesPerGroup);
-    for (let i2 = 0; i2 < slidesAppended; i2 += 1) {
-      const index2 = i2 - Math.floor(i2 / cols) * cols;
-      if (gridEnabled) {
-        slides.forEach((slide2, slideIndex) => {
-          if (slide2.column === index2)
-            appendSlidesIndexes.push(slideIndex);
-        });
-      } else {
-        appendSlidesIndexes.push(index2);
-      }
-    }
-  }
-  swiper.__preventObserver__ = true;
-  requestAnimationFrame(() => {
-    swiper.__preventObserver__ = false;
-  });
-  if (isPrev) {
-    prependSlidesIndexes.forEach((index2) => {
-      slides[index2].swiperLoopMoveDOM = true;
-      slidesEl.prepend(slides[index2]);
-      slides[index2].swiperLoopMoveDOM = false;
-    });
-  }
-  if (isNext) {
-    appendSlidesIndexes.forEach((index2) => {
-      slides[index2].swiperLoopMoveDOM = true;
-      slidesEl.append(slides[index2]);
-      slides[index2].swiperLoopMoveDOM = false;
-    });
-  }
-  swiper.recalcSlides();
-  if (params.slidesPerView === "auto") {
-    swiper.updateSlides();
-  } else if (gridEnabled && (prependSlidesIndexes.length > 0 && isPrev || appendSlidesIndexes.length > 0 && isNext)) {
-    swiper.slides.forEach((slide2, slideIndex) => {
-      swiper.grid.updateSlide(slideIndex, slide2, swiper.slides);
-    });
-  }
-  if (params.watchSlidesProgress) {
-    swiper.updateSlidesOffset();
-  }
-  if (slideTo2) {
-    if (prependSlidesIndexes.length > 0 && isPrev) {
-      if (typeof slideRealIndex === "undefined") {
-        const currentSlideTranslate = swiper.slidesGrid[activeIndex];
-        const newSlideTranslate = swiper.slidesGrid[activeIndex + slidesPrepended];
-        const diff = newSlideTranslate - currentSlideTranslate;
-        if (byMousewheel) {
-          swiper.setTranslate(swiper.translate - diff);
-        } else {
-          swiper.slideTo(activeIndex + slidesPrepended, 0, false, true);
-          if (setTranslate2) {
-            swiper.touchEventsData.startTranslate = swiper.touchEventsData.startTranslate - diff;
-            swiper.touchEventsData.currentTranslate = swiper.touchEventsData.currentTranslate - diff;
-          }
-        }
-      } else {
-        if (setTranslate2) {
-          const shift = gridEnabled ? prependSlidesIndexes.length / params.grid.rows : prependSlidesIndexes.length;
-          swiper.slideTo(swiper.activeIndex + shift, 0, false, true);
-          swiper.touchEventsData.currentTranslate = swiper.translate;
-        }
-      }
-    } else if (appendSlidesIndexes.length > 0 && isNext) {
-      if (typeof slideRealIndex === "undefined") {
-        const currentSlideTranslate = swiper.slidesGrid[activeIndex];
-        const newSlideTranslate = swiper.slidesGrid[activeIndex - slidesAppended];
-        const diff = newSlideTranslate - currentSlideTranslate;
-        if (byMousewheel) {
-          swiper.setTranslate(swiper.translate - diff);
-        } else {
-          swiper.slideTo(activeIndex - slidesAppended, 0, false, true);
-          if (setTranslate2) {
-            swiper.touchEventsData.startTranslate = swiper.touchEventsData.startTranslate - diff;
-            swiper.touchEventsData.currentTranslate = swiper.touchEventsData.currentTranslate - diff;
-          }
-        }
-      } else {
-        const shift = gridEnabled ? appendSlidesIndexes.length / params.grid.rows : appendSlidesIndexes.length;
-        swiper.slideTo(swiper.activeIndex - shift, 0, false, true);
-      }
-    }
-  }
-  swiper.allowSlidePrev = allowSlidePrev;
-  swiper.allowSlideNext = allowSlideNext;
-  if (swiper.controller && swiper.controller.control && !byController) {
-    const loopParams = {
-      slideRealIndex,
-      direction,
-      setTranslate: setTranslate2,
-      activeSlideIndex,
-      byController: true
-    };
-    if (Array.isArray(swiper.controller.control)) {
-      swiper.controller.control.forEach((c2) => {
-        if (!c2.destroyed && c2.params.loop)
-          c2.loopFix({
-            ...loopParams,
-            slideTo: c2.params.slidesPerView === params.slidesPerView ? slideTo2 : false
-          });
-      });
-    } else if (swiper.controller.control instanceof swiper.constructor && swiper.controller.control.params.loop) {
-      swiper.controller.control.loopFix({
-        ...loopParams,
-        slideTo: swiper.controller.control.params.slidesPerView === params.slidesPerView ? slideTo2 : false
-      });
-    }
-  }
-  swiper.emit("loopFix");
-}
-function loopDestroy() {
-  const swiper = this;
-  const {
-    params,
-    slidesEl
-  } = swiper;
-  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
-    return;
-  swiper.recalcSlides();
-  const newSlidesOrder = [];
-  swiper.slides.forEach((slideEl) => {
-    const index2 = typeof slideEl.swiperSlideIndex === "undefined" ? slideEl.getAttribute("data-swiper-slide-index") * 1 : slideEl.swiperSlideIndex;
-    newSlidesOrder[index2] = slideEl;
-  });
-  swiper.slides.forEach((slideEl) => {
-    slideEl.removeAttribute("data-swiper-slide-index");
-  });
-  newSlidesOrder.forEach((slideEl) => {
-    slidesEl.append(slideEl);
-  });
-  swiper.recalcSlides();
-  swiper.slideTo(swiper.realIndex, 0);
-}
-var loop = {
-  loopCreate,
-  loopFix,
-  loopDestroy
-};
-function setGrabCursor(moving) {
-  const swiper = this;
-  if (!swiper.params.simulateTouch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode)
-    return;
-  const el = swiper.params.touchEventsTarget === "container" ? swiper.el : swiper.wrapperEl;
-  if (swiper.isElement) {
-    swiper.__preventObserver__ = true;
-  }
-  el.style.cursor = "move";
-  el.style.cursor = moving ? "grabbing" : "grab";
-  if (swiper.isElement) {
-    requestAnimationFrame(() => {
-      swiper.__preventObserver__ = false;
-    });
-  }
-}
-function unsetGrabCursor() {
-  const swiper = this;
-  if (swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode) {
-    return;
-  }
-  if (swiper.isElement) {
-    swiper.__preventObserver__ = true;
-  }
-  swiper[swiper.params.touchEventsTarget === "container" ? "el" : "wrapperEl"].style.cursor = "";
-  if (swiper.isElement) {
-    requestAnimationFrame(() => {
-      swiper.__preventObserver__ = false;
-    });
-  }
-}
-var grabCursor = {
-  setGrabCursor,
-  unsetGrabCursor
-};
-function closestElement(selector, base) {
-  if (base === void 0) {
-    base = this;
-  }
-  function __closestFrom(el) {
-    if (!el || el === getDocument() || el === getWindow())
-      return null;
-    if (el.assignedSlot)
-      el = el.assignedSlot;
-    const found = el.closest(selector);
-    if (!found && !el.getRootNode) {
-      return null;
-    }
-    return found || __closestFrom(el.getRootNode().host);
-  }
-  return __closestFrom(base);
-}
-function preventEdgeSwipe(swiper, event, startX) {
-  const window2 = getWindow();
-  const {
-    params
-  } = swiper;
-  const edgeSwipeDetection = params.edgeSwipeDetection;
-  const edgeSwipeThreshold = params.edgeSwipeThreshold;
-  if (edgeSwipeDetection && (startX <= edgeSwipeThreshold || startX >= window2.innerWidth - edgeSwipeThreshold)) {
-    if (edgeSwipeDetection === "prevent") {
-      event.preventDefault();
-      return true;
-    }
-    return false;
-  }
-  return true;
-}
-function onTouchStart(event) {
-  const swiper = this;
-  const document2 = getDocument();
-  let e2 = event;
-  if (e2.originalEvent)
-    e2 = e2.originalEvent;
-  const data3 = swiper.touchEventsData;
-  if (e2.type === "pointerdown") {
-    if (data3.pointerId !== null && data3.pointerId !== e2.pointerId) {
-      return;
-    }
-    data3.pointerId = e2.pointerId;
-  } else if (e2.type === "touchstart" && e2.targetTouches.length === 1) {
-    data3.touchId = e2.targetTouches[0].identifier;
-  }
-  if (e2.type === "touchstart") {
-    preventEdgeSwipe(swiper, e2, e2.targetTouches[0].pageX);
-    return;
-  }
-  const {
-    params,
-    touches,
-    enabled
-  } = swiper;
-  if (!enabled)
-    return;
-  if (!params.simulateTouch && e2.pointerType === "mouse")
-    return;
-  if (swiper.animating && params.preventInteractionOnTransition) {
-    return;
-  }
-  if (!swiper.animating && params.cssMode && params.loop) {
-    swiper.loopFix();
-  }
-  let targetEl = e2.target;
-  if (params.touchEventsTarget === "wrapper") {
-    if (!swiper.wrapperEl.contains(targetEl))
-      return;
-  }
-  if ("which" in e2 && e2.which === 3)
-    return;
-  if ("button" in e2 && e2.button > 0)
-    return;
-  if (data3.isTouched && data3.isMoved)
-    return;
-  const swipingClassHasValue = !!params.noSwipingClass && params.noSwipingClass !== "";
-  const eventPath = e2.composedPath ? e2.composedPath() : e2.path;
-  if (swipingClassHasValue && e2.target && e2.target.shadowRoot && eventPath) {
-    targetEl = eventPath[0];
-  }
-  const noSwipingSelector = params.noSwipingSelector ? params.noSwipingSelector : `.${params.noSwipingClass}`;
-  const isTargetShadow = !!(e2.target && e2.target.shadowRoot);
-  if (params.noSwiping && (isTargetShadow ? closestElement(noSwipingSelector, targetEl) : targetEl.closest(noSwipingSelector))) {
-    swiper.allowClick = true;
-    return;
-  }
-  if (params.swipeHandler) {
-    if (!targetEl.closest(params.swipeHandler))
-      return;
-  }
-  touches.currentX = e2.pageX;
-  touches.currentY = e2.pageY;
-  const startX = touches.currentX;
-  const startY = touches.currentY;
-  if (!preventEdgeSwipe(swiper, e2, startX)) {
-    return;
-  }
-  Object.assign(data3, {
-    isTouched: true,
-    isMoved: false,
-    allowTouchCallbacks: true,
-    isScrolling: void 0,
-    startMoving: void 0
-  });
-  touches.startX = startX;
-  touches.startY = startY;
-  data3.touchStartTime = now();
-  swiper.allowClick = true;
-  swiper.updateSize();
-  swiper.swipeDirection = void 0;
-  if (params.threshold > 0)
-    data3.allowThresholdMove = false;
-  let preventDefault = true;
-  if (targetEl.matches(data3.focusableElements)) {
-    preventDefault = false;
-    if (targetEl.nodeName === "SELECT") {
-      data3.isTouched = false;
-    }
-  }
-  if (document2.activeElement && document2.activeElement.matches(data3.focusableElements) && document2.activeElement !== targetEl) {
-    document2.activeElement.blur();
-  }
-  const shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
-  if ((params.touchStartForcePreventDefault || shouldPreventDefault) && !targetEl.isContentEditable) {
-    e2.preventDefault();
-  }
-  if (params.freeMode && params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode) {
-    swiper.freeMode.onTouchStart();
-  }
-  swiper.emit("touchStart", e2);
-}
-function onTouchMove(event) {
-  const document2 = getDocument();
-  const swiper = this;
-  const data3 = swiper.touchEventsData;
-  const {
-    params,
-    touches,
-    rtlTranslate: rtl,
-    enabled
-  } = swiper;
-  if (!enabled)
-    return;
-  if (!params.simulateTouch && event.pointerType === "mouse")
-    return;
-  let e2 = event;
-  if (e2.originalEvent)
-    e2 = e2.originalEvent;
-  if (e2.type === "pointermove") {
-    if (data3.touchId !== null)
-      return;
-    const id = e2.pointerId;
-    if (id !== data3.pointerId)
-      return;
-  }
-  let targetTouch;
-  if (e2.type === "touchmove") {
-    targetTouch = [...e2.changedTouches].filter((t2) => t2.identifier === data3.touchId)[0];
-    if (!targetTouch || targetTouch.identifier !== data3.touchId)
-      return;
-  } else {
-    targetTouch = e2;
-  }
-  if (!data3.isTouched) {
-    if (data3.startMoving && data3.isScrolling) {
-      swiper.emit("touchMoveOpposite", e2);
-    }
-    return;
-  }
-  const pageX = targetTouch.pageX;
-  const pageY = targetTouch.pageY;
-  if (e2.preventedByNestedSwiper) {
-    touches.startX = pageX;
-    touches.startY = pageY;
-    return;
-  }
-  if (!swiper.allowTouchMove) {
-    if (!e2.target.matches(data3.focusableElements)) {
-      swiper.allowClick = false;
-    }
-    if (data3.isTouched) {
-      Object.assign(touches, {
-        startX: pageX,
-        startY: pageY,
-        currentX: pageX,
-        currentY: pageY
-      });
-      data3.touchStartTime = now();
-    }
-    return;
-  }
-  if (params.touchReleaseOnEdges && !params.loop) {
-    if (swiper.isVertical()) {
-      if (pageY < touches.startY && swiper.translate <= swiper.maxTranslate() || pageY > touches.startY && swiper.translate >= swiper.minTranslate()) {
-        data3.isTouched = false;
-        data3.isMoved = false;
-        return;
-      }
-    } else if (pageX < touches.startX && swiper.translate <= swiper.maxTranslate() || pageX > touches.startX && swiper.translate >= swiper.minTranslate()) {
-      return;
-    }
-  }
-  if (document2.activeElement) {
-    if (e2.target === document2.activeElement && e2.target.matches(data3.focusableElements)) {
-      data3.isMoved = true;
-      swiper.allowClick = false;
-      return;
-    }
-  }
-  if (data3.allowTouchCallbacks) {
-    swiper.emit("touchMove", e2);
-  }
-  touches.previousX = touches.currentX;
-  touches.previousY = touches.currentY;
-  touches.currentX = pageX;
-  touches.currentY = pageY;
-  const diffX = touches.currentX - touches.startX;
-  const diffY = touches.currentY - touches.startY;
-  if (swiper.params.threshold && Math.sqrt(diffX ** 2 + diffY ** 2) < swiper.params.threshold)
-    return;
-  if (typeof data3.isScrolling === "undefined") {
-    let touchAngle;
-    if (swiper.isHorizontal() && touches.currentY === touches.startY || swiper.isVertical() && touches.currentX === touches.startX) {
-      data3.isScrolling = false;
-    } else {
-      if (diffX * diffX + diffY * diffY >= 25) {
-        touchAngle = Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180 / Math.PI;
-        data3.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : 90 - touchAngle > params.touchAngle;
-      }
-    }
-  }
-  if (data3.isScrolling) {
-    swiper.emit("touchMoveOpposite", e2);
-  }
-  if (typeof data3.startMoving === "undefined") {
-    if (touches.currentX !== touches.startX || touches.currentY !== touches.startY) {
-      data3.startMoving = true;
-    }
-  }
-  if (data3.isScrolling) {
-    data3.isTouched = false;
-    return;
-  }
-  if (!data3.startMoving) {
-    return;
-  }
-  swiper.allowClick = false;
-  if (!params.cssMode && e2.cancelable) {
-    e2.preventDefault();
-  }
-  if (params.touchMoveStopPropagation && !params.nested) {
-    e2.stopPropagation();
-  }
-  let diff = swiper.isHorizontal() ? diffX : diffY;
-  let touchesDiff = swiper.isHorizontal() ? touches.currentX - touches.previousX : touches.currentY - touches.previousY;
-  if (params.oneWayMovement) {
-    diff = Math.abs(diff) * (rtl ? 1 : -1);
-    touchesDiff = Math.abs(touchesDiff) * (rtl ? 1 : -1);
-  }
-  touches.diff = diff;
-  diff *= params.touchRatio;
-  if (rtl) {
-    diff = -diff;
-    touchesDiff = -touchesDiff;
-  }
-  const prevTouchesDirection = swiper.touchesDirection;
-  swiper.swipeDirection = diff > 0 ? "prev" : "next";
-  swiper.touchesDirection = touchesDiff > 0 ? "prev" : "next";
-  const isLoop = swiper.params.loop && !params.cssMode;
-  const allowLoopFix = swiper.touchesDirection === "next" && swiper.allowSlideNext || swiper.touchesDirection === "prev" && swiper.allowSlidePrev;
-  if (!data3.isMoved) {
-    if (isLoop && allowLoopFix) {
-      swiper.loopFix({
-        direction: swiper.swipeDirection
-      });
-    }
-    data3.startTranslate = swiper.getTranslate();
-    swiper.setTransition(0);
-    if (swiper.animating) {
-      const evt = new window.CustomEvent("transitionend", {
-        bubbles: true,
-        cancelable: true
-      });
-      swiper.wrapperEl.dispatchEvent(evt);
-    }
-    data3.allowMomentumBounce = false;
-    if (params.grabCursor && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
-      swiper.setGrabCursor(true);
-    }
-    swiper.emit("sliderFirstMove", e2);
-  }
-  let loopFixed;
-  (/* @__PURE__ */ new Date()).getTime();
-  if (data3.isMoved && data3.allowThresholdMove && prevTouchesDirection !== swiper.touchesDirection && isLoop && allowLoopFix && Math.abs(diff) >= 1) {
-    Object.assign(touches, {
-      startX: pageX,
-      startY: pageY,
-      currentX: pageX,
-      currentY: pageY,
-      startTranslate: data3.currentTranslate
-    });
-    data3.loopSwapReset = true;
-    data3.startTranslate = data3.currentTranslate;
-    return;
-  }
-  swiper.emit("sliderMove", e2);
-  data3.isMoved = true;
-  data3.currentTranslate = diff + data3.startTranslate;
-  let disableParentSwiper = true;
-  let resistanceRatio = params.resistanceRatio;
-  if (params.touchReleaseOnEdges) {
-    resistanceRatio = 0;
-  }
-  if (diff > 0) {
-    if (isLoop && allowLoopFix && !loopFixed && data3.allowThresholdMove && data3.currentTranslate > (params.centeredSlides ? swiper.minTranslate() - swiper.slidesSizesGrid[swiper.activeIndex + 1] : swiper.minTranslate())) {
-      swiper.loopFix({
-        direction: "prev",
-        setTranslate: true,
-        activeSlideIndex: 0
-      });
-    }
-    if (data3.currentTranslate > swiper.minTranslate()) {
-      disableParentSwiper = false;
-      if (params.resistance) {
-        data3.currentTranslate = swiper.minTranslate() - 1 + (-swiper.minTranslate() + data3.startTranslate + diff) ** resistanceRatio;
-      }
-    }
-  } else if (diff < 0) {
-    if (isLoop && allowLoopFix && !loopFixed && data3.allowThresholdMove && data3.currentTranslate < (params.centeredSlides ? swiper.maxTranslate() + swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1] : swiper.maxTranslate())) {
-      swiper.loopFix({
-        direction: "next",
-        setTranslate: true,
-        activeSlideIndex: swiper.slides.length - (params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)))
-      });
-    }
-    if (data3.currentTranslate < swiper.maxTranslate()) {
-      disableParentSwiper = false;
-      if (params.resistance) {
-        data3.currentTranslate = swiper.maxTranslate() + 1 - (swiper.maxTranslate() - data3.startTranslate - diff) ** resistanceRatio;
-      }
-    }
-  }
-  if (disableParentSwiper) {
-    e2.preventedByNestedSwiper = true;
-  }
-  if (!swiper.allowSlideNext && swiper.swipeDirection === "next" && data3.currentTranslate < data3.startTranslate) {
-    data3.currentTranslate = data3.startTranslate;
-  }
-  if (!swiper.allowSlidePrev && swiper.swipeDirection === "prev" && data3.currentTranslate > data3.startTranslate) {
-    data3.currentTranslate = data3.startTranslate;
-  }
-  if (!swiper.allowSlidePrev && !swiper.allowSlideNext) {
-    data3.currentTranslate = data3.startTranslate;
-  }
-  if (params.threshold > 0) {
-    if (Math.abs(diff) > params.threshold || data3.allowThresholdMove) {
-      if (!data3.allowThresholdMove) {
-        data3.allowThresholdMove = true;
-        touches.startX = touches.currentX;
-        touches.startY = touches.currentY;
-        data3.currentTranslate = data3.startTranslate;
-        touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
-        return;
-      }
-    } else {
-      data3.currentTranslate = data3.startTranslate;
-      return;
-    }
-  }
-  if (!params.followFinger || params.cssMode)
-    return;
-  if (params.freeMode && params.freeMode.enabled && swiper.freeMode || params.watchSlidesProgress) {
-    swiper.updateActiveIndex();
-    swiper.updateSlidesClasses();
-  }
-  if (params.freeMode && params.freeMode.enabled && swiper.freeMode) {
-    swiper.freeMode.onTouchMove();
-  }
-  swiper.updateProgress(data3.currentTranslate);
-  swiper.setTranslate(data3.currentTranslate);
-}
-function onTouchEnd(event) {
-  const swiper = this;
-  const data3 = swiper.touchEventsData;
-  let e2 = event;
-  if (e2.originalEvent)
-    e2 = e2.originalEvent;
-  let targetTouch;
-  const isTouchEvent = e2.type === "touchend" || e2.type === "touchcancel";
-  if (!isTouchEvent) {
-    if (data3.touchId !== null)
-      return;
-    if (e2.pointerId !== data3.pointerId)
-      return;
-    targetTouch = e2;
-  } else {
-    targetTouch = [...e2.changedTouches].filter((t2) => t2.identifier === data3.touchId)[0];
-    if (!targetTouch || targetTouch.identifier !== data3.touchId)
-      return;
-  }
-  if (["pointercancel", "pointerout", "pointerleave", "contextmenu"].includes(e2.type)) {
-    const proceed = ["pointercancel", "contextmenu"].includes(e2.type) && (swiper.browser.isSafari || swiper.browser.isWebView);
-    if (!proceed) {
-      return;
-    }
-  }
-  data3.pointerId = null;
-  data3.touchId = null;
-  const {
-    params,
-    touches,
-    rtlTranslate: rtl,
-    slidesGrid,
-    enabled
-  } = swiper;
-  if (!enabled)
-    return;
-  if (!params.simulateTouch && e2.pointerType === "mouse")
-    return;
-  if (data3.allowTouchCallbacks) {
-    swiper.emit("touchEnd", e2);
-  }
-  data3.allowTouchCallbacks = false;
-  if (!data3.isTouched) {
-    if (data3.isMoved && params.grabCursor) {
-      swiper.setGrabCursor(false);
-    }
-    data3.isMoved = false;
-    data3.startMoving = false;
-    return;
-  }
-  if (params.grabCursor && data3.isMoved && data3.isTouched && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
-    swiper.setGrabCursor(false);
-  }
-  const touchEndTime = now();
-  const timeDiff = touchEndTime - data3.touchStartTime;
-  if (swiper.allowClick) {
-    const pathTree = e2.path || e2.composedPath && e2.composedPath();
-    swiper.updateClickedSlide(pathTree && pathTree[0] || e2.target, pathTree);
-    swiper.emit("tap click", e2);
-    if (timeDiff < 300 && touchEndTime - data3.lastClickTime < 300) {
-      swiper.emit("doubleTap doubleClick", e2);
-    }
-  }
-  data3.lastClickTime = now();
-  nextTick(() => {
-    if (!swiper.destroyed)
-      swiper.allowClick = true;
-  });
-  if (!data3.isTouched || !data3.isMoved || !swiper.swipeDirection || touches.diff === 0 && !data3.loopSwapReset || data3.currentTranslate === data3.startTranslate && !data3.loopSwapReset) {
-    data3.isTouched = false;
-    data3.isMoved = false;
-    data3.startMoving = false;
-    return;
-  }
-  data3.isTouched = false;
-  data3.isMoved = false;
-  data3.startMoving = false;
-  let currentPos;
-  if (params.followFinger) {
-    currentPos = rtl ? swiper.translate : -swiper.translate;
-  } else {
-    currentPos = -data3.currentTranslate;
-  }
-  if (params.cssMode) {
-    return;
-  }
-  if (params.freeMode && params.freeMode.enabled) {
-    swiper.freeMode.onTouchEnd({
-      currentPos
-    });
-    return;
-  }
-  const swipeToLast = currentPos >= -swiper.maxTranslate() && !swiper.params.loop;
-  let stopIndex = 0;
-  let groupSize = swiper.slidesSizesGrid[0];
-  for (let i2 = 0; i2 < slidesGrid.length; i2 += i2 < params.slidesPerGroupSkip ? 1 : params.slidesPerGroup) {
-    const increment2 = i2 < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
-    if (typeof slidesGrid[i2 + increment2] !== "undefined") {
-      if (swipeToLast || currentPos >= slidesGrid[i2] && currentPos < slidesGrid[i2 + increment2]) {
-        stopIndex = i2;
-        groupSize = slidesGrid[i2 + increment2] - slidesGrid[i2];
-      }
-    } else if (swipeToLast || currentPos >= slidesGrid[i2]) {
-      stopIndex = i2;
-      groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2];
-    }
-  }
-  let rewindFirstIndex = null;
-  let rewindLastIndex = null;
-  if (params.rewind) {
-    if (swiper.isBeginning) {
-      rewindLastIndex = params.virtual && params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
-    } else if (swiper.isEnd) {
-      rewindFirstIndex = 0;
-    }
-  }
-  const ratio = (currentPos - slidesGrid[stopIndex]) / groupSize;
-  const increment = stopIndex < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
-  if (timeDiff > params.longSwipesMs) {
-    if (!params.longSwipes) {
-      swiper.slideTo(swiper.activeIndex);
-      return;
-    }
-    if (swiper.swipeDirection === "next") {
-      if (ratio >= params.longSwipesRatio)
-        swiper.slideTo(params.rewind && swiper.isEnd ? rewindFirstIndex : stopIndex + increment);
-      else
-        swiper.slideTo(stopIndex);
-    }
-    if (swiper.swipeDirection === "prev") {
-      if (ratio > 1 - params.longSwipesRatio) {
-        swiper.slideTo(stopIndex + increment);
-      } else if (rewindLastIndex !== null && ratio < 0 && Math.abs(ratio) > params.longSwipesRatio) {
-        swiper.slideTo(rewindLastIndex);
-      } else {
-        swiper.slideTo(stopIndex);
-      }
-    }
-  } else {
-    if (!params.shortSwipes) {
-      swiper.slideTo(swiper.activeIndex);
-      return;
-    }
-    const isNavButtonTarget = swiper.navigation && (e2.target === swiper.navigation.nextEl || e2.target === swiper.navigation.prevEl);
-    if (!isNavButtonTarget) {
-      if (swiper.swipeDirection === "next") {
-        swiper.slideTo(rewindFirstIndex !== null ? rewindFirstIndex : stopIndex + increment);
-      }
-      if (swiper.swipeDirection === "prev") {
-        swiper.slideTo(rewindLastIndex !== null ? rewindLastIndex : stopIndex);
-      }
-    } else if (e2.target === swiper.navigation.nextEl) {
-      swiper.slideTo(stopIndex + increment);
-    } else {
-      swiper.slideTo(stopIndex);
-    }
-  }
-}
-function onResize() {
-  const swiper = this;
-  const {
-    params,
-    el
-  } = swiper;
-  if (el && el.offsetWidth === 0)
-    return;
-  if (params.breakpoints) {
-    swiper.setBreakpoint();
-  }
-  const {
-    allowSlideNext,
-    allowSlidePrev,
-    snapGrid
-  } = swiper;
-  const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
-  swiper.allowSlideNext = true;
-  swiper.allowSlidePrev = true;
-  swiper.updateSize();
-  swiper.updateSlides();
-  swiper.updateSlidesClasses();
-  const isVirtualLoop = isVirtual && params.loop;
-  if ((params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !swiper.isBeginning && !swiper.params.centeredSlides && !isVirtualLoop) {
-    swiper.slideTo(swiper.slides.length - 1, 0, false, true);
-  } else {
-    if (swiper.params.loop && !isVirtual) {
-      swiper.slideToLoop(swiper.realIndex, 0, false, true);
-    } else {
-      swiper.slideTo(swiper.activeIndex, 0, false, true);
-    }
-  }
-  if (swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused) {
-    clearTimeout(swiper.autoplay.resizeTimeout);
-    swiper.autoplay.resizeTimeout = setTimeout(() => {
-      if (swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused) {
-        swiper.autoplay.resume();
-      }
-    }, 500);
-  }
-  swiper.allowSlidePrev = allowSlidePrev;
-  swiper.allowSlideNext = allowSlideNext;
-  if (swiper.params.watchOverflow && snapGrid !== swiper.snapGrid) {
-    swiper.checkOverflow();
-  }
-}
-function onClick(e2) {
-  const swiper = this;
-  if (!swiper.enabled)
-    return;
-  if (!swiper.allowClick) {
-    if (swiper.params.preventClicks)
-      e2.preventDefault();
-    if (swiper.params.preventClicksPropagation && swiper.animating) {
-      e2.stopPropagation();
-      e2.stopImmediatePropagation();
-    }
-  }
-}
-function onScroll() {
-  const swiper = this;
-  const {
-    wrapperEl,
-    rtlTranslate,
-    enabled
-  } = swiper;
-  if (!enabled)
-    return;
-  swiper.previousTranslate = swiper.translate;
-  if (swiper.isHorizontal()) {
-    swiper.translate = -wrapperEl.scrollLeft;
-  } else {
-    swiper.translate = -wrapperEl.scrollTop;
-  }
-  if (swiper.translate === 0)
-    swiper.translate = 0;
-  swiper.updateActiveIndex();
-  swiper.updateSlidesClasses();
-  let newProgress;
-  const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
-  if (translatesDiff === 0) {
-    newProgress = 0;
-  } else {
-    newProgress = (swiper.translate - swiper.minTranslate()) / translatesDiff;
-  }
-  if (newProgress !== swiper.progress) {
-    swiper.updateProgress(rtlTranslate ? -swiper.translate : swiper.translate);
-  }
-  swiper.emit("setTranslate", swiper.translate, false);
-}
-function onLoad(e2) {
-  const swiper = this;
-  processLazyPreloader(swiper, e2.target);
-  if (swiper.params.cssMode || swiper.params.slidesPerView !== "auto" && !swiper.params.autoHeight) {
-    return;
-  }
-  swiper.update();
-}
-function onDocumentTouchStart() {
-  const swiper = this;
-  if (swiper.documentTouchHandlerProceeded)
-    return;
-  swiper.documentTouchHandlerProceeded = true;
-  if (swiper.params.touchReleaseOnEdges) {
-    swiper.el.style.touchAction = "auto";
-  }
-}
-const events = (swiper, method) => {
-  const document2 = getDocument();
-  const {
-    params,
-    el,
-    wrapperEl,
-    device
-  } = swiper;
-  const capture = !!params.nested;
-  const domMethod = method === "on" ? "addEventListener" : "removeEventListener";
-  const swiperMethod = method;
-  document2[domMethod]("touchstart", swiper.onDocumentTouchStart, {
-    passive: false,
-    capture
-  });
-  el[domMethod]("touchstart", swiper.onTouchStart, {
-    passive: false
-  });
-  el[domMethod]("pointerdown", swiper.onTouchStart, {
-    passive: false
-  });
-  document2[domMethod]("touchmove", swiper.onTouchMove, {
-    passive: false,
-    capture
-  });
-  document2[domMethod]("pointermove", swiper.onTouchMove, {
-    passive: false,
-    capture
-  });
-  document2[domMethod]("touchend", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("pointerup", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("pointercancel", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("touchcancel", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("pointerout", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("pointerleave", swiper.onTouchEnd, {
-    passive: true
-  });
-  document2[domMethod]("contextmenu", swiper.onTouchEnd, {
-    passive: true
-  });
-  if (params.preventClicks || params.preventClicksPropagation) {
-    el[domMethod]("click", swiper.onClick, true);
-  }
-  if (params.cssMode) {
-    wrapperEl[domMethod]("scroll", swiper.onScroll);
-  }
-  if (params.updateOnWindowResize) {
-    swiper[swiperMethod](device.ios || device.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", onResize, true);
-  } else {
-    swiper[swiperMethod]("observerUpdate", onResize, true);
-  }
-  el[domMethod]("load", swiper.onLoad, {
-    capture: true
-  });
-};
-function attachEvents() {
-  const swiper = this;
-  const {
-    params
-  } = swiper;
-  swiper.onTouchStart = onTouchStart.bind(swiper);
-  swiper.onTouchMove = onTouchMove.bind(swiper);
-  swiper.onTouchEnd = onTouchEnd.bind(swiper);
-  swiper.onDocumentTouchStart = onDocumentTouchStart.bind(swiper);
-  if (params.cssMode) {
-    swiper.onScroll = onScroll.bind(swiper);
-  }
-  swiper.onClick = onClick.bind(swiper);
-  swiper.onLoad = onLoad.bind(swiper);
-  events(swiper, "on");
-}
-function detachEvents() {
-  const swiper = this;
-  events(swiper, "off");
-}
-var events$1 = {
-  attachEvents,
-  detachEvents
-};
-const isGridEnabled = (swiper, params) => {
-  return swiper.grid && params.grid && params.grid.rows > 1;
-};
-function setBreakpoint() {
-  const swiper = this;
-  const {
-    realIndex,
-    initialized,
-    params,
-    el
-  } = swiper;
-  const breakpoints2 = params.breakpoints;
-  if (!breakpoints2 || breakpoints2 && Object.keys(breakpoints2).length === 0)
-    return;
-  const breakpoint = swiper.getBreakpoint(breakpoints2, swiper.params.breakpointsBase, swiper.el);
-  if (!breakpoint || swiper.currentBreakpoint === breakpoint)
-    return;
-  const breakpointOnlyParams = breakpoint in breakpoints2 ? breakpoints2[breakpoint] : void 0;
-  const breakpointParams = breakpointOnlyParams || swiper.originalParams;
-  const wasMultiRow = isGridEnabled(swiper, params);
-  const isMultiRow = isGridEnabled(swiper, breakpointParams);
-  const wasEnabled = params.enabled;
-  if (wasMultiRow && !isMultiRow) {
-    el.classList.remove(`${params.containerModifierClass}grid`, `${params.containerModifierClass}grid-column`);
-    swiper.emitContainerClasses();
-  } else if (!wasMultiRow && isMultiRow) {
-    el.classList.add(`${params.containerModifierClass}grid`);
-    if (breakpointParams.grid.fill && breakpointParams.grid.fill === "column" || !breakpointParams.grid.fill && params.grid.fill === "column") {
-      el.classList.add(`${params.containerModifierClass}grid-column`);
-    }
-    swiper.emitContainerClasses();
-  }
-  ["navigation", "pagination", "scrollbar"].forEach((prop) => {
-    if (typeof breakpointParams[prop] === "undefined")
-      return;
-    const wasModuleEnabled = params[prop] && params[prop].enabled;
-    const isModuleEnabled = breakpointParams[prop] && breakpointParams[prop].enabled;
-    if (wasModuleEnabled && !isModuleEnabled) {
-      swiper[prop].disable();
-    }
-    if (!wasModuleEnabled && isModuleEnabled) {
-      swiper[prop].enable();
-    }
-  });
-  const directionChanged = breakpointParams.direction && breakpointParams.direction !== params.direction;
-  const needsReLoop = params.loop && (breakpointParams.slidesPerView !== params.slidesPerView || directionChanged);
-  const wasLoop = params.loop;
-  if (directionChanged && initialized) {
-    swiper.changeDirection();
-  }
-  extend$1(swiper.params, breakpointParams);
-  const isEnabled = swiper.params.enabled;
-  const hasLoop = swiper.params.loop;
-  Object.assign(swiper, {
-    allowTouchMove: swiper.params.allowTouchMove,
-    allowSlideNext: swiper.params.allowSlideNext,
-    allowSlidePrev: swiper.params.allowSlidePrev
-  });
-  if (wasEnabled && !isEnabled) {
-    swiper.disable();
-  } else if (!wasEnabled && isEnabled) {
-    swiper.enable();
-  }
-  swiper.currentBreakpoint = breakpoint;
-  swiper.emit("_beforeBreakpoint", breakpointParams);
-  if (initialized) {
-    if (needsReLoop) {
-      swiper.loopDestroy();
-      swiper.loopCreate(realIndex);
-      swiper.updateSlides();
-    } else if (!wasLoop && hasLoop) {
-      swiper.loopCreate(realIndex);
-      swiper.updateSlides();
-    } else if (wasLoop && !hasLoop) {
-      swiper.loopDestroy();
-    }
-  }
-  swiper.emit("breakpoint", breakpointParams);
-}
-function getBreakpoint(breakpoints2, base, containerEl) {
-  if (base === void 0) {
-    base = "window";
-  }
-  if (!breakpoints2 || base === "container" && !containerEl)
-    return void 0;
-  let breakpoint = false;
-  const window2 = getWindow();
-  const currentHeight = base === "window" ? window2.innerHeight : containerEl.clientHeight;
-  const points = Object.keys(breakpoints2).map((point) => {
-    if (typeof point === "string" && point.indexOf("@") === 0) {
-      const minRatio = parseFloat(point.substr(1));
-      const value = currentHeight * minRatio;
-      return {
-        value,
-        point
-      };
-    }
-    return {
-      value: point,
-      point
-    };
-  });
-  points.sort((a2, b2) => parseInt(a2.value, 10) - parseInt(b2.value, 10));
-  for (let i2 = 0; i2 < points.length; i2 += 1) {
-    const {
-      point,
-      value
-    } = points[i2];
-    if (base === "window") {
-      if (window2.matchMedia(`(min-width: ${value}px)`).matches) {
-        breakpoint = point;
-      }
-    } else if (value <= containerEl.clientWidth) {
-      breakpoint = point;
-    }
-  }
-  return breakpoint || "max";
-}
-var breakpoints = {
-  setBreakpoint,
-  getBreakpoint
-};
-function prepareClasses(entries, prefix) {
-  const resultClasses = [];
-  entries.forEach((item) => {
-    if (typeof item === "object") {
-      Object.keys(item).forEach((classNames) => {
-        if (item[classNames]) {
-          resultClasses.push(prefix + classNames);
-        }
-      });
-    } else if (typeof item === "string") {
-      resultClasses.push(prefix + item);
-    }
-  });
-  return resultClasses;
-}
-function addClasses() {
-  const swiper = this;
-  const {
-    classNames,
-    params,
-    rtl,
-    el,
-    device
-  } = swiper;
-  const suffixes = prepareClasses(["initialized", params.direction, {
-    "free-mode": swiper.params.freeMode && params.freeMode.enabled
-  }, {
-    "autoheight": params.autoHeight
-  }, {
-    "rtl": rtl
-  }, {
-    "grid": params.grid && params.grid.rows > 1
-  }, {
-    "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
-  }, {
-    "android": device.android
-  }, {
-    "ios": device.ios
-  }, {
-    "css-mode": params.cssMode
-  }, {
-    "centered": params.cssMode && params.centeredSlides
-  }, {
-    "watch-progress": params.watchSlidesProgress
-  }], params.containerModifierClass);
-  classNames.push(...suffixes);
-  el.classList.add(...classNames);
-  swiper.emitContainerClasses();
-}
-function removeClasses() {
-  const swiper = this;
-  const {
-    el,
-    classNames
-  } = swiper;
-  el.classList.remove(...classNames);
-  swiper.emitContainerClasses();
-}
-var classes$6 = {
-  addClasses,
-  removeClasses
-};
-function checkOverflow() {
-  const swiper = this;
-  const {
-    isLocked: wasLocked,
-    params
-  } = swiper;
-  const {
-    slidesOffsetBefore
-  } = params;
-  if (slidesOffsetBefore) {
-    const lastSlideIndex = swiper.slides.length - 1;
-    const lastSlideRightEdge = swiper.slidesGrid[lastSlideIndex] + swiper.slidesSizesGrid[lastSlideIndex] + slidesOffsetBefore * 2;
-    swiper.isLocked = swiper.size > lastSlideRightEdge;
-  } else {
-    swiper.isLocked = swiper.snapGrid.length === 1;
-  }
-  if (params.allowSlideNext === true) {
-    swiper.allowSlideNext = !swiper.isLocked;
-  }
-  if (params.allowSlidePrev === true) {
-    swiper.allowSlidePrev = !swiper.isLocked;
-  }
-  if (wasLocked && wasLocked !== swiper.isLocked) {
-    swiper.isEnd = false;
-  }
-  if (wasLocked !== swiper.isLocked) {
-    swiper.emit(swiper.isLocked ? "lock" : "unlock");
-  }
-}
-var checkOverflow$1 = {
-  checkOverflow
-};
-var defaults = {
-  init: true,
-  direction: "horizontal",
-  oneWayMovement: false,
-  touchEventsTarget: "wrapper",
-  initialSlide: 0,
-  speed: 300,
-  cssMode: false,
-  updateOnWindowResize: true,
-  resizeObserver: true,
-  nested: false,
-  createElements: false,
-  eventsPrefix: "swiper",
-  enabled: true,
-  focusableElements: "input, select, option, textarea, button, video, label",
-  // Overrides
-  width: null,
-  height: null,
-  //
-  preventInteractionOnTransition: false,
-  // ssr
-  userAgent: null,
-  url: null,
-  // To support iOS's swipe-to-go-back gesture (when being used in-app).
-  edgeSwipeDetection: false,
-  edgeSwipeThreshold: 20,
-  // Autoheight
-  autoHeight: false,
-  // Set wrapper width
-  setWrapperSize: false,
-  // Virtual Translate
-  virtualTranslate: false,
-  // Effects
-  effect: "slide",
-  // 'slide' or 'fade' or 'cube' or 'coverflow' or 'flip'
-  // Breakpoints
-  breakpoints: void 0,
-  breakpointsBase: "window",
-  // Slides grid
-  spaceBetween: 0,
-  slidesPerView: 1,
-  slidesPerGroup: 1,
-  slidesPerGroupSkip: 0,
-  slidesPerGroupAuto: false,
-  centeredSlides: false,
-  centeredSlidesBounds: false,
-  slidesOffsetBefore: 0,
-  // in px
-  slidesOffsetAfter: 0,
-  // in px
-  normalizeSlideIndex: true,
-  centerInsufficientSlides: false,
-  // Disable swiper and hide navigation when container not overflow
-  watchOverflow: true,
-  // Round length
-  roundLengths: false,
-  // Touches
-  touchRatio: 1,
-  touchAngle: 45,
-  simulateTouch: true,
-  shortSwipes: true,
-  longSwipes: true,
-  longSwipesRatio: 0.5,
-  longSwipesMs: 300,
-  followFinger: true,
-  allowTouchMove: true,
-  threshold: 5,
-  touchMoveStopPropagation: false,
-  touchStartPreventDefault: true,
-  touchStartForcePreventDefault: false,
-  touchReleaseOnEdges: false,
-  // Unique Navigation Elements
-  uniqueNavElements: true,
-  // Resistance
-  resistance: true,
-  resistanceRatio: 0.85,
-  // Progress
-  watchSlidesProgress: false,
-  // Cursor
-  grabCursor: false,
-  // Clicks
-  preventClicks: true,
-  preventClicksPropagation: true,
-  slideToClickedSlide: false,
-  // loop
-  loop: false,
-  loopAddBlankSlides: true,
-  loopAdditionalSlides: 0,
-  loopPreventsSliding: true,
-  // rewind
-  rewind: false,
-  // Swiping/no swiping
-  allowSlidePrev: true,
-  allowSlideNext: true,
-  swipeHandler: null,
-  // '.swipe-handler',
-  noSwiping: true,
-  noSwipingClass: "swiper-no-swiping",
-  noSwipingSelector: null,
-  // Passive Listeners
-  passiveListeners: true,
-  maxBackfaceHiddenSlides: 10,
-  // NS
-  containerModifierClass: "swiper-",
-  // NEW
-  slideClass: "swiper-slide",
-  slideBlankClass: "swiper-slide-blank",
-  slideActiveClass: "swiper-slide-active",
-  slideVisibleClass: "swiper-slide-visible",
-  slideFullyVisibleClass: "swiper-slide-fully-visible",
-  slideNextClass: "swiper-slide-next",
-  slidePrevClass: "swiper-slide-prev",
-  wrapperClass: "swiper-wrapper",
-  lazyPreloaderClass: "swiper-lazy-preloader",
-  lazyPreloadPrevNext: 0,
-  // Callbacks
-  runCallbacksOnInit: true,
-  // Internals
-  _emitClasses: false
-};
-function moduleExtendParams(params, allModulesParams) {
-  return function extendParams(obj) {
-    if (obj === void 0) {
-      obj = {};
-    }
-    const moduleParamName = Object.keys(obj)[0];
-    const moduleParams = obj[moduleParamName];
-    if (typeof moduleParams !== "object" || moduleParams === null) {
-      extend$1(allModulesParams, obj);
-      return;
-    }
-    if (params[moduleParamName] === true) {
-      params[moduleParamName] = {
-        enabled: true
-      };
-    }
-    if (moduleParamName === "navigation" && params[moduleParamName] && params[moduleParamName].enabled && !params[moduleParamName].prevEl && !params[moduleParamName].nextEl) {
-      params[moduleParamName].auto = true;
-    }
-    if (["pagination", "scrollbar"].indexOf(moduleParamName) >= 0 && params[moduleParamName] && params[moduleParamName].enabled && !params[moduleParamName].el) {
-      params[moduleParamName].auto = true;
-    }
-    if (!(moduleParamName in params && "enabled" in moduleParams)) {
-      extend$1(allModulesParams, obj);
-      return;
-    }
-    if (typeof params[moduleParamName] === "object" && !("enabled" in params[moduleParamName])) {
-      params[moduleParamName].enabled = true;
-    }
-    if (!params[moduleParamName])
-      params[moduleParamName] = {
-        enabled: false
-      };
-    extend$1(allModulesParams, obj);
-  };
-}
-const prototypes = {
-  eventsEmitter,
-  update,
-  translate,
-  transition,
-  slide,
-  loop,
-  grabCursor,
-  events: events$1,
-  breakpoints,
-  checkOverflow: checkOverflow$1,
-  classes: classes$6
-};
-const extendedDefaults = {};
-let Swiper$1 = class Swiper {
-  constructor() {
-    let el;
-    let params;
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === "Object") {
-      params = args[0];
-    } else {
-      [el, params] = args;
-    }
-    if (!params)
-      params = {};
-    params = extend$1({}, params);
-    if (el && !params.el)
-      params.el = el;
-    const document2 = getDocument();
-    if (params.el && typeof params.el === "string" && document2.querySelectorAll(params.el).length > 1) {
-      const swipers = [];
-      document2.querySelectorAll(params.el).forEach((containerEl) => {
-        const newParams = extend$1({}, params, {
-          el: containerEl
-        });
-        swipers.push(new Swiper(newParams));
-      });
-      return swipers;
-    }
-    const swiper = this;
-    swiper.__swiper__ = true;
-    swiper.support = getSupport();
-    swiper.device = getDevice({
-      userAgent: params.userAgent
-    });
-    swiper.browser = getBrowser();
-    swiper.eventsListeners = {};
-    swiper.eventsAnyListeners = [];
-    swiper.modules = [...swiper.__modules__];
-    if (params.modules && Array.isArray(params.modules)) {
-      swiper.modules.push(...params.modules);
-    }
-    const allModulesParams = {};
-    swiper.modules.forEach((mod) => {
-      mod({
-        params,
-        swiper,
-        extendParams: moduleExtendParams(params, allModulesParams),
-        on: swiper.on.bind(swiper),
-        once: swiper.once.bind(swiper),
-        off: swiper.off.bind(swiper),
-        emit: swiper.emit.bind(swiper)
-      });
-    });
-    const swiperParams = extend$1({}, defaults, allModulesParams);
-    swiper.params = extend$1({}, swiperParams, extendedDefaults, params);
-    swiper.originalParams = extend$1({}, swiper.params);
-    swiper.passedParams = extend$1({}, params);
-    if (swiper.params && swiper.params.on) {
-      Object.keys(swiper.params.on).forEach((eventName) => {
-        swiper.on(eventName, swiper.params.on[eventName]);
-      });
-    }
-    if (swiper.params && swiper.params.onAny) {
-      swiper.onAny(swiper.params.onAny);
-    }
-    Object.assign(swiper, {
-      enabled: swiper.params.enabled,
-      el,
-      // Classes
-      classNames: [],
-      // Slides
-      slides: [],
-      slidesGrid: [],
-      snapGrid: [],
-      slidesSizesGrid: [],
-      // isDirection
-      isHorizontal() {
-        return swiper.params.direction === "horizontal";
-      },
-      isVertical() {
-        return swiper.params.direction === "vertical";
-      },
-      // Indexes
-      activeIndex: 0,
-      realIndex: 0,
-      //
-      isBeginning: true,
-      isEnd: false,
-      // Props
-      translate: 0,
-      previousTranslate: 0,
-      progress: 0,
-      velocity: 0,
-      animating: false,
-      cssOverflowAdjustment() {
-        return Math.trunc(this.translate / 2 ** 23) * 2 ** 23;
-      },
-      // Locks
-      allowSlideNext: swiper.params.allowSlideNext,
-      allowSlidePrev: swiper.params.allowSlidePrev,
-      // Touch Events
-      touchEventsData: {
-        isTouched: void 0,
-        isMoved: void 0,
-        allowTouchCallbacks: void 0,
-        touchStartTime: void 0,
-        isScrolling: void 0,
-        currentTranslate: void 0,
-        startTranslate: void 0,
-        allowThresholdMove: void 0,
-        // Form elements to match
-        focusableElements: swiper.params.focusableElements,
-        // Last click time
-        lastClickTime: 0,
-        clickTimeout: void 0,
-        // Velocities
-        velocities: [],
-        allowMomentumBounce: void 0,
-        startMoving: void 0,
-        pointerId: null,
-        touchId: null
-      },
-      // Clicks
-      allowClick: true,
-      // Touches
-      allowTouchMove: swiper.params.allowTouchMove,
-      touches: {
-        startX: 0,
-        startY: 0,
-        currentX: 0,
-        currentY: 0,
-        diff: 0
-      },
-      // Images
-      imagesToLoad: [],
-      imagesLoaded: 0
-    });
-    swiper.emit("_swiper");
-    if (swiper.params.init) {
-      swiper.init();
-    }
-    return swiper;
-  }
-  getDirectionLabel(property) {
-    if (this.isHorizontal()) {
-      return property;
-    }
-    return {
-      "width": "height",
-      "margin-top": "margin-left",
-      "margin-bottom ": "margin-right",
-      "margin-left": "margin-top",
-      "margin-right": "margin-bottom",
-      "padding-left": "padding-top",
-      "padding-right": "padding-bottom",
-      "marginRight": "marginBottom"
-    }[property];
-  }
-  getSlideIndex(slideEl) {
-    const {
-      slidesEl,
-      params
-    } = this;
-    const slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);
-    const firstSlideIndex = elementIndex(slides[0]);
-    return elementIndex(slideEl) - firstSlideIndex;
-  }
-  getSlideIndexByData(index2) {
-    return this.getSlideIndex(this.slides.filter((slideEl) => slideEl.getAttribute("data-swiper-slide-index") * 1 === index2)[0]);
-  }
-  recalcSlides() {
-    const swiper = this;
-    const {
-      slidesEl,
-      params
-    } = swiper;
-    swiper.slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);
-  }
-  enable() {
-    const swiper = this;
-    if (swiper.enabled)
-      return;
-    swiper.enabled = true;
-    if (swiper.params.grabCursor) {
-      swiper.setGrabCursor();
-    }
-    swiper.emit("enable");
-  }
-  disable() {
-    const swiper = this;
-    if (!swiper.enabled)
-      return;
-    swiper.enabled = false;
-    if (swiper.params.grabCursor) {
-      swiper.unsetGrabCursor();
-    }
-    swiper.emit("disable");
-  }
-  setProgress(progress, speed) {
-    const swiper = this;
-    progress = Math.min(Math.max(progress, 0), 1);
-    const min = swiper.minTranslate();
-    const max = swiper.maxTranslate();
-    const current = (max - min) * progress + min;
-    swiper.translateTo(current, typeof speed === "undefined" ? 0 : speed);
-    swiper.updateActiveIndex();
-    swiper.updateSlidesClasses();
-  }
-  emitContainerClasses() {
-    const swiper = this;
-    if (!swiper.params._emitClasses || !swiper.el)
-      return;
-    const cls = swiper.el.className.split(" ").filter((className) => {
-      return className.indexOf("swiper") === 0 || className.indexOf(swiper.params.containerModifierClass) === 0;
-    });
-    swiper.emit("_containerClasses", cls.join(" "));
-  }
-  getSlideClasses(slideEl) {
-    const swiper = this;
-    if (swiper.destroyed)
-      return "";
-    return slideEl.className.split(" ").filter((className) => {
-      return className.indexOf("swiper-slide") === 0 || className.indexOf(swiper.params.slideClass) === 0;
-    }).join(" ");
-  }
-  emitSlidesClasses() {
-    const swiper = this;
-    if (!swiper.params._emitClasses || !swiper.el)
-      return;
-    const updates = [];
-    swiper.slides.forEach((slideEl) => {
-      const classNames = swiper.getSlideClasses(slideEl);
-      updates.push({
-        slideEl,
-        classNames
-      });
-      swiper.emit("_slideClass", slideEl, classNames);
-    });
-    swiper.emit("_slideClasses", updates);
-  }
-  slidesPerViewDynamic(view, exact) {
-    if (view === void 0) {
-      view = "current";
-    }
-    if (exact === void 0) {
-      exact = false;
-    }
-    const swiper = this;
-    const {
-      params,
-      slides,
-      slidesGrid,
-      slidesSizesGrid,
-      size: swiperSize,
-      activeIndex
-    } = swiper;
-    let spv = 1;
-    if (typeof params.slidesPerView === "number")
-      return params.slidesPerView;
-    if (params.centeredSlides) {
-      let slideSize = slides[activeIndex] ? slides[activeIndex].swiperSlideSize : 0;
-      let breakLoop;
-      for (let i2 = activeIndex + 1; i2 < slides.length; i2 += 1) {
-        if (slides[i2] && !breakLoop) {
-          slideSize += slides[i2].swiperSlideSize;
-          spv += 1;
-          if (slideSize > swiperSize)
-            breakLoop = true;
-        }
-      }
-      for (let i2 = activeIndex - 1; i2 >= 0; i2 -= 1) {
-        if (slides[i2] && !breakLoop) {
-          slideSize += slides[i2].swiperSlideSize;
-          spv += 1;
-          if (slideSize > swiperSize)
-            breakLoop = true;
-        }
-      }
-    } else {
-      if (view === "current") {
-        for (let i2 = activeIndex + 1; i2 < slides.length; i2 += 1) {
-          const slideInView = exact ? slidesGrid[i2] + slidesSizesGrid[i2] - slidesGrid[activeIndex] < swiperSize : slidesGrid[i2] - slidesGrid[activeIndex] < swiperSize;
-          if (slideInView) {
-            spv += 1;
-          }
-        }
-      } else {
-        for (let i2 = activeIndex - 1; i2 >= 0; i2 -= 1) {
-          const slideInView = slidesGrid[activeIndex] - slidesGrid[i2] < swiperSize;
-          if (slideInView) {
-            spv += 1;
-          }
-        }
-      }
-    }
-    return spv;
-  }
-  update() {
-    const swiper = this;
-    if (!swiper || swiper.destroyed)
-      return;
-    const {
-      snapGrid,
-      params
-    } = swiper;
-    if (params.breakpoints) {
-      swiper.setBreakpoint();
-    }
-    [...swiper.el.querySelectorAll('[loading="lazy"]')].forEach((imageEl) => {
-      if (imageEl.complete) {
-        processLazyPreloader(swiper, imageEl);
-      }
-    });
-    swiper.updateSize();
-    swiper.updateSlides();
-    swiper.updateProgress();
-    swiper.updateSlidesClasses();
-    function setTranslate2() {
-      const translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate;
-      const newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
-      swiper.setTranslate(newTranslate);
-      swiper.updateActiveIndex();
-      swiper.updateSlidesClasses();
-    }
-    let translated;
-    if (params.freeMode && params.freeMode.enabled && !params.cssMode) {
-      setTranslate2();
-      if (params.autoHeight) {
-        swiper.updateAutoHeight();
-      }
-    } else {
-      if ((params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !params.centeredSlides) {
-        const slides = swiper.virtual && params.virtual.enabled ? swiper.virtual.slides : swiper.slides;
-        translated = swiper.slideTo(slides.length - 1, 0, false, true);
-      } else {
-        translated = swiper.slideTo(swiper.activeIndex, 0, false, true);
-      }
-      if (!translated) {
-        setTranslate2();
-      }
-    }
-    if (params.watchOverflow && snapGrid !== swiper.snapGrid) {
-      swiper.checkOverflow();
-    }
-    swiper.emit("update");
-  }
-  changeDirection(newDirection, needUpdate) {
-    if (needUpdate === void 0) {
-      needUpdate = true;
-    }
-    const swiper = this;
-    const currentDirection = swiper.params.direction;
-    if (!newDirection) {
-      newDirection = currentDirection === "horizontal" ? "vertical" : "horizontal";
-    }
-    if (newDirection === currentDirection || newDirection !== "horizontal" && newDirection !== "vertical") {
-      return swiper;
-    }
-    swiper.el.classList.remove(`${swiper.params.containerModifierClass}${currentDirection}`);
-    swiper.el.classList.add(`${swiper.params.containerModifierClass}${newDirection}`);
-    swiper.emitContainerClasses();
-    swiper.params.direction = newDirection;
-    swiper.slides.forEach((slideEl) => {
-      if (newDirection === "vertical") {
-        slideEl.style.width = "";
-      } else {
-        slideEl.style.height = "";
-      }
-    });
-    swiper.emit("changeDirection");
-    if (needUpdate)
-      swiper.update();
-    return swiper;
-  }
-  changeLanguageDirection(direction) {
-    const swiper = this;
-    if (swiper.rtl && direction === "rtl" || !swiper.rtl && direction === "ltr")
-      return;
-    swiper.rtl = direction === "rtl";
-    swiper.rtlTranslate = swiper.params.direction === "horizontal" && swiper.rtl;
-    if (swiper.rtl) {
-      swiper.el.classList.add(`${swiper.params.containerModifierClass}rtl`);
-      swiper.el.dir = "rtl";
-    } else {
-      swiper.el.classList.remove(`${swiper.params.containerModifierClass}rtl`);
-      swiper.el.dir = "ltr";
-    }
-    swiper.update();
-  }
-  mount(element) {
-    const swiper = this;
-    if (swiper.mounted)
-      return true;
-    let el = element || swiper.params.el;
-    if (typeof el === "string") {
-      el = document.querySelector(el);
-    }
-    if (!el) {
-      return false;
-    }
-    el.swiper = swiper;
-    if (el.parentNode && el.parentNode.host && el.parentNode.host.nodeName === "SWIPER-CONTAINER") {
-      swiper.isElement = true;
-    }
-    const getWrapperSelector = () => {
-      return `.${(swiper.params.wrapperClass || "").trim().split(" ").join(".")}`;
-    };
-    const getWrapper = () => {
-      if (el && el.shadowRoot && el.shadowRoot.querySelector) {
-        const res = el.shadowRoot.querySelector(getWrapperSelector());
-        return res;
-      }
-      return elementChildren(el, getWrapperSelector())[0];
-    };
-    let wrapperEl = getWrapper();
-    if (!wrapperEl && swiper.params.createElements) {
-      wrapperEl = createElement("div", swiper.params.wrapperClass);
-      el.append(wrapperEl);
-      elementChildren(el, `.${swiper.params.slideClass}`).forEach((slideEl) => {
-        wrapperEl.append(slideEl);
-      });
-    }
-    Object.assign(swiper, {
-      el,
-      wrapperEl,
-      slidesEl: swiper.isElement && !el.parentNode.host.slideSlots ? el.parentNode.host : wrapperEl,
-      hostEl: swiper.isElement ? el.parentNode.host : el,
-      mounted: true,
-      // RTL
-      rtl: el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl",
-      rtlTranslate: swiper.params.direction === "horizontal" && (el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl"),
-      wrongRTL: elementStyle(wrapperEl, "display") === "-webkit-box"
-    });
-    return true;
-  }
-  init(el) {
-    const swiper = this;
-    if (swiper.initialized)
-      return swiper;
-    const mounted6 = swiper.mount(el);
-    if (mounted6 === false)
-      return swiper;
-    swiper.emit("beforeInit");
-    if (swiper.params.breakpoints) {
-      swiper.setBreakpoint();
-    }
-    swiper.addClasses();
-    swiper.updateSize();
-    swiper.updateSlides();
-    if (swiper.params.watchOverflow) {
-      swiper.checkOverflow();
-    }
-    if (swiper.params.grabCursor && swiper.enabled) {
-      swiper.setGrabCursor();
-    }
-    if (swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled) {
-      swiper.slideTo(swiper.params.initialSlide + swiper.virtual.slidesBefore, 0, swiper.params.runCallbacksOnInit, false, true);
-    } else {
-      swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, false, true);
-    }
-    if (swiper.params.loop) {
-      swiper.loopCreate();
-    }
-    swiper.attachEvents();
-    const lazyElements = [...swiper.el.querySelectorAll('[loading="lazy"]')];
-    if (swiper.isElement) {
-      lazyElements.push(...swiper.hostEl.querySelectorAll('[loading="lazy"]'));
-    }
-    lazyElements.forEach((imageEl) => {
-      if (imageEl.complete) {
-        processLazyPreloader(swiper, imageEl);
-      } else {
-        imageEl.addEventListener("load", (e2) => {
-          processLazyPreloader(swiper, e2.target);
-        });
-      }
-    });
-    preload(swiper);
-    swiper.initialized = true;
-    preload(swiper);
-    swiper.emit("init");
-    swiper.emit("afterInit");
-    return swiper;
-  }
-  destroy(deleteInstance, cleanStyles) {
-    if (deleteInstance === void 0) {
-      deleteInstance = true;
-    }
-    if (cleanStyles === void 0) {
-      cleanStyles = true;
-    }
-    const swiper = this;
-    const {
-      params,
-      el,
-      wrapperEl,
-      slides
-    } = swiper;
-    if (typeof swiper.params === "undefined" || swiper.destroyed) {
-      return null;
-    }
-    swiper.emit("beforeDestroy");
-    swiper.initialized = false;
-    swiper.detachEvents();
-    if (params.loop) {
-      swiper.loopDestroy();
-    }
-    if (cleanStyles) {
-      swiper.removeClasses();
-      el.removeAttribute("style");
-      wrapperEl.removeAttribute("style");
-      if (slides && slides.length) {
-        slides.forEach((slideEl) => {
-          slideEl.classList.remove(params.slideVisibleClass, params.slideFullyVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass);
-          slideEl.removeAttribute("style");
-          slideEl.removeAttribute("data-swiper-slide-index");
-        });
-      }
-    }
-    swiper.emit("destroy");
-    Object.keys(swiper.eventsListeners).forEach((eventName) => {
-      swiper.off(eventName);
-    });
-    if (deleteInstance !== false) {
-      swiper.el.swiper = null;
-      deleteProps(swiper);
-    }
-    swiper.destroyed = true;
-    return null;
-  }
-  static extendDefaults(newDefaults) {
-    extend$1(extendedDefaults, newDefaults);
-  }
-  static get extendedDefaults() {
-    return extendedDefaults;
-  }
-  static get defaults() {
-    return defaults;
-  }
-  static installModule(mod) {
-    if (!Swiper.prototype.__modules__)
-      Swiper.prototype.__modules__ = [];
-    const modules = Swiper.prototype.__modules__;
-    if (typeof mod === "function" && modules.indexOf(mod) < 0) {
-      modules.push(mod);
-    }
-  }
-  static use(module) {
-    if (Array.isArray(module)) {
-      module.forEach((m2) => Swiper.installModule(m2));
-      return Swiper;
-    }
-    Swiper.installModule(module);
-    return Swiper;
-  }
-};
-Object.keys(prototypes).forEach((prototypeGroup) => {
-  Object.keys(prototypes[prototypeGroup]).forEach((protoMethod) => {
-    Swiper$1.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
-  });
-});
-Swiper$1.use([Resize, Observer]);
-const paramsList = [
-  "eventsPrefix",
-  "injectStyles",
-  "injectStylesUrls",
-  "modules",
-  "init",
-  "_direction",
-  "oneWayMovement",
-  "touchEventsTarget",
-  "initialSlide",
-  "_speed",
-  "cssMode",
-  "updateOnWindowResize",
-  "resizeObserver",
-  "nested",
-  "focusableElements",
-  "_enabled",
-  "_width",
-  "_height",
-  "preventInteractionOnTransition",
-  "userAgent",
-  "url",
-  "_edgeSwipeDetection",
-  "_edgeSwipeThreshold",
-  "_freeMode",
-  "_autoHeight",
-  "setWrapperSize",
-  "virtualTranslate",
-  "_effect",
-  "breakpoints",
-  "breakpointsBase",
-  "_spaceBetween",
-  "_slidesPerView",
-  "maxBackfaceHiddenSlides",
-  "_grid",
-  "_slidesPerGroup",
-  "_slidesPerGroupSkip",
-  "_slidesPerGroupAuto",
-  "_centeredSlides",
-  "_centeredSlidesBounds",
-  "_slidesOffsetBefore",
-  "_slidesOffsetAfter",
-  "normalizeSlideIndex",
-  "_centerInsufficientSlides",
-  "_watchOverflow",
-  "roundLengths",
-  "touchRatio",
-  "touchAngle",
-  "simulateTouch",
-  "_shortSwipes",
-  "_longSwipes",
-  "longSwipesRatio",
-  "longSwipesMs",
-  "_followFinger",
-  "allowTouchMove",
-  "_threshold",
-  "touchMoveStopPropagation",
-  "touchStartPreventDefault",
-  "touchStartForcePreventDefault",
-  "touchReleaseOnEdges",
-  "uniqueNavElements",
-  "_resistance",
-  "_resistanceRatio",
-  "_watchSlidesProgress",
-  "_grabCursor",
-  "preventClicks",
-  "preventClicksPropagation",
-  "_slideToClickedSlide",
-  "_loop",
-  "loopAdditionalSlides",
-  "loopAddBlankSlides",
-  "loopPreventsSliding",
-  "_rewind",
-  "_allowSlidePrev",
-  "_allowSlideNext",
-  "_swipeHandler",
-  "_noSwiping",
-  "noSwipingClass",
-  "noSwipingSelector",
-  "passiveListeners",
-  "containerModifierClass",
-  "slideClass",
-  "slideActiveClass",
-  "slideVisibleClass",
-  "slideFullyVisibleClass",
-  "slideNextClass",
-  "slidePrevClass",
-  "slideBlankClass",
-  "wrapperClass",
-  "lazyPreloaderClass",
-  "lazyPreloadPrevNext",
-  "runCallbacksOnInit",
-  "observer",
-  "observeParents",
-  "observeSlideChildren",
-  // modules
-  "a11y",
-  "_autoplay",
-  "_controller",
-  "coverflowEffect",
-  "cubeEffect",
-  "fadeEffect",
-  "flipEffect",
-  "creativeEffect",
-  "cardsEffect",
-  "hashNavigation",
-  "history",
-  "keyboard",
-  "mousewheel",
-  "_navigation",
-  "_pagination",
-  "parallax",
-  "_scrollbar",
-  "_thumbs",
-  "virtual",
-  "zoom",
-  "control"
-];
-function isObject(o2) {
-  return typeof o2 === "object" && o2 !== null && o2.constructor && Object.prototype.toString.call(o2).slice(8, -1) === "Object" && !o2.__swiper__;
-}
-function extend(target, src) {
-  const noExtend = ["__proto__", "constructor", "prototype"];
-  Object.keys(src).filter((key) => noExtend.indexOf(key) < 0).forEach((key) => {
-    if (typeof target[key] === "undefined")
-      target[key] = src[key];
-    else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
-      if (src[key].__swiper__)
-        target[key] = src[key];
-      else
-        extend(target[key], src[key]);
-    } else {
-      target[key] = src[key];
-    }
-  });
-}
-function needsNavigation(params) {
-  if (params === void 0) {
-    params = {};
-  }
-  return params.navigation && typeof params.navigation.nextEl === "undefined" && typeof params.navigation.prevEl === "undefined";
-}
-function needsPagination(params) {
-  if (params === void 0) {
-    params = {};
-  }
-  return params.pagination && typeof params.pagination.el === "undefined";
-}
-function needsScrollbar(params) {
-  if (params === void 0) {
-    params = {};
-  }
-  return params.scrollbar && typeof params.scrollbar.el === "undefined";
-}
-function uniqueClasses(classNames) {
-  if (classNames === void 0) {
-    classNames = "";
-  }
-  const classes2 = classNames.split(" ").map((c2) => c2.trim()).filter((c2) => !!c2);
-  const unique = [];
-  classes2.forEach((c2) => {
-    if (unique.indexOf(c2) < 0)
-      unique.push(c2);
-  });
-  return unique.join(" ");
-}
-function wrapperClass(className) {
-  if (className === void 0) {
-    className = "";
-  }
-  if (!className)
-    return "swiper-wrapper";
-  if (!className.includes("swiper-wrapper"))
-    return `swiper-wrapper ${className}`;
-  return className;
-}
-function updateSwiper(_ref) {
-  let {
-    swiper,
-    slides,
-    passedParams,
-    changedParams,
-    nextEl,
-    prevEl,
-    scrollbarEl,
-    paginationEl
-  } = _ref;
-  const updateParams = changedParams.filter((key) => key !== "children" && key !== "direction" && key !== "wrapperClass");
-  const {
-    params: currentParams,
-    pagination,
-    navigation,
-    scrollbar,
-    virtual,
-    thumbs
-  } = swiper;
-  let needThumbsInit;
-  let needControllerInit;
-  let needPaginationInit;
-  let needScrollbarInit;
-  let needNavigationInit;
-  let loopNeedDestroy;
-  let loopNeedEnable;
-  let loopNeedReloop;
-  if (changedParams.includes("thumbs") && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper) {
-    needThumbsInit = true;
-  }
-  if (changedParams.includes("controller") && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control) {
-    needControllerInit = true;
-  }
-  if (changedParams.includes("pagination") && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === false) && pagination && !pagination.el) {
-    needPaginationInit = true;
-  }
-  if (changedParams.includes("scrollbar") && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === false) && scrollbar && !scrollbar.el) {
-    needScrollbarInit = true;
-  }
-  if (changedParams.includes("navigation") && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === false) && navigation && !navigation.prevEl && !navigation.nextEl) {
-    needNavigationInit = true;
-  }
-  const destroyModule = (mod) => {
-    if (!swiper[mod])
-      return;
-    swiper[mod].destroy();
-    if (mod === "navigation") {
-      if (swiper.isElement) {
-        swiper[mod].prevEl.remove();
-        swiper[mod].nextEl.remove();
-      }
-      currentParams[mod].prevEl = void 0;
-      currentParams[mod].nextEl = void 0;
-      swiper[mod].prevEl = void 0;
-      swiper[mod].nextEl = void 0;
-    } else {
-      if (swiper.isElement) {
-        swiper[mod].el.remove();
-      }
-      currentParams[mod].el = void 0;
-      swiper[mod].el = void 0;
-    }
-  };
-  if (changedParams.includes("loop") && swiper.isElement) {
-    if (currentParams.loop && !passedParams.loop) {
-      loopNeedDestroy = true;
-    } else if (!currentParams.loop && passedParams.loop) {
-      loopNeedEnable = true;
-    } else {
-      loopNeedReloop = true;
-    }
-  }
-  updateParams.forEach((key) => {
-    if (isObject(currentParams[key]) && isObject(passedParams[key])) {
-      Object.assign(currentParams[key], passedParams[key]);
-      if ((key === "navigation" || key === "pagination" || key === "scrollbar") && "enabled" in passedParams[key] && !passedParams[key].enabled) {
-        destroyModule(key);
-      }
-    } else {
-      const newValue = passedParams[key];
-      if ((newValue === true || newValue === false) && (key === "navigation" || key === "pagination" || key === "scrollbar")) {
-        if (newValue === false) {
-          destroyModule(key);
-        }
-      } else {
-        currentParams[key] = passedParams[key];
-      }
-    }
-  });
-  if (updateParams.includes("controller") && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control) {
-    swiper.controller.control = currentParams.controller.control;
-  }
-  if (changedParams.includes("children") && slides && virtual && currentParams.virtual.enabled) {
-    virtual.slides = slides;
-    virtual.update(true);
-  } else if (changedParams.includes("virtual") && virtual && currentParams.virtual.enabled) {
-    if (slides)
-      virtual.slides = slides;
-    virtual.update(true);
-  }
-  if (changedParams.includes("children") && slides && currentParams.loop) {
-    loopNeedReloop = true;
-  }
-  if (needThumbsInit) {
-    const initialized = thumbs.init();
-    if (initialized)
-      thumbs.update(true);
-  }
-  if (needControllerInit) {
-    swiper.controller.control = currentParams.controller.control;
-  }
-  if (needPaginationInit) {
-    if (swiper.isElement && (!paginationEl || typeof paginationEl === "string")) {
-      paginationEl = document.createElement("div");
-      paginationEl.classList.add("swiper-pagination");
-      paginationEl.part.add("pagination");
-      swiper.el.appendChild(paginationEl);
-    }
-    if (paginationEl)
-      currentParams.pagination.el = paginationEl;
-    pagination.init();
-    pagination.render();
-    pagination.update();
-  }
-  if (needScrollbarInit) {
-    if (swiper.isElement && (!scrollbarEl || typeof scrollbarEl === "string")) {
-      scrollbarEl = document.createElement("div");
-      scrollbarEl.classList.add("swiper-scrollbar");
-      scrollbarEl.part.add("scrollbar");
-      swiper.el.appendChild(scrollbarEl);
-    }
-    if (scrollbarEl)
-      currentParams.scrollbar.el = scrollbarEl;
-    scrollbar.init();
-    scrollbar.updateSize();
-    scrollbar.setTranslate();
-  }
-  if (needNavigationInit) {
-    if (swiper.isElement) {
-      if (!nextEl || typeof nextEl === "string") {
-        nextEl = document.createElement("div");
-        nextEl.classList.add("swiper-button-next");
-        nextEl.innerHTML = swiper.hostEl.constructor.nextButtonSvg;
-        nextEl.part.add("button-next");
-        swiper.el.appendChild(nextEl);
-      }
-      if (!prevEl || typeof prevEl === "string") {
-        prevEl = document.createElement("div");
-        prevEl.classList.add("swiper-button-prev");
-        prevEl.innerHTML = swiper.hostEl.constructor.prevButtonSvg;
-        prevEl.part.add("button-prev");
-        swiper.el.appendChild(prevEl);
-      }
-    }
-    if (nextEl)
-      currentParams.navigation.nextEl = nextEl;
-    if (prevEl)
-      currentParams.navigation.prevEl = prevEl;
-    navigation.init();
-    navigation.update();
-  }
-  if (changedParams.includes("allowSlideNext")) {
-    swiper.allowSlideNext = passedParams.allowSlideNext;
-  }
-  if (changedParams.includes("allowSlidePrev")) {
-    swiper.allowSlidePrev = passedParams.allowSlidePrev;
-  }
-  if (changedParams.includes("direction")) {
-    swiper.changeDirection(passedParams.direction, false);
-  }
-  if (loopNeedDestroy || loopNeedReloop) {
-    swiper.loopDestroy();
-  }
-  if (loopNeedEnable || loopNeedReloop) {
-    swiper.loopCreate();
-  }
-  swiper.update();
-}
-function getParams(obj, splitEvents) {
-  if (obj === void 0) {
-    obj = {};
-  }
-  if (splitEvents === void 0) {
-    splitEvents = true;
-  }
-  const params = {
-    on: {}
-  };
-  const events2 = {};
-  const passedParams = {};
-  extend(params, defaults);
-  params._emitClasses = true;
-  params.init = false;
-  const rest = {};
-  const allowedParams = paramsList.map((key) => key.replace(/_/, ""));
-  const plainObj = Object.assign({}, obj);
-  Object.keys(plainObj).forEach((key) => {
-    if (typeof obj[key] === "undefined")
-      return;
-    if (allowedParams.indexOf(key) >= 0) {
-      if (isObject(obj[key])) {
-        params[key] = {};
-        passedParams[key] = {};
-        extend(params[key], obj[key]);
-        extend(passedParams[key], obj[key]);
-      } else {
-        params[key] = obj[key];
-        passedParams[key] = obj[key];
-      }
-    } else if (key.search(/on[A-Z]/) === 0 && typeof obj[key] === "function") {
-      if (splitEvents) {
-        events2[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
-      } else {
-        params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
-      }
-    } else {
-      rest[key] = obj[key];
-    }
-  });
-  ["navigation", "pagination", "scrollbar"].forEach((key) => {
-    if (params[key] === true)
-      params[key] = {};
-    if (params[key] === false)
-      delete params[key];
-  });
-  return {
-    params,
-    passedParams,
-    rest,
-    events: events2
-  };
-}
-function mountSwiper(_ref, swiperParams) {
-  let {
-    el,
-    nextEl,
-    prevEl,
-    paginationEl,
-    scrollbarEl,
-    swiper
-  } = _ref;
-  if (needsNavigation(swiperParams) && nextEl && prevEl) {
-    swiper.params.navigation.nextEl = nextEl;
-    swiper.originalParams.navigation.nextEl = nextEl;
-    swiper.params.navigation.prevEl = prevEl;
-    swiper.originalParams.navigation.prevEl = prevEl;
-  }
-  if (needsPagination(swiperParams) && paginationEl) {
-    swiper.params.pagination.el = paginationEl;
-    swiper.originalParams.pagination.el = paginationEl;
-  }
-  if (needsScrollbar(swiperParams) && scrollbarEl) {
-    swiper.params.scrollbar.el = scrollbarEl;
-    swiper.originalParams.scrollbar.el = scrollbarEl;
-  }
-  swiper.init(el);
-}
-function getChangedParams(swiperParams, oldParams, children, oldChildren, getKey) {
-  const keys = [];
-  if (!oldParams)
-    return keys;
-  const addKey = (key) => {
-    if (keys.indexOf(key) < 0)
-      keys.push(key);
-  };
-  if (children && oldChildren) {
-    const oldChildrenKeys = oldChildren.map(getKey);
-    const childrenKeys = children.map(getKey);
-    if (oldChildrenKeys.join("") !== childrenKeys.join(""))
-      addKey("children");
-    if (oldChildren.length !== children.length)
-      addKey("children");
-  }
-  const watchParams = paramsList.filter((key) => key[0] === "_").map((key) => key.replace(/_/, ""));
-  watchParams.forEach((key) => {
-    if (key in swiperParams && key in oldParams) {
-      if (isObject(swiperParams[key]) && isObject(oldParams[key])) {
-        const newKeys = Object.keys(swiperParams[key]);
-        const oldKeys = Object.keys(oldParams[key]);
-        if (newKeys.length !== oldKeys.length) {
-          addKey(key);
-        } else {
-          newKeys.forEach((newKey) => {
-            if (swiperParams[key][newKey] !== oldParams[key][newKey]) {
-              addKey(key);
-            }
-          });
-          oldKeys.forEach((oldKey) => {
-            if (swiperParams[key][oldKey] !== oldParams[key][oldKey])
-              addKey(key);
-          });
-        }
-      } else if (swiperParams[key] !== oldParams[key]) {
-        addKey(key);
-      }
-    }
-  });
-  return keys;
-}
-const updateOnVirtualData = (swiper) => {
-  if (!swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled)
-    return;
-  swiper.updateSlides();
-  swiper.updateProgress();
-  swiper.updateSlidesClasses();
-  if (swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled) {
-    swiper.parallax.setTranslate();
-  }
-};
-function getChildren(originalSlots, slidesRef, oldSlidesRef) {
-  if (originalSlots === void 0) {
-    originalSlots = {};
-  }
-  const slides = [];
-  const slots = {
-    "container-start": [],
-    "container-end": [],
-    "wrapper-start": [],
-    "wrapper-end": []
-  };
-  const getSlidesFromElements = (els, slotName) => {
-    if (!Array.isArray(els)) {
-      return;
-    }
-    els.forEach((vnode) => {
-      const isFragment = typeof vnode.type === "symbol";
-      if (slotName === "default")
-        slotName = "container-end";
-      if (isFragment && vnode.children) {
-        getSlidesFromElements(vnode.children, slotName);
-      } else if (vnode.type && (vnode.type.name === "SwiperSlide" || vnode.type.name === "AsyncComponentWrapper")) {
-        slides.push(vnode);
-      } else if (slots[slotName]) {
-        slots[slotName].push(vnode);
-      }
-    });
-  };
-  Object.keys(originalSlots).forEach((slotName) => {
-    if (typeof originalSlots[slotName] !== "function")
-      return;
-    const els = originalSlots[slotName]();
-    getSlidesFromElements(els, slotName);
-  });
-  oldSlidesRef.value = slidesRef.value;
-  slidesRef.value = slides;
-  return {
-    slides,
-    slots
-  };
-}
-function renderVirtual(swiperRef, slides, virtualData) {
-  if (!virtualData)
-    return null;
-  const getSlideIndex = (index2) => {
-    let slideIndex = index2;
-    if (index2 < 0) {
-      slideIndex = slides.length + index2;
-    } else if (slideIndex >= slides.length) {
-      slideIndex = slideIndex - slides.length;
-    }
-    return slideIndex;
-  };
-  const style = swiperRef.value.isHorizontal() ? {
-    [swiperRef.value.rtlTranslate ? "right" : "left"]: `${virtualData.offset}px`
-  } : {
-    top: `${virtualData.offset}px`
-  };
-  const {
-    from,
-    to
-  } = virtualData;
-  const loopFrom = swiperRef.value.params.loop ? -slides.length : 0;
-  const loopTo = swiperRef.value.params.loop ? slides.length * 2 : slides.length;
-  const slidesToRender = [];
-  for (let i2 = loopFrom; i2 < loopTo; i2 += 1) {
-    if (i2 >= from && i2 <= to) {
-      slidesToRender.push(slides[getSlideIndex(i2)]);
-    }
-  }
-  return slidesToRender.map((slide2) => {
-    if (!slide2.props)
-      slide2.props = {};
-    if (!slide2.props.style)
-      slide2.props.style = {};
-    slide2.props.swiperRef = swiperRef;
-    slide2.props.style = style;
-    return h$1(slide2.type, {
-      ...slide2.props
-    }, slide2.children);
-  });
-}
-const Swiper2 = {
-  name: "Swiper",
-  props: {
-    tag: {
-      type: String,
-      default: "div"
-    },
-    wrapperTag: {
-      type: String,
-      default: "div"
-    },
-    modules: {
-      type: Array,
-      default: void 0
-    },
-    init: {
-      type: Boolean,
-      default: void 0
-    },
-    direction: {
-      type: String,
-      default: void 0
-    },
-    oneWayMovement: {
-      type: Boolean,
-      default: void 0
-    },
-    touchEventsTarget: {
-      type: String,
-      default: void 0
-    },
-    initialSlide: {
-      type: Number,
-      default: void 0
-    },
-    speed: {
-      type: Number,
-      default: void 0
-    },
-    cssMode: {
-      type: Boolean,
-      default: void 0
-    },
-    updateOnWindowResize: {
-      type: Boolean,
-      default: void 0
-    },
-    resizeObserver: {
-      type: Boolean,
-      default: void 0
-    },
-    nested: {
-      type: Boolean,
-      default: void 0
-    },
-    focusableElements: {
-      type: String,
-      default: void 0
-    },
-    width: {
-      type: Number,
-      default: void 0
-    },
-    height: {
-      type: Number,
-      default: void 0
-    },
-    preventInteractionOnTransition: {
-      type: Boolean,
-      default: void 0
-    },
-    userAgent: {
-      type: String,
-      default: void 0
-    },
-    url: {
-      type: String,
-      default: void 0
-    },
-    edgeSwipeDetection: {
-      type: [Boolean, String],
-      default: void 0
-    },
-    edgeSwipeThreshold: {
-      type: Number,
-      default: void 0
-    },
-    autoHeight: {
-      type: Boolean,
-      default: void 0
-    },
-    setWrapperSize: {
-      type: Boolean,
-      default: void 0
-    },
-    virtualTranslate: {
-      type: Boolean,
-      default: void 0
-    },
-    effect: {
-      type: String,
-      default: void 0
-    },
-    breakpoints: {
-      type: Object,
-      default: void 0
-    },
-    spaceBetween: {
-      type: [Number, String],
-      default: void 0
-    },
-    slidesPerView: {
-      type: [Number, String],
-      default: void 0
-    },
-    maxBackfaceHiddenSlides: {
-      type: Number,
-      default: void 0
-    },
-    slidesPerGroup: {
-      type: Number,
-      default: void 0
-    },
-    slidesPerGroupSkip: {
-      type: Number,
-      default: void 0
-    },
-    slidesPerGroupAuto: {
-      type: Boolean,
-      default: void 0
-    },
-    centeredSlides: {
-      type: Boolean,
-      default: void 0
-    },
-    centeredSlidesBounds: {
-      type: Boolean,
-      default: void 0
-    },
-    slidesOffsetBefore: {
-      type: Number,
-      default: void 0
-    },
-    slidesOffsetAfter: {
-      type: Number,
-      default: void 0
-    },
-    normalizeSlideIndex: {
-      type: Boolean,
-      default: void 0
-    },
-    centerInsufficientSlides: {
-      type: Boolean,
-      default: void 0
-    },
-    watchOverflow: {
-      type: Boolean,
-      default: void 0
-    },
-    roundLengths: {
-      type: Boolean,
-      default: void 0
-    },
-    touchRatio: {
-      type: Number,
-      default: void 0
-    },
-    touchAngle: {
-      type: Number,
-      default: void 0
-    },
-    simulateTouch: {
-      type: Boolean,
-      default: void 0
-    },
-    shortSwipes: {
-      type: Boolean,
-      default: void 0
-    },
-    longSwipes: {
-      type: Boolean,
-      default: void 0
-    },
-    longSwipesRatio: {
-      type: Number,
-      default: void 0
-    },
-    longSwipesMs: {
-      type: Number,
-      default: void 0
-    },
-    followFinger: {
-      type: Boolean,
-      default: void 0
-    },
-    allowTouchMove: {
-      type: Boolean,
-      default: void 0
-    },
-    threshold: {
-      type: Number,
-      default: void 0
-    },
-    touchMoveStopPropagation: {
-      type: Boolean,
-      default: void 0
-    },
-    touchStartPreventDefault: {
-      type: Boolean,
-      default: void 0
-    },
-    touchStartForcePreventDefault: {
-      type: Boolean,
-      default: void 0
-    },
-    touchReleaseOnEdges: {
-      type: Boolean,
-      default: void 0
-    },
-    uniqueNavElements: {
-      type: Boolean,
-      default: void 0
-    },
-    resistance: {
-      type: Boolean,
-      default: void 0
-    },
-    resistanceRatio: {
-      type: Number,
-      default: void 0
-    },
-    watchSlidesProgress: {
-      type: Boolean,
-      default: void 0
-    },
-    grabCursor: {
-      type: Boolean,
-      default: void 0
-    },
-    preventClicks: {
-      type: Boolean,
-      default: void 0
-    },
-    preventClicksPropagation: {
-      type: Boolean,
-      default: void 0
-    },
-    slideToClickedSlide: {
-      type: Boolean,
-      default: void 0
-    },
-    loop: {
-      type: Boolean,
-      default: void 0
-    },
-    loopedSlides: {
-      type: Number,
-      default: void 0
-    },
-    loopPreventsSliding: {
-      type: Boolean,
-      default: void 0
-    },
-    rewind: {
-      type: Boolean,
-      default: void 0
-    },
-    allowSlidePrev: {
-      type: Boolean,
-      default: void 0
-    },
-    allowSlideNext: {
-      type: Boolean,
-      default: void 0
-    },
-    swipeHandler: {
-      type: Boolean,
-      default: void 0
-    },
-    noSwiping: {
-      type: Boolean,
-      default: void 0
-    },
-    noSwipingClass: {
-      type: String,
-      default: void 0
-    },
-    noSwipingSelector: {
-      type: String,
-      default: void 0
-    },
-    passiveListeners: {
-      type: Boolean,
-      default: void 0
-    },
-    containerModifierClass: {
-      type: String,
-      default: void 0
-    },
-    slideClass: {
-      type: String,
-      default: void 0
-    },
-    slideActiveClass: {
-      type: String,
-      default: void 0
-    },
-    slideVisibleClass: {
-      type: String,
-      default: void 0
-    },
-    slideFullyVisibleClass: {
-      type: String,
-      default: void 0
-    },
-    slideBlankClass: {
-      type: String,
-      default: void 0
-    },
-    slideNextClass: {
-      type: String,
-      default: void 0
-    },
-    slidePrevClass: {
-      type: String,
-      default: void 0
-    },
-    wrapperClass: {
-      type: String,
-      default: void 0
-    },
-    lazyPreloaderClass: {
-      type: String,
-      default: void 0
-    },
-    lazyPreloadPrevNext: {
-      type: Number,
-      default: void 0
-    },
-    runCallbacksOnInit: {
-      type: Boolean,
-      default: void 0
-    },
-    observer: {
-      type: Boolean,
-      default: void 0
-    },
-    observeParents: {
-      type: Boolean,
-      default: void 0
-    },
-    observeSlideChildren: {
-      type: Boolean,
-      default: void 0
-    },
-    a11y: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    autoplay: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    controller: {
-      type: Object,
-      default: void 0
-    },
-    coverflowEffect: {
-      type: Object,
-      default: void 0
-    },
-    cubeEffect: {
-      type: Object,
-      default: void 0
-    },
-    fadeEffect: {
-      type: Object,
-      default: void 0
-    },
-    flipEffect: {
-      type: Object,
-      default: void 0
-    },
-    creativeEffect: {
-      type: Object,
-      default: void 0
-    },
-    cardsEffect: {
-      type: Object,
-      default: void 0
-    },
-    hashNavigation: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    history: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    keyboard: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    mousewheel: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    navigation: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    pagination: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    parallax: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    scrollbar: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    thumbs: {
-      type: Object,
-      default: void 0
-    },
-    virtual: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    zoom: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    grid: {
-      type: [Object],
-      default: void 0
-    },
-    freeMode: {
-      type: [Boolean, Object],
-      default: void 0
-    },
-    enabled: {
-      type: Boolean,
-      default: void 0
-    }
-  },
-  emits: ["_beforeBreakpoint", "_containerClasses", "_slideClass", "_slideClasses", "_swiper", "_freeModeNoMomentumRelease", "activeIndexChange", "afterInit", "autoplay", "autoplayStart", "autoplayStop", "autoplayPause", "autoplayResume", "autoplayTimeLeft", "beforeDestroy", "beforeInit", "beforeLoopFix", "beforeResize", "beforeSlideChangeStart", "beforeTransitionStart", "breakpoint", "breakpointsBase", "changeDirection", "click", "disable", "doubleTap", "doubleClick", "destroy", "enable", "fromEdge", "hashChange", "hashSet", "init", "keyPress", "lock", "loopFix", "momentumBounce", "navigationHide", "navigationShow", "navigationPrev", "navigationNext", "observerUpdate", "orientationchange", "paginationHide", "paginationRender", "paginationShow", "paginationUpdate", "progress", "reachBeginning", "reachEnd", "realIndexChange", "resize", "scroll", "scrollbarDragEnd", "scrollbarDragMove", "scrollbarDragStart", "setTransition", "setTranslate", "slidesUpdated", "slideChange", "slideChangeTransitionEnd", "slideChangeTransitionStart", "slideNextTransitionEnd", "slideNextTransitionStart", "slidePrevTransitionEnd", "slidePrevTransitionStart", "slideResetTransitionStart", "slideResetTransitionEnd", "sliderMove", "sliderFirstMove", "slidesLengthChange", "slidesGridLengthChange", "snapGridLengthChange", "snapIndexChange", "swiper", "tap", "toEdge", "touchEnd", "touchMove", "touchMoveOpposite", "touchStart", "transitionEnd", "transitionStart", "unlock", "update", "virtualUpdate", "zoomChange"],
-  setup(props, _ref) {
-    let {
-      slots: originalSlots,
-      emit: emit2
-    } = _ref;
-    const {
-      tag: Tag,
-      wrapperTag: WrapperTag
-    } = props;
-    const containerClasses = ref("swiper");
-    const virtualData = ref(null);
-    const breakpointChanged = ref(false);
-    const initializedRef = ref(false);
-    const swiperElRef = ref(null);
-    const swiperRef = ref(null);
-    const oldPassedParamsRef = ref(null);
-    const slidesRef = {
-      value: []
-    };
-    const oldSlidesRef = {
-      value: []
-    };
-    const nextElRef = ref(null);
-    const prevElRef = ref(null);
-    const paginationElRef = ref(null);
-    const scrollbarElRef = ref(null);
-    const {
-      params: swiperParams,
-      passedParams
-    } = getParams(props, false);
-    getChildren(originalSlots, slidesRef, oldSlidesRef);
-    oldPassedParamsRef.value = passedParams;
-    oldSlidesRef.value = slidesRef.value;
-    const onBeforeBreakpoint = () => {
-      getChildren(originalSlots, slidesRef, oldSlidesRef);
-      breakpointChanged.value = true;
-    };
-    swiperParams.onAny = function(event) {
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-      emit2(event, ...args);
-    };
-    Object.assign(swiperParams.on, {
-      _beforeBreakpoint: onBeforeBreakpoint,
-      _containerClasses(swiper, classes2) {
-        containerClasses.value = classes2;
-      }
-    });
-    const passParams = {
-      ...swiperParams
-    };
-    delete passParams.wrapperClass;
-    swiperRef.value = new Swiper$1(passParams);
-    if (swiperRef.value.virtual && swiperRef.value.params.virtual.enabled) {
-      swiperRef.value.virtual.slides = slidesRef.value;
-      const extendWith = {
-        cache: false,
-        slides: slidesRef.value,
-        renderExternal: (data3) => {
-          virtualData.value = data3;
-        },
-        renderExternalUpdate: false
-      };
-      extend(swiperRef.value.params.virtual, extendWith);
-      extend(swiperRef.value.originalParams.virtual, extendWith);
-    }
-    onUpdated(() => {
-      if (!initializedRef.value && swiperRef.value) {
-        swiperRef.value.emitSlidesClasses();
-        initializedRef.value = true;
-      }
-      const {
-        passedParams: newPassedParams
-      } = getParams(props, false);
-      const changedParams = getChangedParams(newPassedParams, oldPassedParamsRef.value, slidesRef.value, oldSlidesRef.value, (c2) => c2.props && c2.props.key);
-      oldPassedParamsRef.value = newPassedParams;
-      if ((changedParams.length || breakpointChanged.value) && swiperRef.value && !swiperRef.value.destroyed) {
-        updateSwiper({
-          swiper: swiperRef.value,
-          slides: slidesRef.value,
-          passedParams: newPassedParams,
-          changedParams,
-          nextEl: nextElRef.value,
-          prevEl: prevElRef.value,
-          scrollbarEl: scrollbarElRef.value,
-          paginationEl: paginationElRef.value
-        });
-      }
-      breakpointChanged.value = false;
-    });
-    provide("swiper", swiperRef);
-    watch(virtualData, () => {
-      nextTick$1(() => {
-        updateOnVirtualData(swiperRef.value);
-      });
-    });
-    onMounted(() => {
-      if (!swiperElRef.value)
-        return;
-      mountSwiper({
-        el: swiperElRef.value,
-        nextEl: nextElRef.value,
-        prevEl: prevElRef.value,
-        paginationEl: paginationElRef.value,
-        scrollbarEl: scrollbarElRef.value,
-        swiper: swiperRef.value
-      }, swiperParams);
-      emit2("swiper", swiperRef.value);
-    });
-    onBeforeUnmount(() => {
-      if (swiperRef.value && !swiperRef.value.destroyed) {
-        swiperRef.value.destroy(true, false);
-      }
-    });
-    function renderSlides(slides) {
-      if (swiperParams.virtual) {
-        return renderVirtual(swiperRef, slides, virtualData.value);
-      }
-      slides.forEach((slide2, index2) => {
-        if (!slide2.props)
-          slide2.props = {};
-        slide2.props.swiperRef = swiperRef;
-        slide2.props.swiperSlideIndex = index2;
-      });
-      return slides;
-    }
-    return () => {
-      const {
-        slides,
-        slots
-      } = getChildren(originalSlots, slidesRef, oldSlidesRef);
-      return h$1(Tag, {
-        ref: swiperElRef,
-        class: uniqueClasses(containerClasses.value)
-      }, [slots["container-start"], h$1(WrapperTag, {
-        class: wrapperClass(swiperParams.wrapperClass)
-      }, [slots["wrapper-start"], renderSlides(slides), slots["wrapper-end"]]), needsNavigation(props) && [h$1("div", {
-        ref: prevElRef,
-        class: "swiper-button-prev"
-      }), h$1("div", {
-        ref: nextElRef,
-        class: "swiper-button-next"
-      })], needsScrollbar(props) && h$1("div", {
-        ref: scrollbarElRef,
-        class: "swiper-scrollbar"
-      }), needsPagination(props) && h$1("div", {
-        ref: paginationElRef,
-        class: "swiper-pagination"
-      }), slots["container-end"]]);
-    };
-  }
-};
-const SwiperSlide = {
-  name: "SwiperSlide",
-  props: {
-    tag: {
-      type: String,
-      default: "div"
-    },
-    swiperRef: {
-      type: Object,
-      required: false
-    },
-    swiperSlideIndex: {
-      type: Number,
-      default: void 0,
-      required: false
-    },
-    zoom: {
-      type: Boolean,
-      default: void 0,
-      required: false
-    },
-    lazy: {
-      type: Boolean,
-      default: false,
-      required: false
-    },
-    virtualIndex: {
-      type: [String, Number],
-      default: void 0
-    }
-  },
-  setup(props, _ref) {
-    let {
-      slots
-    } = _ref;
-    let eventAttached = false;
-    const {
-      swiperRef
-    } = props;
-    const slideElRef = ref(null);
-    const slideClasses = ref("swiper-slide");
-    const lazyLoaded = ref(false);
-    function updateClasses(swiper, el, classNames) {
-      if (el === slideElRef.value) {
-        slideClasses.value = classNames;
-      }
-    }
-    onMounted(() => {
-      if (!swiperRef || !swiperRef.value)
-        return;
-      swiperRef.value.on("_slideClass", updateClasses);
-      eventAttached = true;
-    });
-    onBeforeUpdate(() => {
-      if (eventAttached || !swiperRef || !swiperRef.value)
-        return;
-      swiperRef.value.on("_slideClass", updateClasses);
-      eventAttached = true;
-    });
-    onUpdated(() => {
-      if (!slideElRef.value || !swiperRef || !swiperRef.value)
-        return;
-      if (typeof props.swiperSlideIndex !== "undefined") {
-        slideElRef.value.swiperSlideIndex = props.swiperSlideIndex;
-      }
-      if (swiperRef.value.destroyed) {
-        if (slideClasses.value !== "swiper-slide") {
-          slideClasses.value = "swiper-slide";
-        }
-      }
-    });
-    onBeforeUnmount(() => {
-      if (!swiperRef || !swiperRef.value)
-        return;
-      swiperRef.value.off("_slideClass", updateClasses);
-    });
-    const slideData = computed(() => ({
-      isActive: slideClasses.value.indexOf("swiper-slide-active") >= 0,
-      isVisible: slideClasses.value.indexOf("swiper-slide-visible") >= 0,
-      isPrev: slideClasses.value.indexOf("swiper-slide-prev") >= 0,
-      isNext: slideClasses.value.indexOf("swiper-slide-next") >= 0
-    }));
-    provide("swiperSlide", slideData);
-    const onLoad2 = () => {
-      lazyLoaded.value = true;
-    };
-    return () => {
-      return h$1(props.tag, {
-        class: uniqueClasses(`${slideClasses.value}`),
-        ref: slideElRef,
-        "data-swiper-slide-index": typeof props.virtualIndex === "undefined" && swiperRef && swiperRef.value && swiperRef.value.params.loop ? props.swiperSlideIndex : props.virtualIndex,
-        onLoadCapture: onLoad2
-      }, props.zoom ? h$1("div", {
-        class: "swiper-zoom-container",
-        "data-swiper-zoom": typeof props.zoom === "number" ? props.zoom : void 0
-      }, [slots.default && slots.default(slideData.value), props.lazy && !lazyLoaded.value && h$1("div", {
-        class: "swiper-lazy-preloader"
-      })]) : [slots.default && slots.default(slideData.value), props.lazy && !lazyLoaded.value && h$1("div", {
-        class: "swiper-lazy-preloader"
-      })]);
-    };
-  }
-};
-const _sfc_main$c = {};
-const _hoisted_1$j = /* @__PURE__ */ createStaticVNode('<section class="strong_asides" data-v-c1e04158><div class="content_block" data-v-c1e04158><div class="left_aside" data-v-c1e04158><h4 data-v-c1e04158>Работаем с светопрозрачными конструкциями с 2008 года</h4><p data-v-c1e04158>Одна из крупнейших компаний специализрующиеся на установке панорамных окон в Москве и регионах. <br data-v-c1e04158> ООО «Алюминиевые ситемы» — компания полного цикла, которая выполняет все виды работ «под ключ» — от проектирования до монтажа и обслуживания систем. </p></div><div class="right_aside" data-v-c1e04158><p data-v-c1e04158>Почему стоит выбрать окна из алюминия?</p><div class="raiting" data-v-c1e04158><section class="alumanium" data-v-c1e04158><p data-v-c1e04158><strong style="color:#d683ce;" data-v-c1e04158>Алюминий</strong></p><span data-v-c1e04158>Срок службы: <strong style="color:#d683ce;" data-v-c1e04158>50 лет</strong></span><br data-v-c1e04158><span data-v-c1e04158>Экологичность: <strong data-v-c1e04158><span style="color:#d683ce;" data-v-c1e04158>Не выделяет</span> вредных веществ</strong></span><br data-v-c1e04158><span data-v-c1e04158>Поддерживает горение: <strong style="color:#d683ce;" data-v-c1e04158>Не поддерживает</strong></span><br data-v-c1e04158><br data-v-c1e04158><span data-v-c1e04158>Прочность: <meter value="1" data-v-c1e04158></meter></span><br data-v-c1e04158><span data-v-c1e04158>Стильный дизайн: <meter value="1" data-v-c1e04158></meter></span></section><section class="pvh" data-v-c1e04158><p data-v-c1e04158><strong style="color:#4285F4;" data-v-c1e04158>ПВХ</strong></p><span data-v-c1e04158>Срок службы: <strong style="color:#4285F4;" data-v-c1e04158>20 лет</strong></span><br data-v-c1e04158><span data-v-c1e04158>Экологичность: <strong data-v-c1e04158><span style="color:#4285F4;" data-v-c1e04158>Выделяет</span> формальдегид</strong></span><br data-v-c1e04158><span data-v-c1e04158>Поддерживает горение: <strong data-v-c1e04158>При горении выделяются <span style="color:#4285F4;" data-v-c1e04158>опасные вещества</span></strong></span><br data-v-c1e04158><br data-v-c1e04158><span data-v-c1e04158>Прочность: <meter value="0.4" class="pvh_meter" data-v-c1e04158></meter></span><br data-v-c1e04158><span data-v-c1e04158>Стильный дизайн: <meter value="0.5" class="pvh_meter" data-v-c1e04158></meter></span></section></div></div></div></section><section class="white_block" data-v-c1e04158><div class="content_grid_block" data-v-c1e04158><div class="ingineer" data-v-c1e04158><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#823D7B" class="bi bi-check2-all" viewBox="0 0 16 16" data-v-c1e04158><path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0" data-v-c1e04158></path><path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708" data-v-c1e04158></path></svg><p class="description" data-v-c1e04158>Инжиниринг фасадов зданий</p><p class="text" data-v-c1e04158>Наш конструкторский отдел готов спроектировать самые сложные конструкции</p></div><div class="ingineer" data-v-c1e04158><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#823D7B" class="bi bi-bank" viewBox="0 0 16 16" data-v-c1e04158><path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" data-v-c1e04158></path></svg><p class="description" data-v-c1e04158>Управление проектами</p><p class="text" data-v-c1e04158>Система управления будет с вами на всех этапах реализации проекта конструкции</p></div><div class="create" data-v-c1e04158><svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" fill="#823D7B" class="bi bi-wrench-adjustable" viewBox="0 0 16 16" data-v-c1e04158><path d="M16 4.5a4.5 4.5 0 0 1-1.703 3.526L13 5l2.959-1.11q.04.3.041.61" data-v-c1e04158></path><path d="M11.5 9c.653 0 1.273-.139 1.833-.39L12 5.5 11 3l3.826-1.53A4.5 4.5 0 0 0 7.29 6.092l-6.116 5.096a2.583 2.583 0 1 0 3.638 3.638L9.908 8.71A4.5 4.5 0 0 0 11.5 9m-1.292-4.361-.596.893.809-.27a.25.25 0 0 1 .287.377l-.596.893.809-.27.158.475-1.5.5a.25.25 0 0 1-.287-.376l.596-.893-.809.27a.25.25 0 0 1-.287-.377l.596-.893-.809.27-.158-.475 1.5-.5a.25.25 0 0 1 .287.376M3 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2" data-v-c1e04158></path></svg><p class="description" data-v-c1e04158>Монтаж изделий</p><p class="text" data-v-c1e04158>Монтажное подразделение компании выполняет весь комплекс работ в соответствии с ГОСТом </p></div><div class="support" data-v-c1e04158><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#823D7B" class="bi bi-universal-access-circle" viewBox="0 0 16 16" data-v-c1e04158><path d="M8 4.143A1.071 1.071 0 1 0 8 2a1.071 1.071 0 0 0 0 2.143m-4.668 1.47 3.24.316v2.5l-.323 4.585A.383.383 0 0 0 7 13.14l.826-4.017c.045-.18.301-.18.346 0L9 13.139a.383.383 0 0 0 .752-.125L9.43 8.43v-2.5l3.239-.316a.38.38 0 0 0-.047-.756H3.379a.38.38 0 0 0-.047.756Z" data-v-c1e04158></path><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8" data-v-c1e04158></path></svg><p class="description" data-v-c1e04158>Постгарантийное обслуживание</p><p class="text" data-v-c1e04158>На все конструкции, установленные на объектах, мы предоставляем гарантию и сервисное обслуживание.</p></div></div></section><br data-v-c1e04158><br data-v-c1e04158>', 4);
-const _hoisted_5$b = [
-  _hoisted_1$j
-];
-function _sfc_render$b(_ctx, _cache) {
-  return openBlock(), createElementBlock("main", null, _hoisted_5$b);
-}
-const StrongAside = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-c1e04158"]]);
-const _imports_0$3 = "data:image/webp;base64,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";
-const _imports_1$2 = "data:image/webp;base64,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";
-const _imports_2 = "/Fasadstore.ru/assets/aluteh-wdYoqUfD.webp";
-const _imports_3 = "data:image/webp;base64,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";
-const _imports_4 = "/Fasadstore.ru/assets/siegenia-BWfiy5vX.webp";
-const _imports_5 = "data:image/webp;base64,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";
-const _sfc_main$b = {
-  components: {
-    Swiper: Swiper2,
-    SwiperSlide,
-    StrongAside
-  },
-  setup() {
-    return {
-      modules: [Pagination, Autoplay]
-    };
-  }
-};
-const _withScopeId$4 = (n2) => (pushScopeId("data-v-8c43d00d"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$i = { class: "container-block" };
-const _hoisted_2$b = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h3", { align: "center" }, "ПРОДУКЦИЯ АЛЮТЕХ", -1));
-const _hoisted_3$a = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("p", {
-  align: "center",
-  style: { "color": "rgb(83, 83, 83)", "font-weight": "700", "padding": ".2% 2% 0" }
-}, " Виды открывания и фурнитуры ", -1));
-const _hoisted_4$9 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("section", { class: "line_element" }, [
-  /* @__PURE__ */ createBaseVNode("div"),
-  /* @__PURE__ */ createBaseVNode("div"),
-  /* @__PURE__ */ createBaseVNode("div")
-], -1));
-const _hoisted_5$a = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("section", { class: "three_photo" }, [
-  /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
-    /* @__PURE__ */ createBaseVNode("iframe", {
-      width: "100",
-      height: "150",
-      src: "https://www.youtube.com/embed/IQgRz7pdrfc?si=Jh31k0fbGZZQcyRU",
-      title: "YouTube video player",
-      frameborder: "0",
-      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-      allowfullscreen: ""
-    })
-  ]),
-  /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
-    /* @__PURE__ */ createBaseVNode("iframe", {
-      width: "100",
-      height: "150",
-      src: "https://www.youtube.com/embed/RkZb4nDh0wo?si=xBfEvrelFB0anSqv",
-      title: "YouTube video player",
-      frameborder: "0",
-      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-      allowfullscreen: ""
-    })
-  ]),
-  /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
-    /* @__PURE__ */ createBaseVNode("iframe", {
-      width: "100",
-      height: "100",
-      src: "https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9",
-      title: "YouTube video player",
-      frameborder: "0",
-      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-      allowfullscreen: ""
-    })
-  ])
-], -1));
-const _hoisted_6$9 = { class: "partners-section" };
-const _hoisted_7$5 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "direction_description" }, [
-  /* @__PURE__ */ createBaseVNode("p", null, "НАШИ ПАРТНЕРЫ"),
-  /* @__PURE__ */ createBaseVNode("div", { class: "line" })
-], -1));
-const _hoisted_8$4 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_0$3,
-  alt: "фапим"
-}, null, -1));
-const _hoisted_9$2 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_1$2,
-  alt: "ворне"
-}, null, -1));
-const _hoisted_10 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_2,
-  alt: "алютех"
-}, null, -1));
-const _hoisted_11 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_3,
-  alt: "гиес"
-}, null, -1));
-const _hoisted_12 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_4,
-  alt: "сиениа"
-}, null, -1));
-const _hoisted_13 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_5,
-  alt: "доктор хан"
-}, null, -1));
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_swiper_slide = resolveComponent("swiper-slide");
-  const _component_swiper = resolveComponent("swiper");
-  const _component_StrongAside = resolveComponent("StrongAside");
-  return openBlock(), createElementBlock("div", _hoisted_1$i, [
-    _hoisted_2$b,
-    _hoisted_3$a,
-    _hoisted_4$9,
-    _hoisted_5$a,
-    createBaseVNode("section", _hoisted_6$9, [
-      _hoisted_7$5,
-      createVNode(_component_swiper, {
-        class: "swiper",
-        modules: $setup.modules,
-        "slides-per-view": 2,
-        "space-between": 10,
-        pagination: { clickable: true },
-        "grab-cursor": true,
-        loop: true,
-        breakpoints: {
-          "950": {
-            slidesPerView: 3,
-            spaceBetween: 20
-          },
-          "1024": {
-            slidesPerView: 5,
-            spaceBetween: 30
-          }
-        },
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false
-        }
-      }, {
-        default: withCtx(() => [
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_8$4
-            ]),
-            _: 1
-          }),
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_9$2
-            ]),
-            _: 1
-          }),
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_10
-            ]),
-            _: 1
-          }),
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_11
-            ]),
-            _: 1
-          }),
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_12
-            ]),
-            _: 1
-          }),
-          createVNode(_component_swiper_slide, { class: "slide" }, {
-            default: withCtx(() => [
-              _hoisted_13
-            ]),
-            _: 1
-          })
-        ]),
-        _: 1
-      }, 8, ["modules"])
-    ]),
-    createVNode(_component_StrongAside, { style: { "margin-top": "10%" } })
-  ]);
-}
-const PartnerElementVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-8c43d00d"]]);
-const _imports_0$2 = "/Fasadstore.ru/assets/stanok-0Iaus579.webp";
+const SliderElement = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-e596d093"]]);
+const _imports_0$3 = "/Fasadstore.ru/assets/stanok-0Iaus579.webp";
 const _imports_1$1 = "/Fasadstore.ru/assets/propizvodstvo--zYbtjkk.webp";
-const _sfc_main$a = {
+const _sfc_main$b = {
   components: { ButtonPurple }
 };
 const _withScopeId$3 = (n2) => (pushScopeId("data-v-5a226e45"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$h = { class: "main_bg" };
-const _hoisted_2$a = { class: "block" };
-const _hoisted_3$9 = /* @__PURE__ */ createStaticVNode('<section class="left_block" data-v-5a226e45><div class="block_1" data-v-5a226e45><img src="' + _imports_0$2 + '" alt="алюминевые системы изготовление" style="border-radius:8px;" data-v-5a226e45></div><div class="block_2" data-v-5a226e45><img src="' + _imports_1$1 + '" alt="станок" style="border-radius:8px;" data-v-5a226e45></div><div class="block_3" data-v-5a226e45><div style="padding-left:3%;border-left:1px solid var(--colorRed);" data-v-5a226e45><p data-v-5a226e45> ООО &quot;Алюминиевые системы&quot; изготовят и установят алюминиевые конструкции. Выполняем монтаж в Москве и регионах, даем официальную гарантию на изделия и установку. Дверные и оконные, панорамные системы для дома, коммерческих и общественных объектов. </p></div></div></section>', 1);
-const _hoisted_4$8 = { class: "right_block" };
-const _hoisted_5$9 = { class: "text_block" };
-const _hoisted_6$8 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h1", { class: "name_company" }, "Алюминиевые системы", -1));
-const _hoisted_7$4 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h2", null, "Наша компания готова эффективно реализовать любые виды проектов Алютех, на рынке с 2008года. Являемся официальным дилером компании Алютех", -1));
+const _hoisted_1$i = { class: "main_bg" };
+const _hoisted_2$b = { class: "block" };
+const _hoisted_3$a = /* @__PURE__ */ createStaticVNode('<section class="left_block" data-v-5a226e45><div class="block_1" data-v-5a226e45><img src="' + _imports_0$3 + '" alt="алюминевые системы изготовление" style="border-radius:8px;" data-v-5a226e45></div><div class="block_2" data-v-5a226e45><img src="' + _imports_1$1 + '" alt="станок" style="border-radius:8px;" data-v-5a226e45></div><div class="block_3" data-v-5a226e45><div style="padding-left:3%;border-left:1px solid var(--colorRed);" data-v-5a226e45><p data-v-5a226e45> ООО &quot;Алюминиевые системы&quot; изготовят и установят алюминиевые конструкции. Выполняем монтаж в Москве и регионах, даем официальную гарантию на изделия и установку. Дверные и оконные, панорамные системы для дома, коммерческих и общественных объектов. </p></div></div></section>', 1);
+const _hoisted_4$9 = { class: "right_block" };
+const _hoisted_5$a = { class: "text_block" };
+const _hoisted_6$9 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h1", { class: "name_company" }, "Алюминиевые системы", -1));
+const _hoisted_7$5 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h2", null, "Наша компания готова эффективно реализовать любые виды проектов Алютех, на рынке с 2008года. Являемся официальным дилером компании Алютех", -1));
 const _hoisted_8$3 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("p", null, " Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. ", -1));
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ButtonPurple = resolveComponent("ButtonPurple");
   const _component_router_link = resolveComponent("router-link");
-  return openBlock(), createElementBlock("div", _hoisted_1$h, [
-    createBaseVNode("div", _hoisted_2$a, [
-      _hoisted_3$9,
-      createBaseVNode("section", _hoisted_4$8, [
-        createBaseVNode("div", _hoisted_5$9, [
-          _hoisted_6$8,
-          _hoisted_7$4,
+  return openBlock(), createElementBlock("div", _hoisted_1$i, [
+    createBaseVNode("div", _hoisted_2$b, [
+      _hoisted_3$a,
+      createBaseVNode("section", _hoisted_4$9, [
+        createBaseVNode("div", _hoisted_5$a, [
+          _hoisted_6$9,
+          _hoisted_7$5,
           _hoisted_8$3,
           createVNode(_component_router_link, { to: "/about" }, {
             default: withCtx(() => [
@@ -18973,27 +11907,13 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-5a226e45"]]);
-const _sfc_main$9 = {
-  setup() {
-    const isShowContacts = ref(false);
-    const show = ref(true);
-    return {
-      isShowContacts,
-      show
-    };
-  }
-};
-const _hoisted_1$g = { class: "wrapper" };
-const _hoisted_2$9 = /* @__PURE__ */ createStaticVNode('<input type="checkbox" data-v-7e4691d1><div class="fab" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-7e4691d1></path></svg></div><div class="fac" data-v-7e4691d1><a href="tel:+74957655026" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgb(26, 26, 26)" class="bi bi-telephone-outbound-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5" data-v-7e4691d1></path></svg></a><a href="https://wa.me/79197205872" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#25D366" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-7e4691d1><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-7e4691d1></path></svg></a></div>', 3);
-const _hoisted_5$8 = [
-  _hoisted_2$9
-];
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$g, _hoisted_5$8);
-}
-const mobilePhone = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-7e4691d1"]]);
-const _sfc_main$8 = {
+const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-5a226e45"]]);
+const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-QqmcnfX7.js"), true ? __vite__mapDeps([0,1]) : void 0));
+const Footer$2 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => Promise.resolve().then(() => Footer$1), true ? void 0 : void 0));
+const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-ahGHzQ0z.js"), true ? __vite__mapDeps([2,3]) : void 0));
+const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-32JqyC9n.js"), true ? __vite__mapDeps([4,5]) : void 0));
+const mobilePhone$2 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => Promise.resolve().then(() => mobilePhone$1), true ? void 0 : void 0));
+const _sfc_main$a = {
   name: "HomeView",
   components: {
     NavbarElement,
@@ -19002,8 +11922,8 @@ const _sfc_main$8 = {
     MiniAbout,
     PartnerElementVue,
     ContactForm,
-    Footer,
-    mobilePhone
+    Footer: Footer$2,
+    mobilePhone: mobilePhone$2
   }
   // setup(){
   //   onBeforeMount(() => {
@@ -19012,7 +11932,7 @@ const _sfc_main$8 = {
   //   });
   // }
 };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_NavbarElement = resolveComponent("NavbarElement");
   const _component_SliderElement = resolveComponent("SliderElement");
   const _component_MiniAbout = resolveComponent("MiniAbout");
@@ -19032,21 +11952,21 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(_component_Footer)
   ]);
 }
-const HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7]]);
-const _sfc_main$7 = {
+const HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9]]);
+const _sfc_main$9 = {
   name: "App",
   components: { HomeView }
 };
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_RouterView = resolveComponent("RouterView");
   return openBlock(), createElementBlock("div", null, [
     createVNode(_component_RouterView)
   ]);
 }
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6]]);
-const _imports_0$1 = "/Fasadstore.ru/assets/XXL-pAmWebEn.jpg";
+const App = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8]]);
+const _imports_0$2 = "/Fasadstore.ru/assets/XXL-pAmWebEn.jpg";
 const _imports_1 = "/Fasadstore.ru/assets/maxresdefault-1-w6vJBVxH.jpg";
-const _sfc_main$6 = {
+const _sfc_main$8 = {
   setup() {
     let element = ref(null);
     onMounted(() => {
@@ -19058,27 +11978,77 @@ const _sfc_main$6 = {
   }
 };
 const _withScopeId$2 = (n2) => (pushScopeId("data-v-d1370f9c"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$f = { class: "pic_about" };
-const _hoisted_2$8 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("h3", null, "О компании", -1));
-const _hoisted_3$8 = {
+const _hoisted_1$h = { class: "pic_about" };
+const _hoisted_2$a = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("h3", null, "О компании", -1));
+const _hoisted_3$9 = {
   class: "text_block",
   ref: "element"
 };
-const _hoisted_4$7 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("p", null, "Имея колоссальный опыт работы, мы изучили рынок, сложности и тенденции. Поэтому всегда рады предложить актуальные решения в продуктовой и ценовой политике", -1));
-const _hoisted_5$7 = [
-  _hoisted_4$7
+const _hoisted_4$8 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("p", null, "Имея колоссальный опыт работы, мы изучили рынок, сложности и тенденции. Поэтому всегда рады предложить актуальные решения в продуктовой и ценовой политике", -1));
+const _hoisted_5$9 = [
+  _hoisted_4$8
 ];
-const _hoisted_6$7 = /* @__PURE__ */ createStaticVNode('<section class="about_company" data-v-d1370f9c><img src="' + _imports_0$1 + '" alt="" class="first_img" data-v-d1370f9c><img src="' + _imports_1 + '" alt="" class="second_img" data-v-d1370f9c><div class="text_block_grid" data-v-d1370f9c><h1 data-v-d1370f9c>Алюминиевые Системы</h1><h3 data-v-d1370f9c>Наша компания готова эффективно реализовать любые виды проектов</h3><p data-v-d1370f9c>Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. <br data-v-d1370f9c><br data-v-d1370f9c> Мы, как профессиональные участники этого рынка, вносим свой вклад в развитие современной инфраструктуры города, создавая качественные, удобные, эстетичные решения в современной архитектуре для комфортной жизни людей. <br data-v-d1370f9c><br data-v-d1370f9c> По мере развития и роста нашей компании мы стараемся внести более существенный и значимый вклад в современной архитектуре, вклад, которым сможет гордиться каждый сотрудник нашей компании в будущем. <br data-v-d1370f9c><br data-v-d1370f9c> Мы поставляем светопрозрачные конструкции на основе алюминиевого профиля (фасады, двери, окна, перегородкии). <br data-v-d1370f9c><br data-v-d1370f9c> Наша компания предлагает качественные, надежные и эстетичные решения для комфортной жизни людей. </p></div></section>', 1);
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_6$8 = /* @__PURE__ */ createStaticVNode('<section class="about_company" data-v-d1370f9c><img src="' + _imports_0$2 + '" alt="" class="first_img" data-v-d1370f9c><img src="' + _imports_1 + '" alt="" class="second_img" data-v-d1370f9c><div class="text_block_grid" data-v-d1370f9c><h1 data-v-d1370f9c>Алюминиевые Системы</h1><h3 data-v-d1370f9c>Наша компания готова эффективно реализовать любые виды проектов</h3><p data-v-d1370f9c>Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. <br data-v-d1370f9c><br data-v-d1370f9c> Мы, как профессиональные участники этого рынка, вносим свой вклад в развитие современной инфраструктуры города, создавая качественные, удобные, эстетичные решения в современной архитектуре для комфортной жизни людей. <br data-v-d1370f9c><br data-v-d1370f9c> По мере развития и роста нашей компании мы стараемся внести более существенный и значимый вклад в современной архитектуре, вклад, которым сможет гордиться каждый сотрудник нашей компании в будущем. <br data-v-d1370f9c><br data-v-d1370f9c> Мы поставляем светопрозрачные конструкции на основе алюминиевого профиля (фасады, двери, окна, перегородкии). <br data-v-d1370f9c><br data-v-d1370f9c> Наша компания предлагает качественные, надежные и эстетичные решения для комфортной жизни людей. </p></div></section>', 1);
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", null, [
-    createBaseVNode("section", _hoisted_1$f, [
-      _hoisted_2$8,
-      createBaseVNode("div", _hoisted_3$8, _hoisted_5$7, 512)
+    createBaseVNode("section", _hoisted_1$h, [
+      _hoisted_2$a,
+      createBaseVNode("div", _hoisted_3$9, _hoisted_5$9, 512)
     ]),
-    _hoisted_6$7
+    _hoisted_6$8
   ]);
 }
-const FullDescriptionCompany = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-d1370f9c"]]);
+const FullDescriptionCompany = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-d1370f9c"]]);
+const _imports_0$1 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
+const _sfc_main$7 = {};
+const _hoisted_1$g = { class: "site-footer" };
+const _hoisted_2$9 = /* @__PURE__ */ createStaticVNode('<div class="container" data-v-bd50de20><div class="row" data-v-bd50de20><div class="col-sm-12 col-md-6" data-v-bd50de20><img src="' + _imports_0$1 + '" alt="Лого компании" style="width:max(200px, 10vw);" data-v-bd50de20><p class="text-justify" data-v-bd50de20> Если у Вас остались к нам вопросы, имеются предложения, или замечания по работе сайта напишите нам, мы постараемся ответить в максимально короткий срок </p><p class="text-justify" data-v-bd50de20><br data-v-bd50de20> Юридическая информация <br data-v-bd50de20> Общество с ограниченной ответственностью &quot;Алюминиевые системы&quot;<br data-v-bd50de20> ИНН/КПП: 7733336170 / 771501001<br data-v-bd50de20> ОГРН: 1197746103741<br data-v-bd50de20> Юр. и факт адрес: 127204, Москва 3-я Северная линия, д.8, кв.1<br data-v-bd50de20></p></div><div class="col-xs-6 col-md-3" data-v-bd50de20></div><div class="col-xs-6 col-md-3" data-v-bd50de20><h6 data-v-bd50de20>Контакты</h6><ul class="footer-links" data-v-bd50de20><li data-v-bd50de20><a href="tel:74957655026" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-bd50de20><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-bd50de20></path></svg> +7 495 765-50-26</a></li><li data-v-bd50de20><a href="mailto:7655026@mail.ru" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" data-v-bd50de20></path></svg> 7655026@mail.ru</a></li><li data-v-bd50de20><a href="https://yandex.ru/maps/org/alyuminiyevyye_sistemy/7284186682/reviews/?ll=37.542920%2C55.900310&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCZ5eKcsQz0JAEdOgaB7A4EtAEhIJA137Anqh8j8RmPxP%2Fu4d7D8iBgABAgMEBSgKOABAhZ8BSAFqAnJ1nQHNzEw9oAEAqAEAvQFELZXswgEcuryvkRv4yIH80wa5xLPfwwOSitn8lALMt%2F%2FpA%2BoBAPIBAPgBAIICFdC%2B0LrQvdCwINCw0LvRjtGC0LXRhYoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&amp;sll=37.564403%2C55.900919&amp;source=serp_navig&amp;sspn=0.092191%2C0.041012&amp;tab=reviews&amp;text=%D0%BE%D0%BA%D0%BD%D0%B0%20%D0%B0%D0%BB%D1%8E%D1%82%D0%B5%D1%85&amp;z=15.08" target="_blank" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" data-v-bd50de20></path></svg> Россия, Москва, Дмитровское шоссе д. 157 стр. 7</a></li><li data-v-bd50de20><br data-v-bd50de20> Расчетный счет: 40702810938000087998<br data-v-bd50de20> ПАО СБЕРБАНК г. МОСКВА<br data-v-bd50de20> БИК: 044525700<br data-v-bd50de20> Кор сч: 30101810200000000700<br data-v-bd50de20></li></ul></div></div><hr data-v-bd50de20></div>', 1);
+const _hoisted_3$8 = { class: "container" };
+const _hoisted_4$7 = { class: "row" };
+const _hoisted_5$8 = { class: "col-md-8 col-sm-6 col-xs-12" };
+const _hoisted_6$7 = { class: "copyright-text" };
+const _hoisted_7$4 = /* @__PURE__ */ createStaticVNode('<div class="col-md-4 col-sm-6 col-xs-12" data-v-bd50de20><ul class="social-icons" data-v-bd50de20><li data-v-bd50de20><a class="dribbble" href="https://www.youtube.com/@fasadstore" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" data-v-bd50de20><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="twitter" href="https://t.me/aluteh_systems" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16" data-v-bd50de20><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="linkedin" href="https://wa.me/79197205872" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-bd50de20><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-bd50de20></path></svg></i></a></li></ul></div>', 1);
+function _sfc_render$6(_ctx, _cache) {
+  return openBlock(), createElementBlock("footer", _hoisted_1$g, [
+    _hoisted_2$9,
+    createBaseVNode("div", _hoisted_3$8, [
+      createBaseVNode("div", _hoisted_4$7, [
+        createBaseVNode("div", _hoisted_5$8, [
+          createBaseVNode("p", _hoisted_6$7, " Copyright © 2008 - " + toDisplayString((/* @__PURE__ */ new Date()).getFullYear()) + " Все права защищены ", 1)
+        ]),
+        _hoisted_7$4
+      ])
+    ])
+  ]);
+}
+const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-bd50de20"]]);
+const Footer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Footer
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$6 = {
+  setup() {
+    const isShowContacts = ref(false);
+    const show = ref(true);
+    return {
+      isShowContacts,
+      show
+    };
+  }
+};
+const _hoisted_1$f = { class: "wrapper" };
+const _hoisted_2$8 = /* @__PURE__ */ createStaticVNode('<input type="checkbox" data-v-7e4691d1><div class="fab" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-7e4691d1></path></svg></div><div class="fac" data-v-7e4691d1><a href="tel:+74957655026" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgb(26, 26, 26)" class="bi bi-telephone-outbound-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5" data-v-7e4691d1></path></svg></a><a href="https://wa.me/79197205872" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#25D366" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-7e4691d1><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-7e4691d1></path></svg></a></div>', 3);
+const _hoisted_5$7 = [
+  _hoisted_2$8
+];
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", _hoisted_1$f, _hoisted_5$7);
+}
+const mobilePhone = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-7e4691d1"]]);
+const mobilePhone$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: mobilePhone
+}, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$5 = {};
 const _hoisted_1$e = /* @__PURE__ */ createStaticVNode('<div class="block" data-v-c2cae24a><section class="three_block" data-v-c2cae24a><div class="square floor" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-bag-check" viewBox="0 0 16 16" data-v-c2cae24a><path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0" data-v-c2cae24a></path><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" data-v-c2cae24a></path></svg><p class="descriptio_text" data-v-c2cae24a> Стоимость работ фиксируется </p></div></div><div class="square instruction" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-shield-check" viewBox="0 0 16 16" data-v-c2cae24a><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" data-v-c2cae24a></path><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" data-v-c2cae24a></path></svg><p class="descriptio_text" data-v-c2cae24a> 5 лет гарантии </p></div></div><div class="square amchair" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-pencil-square" viewBox="0 0 16 16" data-v-c2cae24a><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" data-v-c2cae24a></path><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" data-v-c2cae24a></path></svg><p class="description_text" data-v-c2cae24a> Установка по ГОСТ <br data-v-c2cae24a> точно в срок </p></div></div></section></div><div class="black_block" data-v-c2cae24a><div class="overlay_black" data-v-c2cae24a><section class="black" data-v-c2cae24a><h3 data-v-c2cae24a>ООО &quot;Алюминевые системы&quot;</h3><p data-v-c2cae24a>Мы помогаем создавать лицо города</p></section><div class="black_three_block" data-v-c2cae24a><div class="black_bl bl1" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-house-door" viewBox="0 0 16 16" data-v-c2cae24a><path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>Частным клиентам</p><span data-v-c2cae24a>Компания &quot;Алюминиевые системы&quot; произведёт, доставит и установит для Вас современные окна и двери, застеклит лоджию или балкон, создаст любую нестандартную конструкцию от зенитных фонарей до зимнего сада. </span></div><div class="black_bl bl2" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-file-person" viewBox="0 0 16 16" data-v-c2cae24a><path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" data-v-c2cae24a></path><path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>Частным клиентам</p><span data-v-c2cae24a>Наша компания заинтересована в установлении партнёрских отношений и развитии сети и приглашает к сотрудничеству дилеров, дистрибьюторов. В случае Вашей заинтересованности, готовы обсудить с Вами все возможности сотрудничества. </span></div><div class="black_bl bl3" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-shield-check" viewBox="0 0 16 16" data-v-c2cae24a><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" data-v-c2cae24a></path><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>СТРОИТЕЛЬНЫМ КОМПАНИЯМ</p><span data-v-c2cae24a>Для компаний, специализирующихся на Фасадном строительстве, компания Алюминиевые системы осуществляет комплексное проектирование и комплектацию светопрозрачных конструкций на объекты различного назначения: торгово-развлекательные комплексы, бизнес-центры, жилые комплексы, коттеджи. </span></div></div></div></div>', 2);
 const _hoisted_3$7 = [
@@ -21975,7 +14945,7 @@ var DomHandler = {
   findSingle: function findSingle(element, selector) {
     return this.isElement(element) ? element.querySelector(selector) : null;
   },
-  createElement: function createElement2(type) {
+  createElement: function createElement(type) {
     var attributes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     if (type) {
       var element = document.createElement(type);
@@ -22360,7 +15330,7 @@ var DomHandler = {
   calculateBodyScrollbarWidth: function calculateBodyScrollbarWidth() {
     return window.innerWidth - document.documentElement.offsetWidth;
   },
-  getBrowser: function getBrowser2() {
+  getBrowser: function getBrowser() {
     if (!this.browser) {
       var matched = this.resolveUserAgent();
       this.browser = {};
@@ -23155,7 +16125,7 @@ function tryOnMounted(fn) {
   else if (sync)
     fn();
   else
-    nextTick$1(fn);
+    nextTick(fn);
 }
 var _id = 0;
 function useStyle(css2) {
@@ -25469,3 +18439,35 @@ app.component("InputText", script$d);
 app.component("Toast", script);
 app.component("ToastService", ToastService);
 app.mount("#app");
+export {
+  ButtonPurple as B,
+  _export_sfc as _,
+  createBaseVNode as a,
+  createVNode as b,
+  createElementBlock as c,
+  createTextVNode as d,
+  createStaticVNode as e,
+  popScopeId as f,
+  ref as g,
+  onUpdated as h,
+  provide as i,
+  watch as j,
+  onMounted as k,
+  onBeforeUnmount as l,
+  h$1 as m,
+  nextTick as n,
+  openBlock as o,
+  pushScopeId as p,
+  onBeforeUpdate as q,
+  resolveComponent as r,
+  computed as s,
+  createBlock as t,
+  createCommentVNode as u,
+  withCtx as w
+};
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-QqmcnfX7.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-ahGHzQ0z.js","assets/PartnerElement-GhHXz8yl.css","assets/DirectionWork-32JqyC9n.js","assets/DirectionWork-ibAxIZQq.css"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
