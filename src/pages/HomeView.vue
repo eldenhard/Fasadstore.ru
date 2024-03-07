@@ -13,17 +13,18 @@
 </template>
 
 <script>
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, defineAsyncComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import SliderElement from '../modules/slider/SliderElement.vue'
-import DirectionWork from '../components/DirectionJob/DirectionWork.vue'
 
-import ContactForm from '../modules/contact_form/ContactForm.vue'
-import Footer from '../components/Footer/Footer.vue'
-import PartnerElementVue from '../modules/partner/PartnerElement.vue'
 import MiniAbout from '@/components/MiniAbout/MiniAbout.vue'
-import mobilePhone from '@/modules/mobile_phone/mobilePhone.vue'
+
+const ContactForm =  defineAsyncComponent(() => import('../modules/contact_form/ContactForm.vue'))
+const Footer =  defineAsyncComponent(() => import( '../components/Footer/Footer.vue'))
+const PartnerElementVue =  defineAsyncComponent(() => import('../modules/partner/PartnerElement.vue'))
+const DirectionWork =  defineAsyncComponent(() => import('../components/DirectionJob/DirectionWork.vue'))
+const mobilePhone =  defineAsyncComponent(() => import('@/modules/mobile_phone/mobilePhone.vue'))
 export default {
   name: 'HomeView',
   components: {
