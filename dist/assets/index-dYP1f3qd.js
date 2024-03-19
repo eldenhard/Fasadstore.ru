@@ -11572,29 +11572,29 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$e = {
+const _sfc_main$5 = {
   props: {
     title: {
       type: String
     }
   }
 };
-const _hoisted_1$l = {
+const _hoisted_1$c = {
   class: "button-48",
   role: "button"
 };
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("button", _hoisted_1$l, [
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("button", _hoisted_1$c, [
     createBaseVNode("span", null, [
       renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ])
   ]);
 }
-const ButtonPurple = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-8a13860b"]]);
-const _imports_0$5 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
-const _imports_1$3 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARLSURBVFiFtZddbJNVGMd/z+naSkeXkMlGp/uQ6HCgQgI4dVzN4VhHKIIUY0jUCy80KBcGpzFC0BgCJibceOENIXIjY0CHbAgJEgMmBgkfQ0gUYQPn2CcKW23X9n28cCvr2pVudP+rnuc85/3/+vTtOecRVSUTeVu9zpyws9pS8RmoUFEP4BmZ7hKVLguuGNFA1Bk+0VLXEs7kuXI/AF+zr1Ats1VhA+DOiBbuCuwVY20LrAp0TwnA3+h3BO2RBoEPgJkZGo/XoMJOV8S+Y9+6fcMZA/iafYUxlSZRqZqicYJU9LRNdG2qaiQB1AdWP21UjgDF2TAfo5uWaP0R36G2CQF8zb5CyzJnpsE8DmGMtXRsJczoB3+j3xFTaZpGc4DimEqTv9HvSAII2iMNqX5zT+4cXpv3KpsWvYsn1zN+etISlaqgPdJwb6w6WvqrjHvbS90lbK/6nIdsTgB+vnWGHWe/eGAIYNAY6/HAqkC3AVDLbB1vDvDm/Nfj5gBLCxfz8Iz8bADMHPHEeFu9zpFNJkE2sTFvVnlCzIhheUlNNgBQ2OBt9TpNTthZTYodriyvFOeYbz+qmuLqrAAA7pyws9pYKr5Us/2h/pSrbGJDkKwQWCo+Y6Ai1eTf4X/ouHsjIRa1onx5bhdKZgfY/WSgwoycail1ofdiwvhk549c7GubIHvyUlGP4d6RmqTWjqMMx+6dIZWFSyl0FWQNAPAYIDTRbHewh32/74+P3Q43DYs3p3w5pyojKpfTJRz8I8AvPWfj47K8UjYufCdb/l22J9ZXPCfCknRZZ3vO8bynErfj/39ribuYAlcBbf2XiFrRhFxv2Qrqy+oYCN2mPzSQ1l1UfrU9ub5iLkJdusSIFaGt7xJVRS/Ey/9YXhnLiqq4fuc6vf/2AbCkYDHvLdpIWV4pNSUvsiB/Pv2hAbqDPSmfq8hRqT/kqxGV42lRR/RIbhFbKj9m9ozZCfHzvRe4FexmWVEVM+25Sev2XPmGwLXDyRUArxm6PeuUQFcmAJ1Df/HRT5/QfqcjIb5o9kJWlL6U0hyYaNe4G3WGT5gf3tgdsmB7JgAAA6EBNp/6kN2X9xCMBjNa036nPSkmsLelriVsACxn+Gvgz0whYhrj8PUjbDy5ie87jjMYGZowt+nqwVSb16AYaxuMuZKtPPTy2wJfZQoxVjaxsSB/PpVznuWZ/KcwYqNzqJOW9qOc772QlK+w5bvVBz8DyBkNRiP2b+32yJQAYhrjYl9bRtu0ip52DTt2jI7jVzK7Y3j5VMwnqZs20bVje4R4BVBZN93mlmj94XG9gagqtcdqcx1BVy8wYzqc0zUmBsAZdNWPM78B7FLRT4HUN5PMNKiwxTXsqJ6oR8wBUJV1iP6G6AGJ2Q40r2k6M5pQe6x2pz3oekvgfeDRDI0n15yuPPDK3O/W7L+WLtHf6HeE7BEvKgsUyjFWOSrlgIMHaM//A+PDshJTh69fAAAAAElFTkSuQmCC";
+const ButtonPurple = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__scopeId", "data-v-8a13860b"]]);
+const _imports_0$2 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
+const _imports_1$2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARLSURBVFiFtZddbJNVGMd/z+naSkeXkMlGp/uQ6HCgQgI4dVzN4VhHKIIUY0jUCy80KBcGpzFC0BgCJibceOENIXIjY0CHbAgJEgMmBgkfQ0gUYQPn2CcKW23X9n28cCvr2pVudP+rnuc85/3/+vTtOecRVSUTeVu9zpyws9pS8RmoUFEP4BmZ7hKVLguuGNFA1Bk+0VLXEs7kuXI/AF+zr1Ats1VhA+DOiBbuCuwVY20LrAp0TwnA3+h3BO2RBoEPgJkZGo/XoMJOV8S+Y9+6fcMZA/iafYUxlSZRqZqicYJU9LRNdG2qaiQB1AdWP21UjgDF2TAfo5uWaP0R36G2CQF8zb5CyzJnpsE8DmGMtXRsJczoB3+j3xFTaZpGc4DimEqTv9HvSAII2iMNqX5zT+4cXpv3KpsWvYsn1zN+etISlaqgPdJwb6w6WvqrjHvbS90lbK/6nIdsTgB+vnWGHWe/eGAIYNAY6/HAqkC3AVDLbB1vDvDm/Nfj5gBLCxfz8Iz8bADMHPHEeFu9zpFNJkE2sTFvVnlCzIhheUlNNgBQ2OBt9TpNTthZTYodriyvFOeYbz+qmuLqrAAA7pyws9pYKr5Us/2h/pSrbGJDkKwQWCo+Y6Ai1eTf4X/ouHsjIRa1onx5bhdKZgfY/WSgwoycail1ofdiwvhk549c7GubIHvyUlGP4d6RmqTWjqMMx+6dIZWFSyl0FWQNAPAYIDTRbHewh32/74+P3Q43DYs3p3w5pyojKpfTJRz8I8AvPWfj47K8UjYufCdb/l22J9ZXPCfCknRZZ3vO8bynErfj/39ribuYAlcBbf2XiFrRhFxv2Qrqy+oYCN2mPzSQ1l1UfrU9ub5iLkJdusSIFaGt7xJVRS/Ey/9YXhnLiqq4fuc6vf/2AbCkYDHvLdpIWV4pNSUvsiB/Pv2hAbqDPSmfq8hRqT/kqxGV42lRR/RIbhFbKj9m9ozZCfHzvRe4FexmWVEVM+25Sev2XPmGwLXDyRUArxm6PeuUQFcmAJ1Df/HRT5/QfqcjIb5o9kJWlL6U0hyYaNe4G3WGT5gf3tgdsmB7JgAAA6EBNp/6kN2X9xCMBjNa036nPSkmsLelriVsACxn+Gvgz0whYhrj8PUjbDy5ie87jjMYGZowt+nqwVSb16AYaxuMuZKtPPTy2wJfZQoxVjaxsSB/PpVznuWZ/KcwYqNzqJOW9qOc772QlK+w5bvVBz8DyBkNRiP2b+32yJQAYhrjYl9bRtu0ip52DTt2jI7jVzK7Y3j5VMwnqZs20bVje4R4BVBZN93mlmj94XG9gagqtcdqcx1BVy8wYzqc0zUmBsAZdNWPM78B7FLRT4HUN5PMNKiwxTXsqJ6oR8wBUJV1iP6G6AGJ2Q40r2k6M5pQe6x2pz3oekvgfeDRDI0n15yuPPDK3O/W7L+WLtHf6HeE7BEvKgsUyjFWOSrlgIMHaM//A+PDshJTh69fAAAAAElFTkSuQmCC";
 const _imports_2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYEAYAAACw5+G7AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAAAAAAAAPlDu38AAAAJcEhZcwAAAGAAAABgAPBrQs8AAAAHdElNRQfoAQcQGy7/skdjAAAF6ElEQVRYw81XaVCTVxS97wurBYNKWYZNloAQKmItbXFhrIqELZatUxZpnYILJYrDpgioNYDCgKBVanUEikYodAgJkSrVulFFWhkFKgjKYiREVkEKmSSvv54/YDIsFqfnVyb33vfOeS/v3BsEc4RM4umX9NTCwlpN/S/Yx2Znn8UucIvF6jLABVifwXh1Hm2HxcbGJH/h1/gHGOjpMZeir1Dfkyd7HbED1hCJWkXYWxHE52ufEq46eqyra7Y80EwTXSP8POJbTU1zHeUhap7Jyfw7IAa3bduUNlALhmpqcz0I9BL/CKNK5erj6BucWV6ubYndaYyEhPVSQfSRrmfP3lpA2RUf2/01LFbzGbgMAzzeuC2KgQY6fa6Ep4PGTcyDK6OjtBD8N44IC0veKVyVvr2iQlU+TVXArI+9NOkLDscwD9eCuKhIbo6iYEBbe76IEygsUDlYa2go2iEUiYOCOg7b6aztHRx8dbH191tDdXWT86fcADnxBh5aDE4CgdIYDCCHRpvZ9v89yE/MdJzqRCe3bNn5E9+FqxQISJwiH9b9zN6b9L2ZWVMesoSJkpLpiOtzgAaftbVRbeAKvXL5fAnA76MI0KEoaRduwIziYvIWpwjIPIz9ICU1dWI5aMIdXV1VCzovBC1UUF3N79ekqW9gMscM4Q4yDA6ebyETq0EI/gsX5rLkj9WXpaS8uaF/dnnXJ8Sbm3P7qBpaf3u7KlchjyunXhmk3GhuPjxeVZWRMThI4nvp7DX7egICFmzG3ugAj/e27qQK5KCS9JUbFUusrSlbTySklbLZ021ofwRJ0Uht7WTiBNnD/NvpxmVlblK4AG5lZfN1E4Sn4xnqW7X7vr5UdiNqRjJPz+kKX4diI4x1dFTFg1t8byf9ERJywxLeA1Zg4HwJIDgWhHPhPotFkc45XcFTV5QLa11cJj8irZLPmQc67O2tMiAW2xQWvivX6jyInmN9BoMaKUW/Qp6R0XQF5OqK8xW9NMHu3eT7V24Tdlg5NkaTQCN0yGTzTfzNvtuwB+gbG1OzLTzvjYdRHYfz3IK9Zl+Pg4OGkegXrlVnp/w6pqOTYWHEt+dbANJDfnAIY0o3CG8GjkQy00KFMziCtYZG6VUcgz6tqKBreXklJi5axB0XiLmF5eXlYghHNdHRVA9IIUahULXOhx04CeWJRHO1X91siIQoiYQi0+FsF+grgEIIZjDyX9CWURolJZHmkRGREerqj0WCam7zqVOMCGDBazZb8yFMwOqREVJ3PAgP4hdxcf4XBR9zR728+o/iNrgUEjJbIRZRkAlOra0UGWvnepWPsuAJyDdt2hQkCdeX8fnnpYEBqVhHJ9y1MjVtaVXVb+GIiTqYzLpkLFO6u7iMrRDcSi/IyiL1py0FZ9Nel5bOVkjcd3AVqi5fnnEjmykMikAK+S0t96MhC6HQ0AsJlWu4/fX109VdP5iKUzFFtdx74CXXrK/vcgY1HOvsPDmPCLwZiKRopZUVRf5I+FzBhtBYUDBX4gTSrWAAO+zslrZhBg65d+9Gr0/vfk5hYYyfb1ii/VRCA02BAQnxdLr8wgOerKm4WBVxAr+XeAhyzp27GcjP5kZ1d7+ZRskwt+EkXobzGhvJ7PG2giZjiQ2+BML29sVmaDvkSySdh3A+cJycZOvQl+CuulFqteIcWDE8vKBGKUenmczYoSo77nWxeOo4be37SWK3h0fDOgBKSyj8v4zTJnGQgxvZ7F22goz0a0IhiU/pAwHtlXczzKqrC/2xB3wUE/OufF0V8SI2nIbKPXsmE1cpgKDbW3AwrePECedAWAu+3t5af0IXFA4NzTdxYrtaK3E3Zvr7Ex4qhc504Sw9r5ak9SYmng5Uk/J4fDyPjmJR2o4dpLHNlTBxFfcytB895fFkLqCQX0tJ2XiXj46ijo7p6mcsYDKI/TK3Una0bB+fzDzcjLQ8PbsfwhJcbGMzZIoegZ6JCcnXe44/gCGx2Gw59KPQtrY4DnLA4yKRaTdKRbmVlcRVZsvjX4ch3zSP0NfZAAAAAElFTkSuQmCC";
-const _sfc_main$d = {
+const _sfc_main$4 = {
   components: { ButtonPurple },
   setup() {
     const openModal = () => {
@@ -11603,23 +11603,23 @@ const _sfc_main$d = {
     return { openModal };
   }
 };
-const _withScopeId$5 = (n2) => (pushScopeId("data-v-17d4acf0"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$k = {
+const _withScopeId$2 = (n2) => (pushScopeId("data-v-17d4acf0"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$b = {
   class: "navbar navbar-expand-lg navbar-dark bg-dark",
   style: { "position": "fixed", "top": "0", "z-index": "10", "right": "0", "left": "0" }
 };
-const _hoisted_2$d = { class: "container-fluid" };
-const _hoisted_3$c = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("a", {
+const _hoisted_2$8 = { class: "container-fluid" };
+const _hoisted_3$6 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("a", {
   class: "navbar-brand",
   href: "/"
 }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_0$5,
+    src: _imports_0$2,
     alt: "Логотип компании",
     class: "navbar_color"
   })
 ], -1));
-const _hoisted_4$b = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("button", {
+const _hoisted_4$6 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("button", {
   class: "navbar-toggler",
   type: "button",
   "data-bs-toggle": "collapse",
@@ -11630,14 +11630,14 @@ const _hoisted_4$b = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ create
 }, [
   /* @__PURE__ */ createBaseVNode("span", { class: "navbar-toggler-icon" })
 ], -1));
-const _hoisted_5$c = {
+const _hoisted_5$6 = {
   class: "collapse navbar-collapse",
   id: "navbarTogglerDemo02"
 };
-const _hoisted_6$b = { class: "navbar-nav me-auto mb-2 mb-lg-0" };
-const _hoisted_7$7 = { class: "nav-item" };
-const _hoisted_8$5 = { class: "nav-item" };
-const _hoisted_9$3 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("li", { class: "nav-item dropdown" }, [
+const _hoisted_6$6 = { class: "navbar-nav me-auto mb-2 mb-lg-0" };
+const _hoisted_7$3 = { class: "nav-item" };
+const _hoisted_8$3 = { class: "nav-item" };
+const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("li", { class: "nav-item dropdown" }, [
   /* @__PURE__ */ createBaseVNode("a", {
     class: "nav-link dropdown-toggle",
     href: "#",
@@ -11653,18 +11653,18 @@ const _hoisted_9$3 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ create
 ], -1));
 const _hoisted_10$1 = { class: "nav-item" };
 const _hoisted_11$1 = { class: "nav-item" };
-const _hoisted_12$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("li", {
+const _hoisted_12$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("li", {
   class: "nav-item",
   style: { "display": "flex", "align-items": "center" }
 }, [
   /* @__PURE__ */ createTextVNode("      "),
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_1$3,
+    src: _imports_1$2,
     alt: "whatsapp",
     class: "whtsapp"
   })
 ], -1));
-const _hoisted_13$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("div", { class: "section_phone" }, [
+const _hoisted_13$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("div", { class: "section_phone" }, [
   /* @__PURE__ */ createBaseVNode("a", {
     href: "tel:+74957655026",
     class: "phone"
@@ -11676,15 +11676,15 @@ const _hoisted_13$1 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ creat
     /* @__PURE__ */ createTextVNode(" +7(495) 765-50-26 ")
   ])
 ], -1));
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_router_link = resolveComponent("router-link");
-  return openBlock(), createElementBlock("nav", _hoisted_1$k, [
-    createBaseVNode("div", _hoisted_2$d, [
-      _hoisted_3$c,
-      _hoisted_4$b,
-      createBaseVNode("div", _hoisted_5$c, [
-        createBaseVNode("ul", _hoisted_6$b, [
-          createBaseVNode("li", _hoisted_7$7, [
+  return openBlock(), createElementBlock("nav", _hoisted_1$b, [
+    createBaseVNode("div", _hoisted_2$8, [
+      _hoisted_3$6,
+      _hoisted_4$6,
+      createBaseVNode("div", _hoisted_5$6, [
+        createBaseVNode("ul", _hoisted_6$6, [
+          createBaseVNode("li", _hoisted_7$3, [
             createVNode(_component_router_link, {
               to: "/",
               class: "nav-link",
@@ -11696,7 +11696,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          createBaseVNode("li", _hoisted_8$5, [
+          createBaseVNode("li", _hoisted_8$3, [
             createVNode(_component_router_link, {
               to: "/about",
               class: "nav-link",
@@ -11708,7 +11708,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          _hoisted_9$3,
+          _hoisted_9$1,
           createBaseVNode("li", _hoisted_10$1, [
             createVNode(_component_router_link, {
               to: "/objects",
@@ -11740,10 +11740,10 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const NavbarElement = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-17d4acf0"]]);
-const _imports_0$4 = "/Fasadstore.ru/assets/first-wAVONG7y.webp";
-const _imports_1$2 = "/Fasadstore.ru/assets/second-qsV866gv.webp";
-const _sfc_main$c = {
+const NavbarElement = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__scopeId", "data-v-17d4acf0"]]);
+const _imports_0$1 = "/Fasadstore.ru/assets/first-wAVONG7y.webp";
+const _imports_1$1 = "/Fasadstore.ru/assets/second-qsV866gv.webp";
+const _sfc_main$3 = {
   components: { ButtonPurple },
   setup() {
     const show = ref(false);
@@ -11755,8 +11755,8 @@ const _sfc_main$c = {
     return { show };
   }
 };
-const _withScopeId$4 = (n2) => (pushScopeId("data-v-e596d093"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$j = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "carousel-indicators" }, [
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-e596d093"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$a = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "carousel-indicators" }, [
   /* @__PURE__ */ createBaseVNode("button", {
     type: "button",
     "data-bs-target": "#carouselExampleCaptions",
@@ -11774,21 +11774,21 @@ const _hoisted_1$j = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ create
     style: { "border-radius": "50% !important", "height": "10px", "width": "10px" }
   })
 ], -1));
-const _hoisted_2$c = { class: "carousel-inner" };
-const _hoisted_3$b = {
+const _hoisted_2$7 = { class: "carousel-inner" };
+const _hoisted_3$5 = {
   class: "carousel-item active",
   "data-bs-interval": "10000"
 };
-const _hoisted_4$a = { class: "block_carousel" };
-const _hoisted_5$b = { class: "left_text_carousel" };
-const _hoisted_6$a = { class: "content" };
-const _hoisted_7$6 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Раздвижные двери Алютех", -1));
-const _hoisted_8$4 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
-const _hoisted_9$2 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей. ", -1));
-const _hoisted_10 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_11 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
+const _hoisted_4$5 = { class: "block_carousel" };
+const _hoisted_5$5 = { class: "left_text_carousel" };
+const _hoisted_6$5 = { class: "content" };
+const _hoisted_7$2 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Раздвижные двери Алютех", -1));
+const _hoisted_8$2 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
+const _hoisted_9 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей. ", -1));
+const _hoisted_10 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_11 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_0$4,
+    src: _imports_0$1,
     class: "d-block w-100 h-100",
     alt: "Раздвижные двери АЛЮТЕХ"
   }),
@@ -11801,35 +11801,35 @@ const _hoisted_12 = {
 const _hoisted_13 = { class: "block_carousel active" };
 const _hoisted_14 = { class: "left_text_carousel" };
 const _hoisted_15 = { class: "content" };
-const _hoisted_16 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Окна Алютех", -1));
-const _hoisted_17 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
-const _hoisted_18 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_19 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют. ", -1));
-const _hoisted_20 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
+const _hoisted_16 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", { class: "appear" }, "Окна Алютех", -1));
+const _hoisted_17 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "rows" }, null, -1));
+const _hoisted_18 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_19 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("p", { class: "appear_decription" }, " Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют. ", -1));
+const _hoisted_20 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "right_text" }, [
   /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_1$2,
+    src: _imports_1$1,
     class: "d-block w-100 h-100",
     alt: "окна АЛЮТЕХ"
   }),
   /* @__PURE__ */ createBaseVNode("div", { class: "image-overlay" })
 ], -1));
 const _hoisted_21 = /* @__PURE__ */ createStaticVNode('<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" data-v-e596d093><span class="carousel-control-prev-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Previous</span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" data-v-e596d093><span class="carousel-control-next-icon" aria-hidden="true" data-v-e596d093></span><span class="visually-hidden" data-v-e596d093>Next</span></button>', 2);
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ButtonPurple = resolveComponent("ButtonPurple");
   return _cache[0] || (setBlockTracking(-1), _cache[0] = createBaseVNode("div", {
     id: "carouselExampleCaptions",
     class: "carousel slide",
     "data-bs-ride": "carousel"
   }, [
-    _hoisted_1$j,
-    createBaseVNode("div", _hoisted_2$c, [
-      createBaseVNode("div", _hoisted_3$b, [
-        createBaseVNode("div", _hoisted_4$a, [
-          createBaseVNode("div", _hoisted_5$b, [
-            createBaseVNode("div", _hoisted_6$a, [
-              _hoisted_7$6,
-              _hoisted_8$4,
-              _hoisted_9$2,
+    _hoisted_1$a,
+    createBaseVNode("div", _hoisted_2$7, [
+      createBaseVNode("div", _hoisted_3$5, [
+        createBaseVNode("div", _hoisted_4$5, [
+          createBaseVNode("div", _hoisted_5$5, [
+            createBaseVNode("div", _hoisted_6$5, [
+              _hoisted_7$2,
+              _hoisted_8$2,
+              _hoisted_9,
               _hoisted_10,
               createVNode(_component_ButtonPurple, { title: "Подробнее о разделе" }, {
                 default: withCtx(() => [
@@ -11865,32 +11865,32 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     _hoisted_21
   ]), setBlockTracking(1), _cache[0]);
 }
-const SliderElement = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-e596d093"]]);
-const _imports_0$3 = "/Fasadstore.ru/assets/stanok-0Iaus579.webp";
-const _imports_1$1 = "/Fasadstore.ru/assets/propizvodstvo--zYbtjkk.webp";
-const _sfc_main$b = {
+const SliderElement = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__scopeId", "data-v-e596d093"]]);
+const _imports_0 = "/Fasadstore.ru/assets/stanok-0Iaus579.webp";
+const _imports_1 = "/Fasadstore.ru/assets/propizvodstvo--zYbtjkk.webp";
+const _sfc_main$2 = {
   components: { ButtonPurple }
 };
-const _withScopeId$3 = (n2) => (pushScopeId("data-v-5a226e45"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$i = { class: "main_bg" };
-const _hoisted_2$b = { class: "block" };
-const _hoisted_3$a = /* @__PURE__ */ createStaticVNode('<section class="left_block" data-v-5a226e45><div class="block_1" data-v-5a226e45><img src="' + _imports_0$3 + '" alt="алюминевые системы изготовление" style="border-radius:8px;" data-v-5a226e45></div><div class="block_2" data-v-5a226e45><img src="' + _imports_1$1 + '" alt="станок" style="border-radius:8px;" data-v-5a226e45></div><div class="block_3" data-v-5a226e45><div style="padding-left:3%;border-left:1px solid var(--colorRed);" data-v-5a226e45><p data-v-5a226e45> ООО &quot;Алюминиевые системы&quot; изготовят и установят алюминиевые конструкции. Выполняем монтаж в Москве и регионах, даем официальную гарантию на изделия и установку. Дверные и оконные, панорамные системы для дома, коммерческих и общественных объектов. </p></div></div></section>', 1);
-const _hoisted_4$9 = { class: "right_block" };
-const _hoisted_5$a = { class: "text_block" };
-const _hoisted_6$9 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h1", { class: "name_company" }, "Алюминиевые системы", -1));
-const _hoisted_7$5 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("h2", null, "Наша компания готова эффективно реализовать любые виды проектов Алютех, на рынке с 2008года. Являемся официальным дилером компании Алютех", -1));
-const _hoisted_8$3 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("p", null, " Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. ", -1));
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+const _withScopeId = (n2) => (pushScopeId("data-v-5a226e45"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$9 = { class: "main_bg" };
+const _hoisted_2$6 = { class: "block" };
+const _hoisted_3$4 = /* @__PURE__ */ createStaticVNode('<section class="left_block" data-v-5a226e45><div class="block_1" data-v-5a226e45><img src="' + _imports_0 + '" alt="алюминевые системы изготовление" style="border-radius:8px;" data-v-5a226e45></div><div class="block_2" data-v-5a226e45><img src="' + _imports_1 + '" alt="станок" style="border-radius:8px;" data-v-5a226e45></div><div class="block_3" data-v-5a226e45><div style="padding-left:3%;border-left:1px solid var(--colorRed);" data-v-5a226e45><p data-v-5a226e45> ООО &quot;Алюминиевые системы&quot; изготовят и установят алюминиевые конструкции. Выполняем монтаж в Москве и регионах, даем официальную гарантию на изделия и установку. Дверные и оконные, панорамные системы для дома, коммерческих и общественных объектов. </p></div></div></section>', 1);
+const _hoisted_4$4 = { class: "right_block" };
+const _hoisted_5$4 = { class: "text_block" };
+const _hoisted_6$4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h1", { class: "name_company" }, "Алюминиевые системы", -1));
+const _hoisted_7$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", null, "Наша компания готова эффективно реализовать любые виды проектов Алютех, на рынке с 2008года. Являемся официальным дилером компании Алютех", -1));
+const _hoisted_8$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", null, " Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. ", -1));
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ButtonPurple = resolveComponent("ButtonPurple");
   const _component_router_link = resolveComponent("router-link");
-  return openBlock(), createElementBlock("div", _hoisted_1$i, [
-    createBaseVNode("div", _hoisted_2$b, [
-      _hoisted_3$a,
-      createBaseVNode("section", _hoisted_4$9, [
-        createBaseVNode("div", _hoisted_5$a, [
-          _hoisted_6$9,
-          _hoisted_7$5,
-          _hoisted_8$3,
+  return openBlock(), createElementBlock("div", _hoisted_1$9, [
+    createBaseVNode("div", _hoisted_2$6, [
+      _hoisted_3$4,
+      createBaseVNode("section", _hoisted_4$4, [
+        createBaseVNode("div", _hoisted_5$4, [
+          _hoisted_6$4,
+          _hoisted_7$1,
+          _hoisted_8$1,
           createVNode(_component_router_link, { to: "/about" }, {
             default: withCtx(() => [
               createVNode(_component_ButtonPurple, { style: { "margin-top": "4%" } }, {
@@ -11907,13 +11907,13 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-5a226e45"]]);
-const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-QqmcnfX7.js"), true ? __vite__mapDeps([0,1]) : void 0));
-const Footer$2 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => Promise.resolve().then(() => Footer$1), true ? void 0 : void 0));
-const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-ahGHzQ0z.js"), true ? __vite__mapDeps([2,3]) : void 0));
-const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-32JqyC9n.js"), true ? __vite__mapDeps([4,5]) : void 0));
-const mobilePhone$2 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => Promise.resolve().then(() => mobilePhone$1), true ? void 0 : void 0));
-const _sfc_main$a = {
+const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-5a226e45"]]);
+const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-C577Fl8F.js"), true ? __vite__mapDeps([0,1]) : void 0));
+const Footer = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Footer-wqAv5sIL.js"), true ? __vite__mapDeps([]) : void 0));
+const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-6Idsf82C.js"), true ? __vite__mapDeps([2,3,4,5]) : void 0));
+const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-QS-WyN0Q.js"), true ? __vite__mapDeps([6,7]) : void 0));
+const mobilePhone = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-l2lQt4dj.js"), true ? __vite__mapDeps([]) : void 0));
+const _sfc_main$1 = {
   name: "HomeView",
   components: {
     NavbarElement,
@@ -11922,8 +11922,8 @@ const _sfc_main$a = {
     MiniAbout,
     PartnerElementVue,
     ContactForm,
-    Footer: Footer$2,
-    mobilePhone: mobilePhone$2
+    Footer,
+    mobilePhone
   }
   // setup(){
   //   onBeforeMount(() => {
@@ -11932,7 +11932,7 @@ const _sfc_main$a = {
   //   });
   // }
 };
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_NavbarElement = resolveComponent("NavbarElement");
   const _component_SliderElement = resolveComponent("SliderElement");
   const _component_MiniAbout = resolveComponent("MiniAbout");
@@ -11952,257 +11952,18 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(_component_Footer)
   ]);
 }
-const HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9]]);
-const _sfc_main$9 = {
+const HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const _sfc_main = {
   name: "App",
   components: { HomeView }
 };
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_RouterView = resolveComponent("RouterView");
   return openBlock(), createElementBlock("div", null, [
     createVNode(_component_RouterView)
   ]);
 }
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8]]);
-const _imports_0$2 = "/Fasadstore.ru/assets/XXL-pAmWebEn.jpg";
-const _imports_1 = "/Fasadstore.ru/assets/maxresdefault-1-w6vJBVxH.jpg";
-const _sfc_main$8 = {
-  setup() {
-    let element = ref(null);
-    onMounted(() => {
-      element.value.classList.add("animationBlock");
-    });
-    return {
-      element
-    };
-  }
-};
-const _withScopeId$2 = (n2) => (pushScopeId("data-v-d1370f9c"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$h = { class: "pic_about" };
-const _hoisted_2$a = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("h3", null, "О компании", -1));
-const _hoisted_3$9 = {
-  class: "text_block",
-  ref: "element"
-};
-const _hoisted_4$8 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("p", null, "Имея колоссальный опыт работы, мы изучили рынок, сложности и тенденции. Поэтому всегда рады предложить актуальные решения в продуктовой и ценовой политике", -1));
-const _hoisted_5$9 = [
-  _hoisted_4$8
-];
-const _hoisted_6$8 = /* @__PURE__ */ createStaticVNode('<section class="about_company" data-v-d1370f9c><img src="' + _imports_0$2 + '" alt="" class="first_img" data-v-d1370f9c><img src="' + _imports_1 + '" alt="" class="second_img" data-v-d1370f9c><div class="text_block_grid" data-v-d1370f9c><h1 data-v-d1370f9c>Алюминиевые Системы</h1><h3 data-v-d1370f9c>Наша компания готова эффективно реализовать любые виды проектов</h3><p data-v-d1370f9c>Внешний облик гражданских и промышленных зданий и сооружений в последнее время существенно меняется. Применение для стеновых панелей и оконных заполнений алюминия, нержавеющей стали, стекла и других новых материалов придает внешнему виду здания индивидуальный характер, особую архитектурную выразительность. <br data-v-d1370f9c><br data-v-d1370f9c> Мы, как профессиональные участники этого рынка, вносим свой вклад в развитие современной инфраструктуры города, создавая качественные, удобные, эстетичные решения в современной архитектуре для комфортной жизни людей. <br data-v-d1370f9c><br data-v-d1370f9c> По мере развития и роста нашей компании мы стараемся внести более существенный и значимый вклад в современной архитектуре, вклад, которым сможет гордиться каждый сотрудник нашей компании в будущем. <br data-v-d1370f9c><br data-v-d1370f9c> Мы поставляем светопрозрачные конструкции на основе алюминиевого профиля (фасады, двери, окна, перегородкии). <br data-v-d1370f9c><br data-v-d1370f9c> Наша компания предлагает качественные, надежные и эстетичные решения для комфортной жизни людей. </p></div></section>', 1);
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, [
-    createBaseVNode("section", _hoisted_1$h, [
-      _hoisted_2$a,
-      createBaseVNode("div", _hoisted_3$9, _hoisted_5$9, 512)
-    ]),
-    _hoisted_6$8
-  ]);
-}
-const FullDescriptionCompany = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-d1370f9c"]]);
-const _imports_0$1 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
-const _sfc_main$7 = {};
-const _hoisted_1$g = { class: "site-footer" };
-const _hoisted_2$9 = /* @__PURE__ */ createStaticVNode('<div class="container" data-v-bd50de20><div class="row" data-v-bd50de20><div class="col-sm-12 col-md-6" data-v-bd50de20><img src="' + _imports_0$1 + '" alt="Лого компании" style="width:max(200px, 10vw);" data-v-bd50de20><p class="text-justify" data-v-bd50de20> Если у Вас остались к нам вопросы, имеются предложения, или замечания по работе сайта напишите нам, мы постараемся ответить в максимально короткий срок </p><p class="text-justify" data-v-bd50de20><br data-v-bd50de20> Юридическая информация <br data-v-bd50de20> Общество с ограниченной ответственностью &quot;Алюминиевые системы&quot;<br data-v-bd50de20> ИНН/КПП: 7733336170 / 771501001<br data-v-bd50de20> ОГРН: 1197746103741<br data-v-bd50de20> Юр. и факт адрес: 127204, Москва 3-я Северная линия, д.8, кв.1<br data-v-bd50de20></p></div><div class="col-xs-6 col-md-3" data-v-bd50de20></div><div class="col-xs-6 col-md-3" data-v-bd50de20><h6 data-v-bd50de20>Контакты</h6><ul class="footer-links" data-v-bd50de20><li data-v-bd50de20><a href="tel:74957655026" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-bd50de20><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-bd50de20></path></svg> +7 495 765-50-26</a></li><li data-v-bd50de20><a href="mailto:7655026@mail.ru" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" data-v-bd50de20></path></svg> 7655026@mail.ru</a></li><li data-v-bd50de20><a href="https://yandex.ru/maps/org/alyuminiyevyye_sistemy/7284186682/reviews/?ll=37.542920%2C55.900310&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCZ5eKcsQz0JAEdOgaB7A4EtAEhIJA137Anqh8j8RmPxP%2Fu4d7D8iBgABAgMEBSgKOABAhZ8BSAFqAnJ1nQHNzEw9oAEAqAEAvQFELZXswgEcuryvkRv4yIH80wa5xLPfwwOSitn8lALMt%2F%2FpA%2BoBAPIBAPgBAIICFdC%2B0LrQvdCwINCw0LvRjtGC0LXRhYoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&amp;sll=37.564403%2C55.900919&amp;source=serp_navig&amp;sspn=0.092191%2C0.041012&amp;tab=reviews&amp;text=%D0%BE%D0%BA%D0%BD%D0%B0%20%D0%B0%D0%BB%D1%8E%D1%82%D0%B5%D1%85&amp;z=15.08" target="_blank" data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16" data-v-bd50de20><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" data-v-bd50de20></path></svg> Россия, Москва, Дмитровское шоссе д. 157 стр. 7</a></li><li data-v-bd50de20><br data-v-bd50de20> Расчетный счет: 40702810938000087998<br data-v-bd50de20> ПАО СБЕРБАНК г. МОСКВА<br data-v-bd50de20> БИК: 044525700<br data-v-bd50de20> Кор сч: 30101810200000000700<br data-v-bd50de20></li></ul></div></div><hr data-v-bd50de20></div>', 1);
-const _hoisted_3$8 = { class: "container" };
-const _hoisted_4$7 = { class: "row" };
-const _hoisted_5$8 = { class: "col-md-8 col-sm-6 col-xs-12" };
-const _hoisted_6$7 = { class: "copyright-text" };
-const _hoisted_7$4 = /* @__PURE__ */ createStaticVNode('<div class="col-md-4 col-sm-6 col-xs-12" data-v-bd50de20><ul class="social-icons" data-v-bd50de20><li data-v-bd50de20><a class="dribbble" href="https://www.youtube.com/@fasadstore" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" data-v-bd50de20><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="twitter" href="https://t.me/aluteh_systems" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16" data-v-bd50de20><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" data-v-bd50de20></path></svg></i></a></li><li data-v-bd50de20><a class="linkedin" href="https://wa.me/79197205872" target="_blank" data-v-bd50de20><i data-v-bd50de20><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-bd50de20><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-bd50de20></path></svg></i></a></li></ul></div>', 1);
-function _sfc_render$6(_ctx, _cache) {
-  return openBlock(), createElementBlock("footer", _hoisted_1$g, [
-    _hoisted_2$9,
-    createBaseVNode("div", _hoisted_3$8, [
-      createBaseVNode("div", _hoisted_4$7, [
-        createBaseVNode("div", _hoisted_5$8, [
-          createBaseVNode("p", _hoisted_6$7, " Copyright © 2008 - " + toDisplayString((/* @__PURE__ */ new Date()).getFullYear()) + " Все права защищены ", 1)
-        ]),
-        _hoisted_7$4
-      ])
-    ])
-  ]);
-}
-const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-bd50de20"]]);
-const Footer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: Footer
-}, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$6 = {
-  setup() {
-    const isShowContacts = ref(false);
-    const show = ref(true);
-    return {
-      isShowContacts,
-      show
-    };
-  }
-};
-const _hoisted_1$f = { class: "wrapper" };
-const _hoisted_2$8 = /* @__PURE__ */ createStaticVNode('<input type="checkbox" data-v-7e4691d1><div class="fab" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" data-v-7e4691d1></path></svg></div><div class="fac" data-v-7e4691d1><a href="tel:+74957655026" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgb(26, 26, 26)" class="bi bi-telephone-outbound-fill" viewBox="0 0 16 16" data-v-7e4691d1><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5" data-v-7e4691d1></path></svg></a><a href="https://wa.me/79197205872" data-v-7e4691d1><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#25D366" class="bi bi-whatsapp" viewBox="0 0 16 16" data-v-7e4691d1><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" data-v-7e4691d1></path></svg></a></div>', 3);
-const _hoisted_5$7 = [
-  _hoisted_2$8
-];
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$f, _hoisted_5$7);
-}
-const mobilePhone = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-7e4691d1"]]);
-const mobilePhone$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: mobilePhone
-}, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$5 = {};
-const _hoisted_1$e = /* @__PURE__ */ createStaticVNode('<div class="block" data-v-c2cae24a><section class="three_block" data-v-c2cae24a><div class="square floor" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-bag-check" viewBox="0 0 16 16" data-v-c2cae24a><path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0" data-v-c2cae24a></path><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" data-v-c2cae24a></path></svg><p class="descriptio_text" data-v-c2cae24a> Стоимость работ фиксируется </p></div></div><div class="square instruction" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-shield-check" viewBox="0 0 16 16" data-v-c2cae24a><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" data-v-c2cae24a></path><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" data-v-c2cae24a></path></svg><p class="descriptio_text" data-v-c2cae24a> 5 лет гарантии </p></div></div><div class="square amchair" data-v-c2cae24a><div class="overlay" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="rgb(250, 250, 250)" class="bi bi-pencil-square" viewBox="0 0 16 16" data-v-c2cae24a><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" data-v-c2cae24a></path><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" data-v-c2cae24a></path></svg><p class="description_text" data-v-c2cae24a> Установка по ГОСТ <br data-v-c2cae24a> точно в срок </p></div></div></section></div><div class="black_block" data-v-c2cae24a><div class="overlay_black" data-v-c2cae24a><section class="black" data-v-c2cae24a><h3 data-v-c2cae24a>ООО &quot;Алюминевые системы&quot;</h3><p data-v-c2cae24a>Мы помогаем создавать лицо города</p></section><div class="black_three_block" data-v-c2cae24a><div class="black_bl bl1" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-house-door" viewBox="0 0 16 16" data-v-c2cae24a><path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>Частным клиентам</p><span data-v-c2cae24a>Компания &quot;Алюминиевые системы&quot; произведёт, доставит и установит для Вас современные окна и двери, застеклит лоджию или балкон, создаст любую нестандартную конструкцию от зенитных фонарей до зимнего сада. </span></div><div class="black_bl bl2" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-file-person" viewBox="0 0 16 16" data-v-c2cae24a><path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" data-v-c2cae24a></path><path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>Частным клиентам</p><span data-v-c2cae24a>Наша компания заинтересована в установлении партнёрских отношений и развитии сети и приглашает к сотрудничеству дилеров, дистрибьюторов. В случае Вашей заинтересованности, готовы обсудить с Вами все возможности сотрудничества. </span></div><div class="black_bl bl3" data-v-c2cae24a><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#823D7B" class="bi bi-shield-check" viewBox="0 0 16 16" data-v-c2cae24a><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" data-v-c2cae24a></path><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" data-v-c2cae24a></path></svg><br data-v-c2cae24a><p data-v-c2cae24a>СТРОИТЕЛЬНЫМ КОМПАНИЯМ</p><span data-v-c2cae24a>Для компаний, специализирующихся на Фасадном строительстве, компания Алюминиевые системы осуществляет комплексное проектирование и комплектацию светопрозрачных конструкций на объекты различного назначения: торгово-развлекательные комплексы, бизнес-центры, жилые комплексы, коттеджи. </span></div></div></div></div>', 2);
-const _hoisted_3$7 = [
-  _hoisted_1$e
-];
-function _sfc_render$4(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", null, _hoisted_3$7);
-}
-const ThreeBlock = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__scopeId", "data-v-c2cae24a"]]);
-const _imports_0 = "/Fasadstore.ru/assets/girl_right-5Q4tk4KM.png";
-const _sfc_main$4 = {
-  components: { ButtonPurple },
-  setup() {
-  }
-};
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-857e634c"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$d = { class: "w_block" };
-const _hoisted_2$7 = { class: "two_color_block" };
-const _hoisted_3$6 = { class: "left_block" };
-const _hoisted_4$6 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, [
-  /* @__PURE__ */ createTextVNode("Наши специалисты c 2008 года установили более "),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createTextVNode(" 4900 дверей, окон и фасадов")
-], -1));
-const _hoisted_5$6 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("p", null, "Более 1800 заказчиков используют или просто наслаждаются нашими алюминиевыми конструкциями.", -1));
-const _hoisted_6$6 = { class: "right_block" };
-const _hoisted_7$3 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "Воплотим вашу мечту о качественном загородном доме", -1));
-const _hoisted_8$2 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("p", null, "Чтобы вы уже через несколько месяцев смогли наслаждаться природой, спокойствием и лучшей жизнью в новом доме с вашей семьей", -1));
-const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", { class: "woman_block" }, [
-  /* @__PURE__ */ createBaseVNode("img", {
-    src: _imports_0,
-    alt: ""
-  })
-], -1));
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_ButtonPurple = resolveComponent("ButtonPurple");
-  return openBlock(), createElementBlock("div", _hoisted_1$d, [
-    createBaseVNode("div", _hoisted_2$7, [
-      createBaseVNode("div", _hoisted_3$6, [
-        _hoisted_4$6,
-        _hoisted_5$6,
-        createVNode(_component_ButtonPurple, null, {
-          default: withCtx(() => [
-            createTextVNode("Контактная информация")
-          ]),
-          _: 1
-        })
-      ]),
-      createBaseVNode("div", _hoisted_6$6, [
-        _hoisted_7$3,
-        _hoisted_8$2,
-        createVNode(_component_ButtonPurple, null, {
-          default: withCtx(() => [
-            createTextVNode("Получить коммерческое предложение")
-          ]),
-          _: 1
-        })
-      ]),
-      _hoisted_9$1
-    ])
-  ]);
-}
-const WomanBlock = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__scopeId", "data-v-857e634c"]]);
-const _sfc_main$3 = {
-  setup() {
-    const activeImage = ref(new URL("/Fasadstore.ru/assets/office_p-qr8c10SO.jpg", import.meta.url).href);
-    const images = ref([
-      new URL("/Fasadstore.ru/assets/office1-NoPw4BGO.jpg", import.meta.url).href,
-      new URL("/Fasadstore.ru/assets/office3-_IPgmkZO.jpg", import.meta.url).href,
-      new URL("/Fasadstore.ru/assets/shop-SWuGRjxH.jpg", import.meta.url).href
-    ]);
-    const changeImage = (imageSrc) => {
-      images.value.push(activeImage.value);
-      let index2 = images.value.indexOf(imageSrc);
-      if (index2 !== -1) {
-        images.value.splice(index2, 1);
-      }
-      activeImage.value = imageSrc;
-    };
-    return { activeImage, images, changeImage };
-  }
-};
-const _hoisted_1$c = { class: "about" };
-const _hoisted_2$6 = { class: "about_left" };
-const _hoisted_3$5 = { class: "main_pic" };
-const _hoisted_4$5 = ["src"];
-const _hoisted_5$5 = { class: "mini_elements" };
-const _hoisted_6$5 = ["src", "onClick"];
-const _hoisted_7$2 = /* @__PURE__ */ createStaticVNode('<div class="about_right" data-v-cc2654b4><h3 data-v-cc2654b4>Офис ООО «Алюминиевые Системы»</h3><h5 data-v-cc2654b4>Бизнес Центр «Гефест», <br data-v-cc2654b4> г. Москва, Дмитровское шоссе, 157, стр. 7, м. Лианозово</h5><div class="description" data-v-cc2654b4><p data-v-cc2654b4> В нашем офисе сможете посмотреть полноразмерные образцы окон и дверей из профиля АЛЮТЕХ W72 , раздвижных дверей Алютех SL160. Контроль качества на всех этапах проведение работ, начиная от консультации, замера, изготовления изделий, монтажа и заканчивая гарантийным обслуживанием вашего остекления. Будьте уверенны, обратившись в нашу компанию, мы будем прилагать максимальные усилия для реализации Вашего проекта. </p><p data-v-cc2654b4><b data-v-cc2654b4>Производство</b> <br data-v-cc2654b4> Наше производство расположено: Новая Москва, съезд с ЦКА, поселение Щаповское ,квартал №266. <br data-v-cc2654b4> Благодаря отлаженным производственным процессам, алюминиевые конструкции, производимые компанией, стали доступными для любого заказчика. Возможности производства стремительно растут, поэтому мы можем предложить грамотные решения на все случаи жизни: от стандартных окон до сложных конструкций, применяемых в домах с пассивным отоплением. Удовлетворять любые требования наших заказчиков, архитекторов, застройщиков, обеспечивая при этом безукоризненное качество. Применяя высокоточное оборудование, обеспечить геометрическую форму изделия любой сложности и довести его до совершенства Благодаря 16-летнему опыту и использованию немецкого оборудования мы добились высочайшего качества Собственное производство позволяет нам: <ol data-v-cc2654b4><li data-v-cc2654b4>Предлагать лучшие цены на рынке!</li><li data-v-cc2654b4>Работать с разными профильными системами и фурнитурой</li><li data-v-cc2654b4>Минимальные сроки производства</li><li data-v-cc2654b4>Работать с большими объемами и укладываться в короткий срок</li><li data-v-cc2654b4>Все работы от проектирования до монтажа на вашем объекте!</li><li data-v-cc2654b4>Доставить заказ в любой регион страны</li><li data-v-cc2654b4>Изготовить за 7-14 дней алюминиевое остекление нужного размера и формы. Окрасить в выбранный вами цвет. Укомплектовать всем необходимым, согласно ТЗ или ваших пожеланий. </li></ol></p></div></div>', 1);
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("section", _hoisted_1$c, [
-    createBaseVNode("div", _hoisted_2$6, [
-      createBaseVNode("div", _hoisted_3$5, [
-        createBaseVNode("img", {
-          src: $setup.activeImage,
-          alt: ""
-        }, null, 8, _hoisted_4$5)
-      ]),
-      createBaseVNode("ul", _hoisted_5$5, [
-        (openBlock(true), createElementBlock(Fragment, null, renderList($setup.images, (item, index2) => {
-          return openBlock(), createElementBlock("li", {
-            key: index2,
-            class: "element"
-          }, [
-            createBaseVNode("img", {
-              src: item,
-              alt: "",
-              onClick: ($event) => $setup.changeImage(item)
-            }, null, 8, _hoisted_6$5)
-          ]);
-        }), 128))
-      ])
-    ]),
-    _hoisted_7$2
-  ]);
-}
-const AboutCompany = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__scopeId", "data-v-cc2654b4"]]);
-const _sfc_main$2 = {
-  name: "HomeView",
-  components: {
-    NavbarElement,
-    mobilePhone,
-    FullDescriptionCompany,
-    ThreeBlock,
-    WomanBlock,
-    AboutCompany,
-    Footer
-  }
-  // setup(){
-  //   onBeforeMount(() => {
-  //     window.scrollTo(0,0)
-  //   })
-  // }
-};
-const _hoisted_1$b = { style: { "background": "white" } };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_NavbarElement = resolveComponent("NavbarElement");
-  const _component_mobilePhone = resolveComponent("mobilePhone");
-  const _component_FullDescriptionCompany = resolveComponent("FullDescriptionCompany");
-  const _component_AboutCompany = resolveComponent("AboutCompany");
-  const _component_ThreeBlock = resolveComponent("ThreeBlock");
-  const _component_WomanBlock = resolveComponent("WomanBlock");
-  const _component_Footer = resolveComponent("Footer");
-  return openBlock(), createElementBlock("div", _hoisted_1$b, [
-    createVNode(_component_NavbarElement),
-    createVNode(_component_mobilePhone),
-    createVNode(_component_FullDescriptionCompany),
-    createVNode(_component_AboutCompany),
-    createVNode(_component_ThreeBlock),
-    createVNode(_component_WomanBlock),
-    createVNode(_component_Footer)
-  ]);
-}
-const AboutView = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 function getAugmentedNamespace(n2) {
   if (n2.__esModule)
@@ -12379,117 +12140,6 @@ var f = { install: (e2, t2) => {
   m || (m = true, o.pluginInstalledGlobal = true, e2.provide("pluginOptions", t2), e2.component("YandexMap", c), e2.component("YandexMarker", l), e2.component("YandexCollection", p), e2.component("YandexClusterer", i), e2.component("YandexObjectManager", u));
 } };
 vueYandexMaps_esm.YandexClusterer = j, vueYandexMaps_esm.YandexCollection = g, vueYandexMaps_esm.YandexMap = y, vueYandexMaps_esm.YandexMarker = h, vueYandexMaps_esm.YandexObjectManager = v, _default = vueYandexMaps_esm.default = f, vueYandexMaps_esm.loadYmap = b;
-const _withScopeId = (n2) => (pushScopeId("data-v-ae6b0c90"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$a = /* @__PURE__ */ createStaticVNode('<section class="img_block" data-v-ae6b0c90><div class="overlay" data-v-ae6b0c90><div class="overlay_block" data-v-ae6b0c90><p class="main_description" data-v-ae6b0c90>Контактная информация</p><p class="mini_description" data-v-ae6b0c90>Всю нашу продукцию можно заказать не выходя из дома. Инженер по замерам выезжает бесплатно со всеми образцами продукции по Москве и Московской области. </p></div></div></section><section class="three_elements" data-v-ae6b0c90><div class="action_three_block" data-v-ae6b0c90><div class="block_thr" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#8B4B84" class="bi bi-clipboard-check" viewBox="0 0 16 16" data-v-ae6b0c90><path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0" data-v-ae6b0c90></path><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" data-v-ae6b0c90></path><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" data-v-ae6b0c90></path></svg><h4 data-v-ae6b0c90>Не поднимаем стоимость</h4><p data-v-ae6b0c90>Фиксируем стоимость на всех этапах работы в договоре</p></div><div class="block_thr" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#8B4B84" class="bi bi-database-slash" viewBox="0 0 16 16" data-v-ae6b0c90><path d="M13.879 10.414a2.501 2.501 0 0 0-3.465 3.465zm.707.707-3.465 3.465a2.501 2.501 0 0 0 3.465-3.465m-4.56-1.096a3.5 3.5 0 1 1 4.949 4.95 3.5 3.5 0 0 1-4.95-4.95Z" data-v-ae6b0c90></path><path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4" data-v-ae6b0c90></path></svg><h4 data-v-ae6b0c90>Соблюдаем строки</h4><p data-v-ae6b0c90>Несем ответственность за соблюдение сроков выполнения работ</p></div><div class="block_thr" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#8B4B84" class="bi bi-person-raised-hand" viewBox="0 0 16 16" data-v-ae6b0c90><path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" data-v-ae6b0c90></path><path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" data-v-ae6b0c90></path></svg><h4 data-v-ae6b0c90>Ваше участие минимальное</h4><p data-v-ae6b0c90>Остекление коттеджей полностью под ключ с минимальным участием заказчика</p></div></div></section>', 2);
-const _hoisted_3$4 = { class: "planet" };
-const _hoisted_4$4 = { class: "form_block" };
-const _hoisted_5$4 = {
-  action: "",
-  class: "form"
-};
-const _hoisted_6$4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", null, [
-  /* @__PURE__ */ createBaseVNode("b", null, "Оставьте заявку"),
-  /* @__PURE__ */ createTextVNode(" и Вам перезвонит менеджер ")
-], -1));
-const _hoisted_7$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { for: "" }, [
-  /* @__PURE__ */ createTextVNode("Имя"),
-  /* @__PURE__ */ createBaseVNode("sup", null, "*"),
-  /* @__PURE__ */ createTextVNode(),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createBaseVNode("input", {
-    type: "text",
-    placeholder: "Введите имя"
-  })
-], -1));
-const _hoisted_8$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { for: "" }, [
-  /* @__PURE__ */ createTextVNode("Почта"),
-  /* @__PURE__ */ createBaseVNode("sup", null, "*"),
-  /* @__PURE__ */ createTextVNode(),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createBaseVNode("input", {
-    type: "email",
-    placeholder: "Введите адрес почты"
-  })
-], -1));
-const _hoisted_9 = /* @__PURE__ */ createStaticVNode('<div class="black_block" data-v-ae6b0c90><p data-v-ae6b0c90>Закажите бесплатный выезд инженера-замерщика и обсудите все вопросы лично</p><p data-v-ae6b0c90>Получите информацию о полной стоимости и срокам строительства ваших конструкций</p><div class="mini_block" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="white" class="bi bi-pin-map" viewBox="0 0 16 16" data-v-ae6b0c90><path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8z" data-v-ae6b0c90></path><path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z" data-v-ae6b0c90></path></svg><div class="text_mini" data-v-ae6b0c90><p class="description" data-v-ae6b0c90>Адрес</p><a class="description_second" href="https://yandex.ru/maps/-/CDBimGN~" target="_blank" data-v-ae6b0c90>Москва Дмитровское шоссе 157 стр. 7</a></div></div><div class="mini_block" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="white" class="bi bi-phone" viewBox="0 0 16 16" data-v-ae6b0c90><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" data-v-ae6b0c90></path><path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" data-v-ae6b0c90></path></svg><div class="text_mini" data-v-ae6b0c90><p class="description" data-v-ae6b0c90>Почта и телефон</p><p class="description_second" data-v-ae6b0c90> 7655026@mail.ru <br data-v-ae6b0c90> +7 (495) 765-50-26 </p></div></div><div class="mini_block" data-v-ae6b0c90><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="white" class="bi bi-clock-history" viewBox="0 0 16 16" data-v-ae6b0c90><path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z" data-v-ae6b0c90></path><path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" data-v-ae6b0c90></path><path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" data-v-ae6b0c90></path></svg><div class="text_mini" data-v-ae6b0c90><p class="description" data-v-ae6b0c90>Время и работы</p><p class="description_second" data-v-ae6b0c90>9:00 - 20:00</p></div></div><div class="social_network" data-v-ae6b0c90><a class="network" href="https://www.youtube.com/@fasadstore" target="_blank" style="color:rgb(211, 211, 211);" data-v-ae6b0c90><i class="bi bi-youtube" style="font-size:1.3rem;" data-v-ae6b0c90></i></a><a class="network" href="https://t.me/aluteh_systems" target="_blank" style="color:rgb(211, 211, 211);" data-v-ae6b0c90><i class="bi bi-telegram" style="font-size:1.3rem;" data-v-ae6b0c90></i></a><a class="network" href="https://api.whatsapp.com/send/?phone=79197205872&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" style="color:rgb(211, 211, 211);" data-v-ae6b0c90><i class="bi bi-whatsapp" style="font-size:1.3rem;" data-v-ae6b0c90></i></a></div></div>', 1);
-const zoom = 15;
-const mapType = "map";
-const _sfc_main$1 = {
-  __name: "ContactBlock",
-  setup(__props) {
-    const coordinates = [55.900572, 37.541249];
-    const controls = ["fullscreenControl"];
-    const detailedControls = { zoomControl: { position: { right: 10, top: 50 } } };
-    const markerOptions = ref({
-      iconColor: "red"
-    });
-    return (_ctx, _cache) => {
-      const _component_YandexMarker = resolveComponent("YandexMarker");
-      const _component_YandexMap = resolveComponent("YandexMap");
-      return openBlock(), createElementBlock("div", null, [
-        _hoisted_1$a,
-        createBaseVNode("div", _hoisted_3$4, [
-          createBaseVNode("section", _hoisted_4$4, [
-            createBaseVNode("form", _hoisted_5$4, [
-              _hoisted_6$4,
-              _hoisted_7$1,
-              _hoisted_8$1,
-              createVNode(ButtonPurple, { style: { "width": "100%", "margin-top": "6%" } }, {
-                default: withCtx(() => [
-                  createTextVNode("Отправить запрос")
-                ]),
-                _: 1
-              })
-            ]),
-            _hoisted_9
-          ])
-        ]),
-        createVNode(_component_YandexMap, {
-          coordinates,
-          "map-type": mapType,
-          zoom,
-          "detailed-controls": detailedControls,
-          controls
-        }, {
-          default: withCtx(() => [
-            createVNode(_component_YandexMarker, {
-              coordinates,
-              "marker-id": 123,
-              options: markerOptions.value
-            }, null, 8, ["options"])
-          ]),
-          _: 1
-        })
-      ]);
-    };
-  }
-};
-const ContactBlock = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-ae6b0c90"]]);
-const _sfc_main = {
-  name: "HomeView",
-  components: {
-    NavbarElement,
-    mobilePhone,
-    ContactBlock,
-    Footer
-  },
-  setup() {
-  }
-};
-const _hoisted_1$9 = { style: { "background": "white !important" } };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_NavbarElement = resolveComponent("NavbarElement");
-  const _component_mobilePhone = resolveComponent("mobilePhone");
-  const _component_ContactBlock = resolveComponent("ContactBlock");
-  const _component_Footer = resolveComponent("Footer");
-  return openBlock(), createElementBlock("div", _hoisted_1$9, [
-    createVNode(_component_NavbarElement),
-    createVNode(_component_mobilePhone),
-    createVNode(_component_ContactBlock),
-    createVNode(_component_Footer)
-  ]);
-}
-const ContactViewVue = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 const router = createRouter({
   history: createWebHistory("/Fasadstore.ru"),
   routes: [
@@ -12501,12 +12151,17 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      component: AboutView
+      component: () => __vitePreload(() => import("./AboutView-v7hbd2BV.js"), true ? __vite__mapDeps([8,9,10]) : void 0)
     },
     {
       path: "/contacts",
       name: "contacts",
-      component: ContactViewVue
+      component: () => __vitePreload(() => import("./ContactView-3y8JgnLl.js"), true ? __vite__mapDeps([11,9,10]) : void 0)
+    },
+    {
+      path: "/objects",
+      name: "objects",
+      component: () => __vitePreload(() => import("./ObjectsView-TOMYZt_6.js"), true ? __vite__mapDeps([12,3,4,9,13]) : void 0)
     }
     // {
     //   path: '/about',
@@ -18441,33 +18096,37 @@ app.component("ToastService", ToastService);
 app.mount("#app");
 export {
   ButtonPurple as B,
+  Fragment as F,
+  NavbarElement as N,
   _export_sfc as _,
-  createBaseVNode as a,
-  createVNode as b,
+  openBlock as a,
+  createBaseVNode as b,
   createElementBlock as c,
-  createTextVNode as d,
-  createStaticVNode as e,
-  popScopeId as f,
-  ref as g,
-  onUpdated as h,
-  provide as i,
-  watch as j,
-  onMounted as k,
-  onBeforeUnmount as l,
-  h$1 as m,
-  nextTick as n,
-  openBlock as o,
+  createStaticVNode as d,
+  popScopeId as e,
+  resolveComponent as f,
+  createVNode as g,
+  createTextVNode as h,
+  renderList as i,
+  onUpdated as j,
+  provide as k,
+  watch as l,
+  onBeforeUnmount as m,
+  h$1 as n,
+  onMounted as o,
   pushScopeId as p,
   onBeforeUpdate as q,
-  resolveComponent as r,
+  ref as r,
   computed as s,
-  createBlock as t,
-  createCommentVNode as u,
-  withCtx as w
+  toDisplayString as t,
+  nextTick as u,
+  createBlock as v,
+  withCtx as w,
+  createCommentVNode as x
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-QqmcnfX7.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-ahGHzQ0z.js","assets/PartnerElement-GhHXz8yl.css","assets/DirectionWork-32JqyC9n.js","assets/DirectionWork-ibAxIZQq.css"]
+    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-C577Fl8F.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-6Idsf82C.js","assets/navigation-SiUY9WuU.js","assets/navigation-ZCzMxW1U.css","assets/PartnerElement-Ki6eHCGS.css","assets/DirectionWork-QS-WyN0Q.js","assets/DirectionWork-ibAxIZQq.css","assets/AboutView-v7hbd2BV.js","assets/Footer-wqAv5sIL.js","assets/mobilePhone-l2lQt4dj.js","assets/ContactView-3y8JgnLl.js","assets/ObjectsView-TOMYZt_6.js","assets/ObjectsView-5hpFzugD.css"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }

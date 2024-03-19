@@ -1,4 +1,4 @@
-import { _ as _export_sfc, B as ButtonPurple, r as resolveComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, b as createVNode, w as withCtx, d as createTextVNode, e as createStaticVNode, p as pushScopeId, f as popScopeId } from "./index-mqQfcFDM.js";
+import { _ as _export_sfc, B as ButtonPurple, f as resolveComponent, a as openBlock, c as createElementBlock, b as createBaseVNode, g as createVNode, w as withCtx, h as createTextVNode, d as createStaticVNode, p as pushScopeId, e as popScopeId } from "./index-dYP1f3qd.js";
 const _imports_0 = "/Fasadstore.ru/assets/zamer-SESB6M3P.jpg";
 const _sfc_main = {
   components: { ButtonPurpleVue: ButtonPurple },
