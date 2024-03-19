@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import AboutView from '@/pages/AboutView.vue'
 import ContactViewVue from '@/pages/ContactView.vue'
+// import ObjectView from '@/pages/ObjectView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,13 +14,19 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: () => import('@/pages/AboutView.vue')
     },
     {
       path: '/contacts',
       name: 'contacts',
-      component: ContactViewVue
+      component: () => import('@/pages/ContactView.vue')
+    },
+    {
+      path: '/objects',
+      name: 'objects',
+      component: () => import('@/pages/ObjectsView.vue')
     }
+
     // {
     //   path: '/about',
     //   name: 'about',

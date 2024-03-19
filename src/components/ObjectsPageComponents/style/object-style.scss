@@ -1,0 +1,35 @@
+.objects {
+  background: white !important;
+  height: 100vh;
+  width: 100%;
+  .objects_container {
+    margin-top: 2%;
+    width: 90%;
+    margin: auto;
+    padding-top: 10%;
+  }
+  p {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 800;
+    font-size: 5em;
+    width: 5em;
+    line-height: 0.9em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gradient-text {
+    background: #121487;
+    background: linear-gradient(to right, #121487 24%, #cf169b 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // background: -webkit-linear-gradient( #1B1ECF, #CF169B );
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    font-size: 7vh;
+    font-family: 'Arial Black', sans-serif;
+    // width: auto;
+  }
+  .right {
+    text-align: right;
+  }
+}
