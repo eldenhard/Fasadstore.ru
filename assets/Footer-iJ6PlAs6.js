@@ -1,4 +1,4 @@
-import { _ as _export_sfc, a as openBlock, c as createElementBlock, b as createBaseVNode, t as toDisplayString, d as createStaticVNode } from "./index-dYP1f3qd.js";
+import { _ as _export_sfc, a as openBlock, c as createElementBlock, b as createBaseVNode, t as toDisplayString, d as createStaticVNode } from "./index-LOmPew4F.js";
 const _imports_0 = "/Fasadstore.ru/assets/logo-yGE73Xw4.webp";
 const _sfc_main = {};
 const _hoisted_1 = { class: "site-footer" };
