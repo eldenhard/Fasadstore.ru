@@ -1,6 +1,6 @@
-import { _ as _export_sfc, a as openBlock, c as createElementBlock, b as createBaseVNode, g as createVNode, w as withCtx, f as resolveComponent, p as pushScopeId, e as popScopeId, N as NavbarElement } from "./index-dYP1f3qd.js";
-import { c as createElementIfNotDefined, S as Swiper, a as SwiperSlide, P as Pagination } from "./navigation-SiUY9WuU.js";
-import Footer from "./Footer-wqAv5sIL.js";
+import { _ as _export_sfc, a as openBlock, c as createElementBlock, b as createBaseVNode, g as createVNode, w as withCtx, f as resolveComponent, p as pushScopeId, e as popScopeId, N as NavbarElement } from "./index-LOmPew4F.js";
+import { c as createElementIfNotDefined, S as Swiper, a as SwiperSlide, P as Pagination } from "./navigation-SgR6RAQV.js";
+import Footer from "./Footer-iJ6PlAs6.js";
 function Navigation(_ref) {
   let {
     swiper,
@@ -227,7 +227,7 @@ const _sfc_main$1 = {
     };
   }
 };
-const _withScopeId = (n) => (pushScopeId("data-v-3ce9a59e"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-aee919dd"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "objects" };
 const _hoisted_2 = { class: "objects_container" };
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "objects_title" }, [
@@ -348,7 +348,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -373,7 +374,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -404,7 +406,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -435,7 +438,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -460,7 +464,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -485,7 +490,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -516,7 +522,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -547,7 +554,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -572,7 +580,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             modules: $setup.modules,
             navigation: "",
             pagination: { clickable: true, dynamicBullets: true },
-            loop: true
+            loop: true,
+            "grab-cursor": true
           }, {
             default: withCtx(() => [
               createVNode(_component_swiper_slide, { class: "slide" }, {
@@ -601,7 +610,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const Objects = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-3ce9a59e"]]);
+const Objects = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-aee919dd"]]);
 const _sfc_main = {
   components: {
     NavbarElement,

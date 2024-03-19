@@ -11908,11 +11908,11 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-5a226e45"]]);
-const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-C577Fl8F.js"), true ? __vite__mapDeps([0,1]) : void 0));
-const Footer = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Footer-wqAv5sIL.js"), true ? __vite__mapDeps([]) : void 0));
-const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-6Idsf82C.js"), true ? __vite__mapDeps([2,3,4,5]) : void 0));
-const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-QS-WyN0Q.js"), true ? __vite__mapDeps([6,7]) : void 0));
-const mobilePhone = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-l2lQt4dj.js"), true ? __vite__mapDeps([]) : void 0));
+const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-0BLLjrwH.js"), true ? __vite__mapDeps([0,1]) : void 0));
+const Footer = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Footer-iJ6PlAs6.js"), true ? __vite__mapDeps([]) : void 0));
+const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-ZfmcAqht.js"), true ? __vite__mapDeps([2,3,4,5]) : void 0));
+const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-d7GYQDT1.js"), true ? __vite__mapDeps([6,7]) : void 0));
+const mobilePhone = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-SlreRL8r.js"), true ? __vite__mapDeps([]) : void 0));
 const _sfc_main$1 = {
   name: "HomeView",
   components: {
@@ -12151,17 +12151,17 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      component: () => __vitePreload(() => import("./AboutView-v7hbd2BV.js"), true ? __vite__mapDeps([8,9,10]) : void 0)
+      component: () => __vitePreload(() => import("./AboutView-rZ4Z0fs-.js"), true ? __vite__mapDeps([8,9,10]) : void 0)
     },
     {
       path: "/contacts",
       name: "contacts",
-      component: () => __vitePreload(() => import("./ContactView-3y8JgnLl.js"), true ? __vite__mapDeps([11,9,10]) : void 0)
+      component: () => __vitePreload(() => import("./ContactView--0PbbqLM.js"), true ? __vite__mapDeps([11,9,10]) : void 0)
     },
     {
       path: "/objects",
       name: "objects",
-      component: () => __vitePreload(() => import("./ObjectsView-TOMYZt_6.js"), true ? __vite__mapDeps([12,3,4,9,13]) : void 0)
+      component: () => __vitePreload(() => import("./ObjectsView-hc8TCGCg.js"), true ? __vite__mapDeps([12,3,4,9,13]) : void 0)
     }
     // {
     //   path: '/about',
@@ -18126,7 +18126,7 @@ export {
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-C577Fl8F.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-6Idsf82C.js","assets/navigation-SiUY9WuU.js","assets/navigation-ZCzMxW1U.css","assets/PartnerElement-Ki6eHCGS.css","assets/DirectionWork-QS-WyN0Q.js","assets/DirectionWork-ibAxIZQq.css","assets/AboutView-v7hbd2BV.js","assets/Footer-wqAv5sIL.js","assets/mobilePhone-l2lQt4dj.js","assets/ContactView-3y8JgnLl.js","assets/ObjectsView-TOMYZt_6.js","assets/ObjectsView-5hpFzugD.css"]
+    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-0BLLjrwH.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-ZfmcAqht.js","assets/navigation-SgR6RAQV.js","assets/navigation-ZCzMxW1U.css","assets/PartnerElement-Ki6eHCGS.css","assets/DirectionWork-d7GYQDT1.js","assets/DirectionWork-ibAxIZQq.css","assets/AboutView-rZ4Z0fs-.js","assets/Footer-iJ6PlAs6.js","assets/mobilePhone-SlreRL8r.js","assets/ContactView--0PbbqLM.js","assets/ObjectsView-hc8TCGCg.js","assets/ObjectsView-NqfyefDf.css"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
