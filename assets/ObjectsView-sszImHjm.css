@@ -15,7 +15,7 @@
 }
 .objects .gradient-text[data-v-aee919dd] {
   background: #121487;
-  background: -webkit-linear-gradient(to right #1B1ECF, #CF169B);
+  background: -webkit-linear-gradient(to right #1b1ecf, #cf169b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 7vh;
@@ -27,15 +27,15 @@
 }
 .objects .objects_body[data-v-aee919dd] {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   align-items: center;
   justify-items: center;
   margin-top: 20px;
 }
 .objects .objects_body .swiper[data-v-aee919dd] {
-  height: 45vh;
-  width: 30vw;
+  height: 30vh;
+  width: 25vw;
 }
 .objects .objects_body .swiper img[data-v-aee919dd] {
   object-fit: cover;

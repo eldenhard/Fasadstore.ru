@@ -1,6 +1,6 @@
-import { _ as _export_sfc, r as ref, o as onMounted, a as openBlock, c as createElementBlock, b as createBaseVNode, d as createStaticVNode, p as pushScopeId, e as popScopeId, B as ButtonPurple, f as resolveComponent, g as createVNode, w as withCtx, h as createTextVNode, F as Fragment, i as renderList, N as NavbarElement } from "./index-LOmPew4F.js";
-import Footer from "./Footer-iJ6PlAs6.js";
-import mobilePhone from "./mobilePhone-SlreRL8r.js";
+import { _ as _export_sfc, r as ref, o as onMounted, a as openBlock, c as createElementBlock, b as createBaseVNode, d as createStaticVNode, p as pushScopeId, e as popScopeId, B as ButtonPurple, f as resolveComponent, g as createVNode, w as withCtx, h as createTextVNode, F as Fragment, i as renderList, N as NavbarElement } from "./index-6smvt5xM.js";
+import Footer from "./Footer-J0W7gYfK.js";
+import mobilePhone from "./mobilePhone--ccpYvLo.js";
 const _imports_0$1 = "/Fasadstore.ru/assets/XXL-pAmWebEn.jpg";
 const _imports_1 = "/Fasadstore.ru/assets/maxresdefault-1-w6vJBVxH.jpg";
 const _sfc_main$4 = {
