@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import AboutView from '@/pages/AboutView.vue'
 import ContactViewVue from '@/pages/ContactView.vue'
-// import ObjectView from '@/pages/ObjectView.vue'
+import ObjectView from '@/pages/ObjectsView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,7 +24,8 @@ const router = createRouter({
     {
       path: '/objects',
       name: 'objects',
-      component: () => import('@/pages/ObjectsView.vue')
+      component: ObjectView
+      // component: () => import('@/pages/ObjectsView.vue')
     }
 
     // {

@@ -1,5 +1,5 @@
 .objects {
-  background: white !important;
+  background: linear-gradient(to bottom #041623 80%, #082a42 20%);
   min-height: 100vh;
   height: auto;
   width: 100%;
@@ -12,19 +12,25 @@
     box-sizing: border-box;
   }
   .gradient-text {
-    background: #2474d5;
-background: -webkit-linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
-background: -moz-linear-gradient(to top right, #2474d5 31%, #8b077a  57%);
-background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    color: rgb(233, 233, 233);
+    cursor: pointer;
+//     background: #2474d5;
+// background: -webkit-linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
+// background: -moz-linear-gradient(to top right, #2474d5 31%, #8b077a  57%);
+// background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
+// -webkit-background-clip: text;
+// -webkit-text-fill-color: transparent;
     // background: #121487;
     // background: -webkit-linear-gradient(to right #1b1ecf, #cf169b);
     // -webkit-background-clip: text;
     // -webkit-text-fill-color: transparent;
-    font-size: 9vh;
+    font-size: 7vh;
     font-family: 'Arial Black', sans-serif;
     width: auto;
+    transition: color .3s ease-in;
+    &:hover {
+      color: #CDDBF7;
+    }
   }
   .right {
     text-align: right;
@@ -44,8 +50,10 @@ background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
       }
     }
     .swiper {
-      height: 32vh;
+      height: 33vh;
       width: calc(85vw/4);
+      border-radius: 8px;
+      box-shadow: 4px 4px 8px rgb(26, 26, 26);
       img {
         object-fit: cover no-repeat;
         width: 100%;
@@ -54,9 +62,17 @@ background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
     }
   }
 }
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
 @media screen and (max-width: 900px) {
   .objects .objects_body {
     grid-template-columns: 1fr;
+    
+    .objects_body{
+      margin-top: 4%;
+    }
     .swiper {
       height: 45vh;
       width: 90vw;
@@ -66,6 +82,16 @@ background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
         height: 100%;
       }
     }
+  }
+  .our_works{
+    text-align: center !important;
+    padding-top: 6vh;
+    font-size: 5vh !important;
+  }
+  .gradient-text{
+    font-size: 4vh !important;
+    text-align: center;
+    margin-top: 4%;
   }
 }
 span.swiper-pagination-bullet-active{
