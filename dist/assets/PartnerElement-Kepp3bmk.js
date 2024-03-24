@@ -1,5 +1,4 @@
-import { g as getDocument, S as Swiper, a as SwiperSlide, P as Pagination } from "./navigation-eXHBxk4v.js";
-import { _ as _export_sfc, a as openBlock, c as createElementBlock, d as createStaticVNode, f as resolveComponent, b as createBaseVNode, g as createVNode, w as withCtx, p as pushScopeId, e as popScopeId } from "./index-AJpBfinZ.js";
+import { k as getDocument, _ as _export_sfc, a as openBlock, c as createElementBlock, d as createStaticVNode, S as Swiper, l as SwiperSlide, P as Pagination, g as resolveComponent, b as createBaseVNode, f as createVNode, w as withCtx, p as pushScopeId, e as popScopeId } from "./index-r36YfEi8.js";
 function Autoplay(_ref) {
   let {
     swiper,
