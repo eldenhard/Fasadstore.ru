@@ -11908,11 +11908,11 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 const MiniAbout = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__scopeId", "data-v-5a226e45"]]);
-const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm--Uk2AXZp.js"), true ? __vite__mapDeps([0,1]) : void 0));
+const ContactForm = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./ContactForm-5_IUcIVF.js"), true ? __vite__mapDeps([0,1]) : void 0));
 const Footer$2 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => Promise.resolve().then(() => Footer$1), true ? void 0 : void 0));
-const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-Kepp3bmk.js"), true ? __vite__mapDeps([2,3]) : void 0));
-const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-g7HCBNYh.js"), true ? __vite__mapDeps([4,5]) : void 0));
-const mobilePhone = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-5-AArCA2.js"), true ? __vite__mapDeps([]) : void 0));
+const PartnerElementVue = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./PartnerElement-QLd0v5Ut.js"), true ? __vite__mapDeps([2,3]) : void 0));
+const DirectionWork = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./DirectionWork-afXXvqFd.js"), true ? __vite__mapDeps([4,5]) : void 0));
+const mobilePhone$1 = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-fqQutiKs.js"), true ? __vite__mapDeps([]) : void 0));
 const _sfc_main$4 = {
   name: "HomeView",
   components: {
@@ -11923,7 +11923,7 @@ const _sfc_main$4 = {
     PartnerElementVue,
     ContactForm,
     Footer: Footer$2,
-    mobilePhone
+    mobilePhone: mobilePhone$1
   }
   // setup(){
   //   onBeforeMount(() => {
@@ -18402,7 +18402,7 @@ const _sfc_main$1 = {
     };
   }
 };
-const _withScopeId = (n2) => (pushScopeId("data-v-c967c3dc"), n2 = n2(), popScopeId(), n2);
+const _withScopeId = (n2) => (pushScopeId("data-v-84ba87af"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$9 = { class: "objects" };
 const _hoisted_2$6 = { class: "objects_container" };
 const _hoisted_3$4 = { class: "objects_title" };
@@ -19870,10 +19870,12 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const Objects = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-c967c3dc"]]);
+const Objects = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-84ba87af"]]);
+const mobilePhone = /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./mobilePhone-fqQutiKs.js"), true ? __vite__mapDeps([]) : void 0));
 const _sfc_main = {
   components: {
     NavbarElement,
+    mobilePhone,
     Objects,
     Footer
   },
@@ -19882,15 +19884,19 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_NavbarElement = resolveComponent("NavbarElement");
+  const _component_mobilePhone = resolveComponent("mobilePhone");
   const _component_Objects = resolveComponent("Objects");
   const _component_Footer = resolveComponent("Footer");
   return openBlock(), createElementBlock("div", null, [
     createVNode(_component_NavbarElement),
-    createVNode(_component_Objects),
+    createVNode(_component_mobilePhone),
+    (openBlock(), createBlock(KeepAlive, null, [
+      createVNode(_component_Objects)
+    ], 1024)),
     createVNode(_component_Footer)
   ]);
 }
-const ObjectView = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-61c11da5"]]);
+const ObjectView = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-371a3b36"]]);
 const router = createRouter({
   history: createWebHistory("/Fasadstore.ru"),
   routes: [
@@ -19902,12 +19908,12 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      component: () => __vitePreload(() => import("./AboutView-BKpJ9fvy.js"), true ? __vite__mapDeps([6,7]) : void 0)
+      component: () => __vitePreload(() => import("./AboutView-yKbDadVo.js"), true ? __vite__mapDeps([6,7]) : void 0)
     },
     {
       path: "/contacts",
       name: "contacts",
-      component: () => __vitePreload(() => import("./ContactView-xOQ9xT31.js"), true ? __vite__mapDeps([8,7]) : void 0)
+      component: () => __vitePreload(() => import("./ContactView-OrA4kTBq.js"), true ? __vite__mapDeps([8,7]) : void 0)
     },
     {
       path: "/objects",
@@ -25875,7 +25881,7 @@ export {
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/ContactForm--Uk2AXZp.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-Kepp3bmk.js","assets/PartnerElement-Ki6eHCGS.css","assets/DirectionWork-g7HCBNYh.js","assets/DirectionWork-ibAxIZQq.css","assets/AboutView-BKpJ9fvy.js","assets/mobilePhone-5-AArCA2.js","assets/ContactView-xOQ9xT31.js"]
+    __vite__mapDeps.viteFileDeps = ["assets/ContactForm-5_IUcIVF.js","assets/ContactForm-mztb0DX4.css","assets/PartnerElement-QLd0v5Ut.js","assets/PartnerElement-Ki6eHCGS.css","assets/DirectionWork-afXXvqFd.js","assets/DirectionWork-ibAxIZQq.css","assets/AboutView-yKbDadVo.js","assets/mobilePhone-fqQutiKs.js","assets/ContactView-OrA4kTBq.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
