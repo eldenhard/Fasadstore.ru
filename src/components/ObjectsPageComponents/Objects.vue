@@ -1,7 +1,8 @@
 <template>
+
     <div class="objects">
-        <!--    <p class="gradient-text ">2018-2024</p>
-                 -->
+        
+        <!--    <p class="gradient-text ">2018-2024</p> -->
         <div class="objects_container">
             <div class="objects_title">
             <p class="our_works" style="color: rgb(228, 228, 228); font-family: 'Arial black', sans-serif; font-size: 8vh">Наши проекты</p>
@@ -251,9 +252,9 @@
                 </div>
             </div>
         </div>
-
-
+        
     </div>
+
 </template>
 
 
