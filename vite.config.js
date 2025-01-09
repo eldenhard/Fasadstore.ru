@@ -1,25 +1,38 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from "vite";
+import Vue from "@vitejs/plugin-vue";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import { fileURLToPath, URL } from "url";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-// https://vitejs.dev/config/
-  // base: '/deploy-vite-project',
 export default defineConfig({
-  base: '/Fasadstore.ru',
   build: {
-    minify: false,
+    minify: "esbuild",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+      output: {
+        comments: false,
+      },
+    },
   },
   plugins: [
-    vue(),
+    Vue(),
+    ViteImageOptimizer({
+      png: {
+        // https://sharp.pixelplumbing.com/api-output#png
+        quality: 80,
+      },
+      jpeg: {
+        // https://sharp.pixelplumbing.com/api-output#jpeg
+        quality: 80,
+      },
+      jpg: {
+        // https://sharp.pixelplumbing.com/api-output#jpeg
+        quality: 80,
+      },
+    }),
   ],
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    }
-  }
-})
-
-
-
-
+    alias: [{ find: "@", replacement: fileURLToPath(new URL("./src", import.meta.url)) }],
+  },
+});

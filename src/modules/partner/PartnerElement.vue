@@ -48,7 +48,8 @@
         <div class="line"></div>
       </div>
       <swiper class="swiper" :modules="modules" :slides-per-view="2" :space-between="10" :pagination="{ clickable: true }"
-        :grab-cursor="true" :loop="true" :breakpoints="{
+        :grab-cursor="true" :loop="true" 
+        :breakpoints="{
           '950': {
             slidesPerView: 3,
             spaceBetween: 20
@@ -57,11 +58,12 @@
             slidesPerView: 5,
             spaceBetween: 30
           }
-        }" :autoplay="{
+        }" 
+        :autoplay="{
           delay: 3500,
           disableOnInteraction: false
-        }">
-        <!-- <swiper-slide class="slide"><img src="./assets/gardian.png" alt="" /></swiper-slide> -->
+        }"
+        >
         <swiper-slide class="slide"><img src="./assets/fapim.webp" alt="фапим" /> </swiper-slide>
         <swiper-slide class="slide"><img src="./assets/vorne.webp" alt="ворне" /></swiper-slide>
         <swiper-slide class="slide"><img src="./assets/aluteh.webp" alt="алютех" /> </swiper-slide>

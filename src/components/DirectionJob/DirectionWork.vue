@@ -171,7 +171,7 @@
         </a>
       </li>
       <!-- Окна ПВХ -->
-      <li>
+      <!-- <li>
         <a class="card">
           <img src="./assets/window_pvh.jpg" class="card__image" alt="Окна ПВХ" />
           <div class="card__overlay">
@@ -186,10 +186,10 @@
             </p>
           </div>
         </a>
-      </li>
+      </li> -->
 
       <!-- Фурнитура -->
-      <li>
+      <!-- <li>
         <a class="card">
           <img src="./assets/accessories.png" class="card__image" alt="Фурнитура" />
           <div class="card__overlay">
@@ -204,10 +204,10 @@
             </p>
           </div>
         </a>
-      </li>
+      </li> -->
 
       <!-- Стеклопакеты -->
-      <li>
+      <!-- <li>
         <a class="card">
           <img src="./assets/double_glazing.png" class="card__image" alt="Стеклопакеты" />
           <div class="card__overlay">
@@ -222,7 +222,7 @@
             </p>
           </div>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>

@@ -7,14 +7,13 @@
     <DirectionWork />
     <mobilePhone />
     <PartnerElementVue />
-    <ContactForm />
+    <!-- <ContactForm /> -->
     <Footer />
   </div>
 </template>
 
 <script>
-import { ref, onBeforeMount, defineAsyncComponent } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { defineAsyncComponent } from 'vue'
 import NavbarElement from '../modules/navbar/NavbarElement.vue'
 import SliderElement from '../modules/slider/SliderElement.vue'
 

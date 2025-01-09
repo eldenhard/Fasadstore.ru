@@ -13,7 +13,7 @@
 <script>
 import { ref, defineAsyncComponent } from 'vue';
 import NavbarElement from '@/modules/navbar/NavbarElement.vue'
-import Objects from '@/components/ObjectsPageComponents/Objects.vue'
+import Objects from '@/components/ObjectsPageComponents/ObjectsDevelopment.vue'
 import Footer from '@/components/Footer/Footer.vue'
 const mobilePhone =  defineAsyncComponent(() => import('@/modules/mobile_phone/mobilePhone.vue'))
 
