@@ -9,7 +9,7 @@
     <ul class="cards" style="margin-top: 4%">
       <!-- Алюминевые окна -->
       <li>
-        <a class="card">
+        <router-link to="/windows" class="card">
           <img src="./assets/alum_window.png" class="card__image" alt="Алюминевые окна" />
           <div class="card__overlay">
             <div class="card__header">
@@ -23,7 +23,7 @@
               заказам и сочетающие в себе стиль и надежность.
             </p>
           </div>
-        </a>
+        </router-link >
       </li>
       <!-- Алюминевые раздвижные двери -->
       <li>

@@ -1,7 +1,7 @@
 <template>
   <nav
     class="navbar navbar-expand-lg navbar-dark bg-dark"
-    style="position: fixed; top: 0; z-index: 10; right: 0; left: 0"
+    style="position: fixed; top: 0; z-index: 10; right: 0; left: 0; height: 7vh;"
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="/">

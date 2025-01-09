@@ -1,12 +1,17 @@
 <template>
   <div>
     <RouterView />
+    <NavbarElement />
   </div>
 </template>
 
 <script>
+import NavbarElement from './modules/navbar/NavbarElement.vue';
 export default {
   name: 'App',
+  components: {
+    NavbarElement,
+  }
 }
 </script>
 
