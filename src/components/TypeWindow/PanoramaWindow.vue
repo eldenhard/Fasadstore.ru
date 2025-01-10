@@ -25,7 +25,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
           </p>
         </div>
         <figure class="content__image">
-          <img src="./assets/pan_ph1.jpg" alt="Фото 1" />
+          <img src="./assets/image.png" alt="Фото 1" />
         </figure>
       </section>
 
@@ -170,7 +170,53 @@ useIntersectionObserver([line, lineSecond], (target) => {
           Или получить консультацию по телефону <a href="tel=8(495)765-50-26"></a>8(495)765-50-26
         </p>
       </section>
-
+      <section class="content__section__triple">
+        <div class="content__text">
+          <p class="content__title">Три вида покрытий</p>
+          <br />
+        </div>
+        <div class="content__image">
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph2.jpg"
+              alt="фото 22"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
+              также с эффектом муар.
+            </p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph3.webp"
+              alt="фото 34"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>Декорирование под дерево</p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph4.jpg"
+              alt="фото 44"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
+              срок его службы.
+            </p>
+          </div>
+        </div>
+      </section>
       <section class="content__section__triple">
         <div class="content__text">
           <p class="content__title" align="center"><b>Безопасность</b> окон Алютех</p>
@@ -252,6 +298,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
         </div>
       </section>
 
+      
       <section class="content__section__triple">
         <div class="content__text">
           <p class="content__title">
@@ -262,7 +309,33 @@ useIntersectionObserver([line, lineSecond], (target) => {
           </p>
           <p class="content__description"></p>
         </div>
+      <!-- </section>
+      <section class="content__section__triple"> -->
+        <div class="content__image">
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_1.jpg"
+              alt="фото 22"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_2.jpg"
+              alt="фото 34"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_3.jpg"
+              alt="фото 44"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+        </div>
       </section>
+ 
     </main>
     <FooterComponent />
   </div>

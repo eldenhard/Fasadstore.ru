@@ -24,7 +24,6 @@ const router = createRouter({
       path: '/objects',
       name: 'objects',
       component: ObjectView
-      // component: () => import('@/pages/ObjectsView.vue')
     },
     {
       path: '/windows',
@@ -32,17 +31,17 @@ const router = createRouter({
       component: () => import('@/pages/WindowView.vue'),
       children: [
         {
-          path: 'classic', 
+          path: 'classic',
           name: 'windows-classic',
           component: () => import('@/components/TypeWindow/ClassicWindow.vue')
         },
         {
-          path: 'panorama', 
+          path: 'panorama',
           name: 'windows-panorama',
           component: () => import('@/components/TypeWindow/PanoramaWindow.vue')
         },
         {
-          path: 'hidden', 
+          path: 'hidden',
           name: 'windows-hidden',
           component: () => import('@/components/TypeWindow/HiddenWindow.vue')
         }
@@ -50,7 +49,6 @@ const router = createRouter({
     }
   ],
   scrollBehavior() {
-    // Возвращаем желаемую позицию прокрутки
     return { top: 0 }
   }
 })

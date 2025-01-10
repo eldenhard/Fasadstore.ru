@@ -6,7 +6,7 @@ import { ref } from 'vue'
 const line = ref(null)
 const lineSecond = ref(null)
 useIntersectionObserver([line, lineSecond], (target) => {
-  target.classList.add('visible') 
+  target.classList.add('visible')
 })
 </script>
 
@@ -14,24 +14,28 @@ useIntersectionObserver([line, lineSecond], (target) => {
   <div class="page">
     <main class="content">
       <section class="content__section">
-        <div class="content__text">
-          <p class="content__title">Окна <br />панорамные</p>
+        <div class="content__text" style="width: 60%">
+          <p class="content__title">Скрытая <br />створка</p>
           <p class="content__description">
-            Алюминиевые окна ALUTECH (Алютех) универсальны. Панорамные окна пропускают значительно
-            больше солнечного света, чем классические окна. Поэтому днем не придется использовать
-            искусственное освещение. Панорамные окна обеспечивают отличную обзорность, делают
-            помещения визуально больше и объединяют его с окружающим ландшафтом.
+            Данный вид алюминиевого профиля на 20% увеличивает площадь остекления. В следствии чего
+            пропускает больше солнечного света. В сравнении с классическим окном. Фасад вашего дома
+            выглядит современно и стильно благодаря одинаковому виду глухой и створочной частей
+            окна.
           </p>
         </div>
         <figure class="content__image">
-          <img src="./assets/pan_ph1.jpg" alt="Фото 1" />
+          <img src="./assets/hidden_ph1.jpg" alt="Фото 1" />
         </figure>
       </section>
 
-      <section class="content__section_one">
+      <section class="content__section_one" style="margin-top: 6%">
         <figure class="content__image">
-          <h4 class="content__title">Окна ALT ALT W72HS</h4>
-          <img src="./assets/фото 4.png" alt="Фото 2" />
+          <h4 class="content__title">Окна ALT W72HS</h4>
+          <img
+            src="./assets/фото 6.webp"
+            alt="Фото 6"
+            style="height: 100%; width: 100%; object-fit: contain"
+          />
         </figure>
 
         <div class="content__text">
@@ -40,10 +44,10 @@ useIntersectionObserver([line, lineSecond], (target) => {
             R<sub>0</sub> = 0,67 М²·°C/Вт.
           </p>
           <i class="bi bi-volume-down" style="font-size: 50px"></i>
-          <span><b>До 43 ДБ</b>. <br /></span>
+          <span><b>До 48 ДБ</b>. <br />Защищают даже от шума автомагистралей</span>
           <ul>
-            <li>Глубина монтажа: 62 мм</li>
-            <li>Толщина стеклопакетов: 40 мм</li>
+            <li>Глубина монтажа: 72 мм</li>
+            <li>Толщина стеклопакетов: 50 мм</li>
             <li>Поворотный, откидной и поворотно-откидной механизмы открывания створок</li>
             <li>Максимально высокие теплотехнические характеристики окон</li>
             <li>
@@ -51,14 +55,61 @@ useIntersectionObserver([line, lineSecond], (target) => {
               окрашивание, анодирование)
             </li>
             <li>Долгий срок службы оконных конструкций</li>
-            <li>Максимальная высота створки 2000 мм</li>
-            <li>Максимальная ширина створки 1500 мм</li>
-            <li>Максимальный вес створки 100 кг</li>
+            <li>Максимальная высота створки 2450 мм</li>
+            <li>Максимальная ширина створки 1600 мм</li>
           </ul>
         </div>
       </section>
 
       <div class="line hidden" ref="line"></div>
+
+      <section class="content__section__triple">
+        <div class="content__text">
+          <p class="content__title">Три вида покрытий</p>
+          <br />
+        </div>
+        <div class="content__image">
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph2.jpg"
+              alt="фото 22"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
+              также с эффектом муар.
+            </p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph3.webp"
+              alt="фото 34"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>Декорирование под дерево</p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph4.jpg"
+              alt="фото 44"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
+              срок его службы.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section class="content__section__triple">
         <div class="content__text">
@@ -104,7 +155,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
             Фурнитура - исключает риск самостоятельного открытия окон Алютех детьми
           </p>
         </div>
-        <figure class="content__image">
+        <figure class="content__image" style="width: 80%">
           <img src="./assets/фото 8.jpg" alt="Фото 8" />
         </figure>
       </section>

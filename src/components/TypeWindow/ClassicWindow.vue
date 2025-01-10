@@ -1,20 +1,37 @@
 <script setup>
 import FooterComponent from '@/components/Footer/Footer.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useIntersectionObserver } from '@/composables/useIntersectionObserver'
 
 const line = ref(null)
 const lineSecond = ref(null)
-
+const third = ref(null)
 useIntersectionObserver([line, lineSecond], (target) => {
   target.classList.add('visible')
 })
 
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('changeColor')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    {
+      threshold: 0.9
+    }
+  )
+  if (third.value) {
+    observer.observe(third.value)
+  }
+})
 </script>
 
 <template>
   <div class="page">
-
     <main class="content">
       <section class="content__section">
         <div class="content__text">
@@ -154,11 +171,71 @@ useIntersectionObserver([line, lineSecond], (target) => {
         </div>
       </section>
       <section class="content_section__fullwidth">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>Образцы алюминиевых окон ALUTECH (Алютех)  вы сможете посмотреть в нашем офисе по адресу : Москва, Дмитровское шоссе д.157, стр3.</p>
-        <p>Или получить консультацию по телефону <a href="tel=8(495)765-50-26"></a>8(495)765-50-26</p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <p>
+          Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
+          Москва, Дмитровское шоссе д.157, стр3.
+        </p>
+        <p>
+          Или получить консультацию по телефону <a href="tel=8(495)765-50-26"></a>8(495)765-50-26
+        </p>
       </section>
-
+      <section class="content__section__triple">
+        <div class="content__text">
+          <p class="content__title">Три вида покрытий</p>
+          <br />
+        </div>
+        <div class="content__image">
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph2.jpg"
+              alt="фото 22"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
+              также с эффектом муар.
+            </p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph3.webp"
+              alt="фото 34"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>Декорирование под дерево</p>
+          </div>
+          <div
+            class="content__image__item"
+            style="width: 20vw; height: 25vh; position: relative"
+          >
+            <img
+              src="./assets/ph4.jpg"
+              alt="фото 44"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <p>
+              Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
+              срок его службы.
+            </p>
+          </div>
+        </div>
+      </section>
       <section class="content__section__triple">
         <div class="content__text">
           <p class="content__title" align="center"><b>Безопасность</b> окон Алютех</p>
@@ -249,6 +326,31 @@ useIntersectionObserver([line, lineSecond], (target) => {
             </a>
           </p>
           <p class="content__description"></p>
+        </div>
+      <!-- </section>
+      <section class="content__section__triple"> -->
+        <div class="content__image">
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_1_1.jpg"
+              alt="фото 22"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_2_2.jpg"
+              alt="фото 34"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
+            <img
+              src="./assets/photo_3_3.jpg"
+              alt="фото 44"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
         </div>
       </section>
     </main>
