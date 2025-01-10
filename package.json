@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "host": "vite --host"
+    "host": "vite --host",
+    "deploy": "npm run build && git add dist -f && git commit -m \"deploy\" && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -20,11 +21,11 @@
     "pinia": "^2.1.7",
     "primeicons": "^6.0.1",
     "primevue": "^3.45.0",
+    "sharp": "^0.33.5",
     "swiper": "^11.2.0",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vite-plugin-sass": "^0.1.0",
     "vue": "^3.3.11",
-    "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.2.5",
     "vue-scroll-reveal": "git+https://github.com/tserkov/vue-scroll-reveal.git#v2",
     "vue-yandex-maps": "^1.1.0"
@@ -37,6 +38,7 @@
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "sass": "^1.69.6",
+    "terser": "^5.37.0",
     "vite": "^5.0.12"
   }
 }

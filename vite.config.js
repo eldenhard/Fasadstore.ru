@@ -4,8 +4,9 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { fileURLToPath, URL } from "url";
 
 export default defineConfig({
+  base: '/Fasadstore.ru',
   build: {
-    minify: "esbuild",
+    minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
