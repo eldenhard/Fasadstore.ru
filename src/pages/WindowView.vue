@@ -11,7 +11,7 @@ const route = useRoute()
 onMounted(() => {
   router.push('/windows/classic')
 })
-// Отслеживаем изменение маршрута и обновляем активный индекс
+
 watch(
   () => route.path,
   (newPath) => {
@@ -33,8 +33,8 @@ const setActiveTab = (index) => {
 </script>
 
 <template>
-  <div class="page">
-    <header class="nav">
+  <header class="page">
+    <nav class="nav">
       <ul class="nav__list">
         <li
           v-for="(tab, index) in tabs"
@@ -46,9 +46,9 @@ const setActiveTab = (index) => {
           <div v-if="activeIndex === index" class="nav__underline"></div>
         </li>
       </ul>
-    </header>
+    </nav>
     <router-view />
-  </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>

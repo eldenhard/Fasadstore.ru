@@ -1,13 +1,13 @@
 <template>
   <div>
     <NavbarElement />
-    <!-- <ModalVue /> -->
+    
     <SliderElement />
     <MiniAbout />
     <DirectionWork />
     <mobilePhone />
     <PartnerElementVue />
-    <!-- <ContactFormComponent /> -->
+
     <FooterComponent />
   </div>
 </template>

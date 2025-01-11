@@ -171,16 +171,7 @@ onMounted(() => {
         </div>
       </section>
       <section class="content_section__fullwidth">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+        <iframe width="720" height="405" src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
           Москва, Дмитровское шоссе д.157, стр3.

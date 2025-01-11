@@ -15,7 +15,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
     <main class="content">
       <section class="content__section">
         <div class="content__text" style="width: 60%">
-          <p class="content__title">Скрытая <br />створка</p>
+          <h1 class="content__title">Скрытая <br />створка</h1>
           <p class="content__description">
             Данный вид алюминиевого профиля на 20% увеличивает площадь остекления. В следствии чего
             пропускает больше солнечного света. В сравнении с классическим окном. Фасад вашего дома
@@ -30,7 +30,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section_one" style="margin-top: 6%">
         <figure class="content__image">
-          <h4 class="content__title">Окна ALT W72HS</h4>
+          <h2 class="content__title">Окна ALT W72HS</h2>
           <img
             src="./assets/фото 6.webp"
             alt="Фото 6"
@@ -65,7 +65,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title">Три вида покрытий</p>
+          <h2 class="content__title">Три вида покрытий</h2>
           <br />
         </div>
         <div class="content__image">
@@ -113,10 +113,10 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title">
+          <h2 class="content__title">
             Технические решения, помогающие окнам Алютех <br />
             <b>защищать</b> дом от шума и холода
-          </p>
+          </h2>
           <p class="content__description"></p>
         </div>
         <div class="content__image">
@@ -137,7 +137,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title" align="center"><b>Безопасность</b> окон Алютех</p>
+          <h2 class="content__title" align="center"><b>Безопасность</b> окон Алютех</h2>
           <p class="content__description" align="center">
             Установив конструкции Алютех за безопасность вашего дома можно не беспокоиться.
             <br />Окна Алютех оснащены максимальным количеством противовзломных комплектующих
@@ -148,7 +148,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section" style="margin-top: 4%">
         <div class="content__text">
-          <p class="content__title">Класс защиты A</p>
+          <h2 class="content__title">Класс защиты A</h2>
           <p class="content__description">
             Противовзломные штапики - предотвращают выпадение стеклопакета <br />
             Ударостойкое заполнение – устойчиво к механическим повреждениям <br />
@@ -162,7 +162,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title">Типы ручек</p>
+          <h2 class="content__title">Типы ручек</h2>
           <p class="content__description"></p>
         </div>
         <div class="content__image">
@@ -181,14 +181,15 @@ useIntersectionObserver([line, lineSecond], (target) => {
         </div>
       </section>
       <section class="content_section__fullwidth">
-        <iframe
+        <iframe width="720" height="405" src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <!-- <iframe
           src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
-        ></iframe>
+        ></iframe> -->
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
           Москва, Дмитровское шоссе д.157, стр3.
@@ -201,7 +202,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
       <div class="line hidden" ref="lineSecond"></div>
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title">Преимущества алюминиевых окон ALUTECH</p>
+          <h2 class="content__title">Преимущества алюминиевых окон ALUTECH</h2>
           <p class="content__description"></p>
         </div>
         <div class="content_air_block">
@@ -236,12 +237,12 @@ useIntersectionObserver([line, lineSecond], (target) => {
 
       <section class="content__section__triple">
         <div class="content__text">
-          <p class="content__title">
+          <h2 class="content__title">
             Наши выполненные работы: <a href="/objects" target="_blank">Все проекты</a> или
             <a href="https://t.me/aluteh_systems" target="_blank">
               <i class="bi bi-telegram"></i>
             </a>
-          </p>
+          </h2>
           <p class="content__description"></p>
         </div>
       </section>

@@ -7,7 +7,7 @@ const line = ref(null)
 const lineSecond = ref(null)
 
 useIntersectionObserver([line, lineSecond], (target) => {
-  target.classList.add('visible') 
+  target.classList.add('visible')
 })
 </script>
 
@@ -16,7 +16,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
     <main class="content">
       <section class="content__section">
         <div class="content__text">
-          <p class="content__title">Окна <br>панорамные</p>
+          <p class="content__title">Окна <br />панорамные</p>
           <p class="content__description">
             Алюминиевые окна ALUTECH (Алютех) универсальны. Панорамные окна пропускают значительно
             больше солнечного света, чем классические окна. Поэтому днем не придется использовать
@@ -153,14 +153,14 @@ useIntersectionObserver([line, lineSecond], (target) => {
       </section>
       <section class="content_section__fullwidth">
         <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          width="720"
+          height="405"
+          src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
+          frameBorder="0"
+          allow="clipboard-write; autoplay"
+          webkitAllowFullScreen
+          mozallowfullscreen
+          allowFullScreen
         ></iframe>
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
@@ -176,10 +176,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
           <br />
         </div>
         <div class="content__image">
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph2.jpg"
               alt="фото 22"
@@ -190,10 +187,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
               также с эффектом муар.
             </p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph3.webp"
               alt="фото 34"
@@ -201,10 +195,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
             />
             <p>Декорирование под дерево</p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph4.jpg"
               alt="фото 44"
@@ -298,7 +289,6 @@ useIntersectionObserver([line, lineSecond], (target) => {
         </div>
       </section>
 
-      
       <section class="content__section__triple">
         <div class="content__text">
           <p class="content__title">
@@ -309,7 +299,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
           </p>
           <p class="content__description"></p>
         </div>
-      <!-- </section>
+        <!-- </section>
       <section class="content__section__triple"> -->
         <div class="content__image">
           <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">
@@ -335,7 +325,6 @@ useIntersectionObserver([line, lineSecond], (target) => {
           </div>
         </div>
       </section>
- 
     </main>
     <FooterComponent />
   </div>
