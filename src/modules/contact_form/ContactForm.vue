@@ -183,7 +183,6 @@ html {
   .text_description {
     font-family: 'Montserrat', sans-serif;
     font-size: 3vh;
-   
   }
 
   .line {

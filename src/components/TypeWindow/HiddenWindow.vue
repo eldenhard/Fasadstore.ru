@@ -69,10 +69,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
           <br />
         </div>
         <div class="content__image">
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph2.jpg"
               alt="фото 22"
@@ -83,10 +80,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
               также с эффектом муар.
             </p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph3.webp"
               alt="фото 34"
@@ -94,10 +88,7 @@ useIntersectionObserver([line, lineSecond], (target) => {
             />
             <p>Декорирование под дерево</p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph4.jpg"
               alt="фото 44"
@@ -181,7 +172,16 @@ useIntersectionObserver([line, lineSecond], (target) => {
         </div>
       </section>
       <section class="content_section__fullwidth">
-        <iframe width="720" height="405" src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe
+          width="720"
+          height="405"
+          src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/"
+          frameBorder="0"
+          allow="clipboard-write; autoplay"
+          webkitAllowFullScreen
+          mozallowfullscreen
+          allowFullScreen
+        ></iframe>
         <!-- <iframe
           src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Zam7Ip38ExzdU4cT"
           title="YouTube video player"

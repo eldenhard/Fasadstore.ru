@@ -1,5 +1,5 @@
 <template>
-  <div style="background: white;">
+  <div style="background: white">
     <NavbarElement />
     <mobilePhone />
 
@@ -31,8 +31,8 @@ export default {
     ThreeBlock,
     WomanBlock,
     AboutCompany,
-    Footer,
-  },
+    Footer
+  }
   // setup(){
   //   onBeforeMount(() => {
   //     window.scrollTo(0,0)
@@ -40,5 +40,3 @@ export default {
   // }
 }
 </script>
-
-

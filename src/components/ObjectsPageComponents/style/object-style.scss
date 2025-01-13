@@ -14,12 +14,12 @@
   .gradient-text {
     color: rgb(233, 233, 233);
     cursor: pointer;
-//     background: #2474d5;
-// background: -webkit-linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
-// background: -moz-linear-gradient(to top right, #2474d5 31%, #8b077a  57%);
-// background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
-// -webkit-background-clip: text;
-// -webkit-text-fill-color: transparent;
+    //     background: #2474d5;
+    // background: -webkit-linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
+    // background: -moz-linear-gradient(to top right, #2474d5 31%, #8b077a  57%);
+    // background: linear-gradient(to top right, #2474d5 31%, #8b077a 57%);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
     // background: #121487;
     // background: -webkit-linear-gradient(to right #1b1ecf, #cf169b);
     // -webkit-background-clip: text;
@@ -27,9 +27,9 @@
     font-size: 7vh;
     font-family: 'Arial Black', sans-serif;
     width: auto;
-    transition: color .3s ease-in;
+    transition: color 0.3s ease-in;
     &:hover {
-      color: #CDDBF7;
+      color: #cddbf7;
     }
   }
   .right {
@@ -42,16 +42,17 @@
     align-items: center;
     justify-items: center;
     margin-top: 20px;
-    .swiper-button-prev, .swiper-button-next {
+    .swiper-button-prev,
+    .swiper-button-next {
       color: white !important;
-      &::after{
+      &::after {
         color: white !important;
         background: white !important;
       }
     }
     .swiper {
       height: 33vh;
-      width: calc(85vw/4);
+      width: calc(85vw / 4);
       border-radius: 8px;
       box-shadow: 4px 4px 8px rgb(26, 26, 26);
       img {
@@ -69,8 +70,8 @@
 @media screen and (max-width: 900px) {
   .objects .objects_body {
     grid-template-columns: 1fr;
-    
-    .objects_body{
+
+    .objects_body {
       margin-top: 4%;
     }
     .swiper {
@@ -83,17 +84,17 @@
       }
     }
   }
-  .our_works{
+  .our_works {
     text-align: center !important;
     padding-top: 6vh;
     font-size: 5vh !important;
   }
-  .gradient-text{
+  .gradient-text {
     font-size: 4vh !important;
     text-align: center;
     margin-top: 4%;
   }
 }
-span.swiper-pagination-bullet-active{
+span.swiper-pagination-bullet-active {
   background: white !important;
 }

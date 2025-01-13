@@ -1,7 +1,7 @@
 <template>
   <div class="container-block">
     <h3 align="center">ПРОДУКЦИЯ АЛЮТЕХ</h3>
-    <p align="center" style="color: rgb(83, 83, 83); font-weight: 700; padding: .2% 2% 0;">
+    <p align="center" style="color: rgb(83, 83, 83); font-weight: 700; padding: 0.2% 2% 0">
       Виды открывания и фурнитуры
     </p>
 
@@ -12,20 +12,30 @@
     </section>
     <section class="three_photo">
       <div class="right_text">
-        <iframe width="100" height="150" src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Jh31k0fbGZZQcyRU"
-          title="YouTube video player" frameborder="0"
+        <iframe
+          width="100"
+          height="150"
+          src="https://www.youtube.com/embed/IQgRz7pdrfc?si=Jh31k0fbGZZQcyRU"
+          title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+          allowfullscreen
+        ></iframe>
         <!-- <img src="./assets/1.jpg" alt="" />
         <div class="image-overlay">
           <p class="description_overlay">Алюминевые раздвижные двери</p>
         </div> -->
       </div>
       <div class="right_text">
-        <iframe width="100" height="150" src="https://www.youtube.com/embed/RkZb4nDh0wo?si=xBfEvrelFB0anSqv"
-          title="YouTube video player" frameborder="0"
+        <iframe
+          width="100"
+          height="150"
+          src="https://www.youtube.com/embed/RkZb4nDh0wo?si=xBfEvrelFB0anSqv"
+          title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+          allowfullscreen
+        ></iframe>
         <!-- <img src="./assets/2.jpg" alt="" style="z-index: 34" />
         <div class="image-overlay">
           <p class="description_overlay">Раздвижные панорамные двери</p>
@@ -33,10 +43,15 @@
       </div>
       <div class="right_text">
         <!-- <img src="./assets/3.jpg" alt=""> -->
-        <iframe width="100" height="100" src="https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9"
-          title="YouTube video player" frameborder="0"
+        <iframe
+          width="100"
+          height="100"
+          src="https://www.youtube.com/embed/dnljNeoMNbU?si=UDJC52SfagHLVPY9"
+          title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+          allowfullscreen
+        ></iframe>
         <!-- <div class="image-overlay">
                     <p class="description_overlay"></p>
                 </div> -->
@@ -47,8 +62,14 @@
         <p>НАШИ ПАРТНЕРЫ</p>
         <div class="line"></div>
       </div>
-      <swiper class="swiper" :modules="modules" :slides-per-view="2" :space-between="10" :pagination="{ clickable: true }"
-        :grab-cursor="true" :loop="true" 
+      <swiper
+        class="swiper"
+        :modules="modules"
+        :slides-per-view="2"
+        :space-between="10"
+        :pagination="{ clickable: true }"
+        :grab-cursor="true"
+        :loop="true"
         :breakpoints="{
           '950': {
             slidesPerView: 3,
@@ -58,24 +79,24 @@
             slidesPerView: 5,
             spaceBetween: 30
           }
-        }" 
+        }"
         :autoplay="{
           delay: 3500,
           disableOnInteraction: false
         }"
-        >
+      >
         <swiper-slide class="slide"><img src="./assets/fapim.webp" alt="фапим" /> </swiper-slide>
         <swiper-slide class="slide"><img src="./assets/vorne.webp" alt="ворне" /></swiper-slide>
         <swiper-slide class="slide"><img src="./assets/aluteh.webp" alt="алютех" /> </swiper-slide>
         <swiper-slide class="slide"><img src="./assets/giesse.webp" alt="гиес" /></swiper-slide>
         <swiper-slide class="slide"><img src="./assets/siegenia.webp" alt="сиениа" /></swiper-slide>
-        <swiper-slide class="slide"><img src="./assets/drhahn.webp" alt="доктор хан" /></swiper-slide>
-
+        <swiper-slide class="slide"
+          ><img src="./assets/drhahn.webp" alt="доктор хан"
+        /></swiper-slide>
       </swiper>
     </section>
 
-    <StrongAside style="margin-top: 10%;" />
-
+    <StrongAside style="margin-top: 10%" />
   </div>
 </template>
 
@@ -222,7 +243,6 @@ iframe {
 }
 
 @media screen and (max-width: 900px) {
-
   .direction_description {
     text-align: center;
     white-space: nowrap;

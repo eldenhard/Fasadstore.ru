@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import FooterComponent from '@/components/Footer/Footer.vue'
 import { ref, onMounted } from 'vue'
 import { useIntersectionObserver } from '@/composables/useIntersectionObserver'
@@ -6,7 +6,7 @@ import { useIntersectionObserver } from '@/composables/useIntersectionObserver'
 const line = ref(null)
 const lineSecond = ref(null)
 const third = ref(null)
-useIntersectionObserver([line, lineSecond], (target) => {
+useIntersectionObserver([line, lineSecond], (target: HTMLElement) => {
   target.classList.add('visible')
 })
 
@@ -171,7 +171,16 @@ onMounted(() => {
         </div>
       </section>
       <section class="content_section__fullwidth">
-        <iframe width="720" height="405" src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe
+          width="720"
+          height="405"
+          src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
+          frameBorder="0"
+          allow="clipboard-write; autoplay"
+          webkitAllowFullScreen
+          mozallowfullscreen
+          allowFullScreen
+        ></iframe>
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
           Москва, Дмитровское шоссе д.157, стр3.
@@ -186,10 +195,7 @@ onMounted(() => {
           <br />
         </div>
         <div class="content__image">
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph2.jpg"
               alt="фото 22"
@@ -200,10 +206,7 @@ onMounted(() => {
               также с эффектом муар.
             </p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph3.webp"
               alt="фото 34"
@@ -211,10 +214,7 @@ onMounted(() => {
             />
             <p>Декорирование под дерево</p>
           </div>
-          <div
-            class="content__image__item"
-            style="width: 20vw; height: 25vh; position: relative"
-          >
+          <div class="content__image__item" style="width: 20vw; height: 25vh; position: relative">
             <img
               src="./assets/ph4.jpg"
               alt="фото 44"
@@ -318,7 +318,7 @@ onMounted(() => {
           </p>
           <p class="content__description"></p>
         </div>
-      <!-- </section>
+        <!-- </section>
       <section class="content__section__triple"> -->
         <div class="content__image">
           <div class="content__image__item" style="width: 30vw; height: 35vh; position: relative">

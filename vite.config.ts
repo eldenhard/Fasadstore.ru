@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { fileURLToPath, URL } from "url";
-
+import Checker from 'vite-plugin-checker';
 export default defineConfig({
   base: '/Fasadstore.ru',
   build: {
@@ -18,6 +18,10 @@ export default defineConfig({
   },
   plugins: [
     Vue(),
+    Checker({
+      typescript: true, // Включаем проверку TypeScript
+      vueTsc: true, // Включаем строгую проверку .vue файлов
+    }),
     ViteImageOptimizer({
       png: {
         // https://sharp.pixelplumbing.com/api-output#png

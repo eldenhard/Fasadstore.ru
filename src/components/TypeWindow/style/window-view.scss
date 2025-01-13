@@ -187,16 +187,16 @@ body {
         }
       }
     }
-    .content_section__fullwidth{
+    .content_section__fullwidth {
       display: flex;
       flex-direction: column;
       justify-content: center;
       margin-top: 4%;
-      p{
+      p {
         text-align: center;
         padding-top: 2vh;
       }
-      iframe{
+      iframe {
         width: 80%;
         height: 35vh;
         margin: 0 auto;
@@ -212,8 +212,8 @@ body {
   // backdrop-filter: blur(5px);
   // -webkit-backdrop-filter: blur(5px);
   // border: 1px solid rgba(255, 255, 255, 0.3);
-  ol{
-    li{
+  ol {
+    li {
       line-height: 5vh;
       list-style: none;
     }
@@ -233,5 +233,4 @@ body {
 
 .line.visible {
   transform: scaleX(1); /* Линия растягивается на всю ширину */
-  
 }

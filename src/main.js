@@ -5,9 +5,8 @@ import { createPinia } from 'pinia'
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import '@popperjs/core'
-
 
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
@@ -20,12 +19,12 @@ const app = createApp(App)
 const pinia = createPinia()
 
 const settings = {
-    apiKey: '49e1eea5-38ec-417e-abfe-8d2ab7db50dd', // Индивидуальный ключ API
-    lang: 'ru_RU', // Используемый язык
-    coordorder: 'latlong', // Порядок задания географических координат
-    debug: false, // Режим отладки
-    version: '2.1' // Версия Я.Карт
-  }
+  apiKey: '49e1eea5-38ec-417e-abfe-8d2ab7db50dd', // Индивидуальный ключ API
+  lang: 'ru_RU', // Используемый язык
+  coordorder: 'latlong', // Порядок задания географических координат
+  debug: false, // Режим отладки
+  version: '2.1' // Версия Я.Карт
+}
 
 // pinia.use(yourStoreModule)
 app.use(pinia)

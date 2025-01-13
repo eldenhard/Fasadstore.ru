@@ -1,15 +1,11 @@
 <template>
   <nav
     class="navbar navbar-expand-lg navbar-dark bg-dark"
-    style="position: fixed; top: 0; z-index: 10; right: 0; left: 0; height: 7vh;"
+    style="position: fixed; top: 0; z-index: 10; right: 0; left: 0; height: 7vh"
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img
-          src="./assets/logo.webp"
-          alt="Логотип компании"
-          class="navbar_color"
-        />
+        <img src="./assets/logo.webp" alt="Логотип компании" class="navbar_color" />
       </a>
       <button
         class="navbar-toggler"
@@ -88,13 +84,17 @@
             <router-link to="/contacts" class="nav-link" exact>Контакты</router-link>
           </li>
           <li class="nav-item" style="display: flex; align-items: center">
-            &nbsp; &nbsp;&nbsp;&nbsp;<img src="./assets/whatsapp.png" alt="whatsapp" class="whtsapp"/>
+            &nbsp; &nbsp;&nbsp;&nbsp;<img
+              src="./assets/whatsapp.png"
+              alt="whatsapp"
+              class="whtsapp"
+            />
           </li>
         </ul>
         <div class="section_phone">
           <a href="tel:+74957655026" class="phone">
-            <img src="./assets/phone-call.png" alt="phone company"/> +7(495) 765-50-26
-            </a>
+            <img src="./assets/phone-call.png" alt="phone company" /> +7(495) 765-50-26
+          </a>
         </div>
       </div>
     </div>
@@ -157,15 +157,15 @@ export default {
 .navbar_color {
   width: max(150px, 9vw);
 }
-.phone{
+.phone {
   transition: 0.5s color ease;
-  &:hover{
+  &:hover {
     color: grey;
   }
 }
-.whtsapp{
+.whtsapp {
   transition: 0.5s transform ease;
-  &:hover{
+  &:hover {
     transform: translateY(-5px);
   }
 }
@@ -175,8 +175,7 @@ export default {
     border-bottom: none;
   }
   .section_phone,
-  .whtsapp
-  {
+  .whtsapp {
     display: none;
   }
 }

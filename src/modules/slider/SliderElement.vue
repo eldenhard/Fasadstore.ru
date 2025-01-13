@@ -8,7 +8,7 @@
         class="active"
         aria-current="true"
         aria-label="Slide 1"
-        style="border-radius: 50% !important; height: 10px; width: 10px; margin-right: 1%;"
+        style="border-radius: 50% !important; height: 10px; width: 10px; margin-right: 1%"
       ></button>
       <button
         type="button"
@@ -34,7 +34,11 @@
             </div>
           </div>
           <div class="right_text">
-            <img src="../slider/assets/first.webp" class="d-block w-100 h-100" alt="Раздвижные двери АЛЮТЕХ" />
+            <img
+              src="../slider/assets/first.webp"
+              class="d-block w-100 h-100"
+              alt="Раздвижные двери АЛЮТЕХ"
+            />
             <div class="image-overlay"></div>
           </div>
         </div>
@@ -55,7 +59,7 @@
             </div>
           </div>
           <div class="right_text">
-            <img src="../slider/assets/second.webp" class="d-block w-100 h-100" alt="окна АЛЮТЕХ"/>
+            <img src="../slider/assets/second.webp" class="d-block w-100 h-100" alt="окна АЛЮТЕХ" />
             <div class="image-overlay"></div>
           </div>
         </div>

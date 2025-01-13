@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavbarElement />
-    
+
     <SliderElement />
     <MiniAbout />
     <DirectionWork />
@@ -20,10 +20,14 @@ import SliderElement from '../modules/slider/SliderElement.vue'
 import MiniAbout from '@/components/MiniAbout/MiniAbout.vue'
 
 // const ContactFormComponent =  defineAsyncComponent(() => import('../modules/contact_form/ContactForm.vue'))
-import  FooterComponent from  '../components/Footer/Footer.vue'
-const PartnerElementVue =  defineAsyncComponent(() => import('../modules/partner/PartnerElement.vue'))
-const DirectionWork =  defineAsyncComponent(() => import('../components/DirectionJob/DirectionWork.vue'))
-const mobilePhone =  defineAsyncComponent(() => import('@/modules/mobile_phone/mobilePhone.vue'))
+import FooterComponent from '../components/Footer/Footer.vue'
+const PartnerElementVue = defineAsyncComponent(
+  () => import('../modules/partner/PartnerElement.vue')
+)
+const DirectionWork = defineAsyncComponent(
+  () => import('../components/DirectionJob/DirectionWork.vue')
+)
+const mobilePhone = defineAsyncComponent(() => import('@/modules/mobile_phone/mobilePhone.vue'))
 export default {
   name: 'HomeView',
   components: {
@@ -35,7 +39,7 @@ export default {
     // ContactFormComponent,
     FooterComponent,
     mobilePhone
-  },
+  }
   // setup(){
   //   onBeforeMount(() => {
   //     // Устанавливаем скролл в самое верхнее положение перед монтированием компонента

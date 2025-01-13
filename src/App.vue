@@ -6,15 +6,15 @@
 </template>
 
 <script>
-import NavbarElement from './modules/navbar/NavbarElement.vue';
+import NavbarElement from './modules/navbar/NavbarElement.vue'
 export default {
   name: 'App',
   components: {
-    NavbarElement,
+    NavbarElement
   }
 }
 </script>
 
-<style >
+<style>
 @import './style/main.css';
 </style>
