@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "host": "vite --host",
+    "git": "npm run format && git add . && git commit -m \"$npm_config_comment\" && git push",
     "deploy": "npm run format &&npm run build && git add dist -f && git commit -m \"deploy\" && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {

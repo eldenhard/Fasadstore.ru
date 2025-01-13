@@ -16,12 +16,12 @@ export function useIntersectionObserver(
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.target instanceof HTMLElement) {
             callback(entry.target) // Вызываем коллбэк с HTML-элементом
-            observer.unobserve(entry.target) // Отключаем наблюдение за этим элементом
+            observer.unobserve(entry.target)
           }
         })
       },
       {
-        threshold: 0.1 // Порог срабатывания - 10% элемента в зоне видимости
+        threshold: 0.1
       }
     )
 

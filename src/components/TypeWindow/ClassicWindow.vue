@@ -10,6 +10,11 @@ useIntersectionObserver([line, lineSecond], (target: HTMLElement) => {
   target.classList.add('visible')
 })
 
+function greet(per: string, date: Date) {
+  console.log(per, date)
+}
+greet('1', new Date())
+
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {

@@ -1,9 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const activeIndex = ref(0)
-const tabs = ['Окна классические', 'Окна панорамные', 'Скрытая створка']
+interface ITabs {
+  [index: number]: string
+}
+const tabs: ITabs = ['Окна классические', 'Окна панорамные', 'Скрытая створка']
 
 const router = useRouter()
 const route = useRoute()
@@ -25,7 +28,7 @@ watch(
   }
 )
 
-const setActiveTab = (index) => {
+const setActiveTab = (index: number) => {
   activeIndex.value = index
   const paths = ['classic', 'panorama', 'hidden']
   router.push(`/windows/${paths[index]}`)
