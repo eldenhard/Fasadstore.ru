@@ -27,7 +27,7 @@
       </li>
       <!-- Алюминевые раздвижные двери -->
       <li>
-        <a class="card">
+        <router-link to="/doors" class="card">
           <img
             src="./assets/alum_razd_door.png"
             class="card__image"
@@ -45,7 +45,7 @@
               площадь остекления
             </p>
           </div>
-        </a>
+        </router-link>
       </li>
       <!-- Остекление террас и балконов -->
       <li>

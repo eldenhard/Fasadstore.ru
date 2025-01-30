@@ -11,10 +11,6 @@ const tabs: ITabs = ['Окна классические', 'Окна панора
 const router = useRouter()
 const route = useRoute()
 
-onMounted(() => {
-  router.push('/windows/classic')
-})
-
 watch(
   () => route.path,
   (newPath) => {

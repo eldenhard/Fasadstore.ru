@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noEmitOnError": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

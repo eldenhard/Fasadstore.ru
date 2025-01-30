@@ -38,14 +38,17 @@
               Продукция
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <!-- <li>
-                <router-link to="/products/action" class="dropdown-item" exact>Алюминевые окна</router-link>
-              </li>
               <li>
-                <router-link to="/products/another-action" class="dropdown-item" exact>Алюминевые двери</router-link
+                <router-link :to="{ name: 'windows' }" class="dropdown-item" 
+                  >Алюминиевые окна</router-link
                 >
               </li>
               <li>
+                <router-link :to="{ name: 'doors' }" class="dropdown-item" 
+                  >Алюминиевые двери</router-link
+                >
+              </li>
+              <!-- <li>
                 <router-link to="/products/something-else" class="dropdown-item" exact>Алюминевые раздвижные двери</router-link>
               </li>
               <li>
@@ -73,8 +76,8 @@
                 <router-link to="/products/something-else" class="dropdown-item" exact>Зимние сады</router-link>
               </li>
               <li>
-                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление котеджей</router-link>
-              </li> -->
+                <router-link to="/products/something-else" class="dropdown-item" exact>Остекление котеджей</router-link> 
+              </li>-->
             </ul>
           </li>
           <li class="nav-item">

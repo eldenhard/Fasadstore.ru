@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import ObjectView from '@/pages/ObjectsView.vue'
+import path from 'path'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +29,8 @@ const router = createRouter({
     {
       path: '/windows',
       name: 'windows',
-      component: () => import('@/pages/WindowView.vue'),
+      component: () => import('@/pages/VWindowView.vue'),
+      redirect: '/windows/classic',
       children: [
         {
           path: 'classic',
@@ -44,6 +46,29 @@ const router = createRouter({
           path: 'hidden',
           name: 'windows-hidden',
           component: () => import('@/components/TypeWindow/HiddenWindow.vue')
+        }
+      ]
+    },
+    {
+      path: '/doors',
+      name: 'doors',
+      component: () => import('@/pages/VDoorsView.vue'),
+      redirect: '/doors/hd',
+      children: [
+        {
+          path: 'classic',
+          name: 'doors-classic',
+          component: () => import('@/components/TypeDoors/VClassicDoor.vue')
+        },
+        {
+          path: 'hd',
+          name: 'doors-hd',
+          component: () => import('@/components/TypeDoors/VHDDoor.vue')
+        },
+        {
+          path: 'balcony',
+          name: 'doors-balcony',
+          component: () => import('@/components/TypeDoors/VBalconyDoor.vue')
         }
       ]
     }
