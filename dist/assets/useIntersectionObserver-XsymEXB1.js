@@ -1,0 +1,1 @@
+import{o as e}from"./index-De_IqdR8.js";function t(t,r){e((()=>{const e=new IntersectionObserver((t=>{t.forEach((t=>{t.isIntersecting&&t.target instanceof HTMLElement&&(r(t.target),e.unobserve(t.target))}))}),{threshold:.1});t.forEach((t=>{t.value&&e.observe(t.value)}))}))}export{t as u};
