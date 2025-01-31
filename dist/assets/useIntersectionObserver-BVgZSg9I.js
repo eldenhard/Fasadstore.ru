@@ -1,1 +1,0 @@
-import{o as e}from"./index-CmMz6t6_.js";function t(t,r){e((()=>{const e=new IntersectionObserver((t=>{t.forEach((t=>{t.isIntersecting&&t.target instanceof HTMLElement&&(r(t.target),e.unobserve(t.target))}))}),{threshold:.1});t.forEach((t=>{t.value&&e.observe(t.value)}))}))}export{t as u};
