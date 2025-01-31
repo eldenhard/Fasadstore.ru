@@ -39,12 +39,12 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-                <router-link :to="{ name: 'windows' }" class="dropdown-item" 
+                <router-link :to="{ name: 'windows' }" class="dropdown-item"
                   >Алюминиевые окна</router-link
                 >
               </li>
               <li>
-                <router-link :to="{ name: 'doors' }" class="dropdown-item" 
+                <router-link :to="{ name: 'doors' }" class="dropdown-item"
                   >Алюминиевые двери</router-link
                 >
               </li>

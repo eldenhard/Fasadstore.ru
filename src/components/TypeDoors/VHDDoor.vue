@@ -37,7 +37,10 @@ onMounted(() => {
     <main class="content">
       <section class="content__section">
         <div class="content__text">
-          <p class="content__title">HD-двери крупноформатные</p>
+          <p class="content__title">
+            HD-двери крупноформатные <span class="light_color">ALUTECH</span>
+          </p>
+          <br />
           <p class="content__description">
             Алюминиевые двери Алютех- это решение для комфорта и безопасности. Двери «АЛЮТЕХ»
             эффективно сберегают тепло, вписываются в любой архитектурный стиль, обладают высокой
@@ -283,13 +286,14 @@ onMounted(() => {
         <iframe
           width="720"
           height="405"
-          src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
+          src="https://rutube.ru/play/embed/85033df46441920caede6d19eabf80e5/"
           frameBorder="0"
           allow="clipboard-write; autoplay"
           webkitAllowFullScreen
           mozallowfullscreen
           allowFullScreen
         ></iframe>
+
         <p>
           Классические двери «АЛЮТЕХ» оснащены рядом комплектующих для безопасности:
           <br />
@@ -345,7 +349,6 @@ onMounted(() => {
           </p>
           <p class="content__description"></p>
         </div>
-       
       </section>
     </main>
     <FooterComponent />

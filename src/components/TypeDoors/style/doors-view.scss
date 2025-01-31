@@ -77,7 +77,14 @@ body {
       .content__title {
         font-weight: bold;
         font-size: 3.5em;
-        line-height: 1em;
+        line-height: 1.2em;
+        .light_color {
+          color: transparent;
+          -webkit-text-stroke: 1px rgb(0, 0, 0);
+          text-stroke: 1px rgb(0, 0, 0);
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
       }
       .content__description {
         font-size: 1em;

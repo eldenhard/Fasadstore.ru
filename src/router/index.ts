@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import ObjectView from '@/pages/ObjectsView.vue'
 import path from 'path'
+import { isLoading } from '@/store/loading'
+import { nextTick } from 'vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,4 +80,16 @@ const router = createRouter({
   }
 })
 
+router.beforeEach((to, from, next) => {
+  isLoading.value = true
+  next()
+})
+
+router.afterEach(() => {
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      isLoading.value = false
+    })
+  })
+})
 export default router

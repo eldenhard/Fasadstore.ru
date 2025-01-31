@@ -37,7 +37,8 @@ onMounted(() => {
     <main class="content">
       <section class="content__section">
         <div class="content__text">
-          <p class="content__title">Двери классические</p>
+          <p class="content__title">Двери классические <span class="light_color">ALUTECH</span></p>
+          <br />
           <p class="content__description">
             Алюминиевые двери Алютех- это решение для комфорта и безопасности. Двери «АЛЮТЕХ»
             эффективно сберегают тепло, вписываются в любой архитектурный стиль, обладают высокой
@@ -45,7 +46,7 @@ onMounted(() => {
           </p>
         </div>
         <figure class="content__image">
-          <img src="./assets/assets_classic/фото 1.JPG" alt="Фото 1" />
+          <img src="./assets/assets_classic/фото 1.jpg" alt="Фото 1" />
         </figure>
       </section>
 
@@ -99,12 +100,13 @@ onMounted(() => {
           <img src="./assets/assets_classic/фото 4.png" alt="Фото 2" />
         </figure>
 
-        <div class="content__text" style="width: 60%;">
+        <div class="content__text" style="width: 60%">
           <h5>
-            Данные конструкции ALT W72 отличаются повышенной шумо- и теплоизоляцией. <br>
-            Двери Alutech W72 полностью адаптированы под наш климат и подходят для зданий всех типов.
+            Данные конструкции ALT W72 отличаются повышенной шумо- и теплоизоляцией. <br />
+            Двери Alutech W72 полностью адаптированы под наш климат и подходят для зданий всех
+            типов.
           </h5>
-          <br>
+          <br />
           <ul>
             <li>Предельная высота створки: 2,5 м</li>
             <li>Предельная ширина створки: 1,1 м</li>
@@ -116,14 +118,14 @@ onMounted(() => {
             <li>Водонепроницаемость: класс 2А (50 Па)</li>
             <li>Сопротивляемость ветровой нагрузке: класс С4 (до 1600 Па)</li>
           </ul>
-          <br>
+          <br />
           <p>Типы открываний: внутреннее, наружное</p>
         </div>
       </section>
 
       <section class="content__section_one" style="flex-direction: row-reverse">
         <figure class="content__image">
-          <h4 class="content__title">Классическая дверь  ALT W62 </h4>
+          <h4 class="content__title">Классическая дверь ALT W62</h4>
           <img src="./assets/фото 5.jpg" alt="Фото 2" />
         </figure>
 
@@ -237,7 +239,7 @@ onMounted(() => {
         <iframe
           width="720"
           height="405"
-          src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
+          src="https://rutube.ru/play/embed/85033df46441920caede6d19eabf80e5/"
           frameBorder="0"
           allow="clipboard-write; autoplay"
           webkitAllowFullScreen

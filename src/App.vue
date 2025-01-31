@@ -1,18 +1,16 @@
 <template>
   <div>
+    <div v-if="isLoading" class="loader-container">
+      <span class="loader"></span>
+    </div>
     <RouterView />
     <NavbarElement />
   </div>
 </template>
 
-<script>
+<script setup>
 import NavbarElement from './modules/navbar/NavbarElement.vue'
-export default {
-  name: 'App',
-  components: {
-    NavbarElement
-  }
-}
+import { isLoading } from '@/store/loading'
 </script>
 
 <style>
