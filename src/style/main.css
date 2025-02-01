@@ -7,7 +7,6 @@
 
   --backgroundBlack: #111111;
   --colorGrey: rgb(212, 212, 212);
-  /* --colorBlue: rgb(175, 197, 238); */
   --colorBlue: rgb(202, 217, 245);
   --colorRed: #e61818;
 
@@ -110,7 +109,7 @@ label {
   75% {
     box-shadow: 0px -0.2em 0 0 currentcolor;
   }
-  87% {
+  88% {
     box-shadow: 0.2em -0.2em 0 0 currentcolor;
   }
 }
