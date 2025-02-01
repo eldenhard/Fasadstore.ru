@@ -234,3 +234,8 @@ body {
 .line.visible {
   transform: scaleX(1); /* Линия растягивается на всю ширину */
 }
+.content__image{
+  .content__title{
+    font-size: 1.2em;;
+  }
+}
