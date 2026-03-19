@@ -1,47 +1,29 @@
 {
   "name": "aluproject",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "host": "vite --host",
-    "git": "npm run format && git add . && git commit -m \"$npm_config_comment\" && git push",
-    "deploy": "npm run format &&npm run build && git add dist -f && git commit -m \"deploy\" && git subtree push --prefix dist origin gh-pages"
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "@vueuse/core": "^10.7.1",
-    "bootstrap": "^5.3.2",
-    "bootstrap-icons": "^1.11.3",
-    "gh-pages": "^6.1.1",
-    "pinia": "^2.1.7",
-    "primeicons": "^6.0.1",
-    "primevue": "^3.45.0",
-    "sharp": "^0.33.5",
-    "swiper": "^11.2.0",
-    "vite-plugin-image-optimizer": "^1.1.8",
-    "vite-plugin-sass": "^0.1.0",
-    "vue": "^3.3.11",
-    "vue-router": "^4.2.5",
-    "vue-scroll-reveal": "git+https://github.com/tserkov/vue-scroll-reveal.git#v2",
-    "vue-yandex-maps": "^1.1.0"
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/ui": "^4.5.1",
+    "@nuxtjs/robots": "^5.7.1",
+    "@nuxtjs/sitemap": "^7.6.0",
+    "@pinia/nuxt": "^0.11.3",
+    "nuxt": "^4.4.2",
+    "pinia": "^3.0.4",
+    "swiper": "^11.2.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
-    "@vitejs/plugin-vue": "^4.6.2",
-    "@vue/eslint-config-prettier": "^8.0.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.0.3",
-    "sass": "^1.69.6",
-    "terser": "^5.37.0",
-    "typescript": "^5.7.3",
-    "vite": "^5.0.12",
-    "vite-plugin-checker": "^0.8.0",
-    "vue-tsc": "~2.1.6"
+    "sass": "^1.86.0",
+    "typescript": "^5.8.0",
+    "vue-tsc": "^2.2.0"
   }
 }
