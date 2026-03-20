@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-01-01',
 
     // ──────────────────────────────────────────────
+    // Статическая генерация для GitHub Pages
+    // ──────────────────────────────────────────────
+    nitro: {
+        preset: 'github-pages',
+    },
+
+    // ──────────────────────────────────────────────
     // Модули Nuxt
     // ──────────────────────────────────────────────
     // - @nuxt/ui: UI-система v4 (Reka UI + Tailwind CSS v4)
@@ -31,6 +38,7 @@ export default defineNuxtConfig({
     // Глобальные настройки <head>
     // ──────────────────────────────────────────────
     app: {
+        baseURL: '/Fasadstore.ru/',
         head: {
             htmlAttrs: { lang: 'ru' },
             meta: [
@@ -75,6 +83,7 @@ export default defineNuxtConfig({
     // Robots.txt — директивы для поисковых роботов
     // ──────────────────────────────────────────────
     robots: {
+        robotsTxt: false,
         groups: [
             {
                 userAgent: ['Googlebot', 'Yandex'],

@@ -1,0 +1,520 @@
+/* ============================================
+   product-page.css — Shared BEM styles for
+   window & door product pages
+   ============================================ */
+
+/* --- Variables (CSS custom properties) --- */
+:root {
+  --color-white: #fff;
+  --color-light-gray: #ececec;
+  --color-gray: #aeafb3;
+  --color-dark-text: rgb(63, 63, 63);
+  --color-link: #05759f;
+  --color-purple: #7a4e76;
+  --color-purple-hover: #b46dad;
+  --shadow-image: 2px 2px 5px var(--color-gray);
+  --radius-image: 4px;
+  --glass-bg: rgba(221, 221, 221, 0.14);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --glass-border: 1px solid rgba(221, 221, 221, 0.02);
+  --glass-blur: blur(2.5px);
+}
+
+/* --- Page root --- */
+.product-page {
+  background: var(--color-white);
+  min-height: 100vh;
+  padding-top: 7vh;
+}
+
+/* --- Navigation tabs --- */
+.product-page__nav {
+  border-top: 4px solid var(--color-light-gray);
+  border-bottom: 4px solid var(--color-light-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh;
+  width: 100%;
+}
+
+.product-page__nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  list-style: none;
+}
+
+.product-page__nav-item {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-gray);
+  font-size: 1.2em;
+  padding: 10px 15px;
+  transition: color 0.3s;
+  list-style: none;
+}
+
+.product-page__nav-item:hover {
+  color: black;
+}
+
+.product-page__nav-item--active {
+  color: var(--color-gray);
+  font-weight: bold;
+}
+
+.product-page__nav-underline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-gray);
+}
+
+/* --- Content wrapper --- */
+.product-page__content {
+  width: 70%;
+  margin: 2% auto;
+  padding-bottom: 2%;
+}
+
+/* --- Hero section (image + text side by side) --- */
+.product-page__hero {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-page__hero-text {
+  width: 40%;
+}
+
+.product-page__title {
+  font-weight: bold;
+  font-size: 3.5em;
+  line-height: 1.2em;
+}
+
+.product-page__light-color {
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  text-stroke: 1px #000;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.product-page__subtitle {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.product-page__subtitle--small {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.product-page__description {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+.product-page__hero-image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product-page__hero-image img {
+  width: 80%;
+  height: auto;
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-image);
+}
+
+/* --- Double section (two images + two spec cards) --- */
+.product-page__double {
+  display: flex;
+  margin-top: 8vh;
+  flex-direction: column;
+}
+
+.product-page__double-images {
+  display: flex;
+  justify-content: space-between;
+  gap: 2vw;
+}
+
+.product-page__double-images img {
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-image);
+  width: 100%;
+}
+
+.product-page__double-fig {
+  flex: 1;
+}
+
+.product-page__double-specs {
+  display: flex;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-top: 2vh;
+}
+
+/* --- Glassmorphism spec card --- */
+.product-page__spec-card {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  padding: 2% 3%;
+  width: 100%;
+  flex: 1;
+}
+
+.product-page__spec-card ul {
+  margin-top: 2%;
+}
+
+.product-page__spec-card ul li {
+  list-style: square;
+}
+
+.product-page__spec-value {
+  margin-bottom: 1vh;
+}
+
+/* --- Single section (one image + one spec card) --- */
+.product-page__single {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  align-items: flex-start;
+}
+
+.product-page__single-image {
+  width: 40%;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+
+.product-page__single-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-image);
+  object-fit: contain;
+}
+
+/* --- Triple section (three items in a row) --- */
+.product-page__triple {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.product-page__triple-text {
+  margin-bottom: 0;
+}
+
+.product-page__triple-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-top: 4%;
+}
+
+.product-page__triple-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  text-align: center;
+  flex: 1;
+}
+
+.product-page__triple-item img {
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-image);
+  transition: transform 0.8s ease-out;
+}
+
+.product-page__triple-item img:hover {
+  transform: translateY(-10px);
+}
+
+.product-page__triple-item--cover {
+  width: 20vw;
+  height: 25vh;
+  position: relative;
+}
+
+.product-page__triple-item--cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-page__triple-item--portfolio {
+  width: 30vw;
+  height: 35vh;
+  position: relative;
+}
+
+.product-page__triple-item--portfolio img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Fullwidth section (video + text) --- */
+.product-page__fullwidth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.product-page__fullwidth p {
+  text-align: center;
+  padding-top: 2vh;
+}
+
+.product-page__fullwidth iframe {
+  width: 80%;
+  height: 35vh;
+  margin: 0 auto;
+}
+
+/* --- Advantages list --- */
+.product-page__advantages-list {
+  padding: 2%;
+}
+
+.product-page__advantages-list ol li {
+  line-height: 5vh;
+  list-style: none;
+}
+
+/* --- Links in triple text --- */
+.product-page__triple-text a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.product-page__triple-text a:hover {
+  text-decoration: underline;
+}
+
+/* --- Triangle grid (doors only) --- */
+.product-page__triangle {
+  display: grid;
+  margin-top: 4%;
+  grid-template-areas: 'img img' 'desc1 desc2';
+  gap: 4%;
+}
+
+.product-page__triangle-image {
+  grid-area: img;
+}
+
+.product-page__triangle-image img {
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-image);
+  width: 100%;
+}
+
+.product-page__triangle-text {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  padding: 2% 3%;
+}
+
+.product-page__triangle-text--1 {
+  grid-area: desc1;
+}
+
+.product-page__triangle-text--2 {
+  grid-area: desc2;
+}
+
+/* --- Category label (balcony doors) --- */
+.product-page__category {
+  font-weight: bold;
+  margin-top: 1vh;
+  color: #333;
+}
+
+/* --- Index page (card grid) --- */
+.product-page__index-content {
+  width: 70%;
+  margin: 4% auto;
+}
+
+.product-page__index-title {
+  font-weight: bold;
+  font-size: 2.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-page__index-desc {
+  font-size: 1em;
+  line-height: 35px;
+  margin-top: 2%;
+  color: var(--color-dark-text);
+}
+
+.product-page__cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-top: 4%;
+}
+
+.product-page__card {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  overflow: hidden;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  box-shadow: var(--shadow-image);
+}
+
+.product-page__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-page__card-img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+.product-page__card-img--contain {
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.product-page__card-blur-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+}
+
+.product-page__card-blur-bg {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  object-fit: cover;
+  filter: blur(15px);
+  z-index: 0;
+}
+
+.product-page__card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 4% 4% 0;
+}
+
+.product-page__card-desc {
+  font-size: 0.9em;
+  color: rgb(100, 100, 100);
+  padding: 2% 4% 4%;
+}
+
+/* --- Animated line (IntersectionObserver) --- */
+.product-page__line {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: left;
+  margin: 3% 0;
+  width: 100vw;
+  height: 1.3vh;
+  background: #05759f;
+  transition: transform 0.8s ease-out;
+}
+
+.product-page__line--visible {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media screen and (max-width: 900px) {
+  .product-page__content,
+  .product-page__index-content {
+    width: 90%;
+  }
+
+  .product-page__hero {
+    flex-direction: column;
+  }
+
+  .product-page__hero-text {
+    width: 100%;
+  }
+
+  .product-page__title {
+    font-size: 2em;
+  }
+
+  .product-page__subtitle {
+    font-size: 1.5em;
+  }
+
+  .product-page__double-images,
+  .product-page__double-specs,
+  .product-page__single,
+  .product-page__triple-items,
+  .product-page__cards {
+    flex-direction: column;
+  }
+
+  .product-page__single {
+    flex-direction: column !important;
+  }
+
+  .product-page__single-image {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .product-page__triangle {
+    grid-template-areas: 'img' 'desc1' 'desc2';
+  }
+
+  .product-page__nav-item {
+    font-size: 0.9em;
+    padding: 8px 10px;
+  }
+
+  .product-page__fullwidth iframe {
+    width: 100%;
+    height: 25vh;
+  }
+}

@@ -1,24 +1,11 @@
 <script setup lang="ts">
-// Страница «Контакты» — АлюПроект
-
 useSeoData()
-
-const breadcrumbs = useBreadcrumbs()
 </script>
 
 <template>
-  <div>
-    <!-- Breadcrumbs -->
-    <AppBreadcrumbs :breadcrumbs="breadcrumbs" />
-
-    <!-- h1 — единственный на странице -->
-    <h1 class="text-3xl md:text-4xl font-bold text-center py-6">Контакты</h1>
-
-    <!-- ContactBlock (включает ContactForm внутри) -->
+  <div class="contacts-page">
     <ContactBlock />
-
-    <!-- Яндекс.Карты — ClientOnly с fallback -->
-    <section class="w-full">
+    <section class="contacts-page__map">
       <ClientOnly>
         <iframe
           src="https://yandex.ru/map-widget/v1/?um=constructor%3Afalse&amp;source=constructor&amp;ll=37.541249%2C55.900572&amp;z=15&amp;pt=37.541249%2C55.900572%2Cpm2rdm"
@@ -28,16 +15,10 @@ const breadcrumbs = useBreadcrumbs()
           allowfullscreen
           title="Карта — офис АлюПроект, Москва, Дмитровское шоссе 157, стр. 7"
           loading="lazy"
-          class="block"
         />
         <template #fallback>
-          <div class="w-full h-[400px] bg-gray-100 flex items-center justify-center">
-            <a
-              href="https://yandex.ru/maps/-/CDBimGN~"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:underline"
-            >
+          <div class="contacts-page__map-fallback">
+            <a href="https://yandex.ru/maps/-/CDBimGN~" target="_blank" rel="noopener noreferrer">
               Открыть карту на Яндекс.Картах
             </a>
           </div>
@@ -46,3 +27,48 @@ const breadcrumbs = useBreadcrumbs()
     </section>
   </div>
 </template>
+
+<style scoped>
+.contacts-page {
+  padding-top: 7vh;
+  background: white;
+}
+
+.contacts-page__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.contacts-page__map {
+  width: 100%;
+}
+
+.contacts-page__map iframe {
+  display: block;
+}
+
+.contacts-page__map-fallback {
+  width: 100%;
+  height: 400px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts-page__map-fallback a {
+  color: #05759f;
+}
+
+.contacts-page__map-fallback a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  .contacts-page__title {
+    font-size: 1.8rem;
+  }
+}
+</style>

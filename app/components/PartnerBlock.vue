@@ -251,6 +251,7 @@ const videos = [
   box-shadow:
     -31px 31px 65px #041724,
     31px -31px 65px #0c4162;
+    margin-bottom: 2%;
 }
 .partner-block__triangle {
   position: absolute;
@@ -350,7 +351,7 @@ const videos = [
   background-size: cover;
   width: 100%;
   min-height: 45vh;
-  margin-top: 10%;
+  margin-top: 2%;
 }
 .strong-aside__content {
   width: 95%;

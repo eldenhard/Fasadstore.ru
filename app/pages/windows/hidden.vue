@@ -1,316 +1,245 @@
 <script setup lang="ts">
-// Страница окон со скрытой створкой — /windows/hidden
-
 useSeoData()
-
-const breadcrumbs = useBreadcrumbs()
-
 useSchemaOrg({
   type: 'Product',
   data: {
     name: 'Окна со скрытой створкой ALUTECH',
     description:
-      'Алюминиевые окна со скрытой створкой ALUTECH ALT W72HS. На 20% больше площадь остекления, современный дизайн.',
+      'Алюминиевые окна со скрытой створкой ALUTECH ALT W72HS. На 20% больше площадь остекления.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
     manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
   }
 })
+const route = useRoute()
+const activeIndex = ref(2)
+const tabs = ['Окна классические', 'Окна панорамные', 'Скрытая створка']
+const paths = ['/windows/classic', '/windows/panorama', '/windows/hidden']
+watch(
+  () => route.path,
+  (p) => {
+    if (p.includes('classic')) activeIndex.value = 0
+    else if (p.includes('panorama')) activeIndex.value = 1
+    else if (p.includes('hidden')) activeIndex.value = 2
+  },
+  { immediate: true }
+)
 
-const tabItems = [
-  { label: 'Окна классические', to: '/windows/classic' },
-  { label: 'Окна панорамные', to: '/windows/panorama' },
-  { label: 'Скрытая створка', to: '/windows/hidden' }
-]
+const line1 = ref<HTMLElement | null>(null)
+const line2 = ref<HTMLElement | null>(null)
+useIntersectionObserver([line1, line2], (el: HTMLElement) => {
+  el.classList.add('product-page__line--visible')
+})
 </script>
-
 <template>
-  <div>
-    <AppBreadcrumbs :breadcrumbs="breadcrumbs" />
-
-    <div class="max-w-7xl mx-auto px-4 py-8">
-      <ProductTabs :items="tabItems" class="mb-10" />
-
-      <!-- Hero -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
-        <div>
-          <h1 class="text-4xl font-bold text-gray-900 mb-4">Скрытая створка</h1>
-          <p class="text-gray-600 text-lg leading-relaxed">
-            Данный вид алюминиевого профиля на 20% увеличивает площадь остекления. Вследствие чего
-            пропускает больше солнечного света в сравнении с классическим окном. Фасад вашего дома
+  <div class="product-page">
+    <nav class="product-page__nav">
+      <ul class="product-page__nav-list">
+        <li
+          v-for="(tab, index) in tabs"
+          :key="index"
+          :class="[
+            'product-page__nav-item',
+            { 'product-page__nav-item--active': activeIndex === index }
+          ]"
+          @click="navigateTo(paths[index])"
+        >
+          {{ tab }}
+          <div v-if="activeIndex === index" class="product-page__nav-underline" />
+        </li>
+      </ul>
+    </nav>
+    <main class="product-page__content">
+      <section class="product-page__hero">
+        <div class="product-page__hero-text" style="width: 60%">
+          <h1 class="product-page__title">Скрытая <br />створка</h1>
+          <p class="product-page__description">
+            Данный вид алюминиевого профиля на 20% увеличивает площадь остекления. В следствии чего
+            пропускает больше солнечного света. В сравнении с классическим окном. Фасад вашего дома
             выглядит современно и стильно благодаря одинаковому виду глухой и створочной частей
             окна.
           </p>
         </div>
-        <div>
-          <NuxtImg
-            src="/src/components/TypeWindow/assets/hidden_ph1.jpg"
-            alt="Окна со скрытой створкой ALUTECH"
-            width="600"
-            height="400"
-            loading="lazy"
-            class="w-full h-auto rounded-lg"
-          />
-        </div>
+        <figure class="product-page__hero-image">
+          <img src="/images/windows/hidden_ph1.jpg" alt="Окна со скрытой створкой ALUTECH" />
+        </figure>
       </section>
-      <!-- ALT W72HS -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
-        <div class="text-center">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4">Окна ALT W72HS</h2>
-          <NuxtImg
-            src="/src/components/TypeWindow/assets/фото 6.webp"
-            alt="Окна ALT W72HS"
-            width="500"
-            height="400"
-            loading="lazy"
-            class="w-full h-auto rounded-lg"
+      <section class="product-page__single" style="margin-top: 6%">
+        <figure class="product-page__single-image">
+          <h2 class="product-page__subtitle--small">Окна ALT W72HS</h2>
+          <img
+            src="/images/windows/photo6.webp"
+            alt="ALT W72HS"
+            style="height: 100%; width: 100%; object-fit: contain"
           />
-        </div>
-        <div class="bg-gray-50 rounded-lg p-6">
-          <p class="text-lg mb-2">
-            <span class="text-3xl">🌡️</span>
-            R<sub>0</sub> = 0,67 М²·°C/Вт.
+        </figure>
+        <div class="product-page__spec-card">
+          <p class="product-page__spec-value">R₀ = 0,67 М²·°C/Вт.</p>
+          <p class="product-page__spec-value">
+            <strong>До 48 ДБ</strong>.<br />Защищают даже от шума автомагистралей
           </p>
-          <p class="text-lg mb-4">
-            <span class="text-3xl">🔇</span>
-            <strong>До 48 ДБ</strong>. Защищают даже от шума автомагистралей
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <ul>
             <li>Глубина монтажа: 72 мм</li>
             <li>Толщина стеклопакетов: 50 мм</li>
             <li>Поворотный, откидной и поворотно-откидной механизмы открывания створок</li>
             <li>Максимально высокие теплотехнические характеристики окон</li>
-            <li>Большой выбор цветов (шкала RAL) и декоративных приемов для профиля</li>
+            <li>
+              Большой выбор цветов (шкала RAL) и декоративных приемов для профиля (порошковое
+              окрашивание, анодирование)
+            </li>
             <li>Долгий срок службы оконных конструкций</li>
             <li>Максимальная высота створки 2450 мм</li>
             <li>Максимальная ширина створки 1600 мм</li>
           </ul>
         </div>
       </section>
-
-      <!-- Три вида покрытий -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Три вида покрытий</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/ph2.jpg"
-              alt="Полимерное покрытие"
-              width="300"
-              height="250"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">
+      <div ref="line1" class="product-page__line"></div>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle">Три вида покрытий</h2>
+        </div>
+        <div class="product-page__triple-items">
+          <div class="product-page__triple-item product-page__triple-item--cover">
+            <img src="/images/windows/ph2.jpg" alt="Полимерное покрытие" />
+            <p>
               Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
               также с эффектом муар.
             </p>
           </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/ph3.webp"
-              alt="Декорирование под дерево"
-              width="300"
-              height="250"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Декорирование под дерево</p>
+          <div class="product-page__triple-item product-page__triple-item--cover">
+            <img src="/images/windows/ph3.webp" alt="Декорирование под дерево" />
+            <p>Декорирование под дерево</p>
           </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/ph4.jpg"
-              alt="Анодирование"
-              width="300"
-              height="250"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">
+          <div class="product-page__triple-item product-page__triple-item--cover">
+            <img src="/images/windows/ph4.jpg" alt="Анодирование" />
+            <p>
               Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
               срок его службы.
             </p>
           </div>
         </div>
       </section>
-
-      <!-- Технические решения -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">
-          Технические решения, помогающие окнам Алютех
-          <strong>защищать</strong> дом от шума и холода
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 5.webp"
-              alt="Звукоизоляционные вставки"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Звукоизоляционные вставки из вспененного материала</p>
+      <div ref="line2" class="product-page__line"></div>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle">
+            Технические решения, помогающие окнам Алютех <br /><strong>защищать</strong> дом от шума
+            и холода
+          </h2>
+        </div>
+        <div class="product-page__triple-items">
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo5.webp" alt="Звукоизоляционные вставки" />
+            <p>Звукоизоляционные вставки из вспененного материала</p>
           </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 6.webp"
-              alt="Система уплотнителей"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Многоконтурная система уплотнителей</p>
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo6.webp" alt="Система уплотнителей" />
+            <p>Многоконтурная система уплотнителей</p>
           </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 7.webp"
-              alt="Стеклопакеты"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Стеклопакеты до 58 мм</p>
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo7.webp" alt="Стеклопакеты" />
+            <p>Стеклопакеты до 58 мм</p>
           </div>
         </div>
       </section>
-
-      <!-- Безопасность -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">
-          <strong>Безопасность</strong> окон Алютех
-        </h2>
-        <p class="text-gray-600 text-center mb-8">
-          Установив конструкции Алютех, за безопасность вашего дома можно не беспокоиться. Окна
-          Алютех оснащены максимальным количеством противовзломных комплектующих.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Класс защиты A</h3>
-            <p class="text-gray-700 leading-relaxed">
-              Противовзломные штапики — предотвращают выпадение стеклопакета. Ударостойкое
-              заполнение — устойчиво к механическим повреждениям. Фурнитура — исключает риск
-              самостоятельного открытия окон Алютех детьми.
-            </p>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle" style="text-align: center">
+            <strong>Безопасность</strong> окон Алютех
+          </h2>
+          <p class="product-page__description" style="text-align: center">
+            Установив конструкции Алютех за безопасность вашего дома можно не беспокоиться.<br />Окна
+            Алютех оснащены максимальным количеством противовзломных комплектующих
+          </p>
+        </div>
+      </section>
+      <section class="product-page__hero" style="margin-top: 4%">
+        <div class="product-page__hero-text">
+          <h2 class="product-page__subtitle">Класс защиты A</h2>
+          <p class="product-page__description">
+            Противовзломные штапики - предотвращают выпадение стеклопакета<br />Ударостойкое
+            заполнение – устойчиво к механическим повреждениям<br />Фурнитура - исключает риск
+            самостоятельного открытия окон Алютех детьми
+          </p>
+        </div>
+        <figure class="product-page__hero-image" style="width: 80%">
+          <img src="/images/windows/photo8.jpg" alt="Безопасность класс A" />
+        </figure>
+      </section>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle">Типы ручек</h2>
+        </div>
+        <div class="product-page__triple-items">
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo10.webp" alt="Видимый редуктор" />
+            <p>Видимый редуктор</p>
           </div>
-          <div>
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 8.jpg"
-              alt="Безопасность окон Алютех класс A"
-              width="500"
-              height="350"
-              loading="lazy"
-              class="w-full h-auto rounded-lg"
-            />
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo11.webp" alt="Скрытый редуктор" />
+            <p>Скрытый редуктор</p>
+          </div>
+          <div class="product-page__triple-item">
+            <img src="/images/windows/photo12.webp" alt="Ручка с замком" />
+            <p>Ручка с замком</p>
           </div>
         </div>
       </section>
-
-      <!-- Типы ручек -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Типы ручек</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 10.webp"
-              alt="Видимый редуктор"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-contain rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Видимый редуктор</p>
-          </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 11.webp"
-              alt="Скрытый редуктор"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-contain rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Скрытый редуктор</p>
-          </div>
-          <div class="text-center">
-            <NuxtImg
-              src="/src/components/TypeWindow/assets/фото 12.webp"
-              alt="Ручка с замком"
-              width="300"
-              height="200"
-              loading="lazy"
-              class="w-full h-48 object-contain rounded-lg mb-3"
-            />
-            <p class="text-gray-700">Ручка с замком</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Видео -->
-      <section class="mb-16 text-center">
-        <ClientOnly>
-          <iframe
+      <section class="product-page__fullwidth">
+        <ClientOnly
+          ><iframe
             width="720"
             height="405"
             src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/"
             frameborder="0"
             allow="clipboard-write; autoplay"
             allowfullscreen
-            class="mx-auto max-w-full rounded-lg"
-          />
-        </ClientOnly>
-        <p class="text-gray-600 mt-4">
-          Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу:
-          Москва, Дмитровское шоссе д.157, стр.3.
+        /></ClientOnly>
+        <p>
+          Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
+          Москва, Дмитровское шоссе д.157, стр3.
         </p>
-        <p class="text-gray-600">
-          Или получить консультацию по телефону
-          <a href="tel:+74957655026" class="text-blue-600 hover:underline">8(495)765-50-26</a>
-        </p>
+        <p>Или получить консультацию по телефону <a href="tel:+74957655026">8(495)765-50-26</a></p>
       </section>
-
-      <!-- Преимущества -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">
-          Преимущества алюминиевых окон ALUTECH
-        </h2>
-        <ol class="space-y-4 max-w-3xl mx-auto list-decimal list-inside text-gray-700">
-          <li>
-            <strong>Долгий срок службы:</strong> Профили ALUTECH служат более 50 лет, при этом
-            отдельные комплектующие, такие как уплотнители и фурнитура, можно легко заменить.
-          </li>
-          <li>
-            <strong>Высокая прочность:</strong> Алюминиевые профили Алютех устойчивы к весовым и
-            ветровым нагрузкам, а также к резким перепадам температур и коррозии.
-          </li>
-          <li>
-            <strong>Отличная герметизация:</strong> Качественные уплотнители предотвращают попадание
-            пыли, влаги и неприятных запахов в помещение.
-          </li>
-          <li>
-            <strong>Удобная установка:</strong> Небольшая нагрузка на несущие конструкции позволяет
-            избежать дополнительных работ по укреплению.
-          </li>
-          <li>
-            <strong>Разнообразие дизайна:</strong> Можно выбрать любой цвет и тип открывания окон,
-            включая глухие, распашные, раздвижные или поворотные варианты.
-          </li>
-          <li>
-            <strong>Доступная цена:</strong> Низкая стоимость при высоком качестве делает окна
-            ALUTECH конкурентоспособными на рынке.
-          </li>
-        </ol>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle">Преимущества алюминиевых окон ALUTECH</h2>
+        </div>
+        <div class="product-page__advantages-list">
+          <ol>
+            <li>
+              <strong>Долгий срок службы:</strong> Профили ALUTECH служат более 50 лет, при этом
+              отдельные комплектующие, такие как уплотнители и фурнитура, можно легко заменить.
+            </li>
+            <li>
+              <strong>Высокая прочность:</strong> Алюминиевые профили Алютех устойчивы к весовым и
+              ветровым нагрузкам, а также к резким перепадам температур и коррозии.
+            </li>
+            <li>
+              <strong>Отличная герметизация:</strong> Качественные уплотнители предотвращают
+              попадание пыли, влаги и неприятных запахов в помещение.
+            </li>
+            <li>
+              <strong>Удобная установка:</strong> Небольшая нагрузка на несущие конструкции
+              позволяет избежать дополнительных работ по укреплению.
+            </li>
+            <li>
+              <strong>Разнообразие дизайна:</strong> Можно выбрать любой цвет и тип открывания окон,
+              включая глухие, распашные, раздвижные или поворотные варианты.
+            </li>
+            <li>
+              <strong>Доступная цена:</strong> Низкая стоимость при высоком качестве делает окна
+              ALUTECH конкурентоспособными на рынке.
+            </li>
+          </ol>
+        </div>
       </section>
-
-      <!-- Портфолио -->
-      <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">
-          Наши выполненные работы:
-          <NuxtLink to="/objects" class="text-blue-600 hover:underline">Все проекты</NuxtLink>
-        </h2>
+      <section class="product-page__triple">
+        <div class="product-page__triple-text">
+          <h2 class="product-page__subtitle">
+            Наши выполненные работы: <NuxtLink to="/objects">Все проекты</NuxtLink>
+          </h2>
+        </div>
       </section>
-    </div>
+    </main>
   </div>
 </template>

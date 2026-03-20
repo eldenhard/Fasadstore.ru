@@ -85,35 +85,30 @@ onUnmounted(() => stopAutoplay())
         'slider-hero__slide--right': i !== current && direction === 'prev'
       }"
     >
-      <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+      <div class="slider-hero__grid">
         <!-- Текстовая часть -->
-        <div class="slider-hero__text flex items-center order-1 md:order-none">
-          <div class="w-[90%] md:w-1/2 mx-auto py-6">
-            <h2
-              class="text-white text-[max(3vw,25px)]"
-              style="font-family: 'Arial Black', sans-serif"
-            >
+        <div class="slider-hero__text">
+          <div class="slider-hero__text-inner">
+            <h2 class="slider-hero__title">
               {{ slide.title }}
             </h2>
-            <div class="w-full h-[3px] bg-white mt-3 hidden md:block" />
-            <p class="text-[#d4d4d4] font-semibold text-xs md:text-sm mt-4">
+            <div class="slider-hero__divider" />
+            <p class="slider-hero__desc">
               {{ slide.description }}
             </p>
-            <button class="slider-hero__btn mt-4"><span>Узнать больше</span></button>
+            <button class="slider-hero__btn"><span>Узнать больше</span></button>
           </div>
         </div>
         <!-- Изображение -->
-        <div class="relative order-2 md:order-none max-h-[25vh] md:max-h-full overflow-hidden">
+        <div class="slider-hero__image-wrap">
           <NuxtImg
             :src="slide.image"
             :alt="slide.alt"
-            class="w-full h-full object-cover"
+            class="slider-hero__image"
             width="800"
             height="600"
           />
-          <div
-            class="absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-b from-transparent to-black/70"
-          />
+          <div class="slider-hero__gradient" />
         </div>
       </div>
     </div>
@@ -202,6 +197,60 @@ onUnmounted(() => stopAutoplay())
   background: linear-gradient(177deg, rgba(1, 3, 5, 1) 7%, rgba(4, 21, 33, 1) 89%);
   height: 100%;
   z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.slider-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.slider-hero__text-inner {
+  width: 50%;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.slider-hero__title {
+  color: white;
+  font-size: max(3vw, 25px);
+  font-family: 'Arial Black', sans-serif;
+}
+
+.slider-hero__divider {
+  width: 100%;
+  height: 3px;
+  background: white;
+  margin-top: 0.75rem;
+}
+
+.slider-hero__desc {
+  color: #d4d4d4;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.slider-hero__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-hero__gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
 }
 
 /* Стрелки — по центру всего блока (обе колонки) */
@@ -277,6 +326,7 @@ onUnmounted(() => stopAutoplay())
     opacity 300ms cubic-bezier(0.694, 0, 0.335, 1),
     background-color 100ms cubic-bezier(0.694, 0, 0.335, 1),
     color 100ms cubic-bezier(0.694, 0, 0.335, 1);
+    margin-top: 2%;
 }
 .slider-hero__btn::before {
   content: '';
@@ -303,6 +353,25 @@ onUnmounted(() => stopAutoplay())
 @media screen and (max-width: 900px) {
   .slider-hero__text {
     margin-bottom: 4%;
+  }
+  .slider-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .slider-hero__text-inner {
+    width: 90%;
+  }
+  .slider-hero__image-wrap {
+    max-height: 25vh;
+    order: 2;
+  }
+  .slider-hero__text {
+    order: 1;
+  }
+  .slider-hero__divider {
+    display: none;
+  }
+  .slider-hero__desc {
+    font-size: 0.75rem;
   }
 }
 </style>
