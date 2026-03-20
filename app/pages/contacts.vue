@@ -30,7 +30,6 @@ useSeoData()
 
 <style scoped>
 .contacts-page {
-  padding-top: 7vh;
   background: white;
 }
 

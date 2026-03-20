@@ -10,7 +10,6 @@ useSeoData()
 
 <style scoped>
 .objects-page {
-  padding-top: 7vh;
   background: white;
 }
 </style>

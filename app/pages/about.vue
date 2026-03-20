@@ -259,7 +259,6 @@ function changeImage(imageSrc: string) {
 <style scoped>
 .about-page {
   background: white;
-  padding-top: 7vh;
 }
 .pic-about {
   background: url('/images/about/ptt_about.jpg') center/cover no-repeat;
