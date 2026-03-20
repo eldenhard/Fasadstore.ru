@@ -5,6 +5,9 @@
 import { Pagination, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
+const { baseURL } = useRuntimeConfig().app
+const b = (p: string) => `${baseURL}${p.startsWith('/') ? p.slice(1) : p}`
+
 const swiperModules = [Pagination, Autoplay]
 
 const partners = [
@@ -21,6 +24,8 @@ const videos = [
   { id: 'RkZb4nDh0wo', title: 'Продукция Алютех 2' },
   { id: 'dnljNeoMNbU', title: 'Продукция Алютех 3' }
 ]
+
+const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 </script>
 
 <template>
@@ -98,7 +103,7 @@ const videos = [
       </div>
 
       <!-- StrongAside: Работаем с 2008 года (inside partner-block as original, margin-top: 10%) -->
-      <section class="strong-aside">
+      <section class="strong-aside" :style="{ backgroundImage: strongAsideBg }">
         <div class="strong-aside__content">
           <div class="strong-aside__left">
             <h4>Работаем с светопрозрачными конструкциями с 2008 года</h4>
@@ -251,7 +256,7 @@ const videos = [
   box-shadow:
     -31px 31px 65px #041724,
     31px -31px 65px #0c4162;
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 .partner-block__triangle {
   position: absolute;
@@ -347,7 +352,6 @@ const videos = [
 
 /* ── StrongAside ── */
 .strong-aside {
-  background-image: url('/images/partners/bee_overlay.png');
   background-size: cover;
   width: 100%;
   min-height: 45vh;

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 useSeoData()
-const activeImage = ref('/images/about/office_p.jpg')
+const { baseURL } = useRuntimeConfig().app
+const b = (path: string) => `${baseURL}${path.startsWith('/') ? path.slice(1) : path}`
+
+const activeImage = ref(b('/images/about/office_p.jpg'))
 const galleryImages = ref([
-  '/images/about/office1.jpg',
-  '/images/about/office3.jpg',
-  '/images/about/shop.jpg'
+  b('/images/about/office1.jpg'),
+  b('/images/about/office3.jpg'),
+  b('/images/about/shop.jpg')
 ])
 function changeImage(imageSrc: string) {
   galleryImages.value.push(activeImage.value)
@@ -12,10 +15,16 @@ function changeImage(imageSrc: string) {
   if (index !== -1) galleryImages.value.splice(index, 1)
   activeImage.value = imageSrc
 }
+
+const bgPicAbout = `url('${b('/images/about/ptt_about.jpg')}') center/cover no-repeat`
+const bgFloor = `url('${b('/images/about/floor.jpg')}')`
+const bgInstraction = `url('${b('/images/about/instraction.jpg')}')`
+const bgAmchair = `url('${b('/images/about/amchair.jpg')}')`
+const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center/cover no-repeat`
 </script>
 <template>
   <div class="about-page">
-    <section class="pic-about">
+    <section class="pic-about" :style="{ background: bgPicAbout }">
       <h3>О компании</h3>
       <div class="pic-about__text">
         <p>
@@ -25,7 +34,11 @@ function changeImage(imageSrc: string) {
       </div>
     </section>
     <section class="about-company">
-      <img src="/images/about/XXL.jpg" alt="Алюминиевые конструкции" class="first-img" /><img
+      <NuxtImg
+        src="/images/about/XXL.jpg"
+        alt="Алюминиевые конструкции"
+        class="first-img"
+      /><NuxtImg
         src="/images/about/maxresdefault-1.jpg"
         alt="Алюминиевые фасады"
         class="second-img"
@@ -89,7 +102,7 @@ function changeImage(imageSrc: string) {
     </section>
     <section class="three-block-wrapper">
       <div class="three-block">
-        <div class="three-block__card" style="background-image: url('/images/about/floor.jpg')">
+        <div class="three-block__card" :style="{ backgroundImage: bgFloor }">
           <div class="three-block__overlay">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -109,10 +122,7 @@ function changeImage(imageSrc: string) {
             <p>Стоимость работ фиксируется</p>
           </div>
         </div>
-        <div
-          class="three-block__card"
-          style="background-image: url('/images/about/instraction.jpg')"
-        >
+        <div class="three-block__card" :style="{ backgroundImage: bgInstraction }">
           <div class="three-block__overlay">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +141,7 @@ function changeImage(imageSrc: string) {
             <p>5 лет гарантии</p>
           </div>
         </div>
-        <div class="three-block__card" style="background-image: url('/images/about/amchair.jpg')">
+        <div class="three-block__card" :style="{ backgroundImage: bgAmchair }">
           <div class="three-block__overlay">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +164,7 @@ function changeImage(imageSrc: string) {
       </div>
     </section>
     <section class="dark-section">
-      <div class="dark-section__bg">
+      <div class="dark-section__bg" :style="{ background: bgDarkOverlay }">
         <div class="dark-section__header">
           <h3>ООО "Алюминевые системы"</h3>
           <p>Мы помогаем создавать лицо города</p>
@@ -250,7 +260,7 @@ function changeImage(imageSrc: string) {
           </button>
         </div>
         <div class="woman-block">
-          <img src="/images/about/girl_right.png" alt="Специалист компании" />
+          <NuxtImg src="/images/about/girl_right.png" alt="Специалист компании" />
         </div>
       </div>
     </section>
@@ -261,7 +271,6 @@ function changeImage(imageSrc: string) {
   background: white;
 }
 .pic-about {
-  background: url('/images/about/ptt_about.jpg') center/cover no-repeat;
   filter: brightness(90%);
   width: 100%;
   height: 60vh;
@@ -480,7 +489,6 @@ function changeImage(imageSrc: string) {
   position: relative;
 }
 .dark-section__bg {
-  background: url('/images/about/about_why_overlay.png') center/cover no-repeat;
   width: 100%;
   height: 100%;
 }
