@@ -29,6 +29,5 @@ useSchemaOrg({
     <MiniAbout />
     <DirectionWork />
     <PartnerBlock />
-    <ContactBlock />
   </div>
 </template>

@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="bg-gray-800 text-gray-400 mt-12">
+  <footer class="bg-[#26272b] text-[#737373] mt-12">
     <div class="max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Информация о компании -->
@@ -120,3 +120,13 @@ const currentYear = new Date().getFullYear()
     </div>
   </footer>
 </template>
+
+<style scoped>
+footer a:hover {
+  color: #b46dad;
+}
+footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+}
+</style>

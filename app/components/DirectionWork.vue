@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Направления деятельности (десктоп) — Tailwind CSS v4
+// Направления деятельности
 // Перенос из src/components/DirectionJob/DirectionWork.vue
 
 interface DirectionCard {
@@ -12,151 +12,227 @@ interface DirectionCard {
 
 const directions: DirectionCard[] = [
   {
-    title: 'Алюминиевые окна',
+    title: 'Алюминевые окна',
     brand: 'Алютех (ALUTECH)',
     description:
       'Окна премиум-класса теплые, созданные по индивидуальным заказам и сочетающие в себе стиль и надежность.',
-    image: '/src/components/DirectionJob/assets/alum_window.png',
+    image: '/images/directions/alum_window.png',
     to: '/windows'
   },
   {
-    title: 'Алюминиевые раздвижные двери',
+    title: 'Алюминевые раздвижные двери',
     brand: 'Алютех (ALUTECH)',
     description:
-      'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления.',
-    image: '/src/components/DirectionJob/assets/alum_razd_door.png',
+      'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления',
+    image: '/images/directions/alum_razd_door.png',
     to: '/doors'
   },
   {
     title: 'Остекление террас и беседок',
     brand: 'Алютех (ALUTECH)',
     description:
-      'Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах.',
-    image: '/src/components/DirectionJob/assets/terrace.jpg'
+      'Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах',
+    image: '/images/directions/terrace.jpg'
   },
   {
-    title: 'Остекление коттеджей',
+    title: 'Остекление котеджей',
     brand: 'Алютех (ALUTECH)',
-    description: 'Предлагаем все виды остекления для коттеджей и загородных домов под ключ.',
-    image: '/src/components/DirectionJob/assets/villa.png'
+    description: 'Предлагаем все виды остекления для коттеджей и загородных домов под ключ',
+    image: '/images/directions/villa.png'
   },
   {
-    title: 'Алюминиевые двери',
+    title: 'Алюминевые двери',
     brand: 'Алютех (ALUTECH)',
     description:
       'Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией.',
-    image: '/src/components/DirectionJob/assets/alum_doors.jpg'
+    image: '/images/directions/alum_doors.jpg'
   },
   {
     title: 'Зимние сады',
     brand: 'Алютех (ALUTECH)',
-    description: 'Остекление зимних садов под ключ.',
-    image: '/src/components/DirectionJob/assets/winter_garden.jpg'
+    description: 'Остекление зимних садов под ключ',
+    image: '/images/directions/winter_garden.jpg'
   },
   {
     title: 'Остекление фасадов, витражи',
     brand: 'Алютех (ALUTECH)',
-    description: 'Витражное (панорамное) остекление для сплошного многоэтажного остекления.',
-    image: '/src/components/DirectionJob/assets/fasad.png'
+    description: 'Витражное (панорамное) остекление для сплошного многоэтажного остекления',
+    image: '/images/directions/fasad.png'
   },
   {
     title: 'Деревянные окна',
     brand: 'Россия',
-    description: 'Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево.',
-    image: '/src/components/DirectionJob/assets/wood.jpg'
+    description: 'Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево',
+    image: '/images/directions/wood.jpg'
   },
   {
     title: 'Гаражные ворота',
     brand: 'Алютех (ALUTECH)',
-    description:
-      'Гаражные секционные ворота — одно из самых популярных и современных решений, максимально удобны в эксплуатации.',
-    image: '/src/components/DirectionJob/assets/garage_doors.png'
+    description: 'Гаражные секционные ворота, максимально удобны в эксплуатации',
+    image: '/images/directions/garage_doors.png'
   }
 ]
 </script>
 
 <template>
-  <section class="max-w-6xl mx-auto px-4 py-8">
-    <p class="text-blue-400 font-bold text-2xl lg:text-3xl mb-8">НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
-
-    <!-- Десктопная сетка карточек (скрыта на мобильных < 1024px) -->
-    <ul class="hidden lg:grid grid-cols-3 gap-6 list-none p-0">
+  <section class="direction-work">
+    <p class="direction-work__title">НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
+    <ul class="direction-work__cards">
       <li v-for="card in directions" :key="card.title">
-        <NuxtLink
-          v-if="card.to"
-          :to="card.to"
-          class="group relative block h-[45vh] rounded-lg overflow-hidden shadow-lg cursor-pointer"
-        >
+        <NuxtLink v-if="card.to" :to="card.to" class="card">
           <NuxtImg
             :src="card.image"
             :alt="card.title"
-            class="w-full h-4/5 object-cover brightness-90"
+            class="card__image"
             width="400"
             height="300"
             loading="lazy"
           />
-          <div
-            class="absolute bottom-0 left-0 right-0 bg-white rounded-t-xl translate-y-full group-hover:translate-y-0 transition-transform duration-200"
-          >
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900">{{ card.title }}</h3>
-              <span class="text-sm text-gray-500">{{ card.brand }}</span>
+          <div class="card__overlay">
+            <div class="card__header">
+              <h3 class="card__title">{{ card.title }}</h3>
+              <span class="card__status">{{ card.brand }}</span>
             </div>
-            <p class="px-4 pb-4 text-sm text-gray-700 line-clamp-3">
-              {{ card.description }}
-            </p>
+            <p class="card__description">{{ card.description }}</p>
           </div>
         </NuxtLink>
-        <div
-          v-else
-          class="group relative block h-[45vh] rounded-lg overflow-hidden shadow-lg cursor-pointer"
-        >
+        <a v-else class="card">
           <NuxtImg
             :src="card.image"
             :alt="card.title"
-            class="w-full h-4/5 object-cover brightness-90"
+            class="card__image"
             width="400"
             height="300"
             loading="lazy"
           />
-          <!-- Оверлей при наведении -->
-          <div
-            class="absolute bottom-0 left-0 right-0 bg-white rounded-t-xl translate-y-full group-hover:translate-y-0 transition-transform duration-200"
-          >
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900">{{ card.title }}</h3>
-              <span class="text-sm text-gray-500">{{ card.brand }}</span>
+          <div class="card__overlay">
+            <div class="card__header">
+              <h3 class="card__title">{{ card.title }}</h3>
+              <span class="card__status">{{ card.brand }}</span>
             </div>
-            <p class="px-4 pb-4 text-sm text-gray-700 line-clamp-3">
-              {{ card.description }}
-            </p>
+            <p class="card__description">{{ card.description }}</p>
           </div>
-          <NuxtImg
-            :src="card.image"
-            :alt="card.title"
-            class="w-full h-4/5 object-cover brightness-90"
-            width="400"
-            height="300"
-            loading="lazy"
-          />
-          <div
-            class="absolute bottom-0 left-0 right-0 bg-white rounded-t-xl translate-y-full group-hover:translate-y-0 transition-transform duration-200"
-          >
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900">{{ card.title }}</h3>
-              <span class="text-sm text-gray-500">{{ card.brand }}</span>
-            </div>
-            <p class="px-4 pb-4 text-sm text-gray-700 line-clamp-3">
-              {{ card.description }}
-            </p>
-          </div>
-        </div>
+        </a>
       </li>
     </ul>
-
-    <!-- Мобильная версия (< 1024px) -->
-    <div class="lg:hidden">
+    <div class="direction-work__mobile">
       <DirectionWorkMobile />
     </div>
   </section>
 </template>
+
+<style scoped>
+.direction-work {
+  width: 75%;
+  margin: 0 auto;
+}
+.direction-work__title {
+  color: rgb(202, 217, 245);
+  margin-top: 4%;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-size: max(20px, 2vw);
+  font-weight: 700;
+  line-height: 1em;
+}
+.direction-work__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4%;
+  padding: 0;
+  list-style-type: none;
+}
+.card {
+  position: relative;
+  display: block;
+  height: 45vh;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow:
+    -31px 31px 65px #041724,
+    31px -31px 65px #0c4162;
+  transition: 0.3s box-shadow ease-in-out;
+}
+.card:hover {
+  box-shadow:
+    -31px 31px 65px #041724,
+    21px -21px 55px #196797;
+}
+.card__image {
+  width: 100%;
+  min-height: 80%;
+  height: auto;
+  filter: brightness(89%);
+}
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 8px;
+  background-color: white;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+}
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+.card__header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  padding: 1.5em;
+  border-radius: 20px 0 0 0;
+  background-color: white;
+  transform: translateY(-100%);
+  transition: 0.2s ease-in-out;
+}
+.card:hover .card__header {
+  transform: translateY(0);
+}
+.card__title {
+  font-size: 1.1em;
+  margin: 0;
+  color: #1b1b1b;
+}
+.card__status {
+  font-size: 1em;
+  font-weight: normal;
+  color: #363636;
+}
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: rgb(29, 29, 29);
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.direction-work__mobile {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .direction-work__title {
+    text-align: center;
+    white-space: nowrap;
+    margin-top: 4%;
+  }
+  .direction-work__cards {
+    display: none;
+  }
+  .direction-work__mobile {
+    display: block;
+  }
+  .direction-work {
+    width: 90%;
+    margin-top: 4%;
+  }
+}
+</style>
