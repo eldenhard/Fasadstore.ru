@@ -20,9 +20,9 @@ const partners = [
 ]
 
 const videos = [
-  { id: 'IQgRz7pdrfc', title: 'Продукция Алютех 1' },
-  { id: 'RkZb4nDh0wo', title: 'Продукция Алютех 2' },
-  { id: 'dnljNeoMNbU', title: 'Продукция Алютех 3' }
+  { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Продукция Алютех 1' },
+  { src: '0ef116c9afce3cea236c4a5986083755/', title: 'Продукция Алютех 2' },
+  { src: '85033df46441920caede6d19eabf80e5/', title: 'Продукция Алютех 3' }
 ]
 
 const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
@@ -46,9 +46,9 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
         <!-- Видео -->
         <ClientOnly>
           <div class="partner-block__videos">
-            <div v-for="video in videos" :key="video.id" class="partner-block__video">
+            <div v-for="video in videos" :key="video.src" class="partner-block__video">
               <iframe
-                :src="`https://www.youtube.com/embed/${video.id}`"
+                :src="`https://rutube.ru/play/embed/${video.src}`"
                 :title="video.title"
                 frameborder="0"
                 allow="
@@ -68,7 +68,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
             <div class="partner-block__videos">
               <div
                 v-for="video in videos"
-                :key="video.id"
+                :key="video.src"
                 class="partner-block__video partner-block__video--placeholder"
               />
             </div>

@@ -38,7 +38,8 @@ const directions: DirectionCard[] = [
     title: 'Остекление котеджей',
     brand: 'Алютех (ALUTECH)',
     description: 'Предлагаем все виды остекления для коттеджей и загородных домов под ключ',
-    image: '/images/directions/villa.png'
+    image: '/images/directions/villa.png',
+    to: '/cottages'
   },
   {
     title: 'Алюминевые двери',

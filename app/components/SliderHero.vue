@@ -93,6 +93,7 @@ onUnmounted(() => stopAutoplay())
               {{ slide.title }}
             </h2>
             <div class="slider-hero__divider" />
+            <br>
             <p class="slider-hero__desc">
               {{ slide.description }}
             </p>
@@ -227,10 +228,9 @@ onUnmounted(() => stopAutoplay())
 }
 
 .slider-hero__desc {
-  color: #d4d4d4;
+  color: var(--colorGrey);
+  margin-top: 2%;
   font-weight: 600;
-  font-size: 0.875rem;
-  margin-top: 1rem;
 }
 
 .slider-hero__image-wrap {
@@ -326,7 +326,7 @@ onUnmounted(() => stopAutoplay())
     opacity 300ms cubic-bezier(0.694, 0, 0.335, 1),
     background-color 100ms cubic-bezier(0.694, 0, 0.335, 1),
     color 100ms cubic-bezier(0.694, 0, 0.335, 1);
-    margin-top: 2%;
+  margin-top: 2%;
 }
 .slider-hero__btn::before {
   content: '';

@@ -2,7 +2,49 @@
 @import '@nuxt/ui';
 @import './product-page.css';
 
+:root {
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 992px;
+  --bs-breakpoint-xl: 1200px;
+  --bs-breakpoint-xxl: 1400px;
+
+  --backgroundDarkBlue: #041e2f;
+  --backgroundPurple: #7a4e76;
+  --backgroundPurpleHover: #b46dad;
+  --backgroundBlue: #082c43;
+  --backgroundDarkBlue: #0e0a1d;
+  --backgroundBlack: #111111;
+  --colorGrey: rgb(212, 212, 212);
+  --colorBlue: rgb(202, 217, 245);
+  --colorRed: #e61818;
+  --background: #4285f4;
+  --icon-color: #344955;
+  --width: 50px;
+  --height: 50px;
+  --border-radius: 100%;
+}
+
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arial', sans-serif;
   background: #082c43;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }

@@ -1,9 +1,4 @@
-/* ============================================
-   product-page.css — Shared BEM styles for
-   window & door product pages
-   ============================================ */
 
-/* --- Variables (CSS custom properties) --- */
 :root {
   --color-white: #fff;
   --color-light-gray: #ececec;
