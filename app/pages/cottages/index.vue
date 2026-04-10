@@ -17,274 +17,212 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
 })
 </script>
 
-<style>
-.glass-cottages{
-    height: 100vh;
-   
-}
-</style>
-
 <template>
-  <div class="product-page">
+  <div class="glass-cottages">
+    <div class="glass-cottages__header">
+      <NuxtImg src="/images/cottages/1.jpg" alt="Остекление коттеджей" class="glass-cottages__bg" />
 
-    <main class="product-page__content">
-      <section class="product-page__hero">
-        <div class="product-page__hero-text">
-          <p class="product-page__title">Окна классические</p>
-          <p class="product-page__description">
-            Алюминиевые окна ALUTECH (Алютех) универсальны. Они могут устанавливаться в любых
-            помещениях – в детской, спальне на кухне. Алюминиевые окна энергоэффективны и безопасны
-            в использовании. Каждое изделие проходит многоступенчатый контроль качества.
-          </p>
-        </div>
-        <figure class="product-page__hero-image">
-          <img src="/images/windows/alum_window.png" alt="Классические окна ALUTECH" />
-        </figure>
-      </section>
-      <section class="product-page__double">
-        <div class="product-page__double-images">
-          <figure class="product-page__double-fig">
-            <h4 class="product-page__subtitle--small">Окна с термоизоляцией ALT W72</h4>
-            <img src="/images/windows/photo2.jpg" alt="ALT W72" />
-          </figure>
-          <figure class="product-page__double-fig">
-            <h4 class="product-page__subtitle--small">Окна c повышенной термоизоляцией ALT W77</h4>
-            <img src="/images/windows/photo3.jpg" alt="ALT W77" />
-          </figure>
-        </div>
-        <div class="product-page__double-specs">
-          <div class="product-page__spec-card">
-            <p class="product-page__spec-value">
-              R₀ = 0,86 М²·°C/Вт.<br />Защищают дом от холода зимой
-            </p>
-            <p class="product-page__spec-value">
-              <strong>43 ДБ</strong>.<br />Блокируют уличный шум
-            </p>
-            <ul>
-              <li>Глубина монтажа: 72 мм</li>
-              <li>Толщина стеклопакетов: до 56 мм</li>
-              <li>Поворотный, откидной и поворотно-откидной механизмы открывания створок</li>
-              <li>Максимально высокие теплотехнические характеристики окон</li>
-              <li>
-                Большой выбор цветов (шкала RAL) и декоративных приемов для профиля (порошковое
-                окрашивание, анодирование)
-              </li>
-              <li>Долгий срок службы оконных конструкций.</li>
-              <li>Максимальная высота створки 2600 мм</li>
-              <li>Максимальная ширина 1650 мм</li>
-              <li>Максимальный вес створки 150 кг</li>
-              <li>Теплопроводность 1,76</li>
-            </ul>
-          </div>
-          <div class="product-page__spec-card">
-            <p class="product-page__spec-value">
-              R₀ = 1,07 М²·°C/Вт.<br />Даже в сибирские морозы сохраняют в доме тепло.
-            </p>
-            <p class="product-page__spec-value">
-              <strong>47 ДБ</strong>.<br />Защищают даже от шума автомагистралей.
-            </p>
-            <ul>
-              <li>Глубина монтажа: 72 мм</li>
-              <li>Толщина стеклопакетов: до 56 мм</li>
-              <li>Поворотный, откидной и поворотно-откидной механизмы открывания створок</li>
-              <li>Максимально высокие теплотехнические характеристики окон</li>
-              <li>
-                Большой выбор цветов (шкала RAL) и декоративных приемов для профиля (порошковое
-                окрашивание, анодирование)
-              </li>
-              <li>Долгий срок службы оконных конструкций.</li>
-              <li>Максимальная высота створки 2600 мм</li>
-              <li>Максимальная ширина 1650 мм</li>
-              <li>Максимальный вес створки 150 кг</li>
-              <li>Теплопроводность 1,76</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="product-page__single">
-        <figure class="product-page__single-image">
-          <h4 class="product-page__subtitle--small">Окна ALT W62</h4>
-          <img src="/images/windows/photo4.png" alt="ALT W62" />
-        </figure>
-        <div class="product-page__spec-card">
-          <p class="product-page__spec-value">R₀ = 0,67 М²·°C/Вт.</p>
-          <p class="product-page__spec-value"><strong>До 43 ДБ</strong></p>
-          <ul>
-            <li>Глубина монтажа: 62 мм</li>
-            <li>Толщина стеклопакетов: 40 мм</li>
-            <li>Поворотный, откидной и поворотно-откидной механизмы открывания створок</li>
-            <li>Максимально высокие теплотехнические характеристики окон</li>
-            <li>
-              Большой выбор цветов (шкала RAL) и декоративных приемов для профиля (порошковое
-              окрашивание, анодирование)
-            </li>
-            <li>Долгий срок службы оконных конструкций</li>
-            <li>Максимальная высота створки 2000 мм</li>
-            <li>Максимальная ширина створки 1500 мм</li>
-            <li>Максимальный вес створки 100 кг</li>
-          </ul>
-        </div>
-      </section>
-      <div ref="line1" class="product-page__line"></div>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle">
-            Технические решения, помогающие окнам Алютех <br /><strong>защищать</strong> дом от шума
-            и холода
-          </p>
-        </div>
-        <div class="product-page__triple-items">
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo5.webp" alt="Звукоизоляционные вставки" />
-            <p>Звукоизоляционные вставки из вспененного материала</p>
-          </div>
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo6.webp" alt="Система уплотнителей" />
-            <p>Многоконтурная система уплотнителей</p>
-          </div>
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo7.webp" alt="Стеклопакеты" />
-            <p>Стеклопакеты до 58 мм</p>
-          </div>
-        </div>
-      </section>
-      <section class="product-page__fullwidth">
-        <ClientOnly>
-          <iframe
-            width="80%"
-            height="350"
-            src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
-            frameborder="0"
-            allow="clipboard-write; autoplay"
-            allowfullscreen
-          />
-        </ClientOnly>
+      <div class="glass-cottages__content">
+        <h1 class="glass-cottages__content-header">Остекление коттеджей</h1>
+        <p>эстетика, надёжность и умные технологии</p>
+      </div>
+    </div>
+
+    <div class="glass-cottages__container">
+      <div class="glass-cottages__description">
         <p>
-          Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
-          Москва, Дмитровское шоссе д.157, стр3.
+          Окна (Alutech ALT W62, Alutech ALT W72) для загородного дома — это не просто заполнение
+          проёмов, а полноценный инструмент для создания атмосферы. <br />
+          Наши решения объединяют стиль, безопасность и энергоэффективность. Подбираем комплексно —
+          под ваши задачи и архитектуру. <br />
+          Взломостойкая фурнитура — скрытый стандарт наших окон. Она надёжно блокирует
+          несанкционированное проникновение, но при этом удобна в ежедневном использовании. Вы
+          защищены — без ощущения «крепости».
         </p>
-        <p>Или получить консультацию по телефону <a href="tel:+74957655026">8(495)765-50-26</a></p>
-      </section>
-      <div ref="line2" class="product-page__line"></div>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle">Три вида покрытий</p>
-        </div>
-        <div class="product-page__triple-items">
-          <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph2.jpg" alt="Полимерное покрытие" />
-            <p>
-              Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
-              также с эффектом муар.
-            </p>
-          </div>
-          <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph3.webp" alt="Декорирование под дерево" />
-            <p>Декорирование под дерево</p>
-          </div>
-          <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph4.jpg" alt="Анодирование" />
-            <p>
-              Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
-              срок его службы.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle" style="text-align: center">
-            <strong>Безопасность</strong> окон Алютех
+        <br />
+        <hr />
+        <br />
+        <p><b>Тепло зимой, прохлада летом. И экономия счетов</b></p>
+        <div class="glass-cottages__description-two-blocks">
+          <p>
+            <br />
+            Многокамерные стеклопакеты и силиконовые уплотнители работают в паре: минимизируют
+            теплопотери и предотвращают сквозняки. В результате — комфортный микроклимат круглый год
+            и заметное снижение расходов на отопление и кондицион
           </p>
-          <p class="product-page__description" style="text-align: center">
-            Установив конструкции Алютех за безопасность вашего дома можно не беспокоиться.<br />Окна
-            Алютех оснащены максимальным количеством противовзломных комплектующих
-          </p>
+
+          <NuxtImg
+            src="/images/cottages/2.jpg"
+            alt="Остекление коттеджей"
+            class="glass-cottages__description-img"
+          />
         </div>
-      </section>
-      <section class="product-page__hero" style="margin-top: 4%">
-        <div class="product-page__hero-text">
-          <p class="product-page__subtitle">Класс защиты RC2</p>
-          <p class="product-page__description">
-            Противовзломные штапики - предотвращают выпадение стеклопакета<br />Ударостойкое
-            заполнение – устойчиво к Механическим повреждениям<br />Фурнитура - исключает риск
-            самостоятельного Открытия окон Алютех детьми
+        <br />
+        <hr />
+        <br />
+
+        <p class="glass-cottages__description-header-left">
+          <b>Дизайн без границ: цвет, текстура, стиль</b>
+        </p>
+        <div class="glass-cottages__description-two-blocks">
+          <NuxtImg
+            src="/images/cottages/3.webp"
+            alt="Остекление коттеджей"
+            class="glass-cottages__description-img--small"
+          />
+          <p>
+            <br />
+            Больше не нужно мириться с белыми коробками. Мы предлагаем десятки цветов и фактур — от
+            классического дерева до графитового минимализма. Окна легко вписываются в любой фасад и
+            подчёркивают индивидуальность коттеджа.
           </p>
         </div>
-        <figure class="product-page__hero-image">
-          <img src="/images/windows/photo8.jpg" alt="Безопасность RC2" />
-        </figure>
-      </section>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle">Типы ручек</p>
-        </div>
-        <div class="product-page__triple-items">
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo10.webp" alt="Видимый редуктор" />
-            <p>Видимый редуктор</p>
-          </div>
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo11.webp" alt="Скрытый редуктор" />
-            <p>Скрытый редуктор</p>
-          </div>
-          <div class="product-page__triple-item">
-            <img src="/images/windows/photo12.webp" alt="Ручка с замком" />
-            <p>Ручка с замком</p>
-          </div>
-        </div>
-      </section>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle">Преимущества алюминиевых окон ALUTECH</p>
-        </div>
-        <div class="product-page__advantages-list">
-          <ol>
-            <li>
-              <strong>Долгий срок службы:</strong> Профили ALUTECH служат более 50 лет, при этом
-              отдельные комплектующие, такие как уплотнители и фурнитура, можно легко заменить.
-            </li>
-            <li>
-              <strong>Высокая прочность:</strong> Алюминиевые профили Алютех устойчивы к весовым и
-              ветровым нагрузкам, а также к резким перепадам температур и коррозии.
-            </li>
-            <li>
-              <strong>Отличная герметизация:</strong> Качественные уплотнители предотвращают
-              попадание пыли, влаги и неприятных запахов в помещение.
-            </li>
-            <li>
-              <strong>Удобная установка:</strong> Небольшая нагрузка на несущие конструкции
-              позволяет избежать дополнительных работ по укреплению.
-            </li>
-            <li>
-              <strong>Разнообразие дизайна:</strong> Можно выбрать любой цвет и тип открывания окон,
-              включая глухие, распашные, раздвижные или поворотные варианты.
-            </li>
-            <li>
-              <strong>Доступная цена:</strong> Низкая стоимость при высоком качестве делает окна
-              ALUTECH конкурентоспособными на рынке.
-            </li>
-          </ol>
-        </div>
-      </section>
-      <section class="product-page__triple">
-        <div class="product-page__triple-text">
-          <p class="product-page__subtitle">
-            Наши выполненные работы: <NuxtLink to="/objects">Все проекты</NuxtLink>
+        <br />
+        <div ref="line1" class="product-page__line"></div>
+
+        <p>
+          Раздвижные системы <b>Alutech ALT 160</b> — современный тренд загородного строительства.
+          Окна превращаются в проходы, которые открываются как угодно: сдвигом, распашкой или
+          гармошкой. Результат — максимум света, панорамный вид и плавная связь интерьера с террасой
+          или садом.
+        </p>
+
+        <br />
+
+        <h4><b>Прозрачные алюминиевые двери: лёгкость и прочность</b></h4>
+        <div class="glass-cottages__description-two-blocks">
+          <p>
+            <br />
+            В отличие от традиционных металлических аналогов, наши алюминиевые двери могут быть
+            полностью остеклёнными. Они визуально расширяют пространство, наполняют дом светом и при
+            этом сохраняют жёсткость, износостойкость и минимальное сечение рам. Никакого пластика —
+            только надёжный алюминий.
           </p>
+
+          <NuxtImg
+            src="/images/cottages/4.webp"
+            alt="Остекление коттеджей"
+            class="glass-cottages__description-img--small"
+          />
         </div>
-        <div class="product-page__triple-items">
-          <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_1_1.jpg" alt="Проект 1" />
-          </div>
-          <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_2_2.jpg" alt="Проект 2" />
-          </div>
-          <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_3_3.jpg" alt="Проект 3" />
-          </div>
-        </div>
-      </section>
-    </main>
+
+        <br />
+        <hr />
+        <br />
+
+        <p>
+          <b><i>Цена зависит от проекта — но мы работаем честно </i></b>
+        </p>
+        <br>
+        <p>
+          Стоимость остекления складывается из конфигурации, размеров и выбранных опций. При этом мы
+          сохраняем конкурентные цены без компромиссов по качеству. Свяжитесь с нами — получите
+          индивидуальный расчёт и информацию о текущих специальных предложениях.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.glass-cottages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+
+  &__header {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+  }
+
+  &__content-header {
+    font-size: 4vh;
+    font-family: 'Arial black', sans-serif;
+  }
+
+  &__container {
+    width: 80%;
+    margin: 2% auto;
+  }
+
+  &__description {
+    font-size: 2vh;
+  }
+
+  &__description-two-blocks {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+  }
+
+  &__description-img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  &__description-header-left {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    b {
+      width: 45%;
+      text-align: left;
+    }
+  }
+
+  &__description-two-blocks {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+    align-items: flex-start;
+
+    p,
+    .glass-cottages__description-img {
+      width: 45%; /* Явно задаем одинаковую ширину для предсказуемости */
+      flex-shrink: 0;
+    }
+  }
+
+  &__description-img--small {
+    width: 40%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+</style>

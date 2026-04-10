@@ -48,3 +48,9 @@ h6 {
   font-weight: 500;
   line-height: 1.2;
 }
+
+hr{
+
+  color: rgba(128, 128, 128, 0.2);
+
+}
