@@ -24,8 +24,7 @@ const directions: DirectionCard[] = [
     brand: 'Алютех (ALUTECH)',
     description:
       'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления',
-    image: '/images/directions/alum_razd_door.png',
-    to: '/doors'
+    image: '/images/directions/alum_razd_door.png'
   },
   {
     title: 'Остекление террас и беседок',
@@ -46,31 +45,14 @@ const directions: DirectionCard[] = [
     brand: 'Алютех (ALUTECH)',
     description:
       'Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией.',
-    image: '/images/directions/alum_doors.jpg'
-  },
-  {
-    title: 'Зимние сады',
-    brand: 'Алютех (ALUTECH)',
-    description: 'Остекление зимних садов под ключ',
-    image: '/images/directions/winter_garden.jpg'
+    image: '/images/directions/alum_doors.jpg',
+    to: '/doors'
   },
   {
     title: 'Остекление фасадов, витражи',
     brand: 'Алютех (ALUTECH)',
     description: 'Витражное (панорамное) остекление для сплошного многоэтажного остекления',
     image: '/images/directions/fasad.png'
-  },
-  {
-    title: 'Деревянные окна',
-    brand: 'Россия',
-    description: 'Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево',
-    image: '/images/directions/wood.jpg'
-  },
-  {
-    title: 'Гаражные ворота',
-    brand: 'Алютех (ALUTECH)',
-    description: 'Гаражные секционные ворота, максимально удобны в эксплуатации',
-    image: '/images/directions/garage_doors.png'
   }
 ]
 </script>

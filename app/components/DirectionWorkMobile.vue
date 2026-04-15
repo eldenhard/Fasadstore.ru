@@ -12,51 +12,40 @@ interface DirectionItem {
 const items: DirectionItem[] = [
   {
     title: 'Алюминиевые окна',
-    description: 'Окна премиум-класса теплые, созданные по индивидуальным заказам и сочетающие в себе стиль и надежность.',
+    description:
+      'Окна премиум-класса теплые, созданные по индивидуальным заказам и сочетающие в себе стиль и надежность.',
     image: '/src/components/DirectionJob/assets/alum_window.png',
-    to: '/windows',
+    to: '/windows'
   },
   {
     title: 'Алюминиевые раздвижные двери',
-    description: 'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления.',
-    image: '/src/components/DirectionJob/assets/alum_razd_door.png',
+    description:
+      'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления.',
+    image: '/src/components/DirectionJob/assets/alum_razd_door.png'
   },
   {
     title: 'Остекление террас и беседок',
-    description: 'Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах.',
-    image: '/src/components/DirectionJob/assets/terrace.jpg',
+    description:
+      'Портальные теплые конструкции для террас и веранд. Панорамное остекление в сдвижных и складывающихся системах.',
+    image: '/src/components/DirectionJob/assets/terrace.jpg'
   },
   {
     title: 'Остекление коттеджей',
     description: 'Предлагаем все виды остекления для коттеджей и загородных домов под ключ.',
-    image: '/src/components/DirectionJob/assets/villa.png',
+    image: '/src/components/DirectionJob/assets/villa.png'
   },
   {
     title: 'Алюминиевые двери',
-    description: 'Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией.',
+    description:
+      'Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией.',
     image: '/src/components/DirectionJob/assets/alum_doors.jpg',
-    to: '/doors',
-  },
-  {
-    title: 'Зимние сады',
-    description: 'Остекление зимних садов под ключ.',
-    image: '/src/components/DirectionJob/assets/winter_garden.jpg',
+    to: '/doors'
   },
   {
     title: 'Остекление фасадов, витражи',
     description: 'Витражное (панорамное) остекление для сплошного многоэтажного остекления.',
-    image: '/src/components/DirectionJob/assets/fasad.png',
-  },
-  {
-    title: 'Деревянные окна',
-    description: 'Окна из массива дуба, лиственницы, сосны. Дерево-алюминий и алюмо-дерево.',
-    image: '/src/components/DirectionJob/assets/wood.jpg',
-  },
-  {
-    title: 'Гаражные ворота',
-    description: 'Гаражные секционные ворота — одно из самых популярных и современных решений.',
-    image: '/src/components/DirectionJob/assets/garage_doors.png',
-  },
+    image: '/src/components/DirectionJob/assets/fasad.png'
+  }
 ]
 
 const openIndex = ref<number | null>(0)
@@ -68,11 +57,7 @@ function toggle(index: number) {
 
 <template>
   <div class="space-y-3">
-    <div
-      v-for="(item, index) in items"
-      :key="item.title"
-      class="border rounded-lg overflow-hidden"
-    >
+    <div v-for="(item, index) in items" :key="item.title" class="border rounded-lg overflow-hidden">
       <!-- Заголовок аккордеона -->
       <button
         class="w-full flex items-center justify-between p-4 text-left font-medium min-h-[44px]"
@@ -97,13 +82,9 @@ function toggle(index: number) {
         />
         <p class="mt-4 font-semibold text-sm">{{ item.description }}</p>
         <NuxtLink v-if="item.to" :to="item.to">
-          <UButton class="mt-3 w-full" color="primary">
-            Подробнее ➔
-          </UButton>
+          <UButton class="mt-3 w-full" color="primary"> Подробнее ➔ </UButton>
         </NuxtLink>
-        <UButton v-else class="mt-3 w-full" color="primary" disabled>
-          Подробнее ➔
-        </UButton>
+        <UButton v-else class="mt-3 w-full" color="primary" disabled> Подробнее ➔ </UButton>
       </div>
     </div>
   </div>
