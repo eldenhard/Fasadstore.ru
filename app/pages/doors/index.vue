@@ -48,7 +48,7 @@ const doorTypes = [
     <div class="product-page__index-content">
       <h1 class="product-page__index-title">Алюминиевые двери</h1>
       <p class="product-page__index-desc">
-        Каталог алюминиевых дверей АлюПроект. Мы предлагаем HD-двери, балконные (террасные) и
+        Мы предлагаем HD-двери, балконные (террасные) и
         классические двери на базе профильных систем ALUTECH.
       </p>
       <div class="product-page__cards">

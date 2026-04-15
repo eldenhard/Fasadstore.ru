@@ -20,7 +20,6 @@ const items: DirectionItem[] = [
     title: 'Алюминиевые раздвижные двери',
     description: 'Раздвижные двери для частных домов и коттеджей. Комфортное открывание. Максимальная площадь остекления.',
     image: '/src/components/DirectionJob/assets/alum_razd_door.png',
-    to: '/doors',
   },
   {
     title: 'Остекление террас и беседок',
@@ -36,6 +35,7 @@ const items: DirectionItem[] = [
     title: 'Алюминиевые двери',
     description: 'Двери АЛЮТЕХ придадут индивидуальность Вашему дому. Обладают повышенной тепло- и звукоизоляцией.',
     image: '/src/components/DirectionJob/assets/alum_doors.jpg',
+    to: '/doors',
   },
   {
     title: 'Зимние сады',
