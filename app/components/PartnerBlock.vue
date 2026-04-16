@@ -35,7 +35,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
       <div class="partner-block__triangle" />
       <div class="partner-block__content">
         <h3 class="partner-block__heading">ПРОДУКЦИЯ АЛЮТЕХ</h3>
-        <p class="partner-block__sub">Виды открывания и фурнитуры</p>
+        <p class="partner-block__sub">Видео ролики продукции АЛЮТЕХ</p>
 
         <div class="partner-block__line-el">
           <div />
@@ -118,35 +118,35 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
             <p class="strong-aside__question">Почему стоит выбрать окна из алюминия?</p>
             <div class="strong-aside__rating">
               <section class="strong-aside__col strong-aside__col--alu">
-                <p><strong style="color: #d683ce">Алюминий</strong></p>
-                <span>Срок службы: <strong style="color: #d683ce">50 лет</strong></span
+                <p><strong class="strong-aside__accent strong-aside__accent--aluminum">Алюминий</strong></p>
+                <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--aluminum">50 лет</strong></span
                 ><br />
                 <span
                   >Экологичность:
                   <strong
-                    ><span style="color: #d683ce">Не выделяет</span> вредных веществ</strong
+                    ><span class="strong-aside__accent strong-aside__accent--aluminum">Не выделяет</span> вредных веществ</strong
                   ></span
                 ><br />
                 <span
                   >Поддерживает горение:
-                  <strong style="color: #d683ce">Не поддерживает</strong></span
+                  <strong class="strong-aside__accent strong-aside__accent--aluminum">Не поддерживает</strong></span
                 ><br /><br />
                 <span>Прочность: <meter value="1" /></span><br />
                 <span>Стильный дизайн: <meter value="1" /></span>
               </section>
               <section class="strong-aside__col strong-aside__col--pvh">
-                <p><strong style="color: #4285f4">ПВХ</strong></p>
-                <span>Срок службы: <strong style="color: #4285f4">20 лет</strong></span
+                <p><strong class="strong-aside__accent strong-aside__accent--pvc">ПВХ</strong></p>
+                <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--pvc">20 лет</strong></span
                 ><br />
                 <span
                   >Экологичность:
-                  <strong><span style="color: #4285f4">Выделяет</span> формальдегид</strong></span
+                  <strong><span class="strong-aside__accent strong-aside__accent--pvc">Выделяет</span> формальдегид</strong></span
                 ><br />
                 <span
                   >Поддерживает горение:
                   <strong
                     >При горении выделяются
-                    <span style="color: #4285f4">опасные вещества</span></strong
+                    <span class="strong-aside__accent strong-aside__accent--pvc">опасные вещества</span></strong
                   ></span
                 ><br /><br />
                 <span>Прочность: <meter value="0.4" class="meter-pvh" /></span><br />
@@ -379,6 +379,12 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   padding-top: 4%;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+}
+.strong-aside__accent--aluminum {
+  color: #d683ce;
+}
+.strong-aside__accent--pvc {
+  color: #4285f4;
 }
 .strong-aside__rating {
   display: flex;

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DOOR_PRODUCT_TABS } from '~/constants/productTabs'
+
 useSeoData()
 useSchemaOrg({
   type: 'Product',
@@ -9,19 +11,8 @@ useSchemaOrg({
     manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
   }
 })
-const route = useRoute()
-const activeIndex = ref(1)
-const tabs = ['HD-двери', 'Балконные', 'Классические']
-const paths = ['/doors/hd', '/doors/balcony', '/doors/classic']
-watch(
-  () => route.path,
-  (p) => {
-    if (p.includes('hd')) activeIndex.value = 0
-    else if (p.includes('balcony')) activeIndex.value = 1
-    else if (p.includes('classic')) activeIndex.value = 2
-  },
-  { immediate: true }
-)
+const tabs = DOOR_PRODUCT_TABS
+const { activeIndex } = useProductTabs(tabs)
 
 const line1 = ref<HTMLElement | null>(null)
 const line2 = ref<HTMLElement | null>(null)
@@ -31,22 +22,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
 </script>
 <template>
   <div class="product-page">
-    <nav class="product-page__nav">
-      <ul class="product-page__nav-list">
-        <li
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="[
-            'product-page__nav-item',
-            { 'product-page__nav-item--active': activeIndex === index }
-          ]"
-          @click="navigateTo(paths[index])"
-        >
-          {{ tab }}
-          <div v-if="activeIndex === index" class="product-page__nav-underline" />
-        </li>
-      </ul>
-    </nav>
+    <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="product-page__content">
       <section class="product-page__hero">
         <div class="product-page__hero-text">
@@ -64,11 +40,11 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           <img src="/images/doors/balcony/photo1.jpg" alt="Балконная дверь ALUTECH" />
         </figure>
       </section>
-      <section class="product-page__single" style="margin-top: 8%; flex-direction: row-reverse">
+      <section class="product-page__single product-page__single--spacious product-page__single--reverse">
         <figure class="product-page__single-image">
           <img src="/images/doors/balcony/photo3.jpg" alt="Балконная дверь" />
         </figure>
-        <div class="product-page__spec-card" style="height: 100%">
+        <div class="product-page__spec-card product-page__spec-card--full-height">
           <h5>Технические характеристики</h5>
           <div class="product-page__category">Размеры</div>
           <ul>
@@ -111,7 +87,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
             <img
               src="/images/doors/balcony/photo7.webp"
               alt="Односторонняя c видимым редуктором"
-              style="height: 100%"
+              class="product-page__image--full-height"
             />
             <p>Односторонняя c видимым редуктором</p>
           </div>
@@ -135,13 +111,13 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__triple" style="margin-top: -1%">
+      <section class="product-page__triple product-page__triple--tight">
         <div class="product-page__triple-items">
           <div class="product-page__triple-item">
             <img
               src="/images/doors/balcony/photo4.webp"
               alt="Вставка из вспененного материала"
-              style="height: 100%"
+              class="product-page__image--full-height"
             />
             <p>Вставка из вспененного материала</p>
           </div>
@@ -155,11 +131,11 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__single" style="margin-top: 8%">
+      <section class="product-page__single product-page__single--spacious">
         <figure class="product-page__single-image">
           <img src="/images/doors/balcony/photo10.webp" alt="Полиамидные уголки" />
         </figure>
-        <div class="product-page__spec-card" style="height: 100%">
+        <div class="product-page__spec-card product-page__spec-card--full-height">
           <h5>Пыль с улицы не проникнет в дом.</h5>
           <br />
           <h5>Полиамидные уголки защитят дом от пыли и выхлопных газов.</h5>

@@ -78,10 +78,7 @@ function toggleGroup(period: string) {
 
 <template>
   <section class="max-w-6xl mx-auto px-4 py-8">
-    <h2
-      class="text-gray-200 font-black text-4xl lg:text-6xl mb-8"
-      style="font-family: 'Arial Black', sans-serif"
-    >
+    <h2 class="objects-gallery__title text-gray-200 font-black text-4xl lg:text-6xl mb-8">
       Наши проекты
     </h2>
 
@@ -118,3 +115,9 @@ function toggleGroup(period: string) {
     </div>
   </section>
 </template>
+
+<style scoped>
+.objects-gallery__title {
+  font-family: 'Arial Black', sans-serif;
+}
+</style>

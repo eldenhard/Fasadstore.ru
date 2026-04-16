@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { WINDOW_PRODUCT_TABS } from '~/constants/productTabs'
+
 useSeoData()
 useSchemaOrg({
   type: 'Product',
@@ -9,19 +11,8 @@ useSchemaOrg({
     manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
   }
 })
-const route = useRoute()
-const activeIndex = ref(1)
-const tabs = ['Окна классические', 'Окна панорамные', 'Скрытая створка']
-const paths = ['/windows/classic', '/windows/panorama', '/windows/hidden']
-watch(
-  () => route.path,
-  (p) => {
-    if (p.includes('classic')) activeIndex.value = 0
-    else if (p.includes('panorama')) activeIndex.value = 1
-    else if (p.includes('hidden')) activeIndex.value = 2
-  },
-  { immediate: true }
-)
+const tabs = WINDOW_PRODUCT_TABS
+const { activeIndex } = useProductTabs(tabs)
 
 const line1 = ref<HTMLElement | null>(null)
 const line2 = ref<HTMLElement | null>(null)
@@ -31,22 +22,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
 </script>
 <template>
   <div class="product-page">
-    <nav class="product-page__nav">
-      <ul class="product-page__nav-list">
-        <li
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="[
-            'product-page__nav-item',
-            { 'product-page__nav-item--active': activeIndex === index }
-          ]"
-          @click="navigateTo(paths[index])"
-        >
-          {{ tab }}
-          <div v-if="activeIndex === index" class="product-page__nav-underline" />
-        </li>
-      </ul>
-    </nav>
+    <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="product-page__content">
       <section class="product-page__hero">
         <div class="product-page__hero-text">
@@ -59,18 +35,18 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </p>
         </div>
         <figure class="product-page__hero-image">
-          <img src="/images/windows/image.png" alt="Панорамные окна ALUTECH" />
+          <img src="/images/windows/panorama-hero-window.png" alt="Панорамные окна ALUTECH" />
         </figure>
       </section>
       <section class="product-page__double">
         <div class="product-page__double-images">
           <figure class="product-page__double-fig">
             <h4 class="product-page__subtitle--small">Окна с термоизоляцией ALT W72</h4>
-            <img src="/images/windows/photo2.jpg" alt="ALT W72" />
+            <img src="/images/windows/alt-w72-window.jpg" alt="ALT W72" />
           </figure>
           <figure class="product-page__double-fig">
             <h4 class="product-page__subtitle--small">Окна c повышенной термоизоляцией ALT W77</h4>
-            <img src="/images/windows/photo3.jpg" alt="ALT W77" />
+            <img src="/images/windows/alt-w77-window.jpg" alt="ALT W77" />
           </figure>
         </div>
         <div class="product-page__double-specs">
@@ -124,7 +100,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
       <section class="product-page__single">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Окна ALT W62</h4>
-          <img src="/images/windows/photo4.png" alt="ALT W62" />
+          <img src="/images/windows/alt-w62-window.png" alt="ALT W62" />
         </figure>
         <div class="product-page__spec-card">
           <p class="product-page__spec-value">R₀ = 0,67 М²·°C/Вт.</p>
@@ -155,15 +131,15 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         </div>
         <div class="product-page__triple-items">
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo5.webp" alt="Звукоизоляционные вставки" />
+            <img src="/images/windows/foam-inserts.webp" alt="Звукоизоляционные вставки" />
             <p>Звукоизоляционные вставки из вспененного материала</p>
           </div>
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo6.webp" alt="Система уплотнителей" />
+            <img src="/images/windows/sealing-system.webp" alt="Система уплотнителей" />
             <p>Многоконтурная система уплотнителей</p>
           </div>
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo7.webp" alt="Стеклопакеты" />
+            <img src="/images/windows/glazing-unit-58mm.webp" alt="Стеклопакеты" />
             <p>Стеклопакеты до 58 мм</p>
           </div>
         </div>
@@ -192,18 +168,18 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         </div>
         <div class="product-page__triple-items">
           <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph2.jpg" alt="Полимерное покрытие" />
+            <img src="/images/windows/finish-polymer.jpg" alt="Полимерное покрытие" />
             <p>
               Полимерное покрытие — это доступ к 200 оттенкам в глянцевом или матовом исполнении, а
               также с эффектом муар.
             </p>
           </div>
           <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph3.webp" alt="Декорирование под дерево" />
+            <img src="/images/windows/finish-wood.webp" alt="Декорирование под дерево" />
             <p>Декорирование под дерево</p>
           </div>
           <div class="product-page__triple-item product-page__triple-item--cover">
-            <img src="/images/windows/ph4.jpg" alt="Анодирование" />
+            <img src="/images/windows/finish-anodized.jpg" alt="Анодирование" />
             <p>
               Анодирование — специальное решение, которое подчеркивает фактуру металла и продлевает
               срок его службы.
@@ -213,16 +189,16 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
       </section>
       <section class="product-page__triple">
         <div class="product-page__triple-text">
-          <p class="product-page__subtitle" style="text-align: center">
+          <p class="product-page__subtitle product-page__subtitle--centered">
             <strong>Безопасность</strong> окон Алютех
           </p>
-          <p class="product-page__description" style="text-align: center">
+          <p class="product-page__description product-page__description--centered">
             Установив конструкции Алютех за безопасность вашего дома можно не беспокоиться.<br />Окна
             Алютех оснащены максимальным количеством противовзломных комплектующих
           </p>
         </div>
       </section>
-      <section class="product-page__hero" style="margin-top: 4%">
+      <section class="product-page__hero product-page__hero--spaced">
         <div class="product-page__hero-text">
           <p class="product-page__subtitle">Класс защиты RC2</p>
           <p class="product-page__description">
@@ -232,7 +208,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </p>
         </div>
         <figure class="product-page__hero-image">
-          <img src="/images/windows/photo8.jpg" alt="Безопасность RC2" />
+          <img src="/images/windows/security-class.jpg" alt="Безопасность RC2" />
         </figure>
       </section>
       <section class="product-page__triple">
@@ -241,15 +217,15 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         </div>
         <div class="product-page__triple-items">
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo10.webp" alt="Видимый редуктор" />
+            <img src="/images/windows/visible-gear-handle.webp" alt="Видимый редуктор" />
             <p>Видимый редуктор</p>
           </div>
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo11.webp" alt="Скрытый редуктор" />
+            <img src="/images/windows/hidden-gear-handle.webp" alt="Скрытый редуктор" />
             <p>Скрытый редуктор</p>
           </div>
           <div class="product-page__triple-item">
-            <img src="/images/windows/photo12.webp" alt="Ручка с замком" />
+            <img src="/images/windows/lockable-handle.webp" alt="Ручка с замком" />
             <p>Ручка с замком</p>
           </div>
         </div>
@@ -295,13 +271,13 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         </div>
         <div class="product-page__triple-items">
           <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_1.jpg" alt="Проект 1" />
+            <img src="/images/windows/project-panorama-1.jpg" alt="Проект 1" />
           </div>
           <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_2.jpg" alt="Проект 2" />
+            <img src="/images/windows/project-panorama-2.jpg" alt="Проект 2" />
           </div>
           <div class="product-page__triple-item product-page__triple-item--portfolio">
-            <img src="/images/windows/photo_3.jpg" alt="Проект 3" />
+            <img src="/images/windows/project-panorama-3.jpg" alt="Проект 3" />
           </div>
         </div>
       </section>

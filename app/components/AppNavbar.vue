@@ -114,10 +114,8 @@ const productLinks = [
 
 <style scoped>
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 50;
   background: #111827;
 }

@@ -21,17 +21,17 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
     <section class="contact-block__three">
       <div class="contact-block__three-inner">
         <div class="contact-block__advantage">
-          <Icon name="lucide:clipboard-check" size="64" style="color: #8b4b84" />
+          <Icon name="lucide:clipboard-check" size="64" class="contact-block__advantage-icon" />
           <h4>Не поднимаем стоимость</h4>
           <p>Фиксируем стоимость на всех этапах работы в договоре</p>
         </div>
         <div class="contact-block__advantage">
-          <Icon name="lucide:database" size="64" style="color: #8b4b84" />
+          <Icon name="lucide:database" size="64" class="contact-block__advantage-icon" />
           <h4>Соблюдаем строки</h4>
           <p>Несем ответственность за соблюдение сроков выполнения работ</p>
         </div>
         <div class="contact-block__advantage">
-          <Icon name="lucide:hand-helping" size="64" style="color: #8b4b84" />
+          <Icon name="lucide:hand-helping" size="64" class="contact-block__advantage-icon" />
           <h4>Ваше участие минимальное</h4>
           <p>Остекление коттеджей полностью под ключ с минимальным участием заказчика</p>
         </div>
@@ -48,7 +48,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
             Получите информацию о полной стоимости и срокам строительства ваших конструкций
           </p>
           <div class="contact-block__info-row">
-            <Icon name="lucide:map-pin" size="45" style="color: white; flex-shrink: 0" />
+            <Icon name="lucide:map-pin" size="45" class="contact-block__info-icon" />
             <div>
               <p class="contact-block__label">Адрес</p>
               <NuxtLink
@@ -61,7 +61,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
             </div>
           </div>
           <div class="contact-block__info-row">
-            <Icon name="lucide:smartphone" size="45" style="color: white; flex-shrink: 0" />
+            <Icon name="lucide:smartphone" size="45" class="contact-block__info-icon" />
             <div>
               <p class="contact-block__label">Почта и телефон</p>
               <p class="contact-block__value">7655026@mail.ru</p>
@@ -69,7 +69,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
             </div>
           </div>
           <div class="contact-block__info-row">
-            <Icon name="lucide:clock" size="45" style="color: white; flex-shrink: 0" />
+            <Icon name="lucide:clock" size="45" class="contact-block__info-icon" />
             <div>
               <p class="contact-block__label">Время работы</p>
               <p class="contact-block__value">9:00 - 20:00</p>
@@ -83,7 +83,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
               rel="noopener noreferrer"
               aria-label="YouTube"
             >
-              <Icon name="lucide:youtube" size="20" style="color: rgb(211, 211, 211)" />
+              <Icon name="lucide:youtube" size="20" class="contact-block__social-icon" />
             </a>
             <a
               class="contact-block__social contact-block__social--tg"
@@ -92,7 +92,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
               rel="noopener noreferrer"
               aria-label="Telegram"
             >
-              <Icon name="lucide:send" size="20" style="color: rgb(211, 211, 211)" />
+              <Icon name="lucide:send" size="20" class="contact-block__social-icon" />
             </a>
             <a
               class="contact-block__social contact-block__social--wa"
@@ -101,7 +101,7 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
               rel="noopener noreferrer"
               aria-label="WhatsApp"
             >
-              <Icon name="lucide:message-circle" size="20" style="color: rgb(211, 211, 211)" />
+              <Icon name="lucide:message-circle" size="20" class="contact-block__social-icon" />
             </a>
           </div>
         </div>
@@ -160,6 +160,9 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
   width: 30%;
   text-align: center;
 }
+.contact-block__advantage-icon {
+  color: #8b4b84;
+}
 .contact-block__advantage h4 {
   padding-top: 5%;
   font-weight: bold;
@@ -202,6 +205,10 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
   gap: 20px;
   align-items: flex-start;
 }
+.contact-block__info-icon {
+  color: white;
+  flex-shrink: 0;
+}
 .contact-block__label {
   font-size: 1.5vh;
   color: #999;
@@ -230,6 +237,9 @@ a.contact-block__value:hover {
   align-items: center;
   cursor: pointer;
   transition: background 0.5s ease-in-out;
+}
+.contact-block__social-icon {
+  color: rgb(211, 211, 211);
 }
 .contact-block__social--yt:hover {
   background: #ff0000;

@@ -10,6 +10,7 @@ interface Slide {
   description: string
   image: string
   alt: string
+  to?: string
 }
 
 const slides: Slide[] = [
@@ -18,14 +19,16 @@ const slides: Slide[] = [
     description:
       'Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей.',
     image: '/images/slider/first.webp',
-    alt: 'Раздвижные двери АЛЮТЕХ'
+    alt: 'Раздвижные двери АЛЮТЕХ',
+    to: '/pocket-doors'
   },
   {
     title: 'Окна Алютех',
     description:
       'Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют.',
     image: '/images/slider/second.webp',
-    alt: 'Окна АЛЮТЕХ'
+    alt: 'Окна АЛЮТЕХ',
+    to: '/windows'
   }
 ]
 
@@ -93,11 +96,13 @@ onUnmounted(() => stopAutoplay())
               {{ slide.title }}
             </h2>
             <div class="slider-hero__divider" />
-            <br>
+            <br />
             <p class="slider-hero__desc">
               {{ slide.description }}
             </p>
-            <button class="slider-hero__btn"><span>Узнать больше</span></button>
+            <button class="slider-hero__btn" @click="navigateTo(slide.to)">
+              <span>Узнать больше</span>
+            </button>
           </div>
         </div>
         <!-- Изображение -->

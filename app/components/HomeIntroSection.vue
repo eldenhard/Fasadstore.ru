@@ -1,7 +1,5 @@
 <script setup lang="ts">
-// Краткое описание компании
-// Перенос из src/components/MiniAbout/MiniAbout.vue
-// Фон: градиент от #041521 к #082c43, h1 Arial Black, кнопка ButtonPurple
+// Краткое описание компании для главной страницы
 </script>
 
 <template>
@@ -11,7 +9,7 @@
       <div class="mini-about__images">
         <div class="mini-about__img mini-about__img--second">
           <NuxtImg
-            src="/images/mini-about/propizvodstvo.webp"
+            src="/images/mini-about/production.webp"
             alt="Производство"
             class="w-full h-full object-cover rounded-lg"
             width="400"

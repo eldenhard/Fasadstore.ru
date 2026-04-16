@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import { DOOR_PRODUCT_TABS } from '~/constants/productTabs'
+
 useSeoData()
-const activeIndex = ref(-1)
-const tabs = ['HD-двери', 'Балконные', 'Классические']
-const paths = ['/doors/hd', '/doors/balcony', '/doors/classic']
+
+const tabs = DOOR_PRODUCT_TABS
+const { activeIndex } = useProductTabs(tabs)
+
 const doorTypes = [
   {
     title: 'HD-двери крупноформатные',
     description: 'Алюминиевые двери высотой до 3 м для особых проектов',
     to: '/doors/hd',
-    image: '/images/windows/alum_window.png',
+    image: '/images/windows/classic-hero-window.png',
     blur: false
   },
   {
@@ -29,22 +32,7 @@ const doorTypes = [
 </script>
 <template>
   <div class="product-page">
-    <nav class="product-page__nav">
-      <ul class="product-page__nav-list">
-        <li
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="[
-            'product-page__nav-item',
-            { 'product-page__nav-item--active': activeIndex === index }
-          ]"
-          @click="navigateTo(paths[index])"
-        >
-          {{ tab }}
-          <div v-if="activeIndex === index" class="product-page__nav-underline" />
-        </li>
-      </ul>
-    </nav>
+    <ProductTabs :items="tabs" :active-index="activeIndex" />
     <div class="product-page__index-content">
       <h1 class="product-page__index-title">Алюминиевые двери</h1>
       <p class="product-page__index-desc">

@@ -18,7 +18,7 @@ function changeImage(imageSrc: string) {
 
 const bgPicAbout = `url('${b('/images/about/ptt_about.jpg')}') center/cover no-repeat`
 const bgFloor = `url('${b('/images/about/floor.jpg')}')`
-const bgInstraction = `url('${b('/images/about/instraction.jpg')}')`
+const bgInstallation = `url('${b('/images/about/installation.jpg')}')`
 const bgAmchair = `url('${b('/images/about/amchair.jpg')}')`
 const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center/cover no-repeat`
 </script>
@@ -72,7 +72,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
         </ul>
       </div>
       <div class="about-office__right">
-        <h3 style="font-size: 1.5rem">Офис ООО «Алюминиевые Системы»</h3>
+        <h3 class="about-office__title">Офис ООО «Алюминиевые Системы»</h3>
         <h5>Бизнес Центр «Гефест»,<br />г. Москва, Дмитровское шоссе, 157, стр. 7, м. Лианозово</h5>
         <div class="about-office__desc">
           <p>
@@ -122,7 +122,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
             <p>Стоимость работ фиксируется</p>
           </div>
         </div>
-        <div class="three-block__card" :style="{ backgroundImage: bgInstraction }">
+        <div class="three-block__card" :style="{ backgroundImage: bgInstallation }">
           <div class="three-block__overlay">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -356,6 +356,9 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 .about-office__right {
   width: 50%;
 }
+.about-office__title {
+  font-size: 1.5rem;
+}
 .about-office__main-pic {
   height: 50vh;
 }
@@ -421,6 +424,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   position: relative;
   border-radius: 8px;
 }
+
 .three-block__overlay {
   position: absolute;
   display: flex;
@@ -433,6 +437,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   border-radius: 8px;
   overflow: hidden;
 }
+
 .three-block__overlay p {
   color: white;
   font-size: 2vh;
@@ -441,6 +446,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   text-transform: uppercase;
   text-align: center;
 }
+
 .three-block__overlay::before {
   content: '';
   display: block;
@@ -454,6 +460,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   filter: blur(30px);
   transform: translateX(-100px) skewX(-15deg);
 }
+
 .three-block__overlay::after {
   content: '';
   display: block;
@@ -467,21 +474,22 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   filter: blur(5px);
   transform: translateX(-100px) skewX(-15deg);
 }
+
 .three-block__overlay:hover {
   cursor: pointer;
 }
+
 .three-block__overlay:hover::before {
   transform: translateX(100vw) skewX(-15deg);
   opacity: 0.6;
-  transition: 0.7s;
+  transition: 1.5s;
 }
 .three-block__overlay:hover::after {
   transform: translateX(100vw) skewX(-15deg);
   opacity: 1;
-  transition: 0.7s;
+  transition: 1.5s;
 }
-</style>
-<style scoped>
+
 .dark-section {
   width: 100%;
   background: #1a1a1a;

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DOOR_PRODUCT_TABS } from '~/constants/productTabs'
+
 useSeoData()
 useSchemaOrg({
   type: 'Product',
@@ -9,19 +11,8 @@ useSchemaOrg({
     manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
   }
 })
-const route = useRoute()
-const activeIndex = ref(2)
-const tabs = ['HD-двери', 'Балконные', 'Классические']
-const paths = ['/doors/hd', '/doors/balcony', '/doors/classic']
-watch(
-  () => route.path,
-  (p) => {
-    if (p.includes('hd')) activeIndex.value = 0
-    else if (p.includes('balcony')) activeIndex.value = 1
-    else if (p.includes('classic')) activeIndex.value = 2
-  },
-  { immediate: true }
-)
+const tabs = DOOR_PRODUCT_TABS
+const { activeIndex } = useProductTabs(tabs)
 
 const line1 = ref<HTMLElement | null>(null)
 const line2 = ref<HTMLElement | null>(null)
@@ -33,22 +24,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
 </script>
 <template>
   <div class="product-page">
-    <nav class="product-page__nav">
-      <ul class="product-page__nav-list">
-        <li
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="[
-            'product-page__nav-item',
-            { 'product-page__nav-item--active': activeIndex === index }
-          ]"
-          @click="navigateTo(paths[index])"
-        >
-          {{ tab }}
-          <div v-if="activeIndex === index" class="product-page__nav-underline" />
-        </li>
-      </ul>
-    </nav>
+    <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="product-page__content">
       <section class="product-page__hero">
         <div class="product-page__hero-text">
@@ -85,12 +61,12 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__single" style="margin-top: 8%; flex-direction: row-reverse">
+      <section class="product-page__single product-page__single--spacious product-page__single--reverse">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Крупноформатная дверь ALT W72 HD</h4>
           <img src="/images/doors/classic/photo3.jpg" alt="ALT W72 HD" />
         </figure>
-        <div class="product-page__spec-card" style="width: 50%">
+        <div class="product-page__spec-card product-page__spec-card--half">
           <ul>
             <li>Максимальная высота: 3 м</li>
             <li>Максимальная ширина: 1,25 м</li>
@@ -112,7 +88,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           <h4 class="product-page__subtitle--small">Классическая дверь ALT W72</h4>
           <img src="/images/doors/classic/photo4.png" alt="ALT W72" />
         </figure>
-        <div class="product-page__spec-card" style="width: 60%">
+        <div class="product-page__spec-card product-page__spec-card--wide">
           <h5>
             Данные конструкции ALT W72 отличаются повышенной шумо- и теплоизоляцией.<br />Двери
             Alutech W72 полностью адаптированы под наш климат и подходят для зданий всех типов.
@@ -133,7 +109,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           <p>Типы открываний: внутреннее, наружное</p>
         </div>
       </section>
-      <section class="product-page__single" style="flex-direction: row-reverse">
+      <section class="product-page__single product-page__single--reverse">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Классическая дверь ALT W62</h4>
           <img src="/images/doors/photo5.jpg" alt="ALT W62" />
@@ -164,7 +140,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
             <img
               src="/images/doors/photo6.png"
               alt="Нажимная ручка с замком"
-              style="height: 100%"
+              class="product-page__image--full-height"
             />
             <p>Нажимная ручка с замком</p>
           </div>
@@ -189,19 +165,16 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
       </section>
       <section class="product-page__triangle">
         <div class="product-page__triangle-image">
-          <img src="/images/doors/photo9.webp" alt="Петли" style="height: 60%" />
+          <img src="/images/doors/photo9.webp" alt="Петли" class="product-page__image--sixty-height" />
         </div>
       </section>
       <div ref="line3" class="product-page__line"></div>
-      <section class="product-page__single" style="margin-top: 4%">
-        <figure class="product-page__single-image" style="width: 50%">
+      <section class="product-page__single product-page__hero--spaced">
+        <figure class="product-page__single-image product-page__single-image--half">
           <h4 class="product-page__subtitle--small">Термомосты Anti-Be-Metal</h4>
           <img src="/images/doors/photo10.webp" alt="Термомосты" />
         </figure>
-        <div
-          class="product-page__spec-card"
-          style="display: flex; align-items: center; justify-content: center; font-size: 1.1em"
-        >
+        <div class="product-page__spec-card product-page__spec-card--centered">
           <h4>
             Исключают деформацию дверей из-за большой разницы температур снаружи и внутри помещения.
             Увеличивают срок службы фурнитуры.

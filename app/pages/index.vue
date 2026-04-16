@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Главная страница — АлюПроект
-// Секции: SliderHero → MiniAbout → DirectionWork → PartnerBlock → ContactBlock
-// h1 находится в компоненте MiniAbout (единственный на странице)
+// Секции: HomeHeroSlider → HomeIntroSection → HomeDirectionsSection → PartnerBlock
+// h1 находится в компоненте HomeIntroSection (единственный на странице)
 
 useSeoData()
 
@@ -25,9 +25,9 @@ useSchemaOrg({
 
 <template>
   <div>
-    <SliderHero />
-    <MiniAbout />
-    <DirectionWork />
+    <HomeHeroSlider />
+    <HomeIntroSection />
+    <HomeDirectionsSection />
     <PartnerBlock />
   </div>
 </template>

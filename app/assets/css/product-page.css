@@ -42,15 +42,20 @@
   list-style: none;
 }
 
+.product-page__nav-entry {
+  list-style: none;
+}
+
 .product-page__nav-item {
+  display: block;
   position: relative;
   text-align: center;
   cursor: pointer;
   color: var(--color-gray);
   font-size: 1.2em;
   padding: 10px 15px;
+  text-decoration: none;
   transition: color 0.3s;
-  list-style: none;
 }
 
 .product-page__nav-item:hover {
@@ -90,6 +95,10 @@
   width: 40%;
 }
 
+.product-page__hero-text--wide {
+  width: 60%;
+}
+
 .product-page__title {
   font-weight: bold;
   font-size: 3.5em;
@@ -109,6 +118,11 @@
   font-weight: bold;
 }
 
+.product-page__subtitle--compact {
+  margin-top: 1rem;
+  font-size: 1.4em;
+}
+
 .product-page__subtitle--small {
   font-size: 1.2em;
   font-weight: bold;
@@ -118,6 +132,10 @@
   font-size: 1em;
   font-weight: 400;
   line-height: 35px;
+}
+
+.product-page__description--compact {
+  line-height: 1.8;
 }
 
 .product-page__hero-image {
@@ -175,6 +193,25 @@
   flex: 1;
 }
 
+.product-page__spec-card--full-height {
+  height: 100%;
+}
+
+.product-page__spec-card--half {
+  width: 50%;
+}
+
+.product-page__spec-card--wide {
+  width: 60%;
+}
+
+.product-page__spec-card--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
 .product-page__spec-card ul {
   margin-top: 2%;
 }
@@ -196,10 +233,26 @@
   align-items: flex-start;
 }
 
+.product-page__single--offset {
+  margin-top: 6%;
+}
+
+.product-page__single--spacious {
+  margin-top: 8%;
+}
+
+.product-page__single--reverse {
+  flex-direction: row-reverse;
+}
+
 .product-page__single-image {
   width: 40%;
   min-width: 300px;
   flex-shrink: 0;
+}
+
+.product-page__single-image--half {
+  width: 50%;
 }
 
 .product-page__single-image img {
@@ -210,6 +263,20 @@
   object-fit: contain;
 }
 
+.product-page__image--contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-page__image--full-height {
+  height: 100%;
+}
+
+.product-page__image--sixty-height {
+  height: 60%;
+}
+
 /* --- Triple section (three items in a row) --- */
 .product-page__triple {
   display: flex;
@@ -217,8 +284,17 @@
   margin-top: 10%;
 }
 
+.product-page__triple--tight {
+  margin-top: -1%;
+}
+
 .product-page__triple-text {
   margin-bottom: 0;
+}
+
+.product-page__subtitle--centered,
+.product-page__description--centered {
+  text-align: center;
 }
 
 .product-page__triple-items {
@@ -343,6 +419,14 @@
 
 .product-page__triangle-text--2 {
   grid-area: desc2;
+}
+
+.product-page__hero--spaced {
+  margin-top: 4%;
+}
+
+.product-page__hero-image--wide {
+  width: 80%;
 }
 
 /* --- Category label (balcony doors) --- */
