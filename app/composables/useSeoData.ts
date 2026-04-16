@@ -4,7 +4,7 @@ export interface PageSeoData {
     ogTitle?: string
     ogDescription?: string
     ogImage?: string
-    ogType?: 'website' | 'product'
+    ogType?: 'website' | 'article'
 }
 
 const seoDataMap: Record<string, PageSeoData> = {
@@ -33,17 +33,17 @@ const seoDataMap: Record<string, PageSeoData> = {
     '/windows/classic': {
         title: 'Классические алюминиевые окна — АлюПроект',
         description: 'Классические алюминиевые окна ALUTECH: ALT W62, W72, W77. Энергоэффективные, безопасные, срок службы более 50 лет.',
-        ogType: 'product'
+        ogType: 'website'
     },
     '/windows/panorama': {
         title: 'Панорамные алюминиевые окна — АлюПроект',
         description: 'Панорамные алюминиевые окна ALUTECH. Максимум света, отличная обзорность, визуальное увеличение пространства.',
-        ogType: 'product'
+        ogType: 'website'
     },
     '/windows/hidden': {
         title: 'Окна со скрытой створкой — АлюПроект',
         description: 'Алюминиевые окна со скрытой створкой ALUTECH ALT W72HS. На 20% больше площадь остекления, современный дизайн.',
-        ogType: 'product'
+        ogType: 'website'
     },
     '/doors': {
         title: 'Алюминиевые двери ALUTECH — каталог АлюПроект',
@@ -53,37 +53,37 @@ const seoDataMap: Record<string, PageSeoData> = {
     '/doors/hd': {
         title: 'HD-двери крупноформатные ALUTECH — АлюПроект',
         description: 'Крупноформатные HD-двери ALUTECH высотой до 3 м. Взломостойкость RC2, теплоизоляция, комфорт и безопасность.',
-        ogType: 'product'
+        ogType: 'website'
     },
     '/doors/classic': {
         title: 'Классические алюминиевые двери — АлюПроект',
         description: 'Классические алюминиевые двери ALUTECH. Повышенная шумо- и теплоизоляция, взломостойкость, долгий срок службы.',
-        ogType: 'product'
+        ogType: 'website'
     },
     '/doors/balcony': {
         title: 'Балконные (террасные) двери — АлюПроект',
         description: 'Балконные и террасные алюминиевые двери ALUTECH. Герметичность, взломостойкость RC2, минимальная высота порога 20 мм.',
-        ogType: 'product'
+        ogType: 'website'
     },
-    '/pocket-doors': {
+    '/sliding-doors': {
         title: 'Раздвижные алюминиевые системы ALUTECH — каталог АлюПроект',
         description: 'Каталог раздвижных систем ALUTECH: SL160, BF73 и SL130 для панорамных проемов, террас и современных жилых пространств.',
         ogType: 'website'
     },
-    '/pocket-doors/sl160': {
+    '/sliding-doors/sl160': {
         title: 'Подъемно-раздвижная система ALUTECH SL160 — АлюПроект',
         description: 'ALUTECH SL160 — алюминиевая подъемно-раздвижная система для широких панорамных проемов, террас и частных домов.',
-        ogType: 'product'
+        ogType: 'website'
     },
-    '/pocket-doors/bf73': {
+    '/sliding-doors/bf73': {
         title: 'Раздвижная система ALUTECH BF73 — АлюПроект',
         description: 'ALUTECH BF73 — алюминиевая система для широких светопрозрачных проемов в частных и коммерческих пространствах.',
-        ogType: 'product'
+        ogType: 'website'
     },
-    '/pocket-doors/sl130': {
+    '/sliding-doors/sl130': {
         title: 'Раздвижная система ALUTECH SL130 — АлюПроект',
         description: 'ALUTECH SL130 — компактная раздвижная алюминиевая система для современных интерьеров, террас и светопрозрачных перегородок.',
-        ogType: 'product'
+        ogType: 'website'
     }
 }
 

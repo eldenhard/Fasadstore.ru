@@ -19,12 +19,14 @@ const line2 = ref<HTMLElement | null>(null)
 useIntersectionObserver([line1, line2], (el: HTMLElement) => {
   el.classList.add('product-page__line--visible')
 })
+useScrollReveal()
 </script>
 <template>
   <div class="product-page">
     <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="product-page__content">
-      <section class="product-page__hero">
+      <AppBreadcrumbs />
+      <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
           <p class="product-page__title">Окна <br />панорамные</p>
           <p class="product-page__description">
@@ -38,7 +40,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           <img src="/images/windows/panorama-hero-window.png" alt="Панорамные окна ALUTECH" />
         </figure>
       </section>
-      <section class="product-page__double">
+      <section class="product-page__double reveal">
         <div class="product-page__double-images">
           <figure class="product-page__double-fig">
             <h4 class="product-page__subtitle--small">Окна с термоизоляцией ALT W72</h4>
@@ -97,7 +99,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__single">
+      <section class="product-page__single reveal">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Окна ALT W62</h4>
           <img src="/images/windows/alt-w62-window.png" alt="ALT W62" />
@@ -122,7 +124,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         </div>
       </section>
       <div ref="line1" class="product-page__line"></div>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">
             Технические решения, помогающие окнам Алютех <br /><strong>защищать</strong> дом от шума
@@ -144,7 +146,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__fullwidth">
+      <section class="product-page__fullwidth reveal">
         <ClientOnly
           ><iframe
             width="720"
@@ -162,7 +164,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
         <p>Или получить консультацию по телефону <a href="tel:+74957655026">8(495)765-50-26</a></p>
       </section>
       <div ref="line2" class="product-page__line"></div>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Три вида покрытий</p>
         </div>
@@ -187,7 +189,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle product-page__subtitle--centered">
             <strong>Безопасность</strong> окон Алютех
@@ -198,7 +200,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__hero product-page__hero--spaced">
+      <section class="product-page__hero product-page__hero--spaced reveal">
         <div class="product-page__hero-text">
           <p class="product-page__subtitle">Класс защиты RC2</p>
           <p class="product-page__description">
@@ -211,7 +213,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           <img src="/images/windows/security-class.jpg" alt="Безопасность RC2" />
         </figure>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Типы ручек</p>
         </div>
@@ -230,7 +232,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Преимущества алюминиевых окон ALUTECH</p>
         </div>
@@ -263,7 +265,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
           </ol>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">
             Наши выполненные работы: <NuxtLink to="/objects">Все проекты</NuxtLink>

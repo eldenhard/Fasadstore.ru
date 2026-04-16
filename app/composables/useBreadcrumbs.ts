@@ -15,7 +15,11 @@ const breadcrumbLabels: Record<string, string> = {
   '/doors': 'Двери',
   '/doors/hd': 'HD-двери',
   '/doors/classic': 'Классические',
-  '/doors/balcony': 'Балконные'
+  '/doors/balcony': 'Балконные',
+  '/sliding-doors': 'Порталы',
+  '/sliding-doors/sl160': 'SL160',
+  '/sliding-doors/bf73': 'BF73',
+  '/sliding-doors/sl130': 'SL130'
 }
 
 export function useBreadcrumbs(): ComputedRef<BreadcrumbItem[]> {

@@ -21,12 +21,14 @@ const line4 = ref<HTMLElement | null>(null)
 useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
   el.classList.add('product-page__line--visible')
 })
+useScrollReveal()
 </script>
 <template>
   <div class="product-page">
     <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="product-page__content">
-      <section class="product-page__hero">
+      <AppBreadcrumbs />
+      <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
           <p class="product-page__title">
             HD-двери крупноформатные <span class="product-page__light-color">ALUTECH</span>
@@ -42,7 +44,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           <img src="/images/doors/photo1.jpg" alt="HD-двери ALUTECH" />
         </figure>
       </section>
-      <section class="product-page__triangle">
+      <section class="product-page__triangle reveal">
         <div class="product-page__triangle-image">
           <img src="/images/doors/photo21.jpg" alt="Двери Алютех" />
         </div>
@@ -61,7 +63,9 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__single product-page__single--spacious product-page__single--reverse">
+      <section
+        class="product-page__single product-page__single--spacious product-page__single--reverse reveal"
+      >
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Крупноформатная дверь ALT W72 HD</h4>
           <img src="/images/doors/photo2.jpg" alt="ALT W72 HD" />
@@ -82,7 +86,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           <p>Типы открываний: внутреннее, наружное</p>
         </div>
       </section>
-      <section class="product-page__single product-page__single--spacious">
+      <section class="product-page__single product-page__single--spacious reveal">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Классическая дверь ALT W72</h4>
           <img src="/images/doors/photo3.jpg" alt="ALT W72" />
@@ -103,7 +107,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           <p>Типы открываний: внутреннее, наружное</p>
         </div>
       </section>
-      <section class="product-page__single product-page__single--reverse">
+      <section class="product-page__single product-page__single--reverse reveal">
         <figure class="product-page__single-image">
           <h4 class="product-page__subtitle--small">Классическая дверь ALT W62</h4>
           <img src="/images/doors/photo5.jpg" alt="ALT W62" />
@@ -125,7 +129,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
         </div>
       </section>
       <div ref="line1" class="product-page__line"></div>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Типы ручек</p>
         </div>
@@ -149,7 +153,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
         </div>
       </section>
       <div ref="line2" class="product-page__line"></div>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">
             Прочные петли.<br />Ресурс петель - <strong>1 000 000 циклов</strong> закрытия и
@@ -157,13 +161,17 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__triangle">
+      <section class="product-page__triangle reveal">
         <div class="product-page__triangle-image">
-          <img src="/images/doors/photo9.webp" alt="Петли" class="product-page__image--sixty-height" />
+          <img
+            src="/images/doors/photo9.webp"
+            alt="Петли"
+            class="product-page__image--sixty-height"
+          />
         </div>
       </section>
       <div ref="line3" class="product-page__line"></div>
-      <section class="product-page__single product-page__hero--spaced">
+      <section class="product-page__single product-page__hero--spaced reveal">
         <figure class="product-page__single-image product-page__single-image--half">
           <h4 class="product-page__subtitle--small">Термомосты Anti-Be-Metal</h4>
           <img src="/images/doors/photo10.webp" alt="Термомосты" />
@@ -175,7 +183,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </h4>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Типы стеклопакета</p>
         </div>
@@ -190,7 +198,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </div>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">
             Пороги высотой всего 14, 20 или 22 мм<br />обеспечивают комфортное перемещение из дома
@@ -198,7 +206,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </p>
         </div>
       </section>
-      <section class="product-page__fullwidth">
+      <section class="product-page__fullwidth reveal">
         <ClientOnly
           ><iframe
             width="720"
@@ -214,7 +222,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
         <p>фурнитура-исключает риск самостоятельного Открытия окон Алютех детьми</p>
       </section>
       <div ref="line4" class="product-page__line"></div>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">Преимущества алюминиевых окон ALUTECH</p>
         </div>
@@ -247,7 +255,7 @@ useIntersectionObserver([line1, line2, line3, line4], (el: HTMLElement) => {
           </ol>
         </div>
       </section>
-      <section class="product-page__triple">
+      <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">
             Наши выполненные работы: <NuxtLink to="/objects">Все проекты</NuxtLink>

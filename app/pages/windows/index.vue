@@ -31,6 +31,7 @@ const windowTypes = [
   <div class="product-page">
     <ProductTabs :items="tabs" :active-index="activeIndex" />
     <div class="product-page__index-content">
+      <AppBreadcrumbs />
       <h1 class="product-page__index-title">Алюминиевые окна</h1>
       <p class="product-page__index-desc">
         Каталог алюминиевых окон АлюПроект. Мы предлагаем классические, панорамные окна и окна со

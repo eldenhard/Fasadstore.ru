@@ -24,7 +24,8 @@ const mobileLinks = [
 
 const productLinks = [
   { label: 'Алюминиевые окна', to: '/windows' },
-  { label: 'Алюминиевые двери', to: '/doors' }
+  { label: 'Алюминиевые двери', to: '/doors' },
+  { label: 'Раздвижные двери', to: '/sliding-doors' }
 ]
 </script>
 
@@ -91,8 +92,9 @@ const productLinks = [
                 :to="item.to"
                 class="navbar__drawer-link navbar__drawer-link--sub"
                 @click="isDrawerOpen = false"
-                >{{ item.label }}</NuxtLink
               >
+                {{ item.label }}
+              </NuxtLink>
             </div>
             <div class="navbar__drawer-divider">
               <UButton

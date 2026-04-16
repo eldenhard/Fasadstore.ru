@@ -34,10 +34,11 @@ const doorTypes = [
   <div class="product-page">
     <ProductTabs :items="tabs" :active-index="activeIndex" />
     <div class="product-page__index-content">
+      <AppBreadcrumbs />
       <h1 class="product-page__index-title">Алюминиевые двери</h1>
       <p class="product-page__index-desc">
-        Мы предлагаем HD-двери, балконные (террасные) и
-        классические двери на базе профильных систем ALUTECH.
+        Мы предлагаем HD-двери, балконные (террасные) и классические двери на базе профильных систем
+        ALUTECH.
       </p>
       <div class="product-page__cards">
         <NuxtLink v-for="item in doorTypes" :key="item.to" :to="item.to" class="product-page__card">

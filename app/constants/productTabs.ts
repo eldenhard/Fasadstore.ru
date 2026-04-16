@@ -16,7 +16,7 @@ export const DOOR_PRODUCT_TABS: ProductTab[] = [
 ]
 
 export const POCKET_DOOR_PRODUCT_TABS: ProductTab[] = [
-  { label: 'SL160', to: '/pocket-doors/sl160' },
-  { label: 'BF73', to: '/pocket-doors/bf73' },
-  { label: 'SL130', to: '/pocket-doors/sl130' }
+  { label: 'SL160', to: '/sliding-doors/sl160' },
+  { label: 'BF73', to: '/sliding-doors/bf73' },
+  { label: 'SL130', to: '/sliding-doors/sl130' }
 ]

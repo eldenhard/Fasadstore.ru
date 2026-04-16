@@ -21,7 +21,7 @@ export const HOME_DIRECTION_ITEMS: HomeDirectionItem[] = [
     description:
       'Раздвижные системы для частных домов и коттеджей с большим световым проемом и комфортным открыванием.',
     image: '/images/directions/sliding-doors.png',
-    to: '/pocket-doors'
+    to: '/sliding-doors'
   },
   {
     title: 'Остекление террас и беседок',
