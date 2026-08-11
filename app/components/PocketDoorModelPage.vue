@@ -126,7 +126,7 @@ useScrollReveal()
           <p
             v-if="model.protectionClass"
             class="product-page__description"
-            style="margin-top: 2vh; text-align: center"ч
+            style="margin-top: 2vh; text-align: center"
           >
             <strong>{{ model.protectionClass }}</strong>
           </p>
@@ -178,24 +178,19 @@ useScrollReveal()
             {{ model.handleColorsNote }}
           </p>
         </div>
-        <div class="product-page__triple-items" style="justify-content: center; gap: 4vw">
+        <div class="product-page__color-items">
           <div
             v-for="color in model.handleColors"
             :key="color.name"
-            class="product-page__triple-item"
-            style="flex: 0; align-items: center"
+            class="product-page__color-item"
           >
             <div
+              class="product-page__color-swatch"
               :style="{
-                width: '60px',
-                height: '60px',
-                borderRadius: '4px',
-                background: color.colorHex,
-                border: '1px solid #ccc',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+                background: color.colorHex
               }"
             />
-            <p>{{ color.name }}</p>
+            <p class="product-page__color-name">{{ color.name }}</p>
           </div>
         </div>
       </section>

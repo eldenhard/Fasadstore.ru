@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const isDrawerOpen = ref(false)
+const isNavbarHidden = ref(false)
+let lastScrollY = 0
+let removeScrollListener: (() => void) | undefined
 
 const navItems = [
   { label: 'Главная', to: '/' },
@@ -8,7 +11,9 @@ const navItems = [
     label: 'Продукция',
     children: [
       { label: 'Алюминиевые окна', to: '/windows' },
-      { label: 'Алюминиевые двери', to: '/doors' }
+      { label: 'Алюминиевые двери', to: '/doors' },
+      { label: 'Раздвижные двери', to: '/sliding-doors' },
+      { label: 'Фасадное остекление', to: '/facades' }
     ]
   },
   { label: 'Объекты', to: '/objects' },
@@ -25,12 +30,36 @@ const mobileLinks = [
 const productLinks = [
   { label: 'Алюминиевые окна', to: '/windows' },
   { label: 'Алюминиевые двери', to: '/doors' },
-  { label: 'Раздвижные двери', to: '/sliding-doors' }
+  { label: 'Раздвижные двери', to: '/sliding-doors' },
+  { label: 'Фасадное остекление', to: '/facades' }
 ]
+
+onMounted(() => {
+  lastScrollY = window.scrollY
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+
+    if (currentScrollY < 24 || isDrawerOpen.value) {
+      isNavbarHidden.value = false
+    } else {
+      isNavbarHidden.value = currentScrollY > lastScrollY
+    }
+
+    lastScrollY = currentScrollY
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  removeScrollListener = () => window.removeEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+  removeScrollListener?.()
+})
 </script>
 
 <template>
-  <header class="navbar">
+  <header class="navbar" :class="{ 'navbar--hidden': isNavbarHidden }">
     <nav class="navbar__inner">
       <NuxtLink to="/" class="navbar__logo">
         <NuxtImg
@@ -42,25 +71,27 @@ const productLinks = [
         />
       </NuxtLink>
 
-      <UNavigationMenu
-        :items="navItems"
-        variant="link"
-        highlight
-        highlight-color="neutral"
-        color="neutral"
-        class="navbar__menu"
-        :ui="{ link: 'text-white', linkLabel: 'text-white', childLink: 'text-gray-900' }"
-      />
+      <div class="navbar__desktop">
+        <UNavigationMenu
+          :items="navItems"
+          variant="link"
+          highlight
+          highlight-color="neutral"
+          color="neutral"
+          class="navbar__menu"
+          :ui="{ link: 'text-white', linkLabel: 'text-white', childLink: 'text-gray-900' }"
+        />
 
-      <UButton
-        as="a"
-        href="tel:+74957655026"
-        variant="ghost"
-        color="neutral"
-        icon="i-lucide-phone"
-        label="+7(495) 765-50-26"
-        class="navbar__phone"
-      />
+        <UButton
+          as="a"
+          href="tel:+74957655026"
+          variant="ghost"
+          color="neutral"
+          icon="i-lucide-phone"
+          label="+7(495) 765-50-26"
+          class="navbar__phone"
+        />
+      </div>
 
       <UButton
         variant="ghost"
@@ -116,19 +147,30 @@ const productLinks = [
 
 <style scoped>
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   background: #111827;
+  transform: translateY(0);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
 }
 
 .navbar__inner {
-  max-width: 80rem;
+  width: min(100% - 32px, 1280px);
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  gap: 1rem;
   height: 64px;
 }
 
@@ -141,13 +183,20 @@ const productLinks = [
   width: auto;
 }
 
-.navbar__menu {
+.navbar__desktop {
   display: none;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.navbar__menu {
+  min-width: 0;
 }
 
 .navbar__phone {
-  display: none;
   color: white;
+  flex-shrink: 0;
 }
 
 .navbar__burger {
@@ -156,17 +205,23 @@ const productLinks = [
   color: white;
 }
 
-@media (min-width: 1024px) {
-  .navbar__menu {
+@media (min-width: 1180px) {
+  .navbar__desktop {
     display: flex;
-  }
-
-  .navbar__phone {
-    display: inline-flex;
   }
 
   .navbar__burger {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar__inner {
+    width: min(100% - 20px, 1280px);
+  }
+
+  .navbar__logo-img {
+    height: 2rem;
   }
 }
 

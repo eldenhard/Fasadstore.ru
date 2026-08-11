@@ -16,6 +16,7 @@ const breadcrumbLabels: Record<string, string> = {
   '/doors/hd': 'HD-двери',
   '/doors/classic': 'Классические',
   '/doors/balcony': 'Балконные',
+  '/facades': 'Фасадное остекление',
   '/sliding-doors': 'Порталы',
   '/sliding-doors/sl160': 'SL160',
   '/sliding-doors/bf73': 'BF73',

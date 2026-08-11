@@ -247,20 +247,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
             Более 1800 заказчиков используют или просто наслаждаются нашими алюминиевыми
             конструкциями.
           </p>
-          <button class="btn-purple" role="button"><span>Контактная информация</span></button>
-        </div>
-        <div class="right-block">
-          <h2>Воплотим вашу мечту о качественном загородном доме</h2>
-          <p>
-            Чтобы вы уже через несколько месяцев смогли наслаждаться природой, спокойствием и лучшей
-            жизнью в новом доме с вашей семьей
-          </p>
-          <button class="btn-purple" role="button">
-            <span>Получить коммерческое предложение</span>
-          </button>
-        </div>
-        <div class="woman-block">
-          <NuxtImg src="/images/about/girl_right.png" alt="Специалист компании" />
+          <NuxtLink to="/contacts" class="btn-purple"><span>Контактная информация</span></NuxtLink>
         </div>
       </div>
     </section>
@@ -282,7 +269,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 .pic-about h3 {
   color: white;
   text-align: center;
-  font-size: 5vh;
+  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 .pic-about__text {
   width: 50%;
@@ -291,11 +278,11 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 .pic-about__text p {
   color: white;
   margin-top: 2%;
-  font-size: 2vh;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   text-align: center;
 }
 .about-company {
-  width: 70%;
+  width: min(70%, 1180px);
   margin: 4% auto;
   display: grid;
   gap: 4%;
@@ -339,7 +326,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  width: 70%;
+  width: min(70%, 1180px);
   margin: 0 auto;
   position: relative;
   gap: 5%;
@@ -408,7 +395,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   font-size: 18px;
 }
 .three-block-wrapper {
-  width: 70%;
+  width: min(70%, 1180px);
   margin: 4% auto;
 }
 .three-block {
@@ -512,7 +499,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 }
 .dark-section__header p {
   color: white;
-  font-size: 3vh;
+  font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: bold;
   text-align: center;
 }
@@ -542,7 +529,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   position: relative;
 }
 .dark-section__card-title {
-  font-size: 2.2vh;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   text-transform: uppercase;
   text-align: center;
 }
@@ -554,60 +541,33 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 .w-block {
   position: relative;
   box-sizing: border-box;
-  height: 50vh;
+  height: auto;
 }
 .two-color-block {
   background: #f3f3f3;
-  min-height: 40vh;
+  min-height: 0;
   margin-top: 10%;
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
 }
 .left-block {
-  padding: 8% 8% 1% 8%;
+  width: min(100% - 48px, 980px);
+  padding: clamp(2rem, 6vw, 4rem) 0;
   height: auto;
+  text-align: center;
 
   h2 {
-    font-size: 2rem;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
     font-weight: 600;
   }
 
   p {
     font-weight: 500;
-    font-size: 1rem;
-    margin-top: 2%;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    margin: 1rem auto 0;
+    max-width: 720px;
   }
-}
-.right-block {
-  padding: 8% 25% 0 8%;
-  height: auto;
-  background: radial-gradient(circle, rgba(156, 69, 147, 1) 0%, rgba(94, 49, 90, 1) 71%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%);
-}
-.right-block {
-  h2 {
-    color: rgb(241, 241, 241);
-    font-size: 2rem;
-    font-weight: 600;
-  }
-
-  p {
-    color: rgb(241, 241, 241);
-    font-weight: 500;
-    font-size: 1rem;
-    margin-top: 2%;
-  }
-}
-.woman-block {
-  position: absolute;
-  right: 0;
-  top: -5vh;
-  height: 55vh;
-}
-.woman-block img {
-  height: 100%;
-  width: 100%;
 }
 .btn-purple {
   appearance: none;
@@ -638,7 +598,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  white-space: nowrap;
   margin-top: 4%;
 }
 .btn-purple::before {
@@ -736,30 +695,88 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     padding-top: 10%;
   }
   .w-block {
-    margin: 20% 0 48% 0;
+    margin: 12% 0 0;
   }
   .two-color-block {
-    grid-template-columns: 1fr;
-  }
-  .woman-block {
-    display: none;
-  }
-  .right-block {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .right-block button {
-    margin-left: 25%;
-    margin-bottom: 4%;
   }
   .left-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .pic-about {
+    height: auto;
+    min-height: 380px;
+    padding: 2rem 1rem;
+  }
+
+  .about-company,
+  .about-office,
+  .three-block-wrapper {
+    width: min(100% - 32px, 720px);
+  }
+
+  .about-company h1,
+  .about-company h3,
+  .about-office__title,
+  .dark-section__header {
+    text-align: center;
+  }
+
+  .about-company h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-company h3 {
+    font-size: 1.35rem;
+  }
+
+  .about-office {
+    width: min(100% - 32px, 720px);
+  }
+
+  .about-office__mini {
+    gap: 0.5rem;
+  }
+
+  .three-block__card {
+    min-height: 150px;
+  }
+
+  .dark-section__cards {
+    position: static;
+    transform: none;
+    width: min(100% - 32px, 720px);
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  .dark-section__card {
+    width: 100%;
+  }
+
+  .w-block {
+    height: auto;
+    margin: 0;
+  }
+
+  .two-color-block {
+    margin-top: 0;
+  }
+
+  .left-block,
+  .two-color-block {
+    padding: 0;
+  }
+
+  .btn-purple {
+    width: 100%;
+    padding-inline: 1rem;
   }
 }
 </style>

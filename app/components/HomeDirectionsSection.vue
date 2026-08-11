@@ -100,8 +100,8 @@ import { HOME_DIRECTION_ITEMS } from '~/constants/homeDirections'
 
 .home-direction-card__image {
   width: 100%;
-  min-height: 80%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   filter: brightness(89%);
 }
 
@@ -167,7 +167,6 @@ import { HOME_DIRECTION_ITEMS } from '~/constants/homeDirections'
 @media screen and (max-width: 900px) {
   .home-directions__title {
     text-align: center;
-    white-space: nowrap;
     margin-top: 4%;
   }
   .home-directions__grid {

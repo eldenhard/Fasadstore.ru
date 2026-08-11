@@ -75,7 +75,7 @@
   background: linear-gradient(177deg, rgba(4, 21, 33, 1) 7%, rgba(8, 44, 67, 1) 89%);
 }
 .mini-about__grid {
-  width: 75%;
+  width: min(75%, 1180px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -118,7 +118,7 @@
   color: rgb(202, 217, 245);
   font-family: 'Montserrat', sans-serif;
   margin-top: 2%;
-  font-size: 2.5vh;
+  font-size: clamp(1.1rem, 1.6vw, 1.55rem);
 }
 .mini-about__desc {
   margin-top: 6%;
@@ -198,6 +198,7 @@
     display: flex;
     flex-direction: column-reverse;
     width: 90%;
+    gap: 1.5rem;
   }
   .mini-about__images {
     margin: 8% auto;
@@ -218,6 +219,22 @@
     font-style: italic;
     font-size: 15px;
     text-align: left;
+  }
+
+  .mini-about__btn {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .mini-about {
+    padding: 2rem 0;
+  }
+
+  .mini-about__subtitle,
+  .mini-about__desc {
+    line-height: 1.6;
   }
 }
 </style>

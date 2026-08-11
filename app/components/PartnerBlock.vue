@@ -248,7 +248,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 /* ── Продукция + Партнёры ── */
 .partner-block {
   position: relative;
-  width: 75%;
+  width: min(75%, 1180px);
   margin: 8% auto 0;
   border-radius: 16px;
   overflow: hidden;
@@ -276,7 +276,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 .partner-block__heading {
   text-align: center;
   color: #082c43;
-  font-size: 4vh;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
   font-weight: 700;
   font-family: 'Arial', sans-serif;
   padding-top: 2%;
@@ -356,16 +356,17 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   width: 100%;
   min-height: 45vh;
   margin-top: 2%;
+  padding: clamp(2rem, 5vw, 4rem) 0 0;
 }
 .strong-aside__content {
-  width: 95%;
+  width: min(100% - 48px, 1040px);
   margin: 0 auto;
 }
 .strong-aside__left h4 {
   text-align: left;
   color: rgb(205, 219, 247);
   font-weight: bold;
-  font-size: 4vh;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
 }
 .strong-aside__left p {
   color: #d4d4d4;
@@ -388,7 +389,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 }
 .strong-aside__rating {
   display: flex;
-  justify-content: space-between;
   background: rgba(128, 130, 163, 0.14);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -399,16 +399,16 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   margin-top: 2%;
 }
 .strong-aside__col {
-  min-width: 30vw;
+  min-width: 0;
+  flex: 1;
 }
 .strong-aside__col p {
   text-align: center;
-  font-size: 2.5vh;
+  font-size: clamp(1rem, 2vw, 1.45rem);
 }
 .strong-aside__col span {
-  font-size: 2vh;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   color: aliceblue;
-  white-space: nowrap;
 }
 .strong-aside__col meter {
   width: 100%;
@@ -471,17 +471,19 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 
 /* Белый блок услуг */
 .strong-aside__services {
+  position: relative;
   background: white;
-  height: 25vh;
-  width: 90%;
-  margin-top: 6%;
+  width: min(100% - 48px, 1040px);
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
   box-sizing: border-box;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -18px 48px rgba(4, 30, 47, 0.18);
 }
 .strong-aside__services-grid {
-  width: 95%;
-  margin-left: auto;
+  width: 100%;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .strong-aside__service {
   display: flex;
@@ -492,7 +494,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 .strong-aside__service-title {
   font-size: 16px;
   font-weight: 700;
-  white-space: nowrap;
   margin-top: 8%;
   color: black;
 }
@@ -515,7 +516,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 @media screen and (max-width: 1900px) {
   .strong-aside__services {
     width: 100%;
-    height: auto;
   }
 }
 
@@ -527,8 +527,8 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
     flex-direction: column;
   }
   .strong-aside__services {
-    width: 100%;
-    margin-top: 16%;
+    width: min(100% - 32px, 1040px);
+    margin-top: 2rem;
   }
   .strong-aside__service {
     align-items: center;
@@ -538,14 +538,50 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 @media screen and (max-width: 900px) {
   .partner-block {
     width: 90%;
+    border-radius: 8px;
   }
   .partner-block__partners-title {
     text-align: center;
-    white-space: nowrap;
   }
   .partner-block__partners-line {
     margin: 0 auto;
     width: 25vw;
+  }
+
+  .partner-block__videos {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .strong-aside__services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .partner-block__content {
+    padding: 1.25rem;
+  }
+
+  .strong-aside__question {
+    font-size: 1.35rem;
+  }
+
+  .strong-aside__rating {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .strong-aside__content {
+    width: min(100% - 32px, 1040px);
+  }
+
+  .strong-aside__services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .strong-aside__col meter {
+    max-width: none;
   }
 }
 </style>

@@ -225,4 +225,45 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   }
 }
+
+@media screen and (max-width: 900px) {
+  .glass-cottages {
+    &__header {
+      height: 44vh;
+      min-height: 320px;
+    }
+
+    &__container {
+      width: min(100% - 32px, 720px);
+      margin: 2rem auto;
+    }
+
+    &__description {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    &__description-two-blocks {
+      flex-direction: column;
+      gap: 1.25rem;
+
+      p,
+      .glass-cottages__description-img {
+        width: 100%;
+      }
+    }
+
+    &__description-header-left {
+      justify-content: flex-start;
+
+      b {
+        width: 100%;
+      }
+    }
+
+    &__description-img--small {
+      width: 100%;
+    }
+  }
+}
 </style>

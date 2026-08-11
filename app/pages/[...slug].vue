@@ -4,3 +4,7 @@ throw createError({
   statusMessage: 'Страница не найдена'
 })
 </script>
+
+<template>
+  <div />
+</template>

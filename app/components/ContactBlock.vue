@@ -39,7 +39,6 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
     </section>
     <div class="contact-block__planet" :style="{ background: planetBg }">
       <section class="contact-block__form-section">
-        <ContactForm />
         <div class="contact-block__info">
           <p class="contact-block__info-title">
             Закажите бесплатный выезд инженера-замерщика и обсудите все вопросы лично
@@ -172,35 +171,40 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
 }
 .contact-block__planet {
   width: 100%;
-  min-height: 60vh;
+  min-height: 0;
   height: auto;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  background-size: contain;
 }
 .contact-block__form-section {
   display: flex;
-  justify-content: space-between;
-  width: 60%;
+  justify-content: center;
+  width: min(100% - 48px, 680px);
+  max-width: 680px;
   gap: 20px;
   margin: 0 auto;
-  height: 100%;
 }
 .contact-block__info {
-  background: #041e2f;
+  background: linear-gradient(145deg, #041e2f, #0b344f);
   color: white;
-  width: 45%;
-  padding: 4%;
+  width: 100%;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 8px;
+  box-shadow: 0 22px 56px rgba(4, 30, 47, 0.22);
 }
 .contact-block__info-title {
-  font-size: 2.5vh;
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  line-height: 1.35;
   font-weight: bold;
   text-transform: uppercase;
 }
 .contact-block__info-desc {
   color: #d4d4d4;
-  margin-top: 2%;
+  margin-top: 1rem;
 }
 .contact-block__info-row {
-  margin-top: 6%;
-  width: 70%;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
   display: flex;
   gap: 20px;
   align-items: flex-start;
@@ -222,10 +226,11 @@ a.contact-block__value:hover {
   color: rgb(192, 192, 192);
 }
 .contact-block__socials {
-  width: 45%;
-  margin: 4% auto 4%;
+  width: min(100%, 320px);
+  margin: 2rem auto 0;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 .contact-block__social {
   width: 45px;
@@ -252,7 +257,7 @@ a.contact-block__value:hover {
 }
 @media screen and (max-width: 1300px) {
   .contact-block__form-section {
-    width: 90%;
+    width: min(100% - 48px, 680px);
   }
 }
 @media screen and (max-width: 900px) {
@@ -275,12 +280,48 @@ a.contact-block__value:hover {
     padding-top: 4%;
   }
   .contact-block__form-section {
-    flex-direction: column;
-    width: 100%;
+    width: min(100% - 32px, 680px);
   }
   .contact-block__info {
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
+  }
+
+  .contact-block__info-row,
+  .contact-block__socials {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact-block__hero {
+    height: auto;
+    min-height: 360px;
+  }
+
+  .contact-block__overlay-inner {
+    width: min(100% - 32px, 520px);
+  }
+
+  .contact-block__main-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-block__main-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .contact-block__advantage {
+    padding: 1.25rem;
+  }
+
+  .contact-block__info {
+    padding: 1.5rem;
+  }
+
+  .contact-block__info-title {
+    font-size: 1.25rem;
   }
 }
 </style>

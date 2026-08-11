@@ -27,34 +27,15 @@ const pocketDoorTypes = [
   }
 ]
 </script>
+
 <template>
-  <div class="product-page">
-    <ProductTabs :items="tabs" :active-index="activeIndex" />
-    <div class="product-page__index-content">
-      <AppBreadcrumbs />
-      <h1 class="product-page__index-title">Алюминиевые раздвижные двери</h1>
-      <p class="product-page__index-desc">
-        Мы предлагаем алюминиевые раздвижные двери Алютех SL160, SL130, BF73.
-      </p>
-      <div class="product-page__cards">
-        <NuxtLink
-          v-for="item in pocketDoorTypes"
-          :key="item.to"
-          :to="item.to"
-          class="product-page__card"
-        >
-          <NuxtImg
-            :src="item.image"
-            :alt="item.title"
-            width="400"
-            height="250"
-            loading="lazy"
-            class="product-page__card-img"
-          />
-          <h3 class="product-page__card-title">{{ item.title }}</h3>
-          <p class="product-page__card-desc">{{ item.description }}</p>
-        </NuxtLink>
-      </div>
-    </div>
-  </div>
+  <ProductCategoryIndex
+    :tabs="tabs"
+    :active-index="activeIndex"
+    label="Каталог систем"
+    title="Алюминиевые раздвижные двери"
+    description="Подбираем раздвижные системы для террас, коттеджей, панорамных проемов и теплого остекления. В разделе собраны основные решения с разной логикой открывания."
+    panel-title="Системы"
+    :items="pocketDoorTypes"
+  />
 </template>

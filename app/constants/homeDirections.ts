@@ -50,6 +50,7 @@ export const HOME_DIRECTION_ITEMS: HomeDirectionItem[] = [
     brand: 'Алютех (ALUTECH)',
     description:
       'Витражное и фасадное остекление для частных домов, коммерческих зданий и многоэтажных объектов.',
-    image: '/images/directions/facade-glazing.png'
+    image: '/images/directions/facade-glazing.png',
+    to: '/facades'
   }
 ]

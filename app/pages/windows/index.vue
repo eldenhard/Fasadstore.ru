@@ -9,7 +9,7 @@ const { activeIndex } = useProductTabs(tabs)
 const windowTypes = [
   {
     title: 'Классические окна',
-    description: 'Универсальные алюминиевые окна ALUTECH для любых помещений',
+    description: 'Универсальные алюминиевые окна для любых помещений',
     to: '/windows/classic',
     image: '/images/windows/classic-hero-window.png'
   },
@@ -27,35 +27,15 @@ const windowTypes = [
   }
 ]
 </script>
+
 <template>
-  <div class="product-page">
-    <ProductTabs :items="tabs" :active-index="activeIndex" />
-    <div class="product-page__index-content">
-      <AppBreadcrumbs />
-      <h1 class="product-page__index-title">Алюминиевые окна</h1>
-      <p class="product-page__index-desc">
-        Каталог алюминиевых окон АлюПроект. Мы предлагаем классические, панорамные окна и окна со
-        скрытой створкой на базе профильных систем ALUTECH.
-      </p>
-      <div class="product-page__cards">
-        <NuxtLink
-          v-for="item in windowTypes"
-          :key="item.to"
-          :to="item.to"
-          class="product-page__card"
-        >
-          <NuxtImg
-            :src="item.image"
-            :alt="item.title"
-            width="400"
-            height="250"
-            loading="lazy"
-            class="product-page__card-img"
-          />
-          <h3 class="product-page__card-title">{{ item.title }}</h3>
-          <p class="product-page__card-desc">{{ item.description }}</p>
-        </NuxtLink>
-      </div>
-    </div>
-  </div>
+  <ProductCategoryIndex
+    :tabs="tabs"
+    :active-index="activeIndex"
+    label="Каталог систем"
+    title="Алюминиевые окна"
+    description="Каталог алюминиевых окон АлюПроект. Мы предлагаем классические, панорамные окна и окна со скрытой створкой на базе профильных систем."
+    panel-title="Виды окон"
+    :items="windowTypes"
+  />
 </template>
