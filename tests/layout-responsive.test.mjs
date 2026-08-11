@@ -58,12 +58,37 @@ test('partner strong aside uses non-overlapping responsive layout', async () => 
   assert.doesNotMatch(partner, /\.strong-aside__services\s*{[\s\S]*height:\s*25vh/)
 })
 
+test('home partner services stay contained on desktop', async () => {
+  const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
+
+  assert.match(partner, /\.strong-aside__services\s*{[\s\S]*width:\s*min\(100% - 48px,\s*1040px\)/)
+  assert.match(partner, /\.strong-aside__services-grid\s*{[\s\S]*gap:/)
+  assert.match(partner, /\.strong-aside__services-grid\s*{[\s\S]*justify-content:\s*start/)
+  assert.match(partner, /\.strong-aside__services-grid\s*{[\s\S]*grid-template-columns:\s*repeat\(auto-fit,\s*minmax\(180px,\s*220px\)\)/)
+  assert.doesNotMatch(partner, /@media screen and \(max-width: 1900px\)\s*{\s*\.strong-aside__services\s*{\s*width:\s*100%;/)
+})
+
+test('strong aside rating metrics align across aluminum and pvc columns', async () => {
+  const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
+
+  assert.match(partner, /class="strong-aside__facts"/)
+  assert.match(partner, /class="strong-aside__metrics"/)
+  assert.match(partner, /\.strong-aside__rating\s*{[\s\S]*gap:\s*clamp\(1\.5rem,\s*4vw,\s*4rem\)/)
+  assert.match(partner, /\.strong-aside__facts\s*{[\s\S]*min-height:\s*8\.75rem/)
+  assert.match(partner, /\.strong-aside__metrics\s*{[\s\S]*margin-top:\s*0\.85rem/)
+  assert.match(partner, /\.strong-aside__metrics\s*{[\s\S]*gap:\s*1\.5rem/)
+  assert.match(partner, /\.strong-aside__metric\s*{[\s\S]*display:\s*flex/)
+  assert.match(partner, /@media screen and \(max-width: 920px\)[\s\S]*\.strong-aside__facts\s*{[\s\S]*min-height:\s*0/)
+})
+
 test('facade detail cards use softened gradient styling', async () => {
   const page = await readFile(new URL('../app/pages/facades.vue', import.meta.url), 'utf8')
 
-  assert.match(page, /\.facades-page__detail-card\s*{[\s\S]*linear-gradient/)
+  assert.match(page, /\.facades-page__detail-card\s*{[\s\S]*background:\s*#fff/)
   assert.match(page, /\.facades-page__detail-card\s*{[\s\S]*box-shadow/)
-  assert.doesNotMatch(page, /background:\s*#102a3d/)
+  assert.match(page, /\.facades-page__detail-card::before\s*{[\s\S]*background:\s*linear-gradient/)
+  assert.match(page, /\.facades-page__detail-card:hover\s*{[\s\S]*transform:\s*translateY\(-4px\)/)
+  assert.doesNotMatch(page, /\.facades-page__detail-card\s*{[\s\S]*#dbe7ef/)
 })
 
 test('category index pages share one start layout component', async () => {
@@ -77,6 +102,12 @@ test('category index pages share one start layout component', async () => {
   assert.match(sliding, /<ProductCategoryIndex/)
   assert.match(component, /category-index__panel-link/)
   assert.match(component, /@media \(max-width: 980px\)/)
+})
+
+test('category index pages do not render product nav tabs', async () => {
+  const component = await readFile(new URL('../app/components/ProductCategoryIndex.vue', import.meta.url), 'utf8')
+
+  assert.doesNotMatch(component, /<ProductTabs/)
 })
 
 test('pocket door color swatches do not collapse labels vertically', async () => {
@@ -110,8 +141,11 @@ test('category side panel uses a restrained light palette and hover', async () =
 
 test('category side panel text fits long Russian labels', async () => {
   const component = await readFile(new URL('../app/components/ProductCategoryIndex.vue', import.meta.url), 'utf8')
+  const mainCss = await readFile(new URL('../app/assets/css/main.css', import.meta.url), 'utf8')
 
   assert.match(component, /\.category-index__panel-link\s*{[\s\S]*font:\s*800 clamp\(1rem,\s*1\.6vw,\s*1\.45rem\)/)
-  assert.match(component, /\.category-index__panel-link\s*{[\s\S]*overflow-wrap:\s*anywhere/)
-  assert.match(component, /\.category-index__panel-link\s*{[\s\S]*hyphens:\s*auto/)
+  assert.match(component, /\.category-index__panel-link\s*{[\s\S]*overflow-wrap:\s*normal/)
+  assert.match(component, /\.category-index__panel-link\s*{[\s\S]*word-break:\s*normal/)
+  assert.doesNotMatch(component, /overflow-wrap:\s*anywhere/)
+  assert.doesNotMatch(mainCss, /overflow-wrap:\s*anywhere/)
 })

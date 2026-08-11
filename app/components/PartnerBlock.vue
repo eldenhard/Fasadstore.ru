@@ -119,38 +119,42 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
             <div class="strong-aside__rating">
               <section class="strong-aside__col strong-aside__col--alu">
                 <p><strong class="strong-aside__accent strong-aside__accent--aluminum">Алюминий</strong></p>
-                <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--aluminum">50 лет</strong></span
-                ><br />
-                <span
-                  >Экологичность:
-                  <strong
-                    ><span class="strong-aside__accent strong-aside__accent--aluminum">Не выделяет</span> вредных веществ</strong
-                  ></span
-                ><br />
-                <span
-                  >Поддерживает горение:
-                  <strong class="strong-aside__accent strong-aside__accent--aluminum">Не поддерживает</strong></span
-                ><br /><br />
-                <span>Прочность: <meter value="1" /></span><br />
-                <span>Стильный дизайн: <meter value="1" /></span>
+                <div class="strong-aside__facts">
+                  <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--aluminum">50 лет</strong></span>
+                  <span>
+                    Экологичность:
+                    <strong><span class="strong-aside__accent strong-aside__accent--aluminum">Не выделяет</span> вредных веществ</strong>
+                  </span>
+                  <span>
+                    Поддерживает горение:
+                    <strong class="strong-aside__accent strong-aside__accent--aluminum">Не поддерживает</strong>
+                  </span>
+                </div>
+                <div class="strong-aside__metrics">
+                  <span class="strong-aside__metric">Прочность: <meter value="1" /></span>
+                  <span class="strong-aside__metric">Стильный дизайн: <meter value="1" /></span>
+                </div>
               </section>
               <section class="strong-aside__col strong-aside__col--pvh">
                 <p><strong class="strong-aside__accent strong-aside__accent--pvc">ПВХ</strong></p>
-                <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--pvc">20 лет</strong></span
-                ><br />
-                <span
-                  >Экологичность:
-                  <strong><span class="strong-aside__accent strong-aside__accent--pvc">Выделяет</span> формальдегид</strong></span
-                ><br />
-                <span
-                  >Поддерживает горение:
-                  <strong
-                    >При горении выделяются
-                    <span class="strong-aside__accent strong-aside__accent--pvc">опасные вещества</span></strong
-                  ></span
-                ><br /><br />
-                <span>Прочность: <meter value="0.4" class="meter-pvh" /></span><br />
-                <span>Стильный дизайн: <meter value="0.5" class="meter-pvh" /></span>
+                <div class="strong-aside__facts">
+                  <span>Срок службы: <strong class="strong-aside__accent strong-aside__accent--pvc">20 лет</strong></span>
+                  <span>
+                    Экологичность:
+                    <strong><span class="strong-aside__accent strong-aside__accent--pvc">Выделяет</span> формальдегид</strong>
+                  </span>
+                  <span>
+                    Поддерживает горение:
+                    <strong>
+                      При горении выделяются
+                      <span class="strong-aside__accent strong-aside__accent--pvc">опасные вещества</span>
+                    </strong>
+                  </span>
+                </div>
+                <div class="strong-aside__metrics">
+                  <span class="strong-aside__metric">Прочность: <meter value="0.4" class="meter-pvh" /></span>
+                  <span class="strong-aside__metric">Стильный дизайн: <meter value="0.5" class="meter-pvh" /></span>
+                </div>
               </section>
             </div>
           </div>
@@ -394,6 +398,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.6px);
   -webkit-backdrop-filter: blur(5.6px);
+  gap: clamp(1.5rem, 4vw, 4rem);
   justify-content: space-between;
   padding: 2%;
   margin-top: 2%;
@@ -410,11 +415,28 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   color: aliceblue;
 }
+.strong-aside__facts {
+  display: flex;
+  min-height: 8.75rem;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: flex-start;
+}
+.strong-aside__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 0.85rem;
+}
+.strong-aside__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
 .strong-aside__col meter {
   width: 100%;
   max-width: 28vw;
   height: 20px;
-  margin-top: 2%;
   border-radius: 8px;
   overflow: hidden;
   display: block;
@@ -444,7 +466,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 .meter-pvh {
   width: 100%;
   height: 20px;
-  margin-top: 2%;
 }
 .meter-pvh::-webkit-meter-bar {
   background: transparent;
@@ -481,15 +502,20 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 }
 .strong-aside__services-grid {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  justify-content: start;
+  align-items: start;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
 }
 .strong-aside__service {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4%;
+  align-items: flex-start;
+  min-width: 0;
 }
 .strong-aside__service-title {
   font-size: 16px;
@@ -513,12 +539,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   }
 }
 
-@media screen and (max-width: 1900px) {
-  .strong-aside__services {
-    width: 100%;
-  }
-}
-
 @media screen and (max-width: 920px) {
   .strong-aside__left h4 {
     color: white;
@@ -526,12 +546,15 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   .strong-aside__rating {
     flex-direction: column;
   }
+  .strong-aside__facts {
+    min-height: 0;
+  }
   .strong-aside__services {
     width: min(100% - 32px, 1040px);
     margin-top: 2rem;
   }
   .strong-aside__service {
-    align-items: center;
+    align-items: flex-start;
   }
 }
 
@@ -554,7 +577,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   }
 
   .strong-aside__services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 

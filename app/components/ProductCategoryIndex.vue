@@ -21,7 +21,6 @@ defineProps<{
 
 <template>
   <div class="product-page category-index">
-    <ProductTabs :items="tabs" :active-index="activeIndex" />
     <main class="category-index__content">
       <AppBreadcrumbs />
       <section class="category-index__hero">
@@ -107,6 +106,9 @@ defineProps<{
   margin: 0;
   color: #111827;
   font: 800 clamp(2rem, 5vw, 4rem) / 1 'Montserrat', sans-serif;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .category-index__hero-copy p:last-child {
@@ -138,8 +140,9 @@ defineProps<{
   color: #fff;
   font: 800 clamp(1rem, 1.6vw, 1.45rem) / 1.2 'Montserrat', sans-serif;
   text-decoration: none;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,

@@ -61,7 +61,8 @@ h6,
 a,
 span,
 button {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 img,

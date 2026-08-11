@@ -353,26 +353,43 @@ const facadeDetails = [
 }
 
 .facades-page__detail-card {
+  position: relative;
+  overflow: hidden;
   min-height: 210px;
   padding: clamp(1rem, 2vw, 1.5rem);
-  border: 1px solid rgba(120, 149, 174, 0.22);
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(126, 160, 190, 0.22), transparent 34%),
-    linear-gradient(145deg, #f7fafc 0%, #e8f0f6 48%, #dbe7ef 100%);
-  color: #fff;
-  box-shadow: 0 18px 42px rgba(16, 42, 61, 0.12);
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.facades-page__detail-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #05759f, #8b4b84);
+}
+
+.facades-page__detail-card:hover {
+  border-color: rgba(5, 117, 159, 0.32);
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.13);
+  transform: translateY(-4px);
 }
 
 .facades-page__detail-card h2 {
   margin: 0 0 1rem;
-  color: #102a3d;
+  color: #111827;
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
 }
 
 .facades-page__detail-card p {
   margin: 0;
-  color: #465564;
+  color: #4b5563;
   line-height: 1.65;
 }
 
