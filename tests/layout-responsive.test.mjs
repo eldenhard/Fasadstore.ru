@@ -18,12 +18,51 @@ test('navbar switches to burger earlier and hides while scrolling down', async (
   assert.match(navbar, /@media \(min-width: 1180px\)/)
 })
 
+test('mobile product menu contains cottage glazing', async () => {
+  const navbar = await readFile(new URL('../app/components/AppNavbar.vue', import.meta.url), 'utf8')
+
+  assert.match(navbar, /const productLinks = \[[\s\S]*Остекление коттеджей[\s\S]*to: '\/cottages'/)
+})
+
 test('home hero uses background image layout on mobile', async () => {
   const hero = await readFile(new URL('../app/components/HomeHeroSlider.vue', import.meta.url), 'utf8')
 
   assert.match(hero, /\.slider-hero__image-wrap\s*{[\s\S]*position: absolute/)
   assert.match(hero, /@media screen and \(min-width: 901px\)[\s\S]*\.slider-hero__image-wrap\s*{[\s\S]*position: relative/)
+  assert.match(hero, /@media screen and \(max-width: 900px\)[\s\S]*\.slider-hero__text\s*{[\s\S]*background:\s*transparent/)
+  assert.match(hero, /@media screen and \(max-width: 900px\)[\s\S]*\.slider-hero__gradient\s*{[\s\S]*rgba\(1,\s*3,\s*5,\s*0\.58\)/)
   assert.doesNotMatch(hero, /max-height:\s*25vh/)
+})
+
+test('home no longer renders partners and mobile decoration cannot cover company copy', async () => {
+  const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
+
+  assert.doesNotMatch(partner, /partner-block__partners/)
+  assert.doesNotMatch(partner, /Swiper|swiper\/css/)
+  assert.match(partner, /\.strong-aside\s*{[\s\S]*position:\s*relative[\s\S]*z-index:\s*2/)
+  assert.match(partner, /@media screen and \(max-width: 900px\)[\s\S]*\.partner-block__triangle\s*{[\s\S]*display:\s*none/)
+})
+
+test('home mobile section headings have spacing and readable contrast', async () => {
+  const directions = await readFile(new URL('../app/components/HomeDirectionsSection.vue', import.meta.url), 'utf8')
+  const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
+  const projects = await readFile(new URL('../app/components/ObjectsGallery.vue', import.meta.url), 'utf8')
+
+  assert.match(directions, /@media screen and \(max-width: 900px\)[\s\S]*\.home-directions__title\s*{[\s\S]*margin-bottom:\s*1\.5rem/)
+  assert.match(partner, /@media screen and \(max-width: 900px\)[\s\S]*\.partner-block__heading\s*{[\s\S]*color:\s*#d7e8f7/)
+  assert.match(partner, /@media screen and \(max-width: 900px\)[\s\S]*\.partner-block__sub\s*{[\s\S]*color:\s*#b8cad8/)
+  assert.match(projects, /\.objects-gallery__title\s*{[\s\S]*color:\s*#d7e8f7/)
+  assert.doesNotMatch(projects, /objects-gallery__title text-gray-200/)
+})
+
+test('product details use full-width mobile hero media and consistent copy', async () => {
+  const css = await readFile(new URL('../app/assets/css/product-page.css', import.meta.url), 'utf8')
+
+  assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__hero-image\s*{[\s\S]*width:\s*100%/)
+  assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__hero-image img\s*{[\s\S]*width:\s*100%/)
+  assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__fullwidth iframe\s*{[\s\S]*aspect-ratio:\s*16\s*\/\s*9[\s\S]*height:\s*auto/)
+  assert.match(css, /@media screen and \(max-width: 560px\)[\s\S]*\.product-page__subtitle\s*{[\s\S]*text-align:\s*left/)
+  assert.match(css, /@media screen and \(max-width: 560px\)[\s\S]*\.product-page__description\s*{[\s\S]*text-align:\s*left/)
 })
 
 test('about page contact CTA links to contacts and commercial CTA is removed', async () => {

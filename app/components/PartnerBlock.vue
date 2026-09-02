@@ -1,23 +1,8 @@
 <script setup lang="ts">
-// Блок продукции Алютех + партнёры (Swiper) + StrongAside
-// Перенос из src/modules/partner/PartnerElement.vue + StrongAside.vue
-
-import { Pagination, Autoplay } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+// Блок продукции Алютех + StrongAside
 
 const { baseURL } = useRuntimeConfig().app
 const b = (p: string) => `${baseURL}${p.startsWith('/') ? p.slice(1) : p}`
-
-const swiperModules = [Pagination, Autoplay]
-
-const partners = [
-  { name: 'Fapim', logo: '/images/partners/fapim.webp' },
-  { name: 'Vorne', logo: '/images/partners/vorne.webp' },
-  { name: 'Алютех', logo: '/images/partners/aluteh.webp' },
-  { name: 'Giesse', logo: '/images/partners/giesse.webp' },
-  { name: 'Siegenia', logo: '/images/partners/siegenia.webp' },
-  { name: 'Dr. Hahn', logo: '/images/partners/drhahn.webp' }
-]
 
 const videos = [
   { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Продукция Алютех 1' },
@@ -30,7 +15,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 
 <template>
   <div>
-    <!-- Продукция + Партнёры -->
+    <!-- Продукция -->
     <section class="partner-block">
       <div class="partner-block__triangle" />
       <div class="partner-block__content">
@@ -74,32 +59,6 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
             </div>
           </template>
         </ClientOnly>
-
-        <!-- Партнёры -->
-        <div class="partner-block__partners">
-          <p class="partner-block__partners-title">НАШИ ПАРТНЕРЫ</p>
-          <div class="partner-block__partners-line" />
-          <ClientOnly>
-            <Swiper
-              class="partner-block__swiper"
-              :modules="swiperModules"
-              :slides-per-view="2"
-              :space-between="10"
-              :pagination="{ clickable: true }"
-              :grab-cursor="true"
-              :loop="true"
-              :breakpoints="{
-                950: { slidesPerView: 3, spaceBetween: 20 },
-                1024: { slidesPerView: 5, spaceBetween: 30 }
-              }"
-              :autoplay="{ delay: 3500, disableOnInteraction: false }"
-            >
-              <SwiperSlide v-for="p in partners" :key="p.name" class="partner-block__slide">
-                <img :src="p.logo" :alt="p.name" />
-              </SwiperSlide>
-            </Swiper>
-          </ClientOnly>
-        </div>
       </div>
 
       <!-- StrongAside: Работаем с 2008 года (inside partner-block as original, margin-top: 10%) -->
@@ -243,13 +202,8 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   </div>
 </template>
 
-<style>
-@import 'swiper/css';
-@import 'swiper/css/pagination';
-</style>
-
 <style scoped>
-/* ── Продукция + Партнёры ── */
+/* ── Продукция ── */
 .partner-block {
   position: relative;
   width: min(75%, 1180px);
@@ -267,10 +221,11 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  clip-path: polygon(0 0, 100% 0, 0 40%);
+  height: min(42%, 360px);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
   background-color: rgb(194, 194, 194);
   z-index: 1;
+  pointer-events: none;
 }
 .partner-block__content {
   position: relative;
@@ -328,34 +283,10 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   aspect-ratio: 16/9;
   animation: pulse 2s infinite;
 }
-.partner-block__partners {
-  margin-top: 4%;
-}
-.partner-block__partners-title {
-  color: white;
-  font-family: 'Montserrat', Helvetica, sans-serif;
-  font-size: max(20px, 2vw);
-  font-weight: 700;
-  padding: 3%;
-}
-.partner-block__partners-line {
-  background: rgb(243, 243, 243);
-  height: 5px;
-  width: 10vw;
-  margin-left: 3%;
-}
-.partner-block__swiper {
-  margin: 2% 0;
-  padding: 0 3% 2%;
-}
-.partner-block__slide img {
-  height: 100%;
-  width: 100%;
-  border-radius: 8px;
-}
-
 /* ── StrongAside ── */
 .strong-aside {
+  position: relative;
+  z-index: 2;
   background-size: cover;
   width: 100%;
   min-height: 45vh;
@@ -563,12 +494,17 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
     width: 90%;
     border-radius: 8px;
   }
-  .partner-block__partners-title {
-    text-align: center;
+
+  .partner-block__heading {
+    color: #d7e8f7;
   }
-  .partner-block__partners-line {
-    margin: 0 auto;
-    width: 25vw;
+
+  .partner-block__sub {
+    color: #b8cad8;
+  }
+
+  .partner-block__triangle {
+    display: none;
   }
 
   .partner-block__videos {
@@ -584,6 +520,16 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 @media screen and (max-width: 560px) {
   .partner-block__content {
     padding: 1.25rem;
+  }
+
+  .strong-aside__left h4 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .strong-aside__left p {
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .strong-aside__question {

@@ -168,6 +168,7 @@ import { HOME_DIRECTION_ITEMS } from '~/constants/homeDirections'
   .home-directions__title {
     text-align: center;
     margin-top: 4%;
+    margin-bottom: 1.5rem;
   }
   .home-directions__grid {
     display: none;

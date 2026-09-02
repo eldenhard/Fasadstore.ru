@@ -32,6 +32,7 @@ const productLinks = [
   { label: 'Алюминиевые окна', to: '/windows' },
   { label: 'Алюминиевые двери', to: '/doors' },
   { label: 'Раздвижные двери', to: '/sliding-doors' },
+  { label: 'Остекление коттеджей', to: '/cottages' },
   { label: 'Фасадное остекление', to: '/facades' }
 ]
 

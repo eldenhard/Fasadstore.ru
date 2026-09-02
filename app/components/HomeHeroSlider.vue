@@ -366,7 +366,12 @@ onUnmounted(() => stopAutoplay())
   }
 
   .slider-hero__text {
+    background: transparent;
     margin-bottom: 0;
+  }
+
+  .slider-hero__gradient {
+    background: linear-gradient(90deg, rgba(1, 3, 5, 0.58), rgba(4, 21, 33, 0.28));
   }
   .slider-hero__grid {
     grid-template-columns: 1fr;
