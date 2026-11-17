@@ -13,6 +13,7 @@
             alt="Производство"
             class="w-full h-full object-cover rounded-lg"
             width="400"
+            loading="lazy"
             height="500"
           />
         </div>
@@ -22,6 +23,7 @@
             alt="Алюминиевые системы — изготовление"
             class="w-full h-full object-cover rounded-lg"
             width="400"
+            loading="lazy"
             height="250"
           />
         </div>

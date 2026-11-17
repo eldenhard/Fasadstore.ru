@@ -8,10 +8,13 @@ export function useScrollReveal(): void {
     let observer: IntersectionObserver | null = null
 
     onMounted(() => {
+        if (!('IntersectionObserver' in window)) return
+
         observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('reveal--pending')
                         entry.target.classList.add('reveal--visible')
                         observer?.unobserve(entry.target)
                     }
@@ -21,6 +24,9 @@ export function useScrollReveal(): void {
         )
 
         document.querySelectorAll('.reveal').forEach((el) => {
+            if (el.getBoundingClientRect().top >= window.innerHeight) {
+                el.classList.add('reveal--pending')
+            }
             observer?.observe(el)
         })
     })

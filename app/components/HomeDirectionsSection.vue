@@ -9,6 +9,7 @@ import { HOME_DIRECTION_ITEMS } from '~/constants/homeDirections'
       <li v-for="card in HOME_DIRECTION_ITEMS" :key="card.title" class="home-directions__item">
         <NuxtLink v-if="card.to" :to="card.to" class="home-direction-card">
           <NuxtImg
+            format="webp"
             :src="card.image"
             :alt="card.title"
             class="home-direction-card__image"
@@ -26,6 +27,7 @@ import { HOME_DIRECTION_ITEMS } from '~/constants/homeDirections'
         </NuxtLink>
         <article v-else class="home-direction-card">
           <NuxtImg
+            format="webp"
             :src="card.image"
             :alt="card.title"
             class="home-direction-card__image"

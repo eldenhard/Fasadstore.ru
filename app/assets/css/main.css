@@ -32,6 +32,8 @@
 }
 
 html {
+  background: #fff;
+  color-scheme: light;
   overflow-x: hidden;
 }
 

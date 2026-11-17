@@ -215,16 +215,10 @@ useScrollReveal()
       </template>
       <!-- Video -->
       <section v-if="model.videoUrl" class="product-page__fullwidth reveal">
-        <ClientOnly>
-          <iframe
-            width="80%"
-            height="350"
-            :src="model.videoUrl"
-            frameborder="0"
-            allow="clipboard-write; autoplay"
-            allowfullscreen
-          />
-        </ClientOnly>
+        <RutubeVideo
+          :src="model.videoUrl"
+          title="Раздвижные двери ALUTECH"
+        />
       </section>
       <hr />
       <!-- Contact -->

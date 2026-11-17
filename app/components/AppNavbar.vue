@@ -13,6 +13,7 @@ const navItems = [
       { label: 'Алюминиевые окна', to: '/windows' },
       { label: 'Алюминиевые двери', to: '/doors' },
       { label: 'Раздвижные двери', to: '/sliding-doors' },
+      { label: 'Остекление террас и патио', to: '/terraces' },
       { label: 'Остекление коттеджей', to: '/cottages' },
       { label: 'Фасадное остекление', to: '/facades' }
     ]
@@ -32,6 +33,7 @@ const productLinks = [
   { label: 'Алюминиевые окна', to: '/windows' },
   { label: 'Алюминиевые двери', to: '/doors' },
   { label: 'Раздвижные двери', to: '/sliding-doors' },
+  { label: 'Остекление террас и патио', to: '/terraces' },
   { label: 'Остекление коттеджей', to: '/cottages' },
   { label: 'Фасадное остекление', to: '/facades' }
 ]
@@ -81,7 +83,13 @@ onBeforeUnmount(() => {
           highlight-color="neutral"
           color="neutral"
           class="navbar__menu"
-          :ui="{ link: 'text-white', linkLabel: 'text-white', childLink: 'text-gray-900' }"
+          :ui="{
+            link: 'text-white',
+            linkLabel: 'text-white',
+            content: 'bg-white text-gray-900 shadow-xl ring-1 ring-gray-200',
+            childLink: 'text-gray-900 hover:bg-gray-100',
+            childLinkLabel: 'text-gray-900'
+          }"
         />
 
         <UButton

@@ -76,13 +76,13 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
           </div>
           <div class="contact-block__socials">
             <a
-              class="contact-block__social contact-block__social--yt"
-              href="https://www.youtube.com/@fasadstore"
+              class="contact-block__social contact-block__social--rutube"
+              href="https://rutube.ru/channel/53157696/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="YouTube"
+              aria-label="Rutube"
             >
-              <Icon name="lucide:youtube" size="20" class="contact-block__social-icon" />
+              <img src="/images/social/rutube.svg" alt="" class="contact-block__social-logo" />
             </a>
             <a
               class="contact-block__social contact-block__social--tg"
@@ -94,13 +94,13 @@ const planetBg = `url('${b('/images/contacts/world.png')}') no-repeat left botto
               <Icon name="lucide:send" size="20" class="contact-block__social-icon" />
             </a>
             <a
-              class="contact-block__social contact-block__social--wa"
-              href="https://wa.me/79197205872"
+              class="contact-block__social contact-block__social--max"
+              href="https://max.ru/join/mpPhGL6NOwn6T6zp06oKRePovLXW7n1rV0DECEXqFiE"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp"
+              aria-label="MAX"
             >
-              <Icon name="lucide:message-circle" size="20" class="contact-block__social-icon" />
+              <img src="/images/social/max.svg" alt="" class="contact-block__social-logo" />
             </a>
           </div>
         </div>
@@ -246,14 +246,18 @@ a.contact-block__value:hover {
 .contact-block__social-icon {
   color: rgb(211, 211, 211);
 }
-.contact-block__social--yt:hover {
-  background: #ff0000;
+.contact-block__social-logo {
+  width: 20px;
+  height: 20px;
+}
+.contact-block__social--rutube:hover {
+  background: #ed143b;
 }
 .contact-block__social--tg:hover {
   background: #259cd8;
 }
-.contact-block__social--wa:hover {
-  background: #4caf50;
+.contact-block__social--max:hover {
+  background: #8419ff;
 }
 @media screen and (max-width: 1300px) {
   .contact-block__form-section {

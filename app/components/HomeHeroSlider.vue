@@ -33,14 +33,13 @@ const slides: Slide[] = [
 ]
 
 const current = ref(0)
-const direction = ref<'next' | 'prev'>('next')
 const animating = ref(false)
 let timer: ReturnType<typeof setInterval> | null = null
+let touchStart: { x: number; y: number } | null = null
 
-function slideTo(index: number, dir: 'next' | 'prev') {
+function slideTo(index: number) {
   if (animating.value || index === current.value) return
   animating.value = true
-  direction.value = dir
   current.value = index
   setTimeout(() => {
     animating.value = false
@@ -48,15 +47,15 @@ function slideTo(index: number, dir: 'next' | 'prev') {
 }
 
 function next() {
-  slideTo((current.value + 1) % slides.length, 'next')
+  slideTo((current.value + 1) % slides.length)
 }
 
 function prev() {
-  slideTo((current.value - 1 + slides.length) % slides.length, 'prev')
+  slideTo((current.value - 1 + slides.length) % slides.length)
 }
 
 function goTo(index: number) {
-  slideTo(index, index > current.value ? 'next' : 'prev')
+  slideTo(index)
 }
 
 function startAutoplay() {
@@ -71,22 +70,52 @@ function stopAutoplay() {
   }
 }
 
+function onTouchStart(event: TouchEvent) {
+  stopAutoplay()
+  const touch = event.touches[0]
+  touchStart = event.touches.length === 1 ? { x: touch.clientX, y: touch.clientY } : null
+}
+
+function onTouchEnd(event: TouchEvent) {
+  const start = touchStart
+  touchStart = null
+  if (event.touches.length) return
+  startAutoplay()
+  if (!start || event.changedTouches.length !== 1) return
+
+  const touch = event.changedTouches[0]
+  const dx = touch.clientX - start.x
+  const dy = touch.clientY - start.y
+  if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy)) return
+
+  if (event.cancelable) event.preventDefault()
+  dx < 0 ? next() : prev()
+}
+
+function onTouchCancel() {
+  touchStart = null
+  startAutoplay()
+}
+
 onMounted(() => startAutoplay())
 onUnmounted(() => stopAutoplay())
 </script>
 
 <template>
-  <div class="slider-hero" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
+  <div
+    class="slider-hero"
+    @mouseenter="stopAutoplay"
+    @mouseleave="startAutoplay"
+    @touchstart.passive="onTouchStart"
+    @touchend="onTouchEnd"
+    @touchcancel.passive="onTouchCancel"
+  >
     <!-- Слайды -->
     <div
       v-for="(slide, i) in slides"
       :key="slide.title"
       class="slider-hero__slide"
-      :class="{
-        'slider-hero__slide--active': i === current,
-        'slider-hero__slide--left': i !== current && direction === 'next',
-        'slider-hero__slide--right': i !== current && direction === 'prev'
-      }"
+      :class="{ 'slider-hero__slide--active': i === current }"
     >
       <div class="slider-hero__grid">
         <!-- Текстовая часть -->
@@ -113,6 +142,9 @@ onUnmounted(() => stopAutoplay())
             class="slider-hero__image"
             width="800"
             height="600"
+            :preload="i === 0"
+            :loading="i === 0 ? 'eager' : 'lazy'"
+            :fetchpriority="i === 0 ? 'high' : 'low'"
           />
           <div class="slider-hero__gradient" />
         </div>
@@ -167,8 +199,10 @@ onUnmounted(() => stopAutoplay())
 
 <style scoped>
 .slider-hero {
+  touch-action: pan-y pinch-zoom;
   position: relative;
   height: clamp(560px, calc(100svh - 64px), 760px);
+  background: #010d14;
   overflow: hidden;
 }
 @media (min-width: 768px) {
@@ -177,24 +211,18 @@ onUnmounted(() => stopAutoplay())
   }
 }
 
-/* Слайды с горизонтальным slide-переходом (как Bootstrap Carousel) */
+/* Слайды перекрывают друг друга, поэтому между ними не появляется пустой фон. */
 .slider-hero__slide {
   position: absolute;
   inset: 0;
-  transform: translateX(100%);
-  transition: transform 0.6s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
   pointer-events: none;
 }
 .slider-hero__slide--active {
-  transform: translateX(0);
+  opacity: 1;
   pointer-events: auto;
   z-index: 1;
-}
-.slider-hero__slide--left {
-  transform: translateX(-100%);
-}
-.slider-hero__slide--right {
-  transform: translateX(100%);
 }
 
 /* Текстовая панель — градиент как в оригинале */

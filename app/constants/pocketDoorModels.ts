@@ -150,7 +150,7 @@ export const POCKET_DOOR_MODELS: Record<'sl160' | 'bf73' | 'sl130', PocketDoorMo
     usageImage: '/images/sliding-doors/panoramic-sliding-living-room.jpg',
     usageAlt: 'Раздвижные двери объединяют гостиную с террасой',
     warmNote: 'Панорамные раздвижные двери сохраняют в доме тепло даже морозной зимой.',
-    videoUrl: 'https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/',
+    videoUrl: 'https://rutube.ru/play/embed/8f4cd084172d0dd8b634e7ac1f5e5726/',
     contactText:
       'ООО «Алюминиевые Системы» выполнило большое количество объектов с которыми вы можете ознакомиться в наших группах. Проконсультироваться по телефону +7(495)765-50-26, почта 7825600@mail.ru'
   },
@@ -251,7 +251,7 @@ export const POCKET_DOOR_MODELS: Record<'sl160' | 'bf73' | 'sl130', PocketDoorMo
     usageImage: '',
     usageAlt: '',
     warmNote: '',
-    videoUrl: 'https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/',
+    videoUrl: 'https://rutube.ru/play/embed/18eb2eefaf5bd4d85ed4ad9c0d978380/',
     contactText:
       'ООО «Алюминиевые Системы» выполнило большое количество объектов с которыми вы можете ознакомиться в наших группах. Проконсультироваться по телефону +7(495)765-50-26, почта 7825600@mail.ru'
   },
@@ -338,7 +338,7 @@ export const POCKET_DOOR_MODELS: Record<'sl160' | 'bf73' | 'sl130', PocketDoorMo
     usageImage: '/images/sliding-doors/panoramic-sliding-living-room.jpg',
     usageAlt: 'Раздвижные двери SL130 объединяют гостиную с террасой',
     warmNote: '',
-    videoUrl: '',
+    videoUrl: 'https://rutube.ru/play/embed/8f4cd084172d0dd8b634e7ac1f5e5726/',
     contactText:
       'ООО «Алюминиевые Системы» выполнило большое количество объектов с которыми вы можете ознакомиться в наших группах. Проконсультироваться по телефону +7(495)765-50-26, почта 7825600@mail.ru'
   }

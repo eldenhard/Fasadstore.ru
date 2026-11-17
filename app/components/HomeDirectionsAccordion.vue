@@ -19,12 +19,13 @@ function toggle(index: number) {
         class="home-directions-accordion__trigger"
         @click="toggle(index)"
       >
-        {{ item.title }}
+        <span>{{ item.title }} ALUTECH</span>
         <span class="home-directions-accordion__icon" :class="{ 'home-directions-accordion__icon--open': openIndex === index }" />
       </button>
 
       <div v-show="openIndex === index" class="home-directions-accordion__content">
         <NuxtImg
+            format="webp"
           :src="item.image"
           :alt="item.title"
           class="home-directions-accordion__image"

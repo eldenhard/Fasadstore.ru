@@ -3,11 +3,11 @@ useSeoData()
 const { baseURL } = useRuntimeConfig().app
 const b = (path: string) => `${baseURL}${path.startsWith('/') ? path.slice(1) : path}`
 
-const activeImage = ref(b('/images/about/office_p.jpg'))
+const activeImage = ref(b('/images/about/office_p.webp'))
 const galleryImages = ref([
-  b('/images/about/office1.jpg'),
-  b('/images/about/office3.jpg'),
-  b('/images/about/shop.jpg')
+  b('/images/about/office1.webp'),
+  b('/images/about/office3.webp'),
+  b('/images/about/shop.webp')
 ])
 function changeImage(imageSrc: string) {
   galleryImages.value.push(activeImage.value)
@@ -64,10 +64,10 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     </section>
     <section class="about-office">
       <div class="about-office__left">
-        <div class="about-office__main-pic"><img :src="activeImage" alt="Офис компании" /></div>
+        <div class="about-office__main-pic"><img :src="activeImage" alt="Офис компании" loading="lazy" decoding="async" /></div>
         <ul class="about-office__mini">
           <li v-for="(img, index) in galleryImages" :key="index" class="about-office__mini-item">
-            <img :src="img" alt="Офис" @click="changeImage(img)" />
+            <img :src="img" alt="Офис" loading="lazy" decoding="async" @click="changeImage(img)" />
           </li>
         </ul>
       </div>
@@ -99,6 +99,30 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
           </ol>
         </div>
       </div>
+    </section>
+    <section class="about-production" aria-label="Производство компании">
+      <NuxtImg
+        src="/images/about/production-workshop.jpg"
+        alt="Производство алюминиевых конструкций"
+        class="about-production__image"
+        width="2000"
+        height="1500"
+        loading="lazy"
+      />
+      <NuxtImg
+        src="/images/about/production-overview.jpg"
+        alt="Цех производства алюминиевых конструкций"
+        class="about-production__image"
+        width="2000"
+        height="1500"
+        loading="lazy"
+      />
+    </section>
+    <section class="about-video" aria-label="Видео о компании">
+      <RutubeVideo
+        src="https://rutube.ru/play/embed/a13e218f7d809db151875c5f7e997e81/"
+        title="Производство ООО «Алюминиевые Системы»"
+      />
     </section>
     <section class="three-block-wrapper">
       <div class="three-block">
@@ -394,6 +418,33 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   color: rgb(63, 63, 63);
   font-size: 18px;
 }
+.about-video {
+  width: min(90%, 800px);
+  margin: 2rem auto;
+}
+
+.about-video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 8px;
+}
+
+.about-production {
+  width: min(70%, 1180px);
+  margin: clamp(2rem, 4vw, 4rem) auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.about-production__image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
 .three-block-wrapper {
   width: min(70%, 1180px);
   margin: 4% auto;
@@ -669,6 +720,10 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   .about-office__right {
     width: 100%;
   }
+  .about-production {
+    width: 90vw;
+    grid-template-columns: 1fr;
+  }
 
   .three-block-wrapper {
     width: 90%;
@@ -717,6 +772,7 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 
   .about-company,
   .about-office,
+  .about-production,
   .three-block-wrapper {
     width: min(100% - 32px, 720px);
   }

@@ -187,6 +187,12 @@ useScrollReveal()
           </ol>
         </div>
       </section>
+      <section class="product-page__fullwidth reveal">
+        <RutubeVideo
+          src="https://rutube.ru/play/embed/36538d1c10d514a10e1be50cfe632792/"
+          title="Алюминиевые двери ALUTECH"
+        />
+      </section>
       <section class="product-page__triple reveal">
         <div class="product-page__triple-text">
           <p class="product-page__subtitle">

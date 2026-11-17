@@ -28,7 +28,8 @@ export const HOME_DIRECTION_ITEMS: HomeDirectionItem[] = [
     brand: 'Алютех (ALUTECH)',
     description:
       'Портальные теплые конструкции для террас и веранд с панорамным остеклением и современным профилем.',
-    image: '/images/directions/terrace-glazing.jpg'
+    image: '/images/directions/terrace-glazing.jpg',
+    to: '/terraces'
   },
   {
     title: 'Остекление коттеджей',

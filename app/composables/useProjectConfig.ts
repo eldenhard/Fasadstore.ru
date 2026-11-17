@@ -13,8 +13,8 @@ export interface SiteConfig {
 
 const siteConfig: SiteConfig = {
     siteName: 'АлюПроект',
-    siteUrl: 'https://aluproject.ru',
-    defaultTitle: 'АлюПроект — алюминиевые окна и двери',
+    siteUrl: 'https://fasadstore.ru',
+    defaultTitle: 'Алюминиевые системы Алютех',
     defaultDescription: 'Производство и установка алюминиевых окон и дверей в Москве',
     defaultOgImage: '/images/og-default.jpg',
     locale: 'ru_RU',

@@ -64,6 +64,7 @@ defineProps<{
           </span>
         </NuxtLink>
       </section>
+      <slot />
     </main>
   </div>
 </template>

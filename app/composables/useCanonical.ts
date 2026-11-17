@@ -3,7 +3,7 @@ export function useCanonical(): void {
   const route = useRoute()
 
   // Абсолютный URL без query-параметров и hash-фрагментов
-  const canonicalUrl = computed(() => `${config.siteUrl}${route.path}`)
+  const canonicalUrl = computed(() => `${config.siteUrl}${route.path.replace(/\/+$/, '')}/`)
 
   useHead({
     link: [{ rel: 'canonical', href: canonicalUrl }]

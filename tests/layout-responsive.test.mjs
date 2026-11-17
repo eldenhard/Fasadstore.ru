@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { access, readFile } from 'node:fs/promises'
 import test from 'node:test'
 
 test('network dev script exposes Nuxt to local network', async () => {
@@ -34,6 +34,39 @@ test('home hero uses background image layout on mobile', async () => {
   assert.doesNotMatch(hero, /max-height:\s*25vh/)
 })
 
+test('home hero uses a gap-free fade transition', async () => {
+  const hero = await readFile(new URL('../app/components/HomeHeroSlider.vue', import.meta.url), 'utf8')
+
+  assert.match(hero, /\.slider-hero__slide\s*{[\s\S]*opacity:\s*0[\s\S]*transition:\s*opacity 0\.6s/)
+  assert.match(hero, /\.slider-hero__slide--active\s*{[\s\S]*opacity:\s*1/)
+  assert.doesNotMatch(hero, /slider-hero__slide--left|slider-hero__slide--right/)
+})
+
+test('page shell keeps its blue background without changing scroll behavior', async () => {
+  const css = await readFile(new URL('../app/assets/css/main.css', import.meta.url), 'utf8')
+
+  assert.match(css, /html\s*{[\s\S]*background:\s*#fff/)
+  assert.match(css, /body\s*{[\s\S]*background:\s*#082c43/)
+  assert.doesNotMatch(css, /overscroll-behavior/)
+})
+
+test('about page shows two responsive production photos', async () => {
+  const about = await readFile(new URL('../app/pages/about.vue', import.meta.url), 'utf8')
+
+  assert.match(about, /\/images\/about\/production-workshop\.jpg/)
+  assert.match(about, /\/images\/about\/production-overview\.jpg/)
+  assert.match(about, /\.about-production\s*{[\s\S]*grid-template-columns:\s*repeat\(2,/)
+  assert.match(
+    about,
+    /@media screen and \(max-width: 900px\)[\s\S]*\.about-production\s*{[\s\S]*grid-template-columns:\s*1fr/
+  )
+
+  await Promise.all([
+    access(new URL('../public/images/about/production-workshop.jpg', import.meta.url)),
+    access(new URL('../public/images/about/production-overview.jpg', import.meta.url))
+  ])
+})
+
 test('home no longer renders partners and mobile decoration cannot cover company copy', async () => {
   const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
 
@@ -46,13 +79,28 @@ test('home no longer renders partners and mobile decoration cannot cover company
 test('home mobile section headings have spacing and readable contrast', async () => {
   const directions = await readFile(new URL('../app/components/HomeDirectionsSection.vue', import.meta.url), 'utf8')
   const partner = await readFile(new URL('../app/components/PartnerBlock.vue', import.meta.url), 'utf8')
-  const projects = await readFile(new URL('../app/components/ObjectsGallery.vue', import.meta.url), 'utf8')
 
   assert.match(directions, /@media screen and \(max-width: 900px\)[\s\S]*\.home-directions__title\s*{[\s\S]*margin-bottom:\s*1\.5rem/)
   assert.match(partner, /@media screen and \(max-width: 900px\)[\s\S]*\.partner-block__heading\s*{[\s\S]*color:\s*#d7e8f7/)
   assert.match(partner, /@media screen and \(max-width: 900px\)[\s\S]*\.partner-block__sub\s*{[\s\S]*color:\s*#b8cad8/)
-  assert.match(projects, /\.objects-gallery__title\s*{[\s\S]*color:\s*#d7e8f7/)
-  assert.doesNotMatch(projects, /objects-gallery__title text-gray-200/)
+})
+
+test('objects page uses an accessible responsive portfolio layout', async () => {
+  const [page, gallery] = await Promise.all([
+    readFile(new URL('../app/pages/objects.vue', import.meta.url), 'utf8'),
+    readFile(new URL('../app/components/ObjectsGallery.vue', import.meta.url), 'utf8')
+  ])
+
+  assert.match(page, /class="objects-page__hero"/)
+  assert.match(page, /<AppBreadcrumbs\s*\/>/)
+  assert.match(page, /<h1>Наши проекты<\/h1>/)
+  assert.doesNotMatch(gallery, /openGroups|toggleGroup|group\.period|Проекты по годам/)
+  assert.match(gallery, /v-for="project in projects"/)
+  assert.equal((gallery.match(/alt: /g) || []).length, 25)
+  assert.match(gallery, /class="objects-gallery__caption"/)
+  assert.match(gallery, /\.objects-gallery__grid\s*{[\s\S]*grid-template-columns:\s*repeat\(3,/)
+  assert.match(gallery, /@media \(max-width: 900px\)[\s\S]*grid-template-columns:\s*repeat\(2,/)
+  assert.match(gallery, /@media \(max-width: 560px\)[\s\S]*grid-template-columns:\s*1fr/)
 })
 
 test('product details use full-width mobile hero media and consistent copy', async () => {
@@ -60,7 +108,7 @@ test('product details use full-width mobile hero media and consistent copy', asy
 
   assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__hero-image\s*{[\s\S]*width:\s*100%/)
   assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__hero-image img\s*{[\s\S]*width:\s*100%/)
-  assert.match(css, /@media screen and \(max-width: 900px\)[\s\S]*\.product-page__fullwidth iframe\s*{[\s\S]*aspect-ratio:\s*16\s*\/\s*9[\s\S]*height:\s*auto/)
+  assert.match(css, /\.product-page__fullwidth iframe\s*{[^}]*width:\s*100%[^}]*height:\s*auto[^}]*aspect-ratio:\s*16\s*\/\s*9[^}]*border-radius:\s*8px/)
   assert.match(css, /@media screen and \(max-width: 560px\)[\s\S]*\.product-page__subtitle\s*{[\s\S]*text-align:\s*left/)
   assert.match(css, /@media screen and \(max-width: 560px\)[\s\S]*\.product-page__description\s*{[\s\S]*text-align:\s*left/)
 })

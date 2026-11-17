@@ -37,5 +37,12 @@ const doorTypes = [
     description="Мы предлагаем HD-двери, балконные, террасные и классические двери на базе профильных систем."
     panel-title="Виды дверей"
     :items="doorTypes"
-  />
+  >
+    <section class="product-page__fullwidth" aria-label="Видео об алюминиевых дверях">
+      <RutubeVideo
+        src="https://rutube.ru/play/embed/36538d1c10d514a10e1be50cfe632792/"
+        title="Алюминиевые двери ALUTECH"
+      />
+    </section>
+  </ProductCategoryIndex>
 </template>

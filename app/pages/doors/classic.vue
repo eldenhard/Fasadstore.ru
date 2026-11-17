@@ -213,15 +213,10 @@ useScrollReveal()
         </div>
       </section>
       <section class="product-page__fullwidth reveal">
-        <ClientOnly
-          ><iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/85033df46441920caede6d19eabf80e5/"
-            frameborder="0"
-            allow="clipboard-write; autoplay"
-            allowfullscreen
-        /></ClientOnly>
+        <RutubeVideo
+          src="https://rutube.ru/play/embed/36538d1c10d514a10e1be50cfe632792/"
+          title="Алюминиевые двери ALUTECH"
+        />
         <p>Классические двери «АЛЮТЕХ» оснащены рядом комплектующих для безопасности:</p>
         <p>противовзломные штапики -предотвращают Выпадение стеклопакета</p>
         <p>ударостойкое заполнение – устойчиво к Механическим повреждениям</p>

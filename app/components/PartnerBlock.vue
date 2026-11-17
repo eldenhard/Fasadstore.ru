@@ -5,9 +5,9 @@ const { baseURL } = useRuntimeConfig().app
 const b = (p: string) => `${baseURL}${p.startsWith('/') ? p.slice(1) : p}`
 
 const videos = [
-  { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Продукция Алютех 1' },
-  { src: '0ef116c9afce3cea236c4a5986083755/', title: 'Продукция Алютех 2' },
-  { src: '85033df46441920caede6d19eabf80e5/', title: 'Продукция Алютех 3' }
+  { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Раздвижные системы' },
+  { src: '0ef116c9afce3cea236c4a5986083755/', title: 'Окна' },
+  { src: '85033df46441920caede6d19eabf80e5/', title: 'Двери' }
 ]
 
 const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
@@ -29,36 +29,16 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
         </div>
 
         <!-- Видео -->
-        <ClientOnly>
-          <div class="partner-block__videos">
-            <div v-for="video in videos" :key="video.src" class="partner-block__video">
-              <iframe
+        <div class="partner-block__videos">
+          <figure v-for="video in videos" :key="video.src" class="partner-block__card">
+            <div class="partner-block__video">
+              <RutubeVideo
                 :src="`https://rutube.ru/play/embed/${video.src}`"
                 :title="video.title"
-                frameborder="0"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                "
-                allowfullscreen
-                loading="lazy"
               />
             </div>
-          </div>
-          <template #fallback>
-            <div class="partner-block__videos">
-              <div
-                v-for="video in videos"
-                :key="video.src"
-                class="partner-block__video partner-block__video--placeholder"
-              />
-            </div>
-          </template>
-        </ClientOnly>
+          </figure>
+        </div>
       </div>
 
       <!-- StrongAside: Работаем с 2008 года (inside partner-block as original, margin-top: 10%) -->
@@ -259,13 +239,17 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 }
 .partner-block__videos {
   display: grid;
-  width: 80%;
-  min-height: 35vh;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   margin: 2% auto 0;
 }
+.partner-block__card {
+  min-width: 0;
+  margin: 0;
+}
 .partner-block__video {
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
   transition: 0.2s transform ease-in-out;
@@ -274,14 +258,10 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
   transform: translateY(-10px);
 }
 .partner-block__video iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border-radius: 8px;
-}
-.partner-block__video--placeholder {
-  background: #0c4162;
-  aspect-ratio: 16/9;
-  animation: pulse 2s infinite;
 }
 /* ── StrongAside ── */
 .strong-aside {
@@ -509,7 +489,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 
   .partner-block__videos {
     width: 100%;
-    min-height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .strong-aside__services-grid {

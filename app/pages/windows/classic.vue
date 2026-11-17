@@ -36,7 +36,7 @@ useScrollReveal()
           </p>
         </div>
         <figure class="product-page__hero-image">
-          <img src="/images/windows/classic-hero-window.png" alt="Классические окна ALUTECH" />
+          <img src="/images/windows/classic-hero-window.webp" alt="Классические окна ALUTECH" />
         </figure>
       </section>
       <section class="product-page__double reveal">
@@ -147,16 +147,10 @@ useScrollReveal()
         </div>
       </section>
       <section class="product-page__fullwidth reveal">
-        <ClientOnly>
-          <iframe
-            width="80%"
-            height="350"
-            src="https://rutube.ru/play/embed/0ef116c9afce3cea236c4a5986083755/"
-            frameborder="0"
-            allow="clipboard-write; autoplay"
-            allowfullscreen
-          />
-        </ClientOnly>
+        <RutubeVideo
+          src="https://rutube.ru/play/embed/f531ff5c012da51dac5770f34de6aba3/"
+          title="Алюминиевые окна ALUTECH"
+        />
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
           Москва, Дмитровское шоссе д.157, стр3.

@@ -48,7 +48,7 @@ useScrollReveal()
         <figure class="product-page__single-image">
           <h2 class="product-page__subtitle--small">Окна ALT W72HS</h2>
           <img
-            src="/images/windows/sealing-system.webp"
+            src="/images/windows/hidden-sash-profile.webp"
             alt="ALT W72HS"
             class="product-page__image--contain"
           />
@@ -166,15 +166,10 @@ useScrollReveal()
         </div>
       </section>
       <section class="product-page__fullwidth reveal">
-        <ClientOnly
-          ><iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/"
-            frameborder="0"
-            allow="clipboard-write; autoplay"
-            allowfullscreen
-        /></ClientOnly>
+        <RutubeVideo
+          src="https://rutube.ru/play/embed/a10a3c621a10466670c07d090d12f572/"
+          title="Алюминиевые окна ALUTECH"
+        />
         <p>
           Образцы алюминиевых окон ALUTECH (Алютех) вы сможете посмотреть в нашем офисе по адресу :
           Москва, Дмитровское шоссе д.157, стр3.

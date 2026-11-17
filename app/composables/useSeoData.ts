@@ -9,8 +9,13 @@ export interface PageSeoData {
 
 const seoDataMap: Record<string, PageSeoData> = {
     '/': {
-        title: 'АлюПроект — алюминиевые окна и двери в Москве',
+        title: 'Алюминиевые системы Алютех',
         description: 'Производство и установка алюминиевых окон и дверей ALUTECH в Москве. Энергоэффективные конструкции, срок службы более 50 лет.',
+        ogType: 'website'
+    },
+    '/terraces': {
+        title: 'Остекление террас и патио — Алюминиевые системы Алютех',
+        description: 'Алюминиевое остекление террас, патио и беседок: порталы, двери, окна, складные системы и витражное остекление.',
         ogType: 'website'
     },
     '/about': {
@@ -99,7 +104,7 @@ const seoDataMap: Record<string, PageSeoData> = {
 export function useSeoData(): void {
     const route = useRoute()
     const config = useProjectConfig()
-    const seo = seoDataMap[route.path]
+    const seo = seoDataMap[route.path.replace(/\/+$/, '') || '/']
 
     if (!seo) return
 
