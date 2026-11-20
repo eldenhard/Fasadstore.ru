@@ -8,7 +8,7 @@ useSchemaOrg({
     name: 'Классические алюминиевые двери ALUTECH',
     description: 'Классические алюминиевые двери ALUTECH: ALT W62, W72.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const tabs = DOOR_PRODUCT_TABS

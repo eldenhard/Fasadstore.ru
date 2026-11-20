@@ -8,7 +8,7 @@ useSchemaOrg({
     name: 'Балконные (Террасные) двери ALUTECH',
     description: 'Балконные и террасные алюминиевые двери ALUTECH.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const tabs = DOOR_PRODUCT_TABS

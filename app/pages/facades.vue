@@ -6,7 +6,7 @@ useSchemaOrg({
     name: 'Фасадное остекление',
     description: 'Светопрозрачные фасадные конструкции, структурные фасады и витражи.',
     brand: { '@type': 'Brand', name: 'Алютех' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 

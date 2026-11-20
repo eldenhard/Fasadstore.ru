@@ -24,7 +24,7 @@ useSchemaOrg({
     name: props.model.schemaName,
     description: props.model.seoDescription,
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const line1 = ref<HTMLElement | null>(null)

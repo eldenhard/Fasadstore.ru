@@ -6,7 +6,7 @@ useSchemaOrg({
     name: 'Остекление террас и патио',
     description: 'Алюминиевые системы для остекления террас, патио и беседок.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 

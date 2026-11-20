@@ -8,7 +8,7 @@ useSchemaOrg({
     name: 'Классические алюминиевые окна ALUTECH',
     description: 'Классические алюминиевые окна ALUTECH: ALT W62, W72, W77.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const tabs = WINDOW_PRODUCT_TABS

@@ -8,7 +8,7 @@ useSchemaOrg({
     name: 'Панорамные алюминиевые окна ALUTECH',
     description: 'Панорамные алюминиевые окна ALUTECH. Максимум света, отличная обзорность.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const tabs = WINDOW_PRODUCT_TABS

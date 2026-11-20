@@ -27,11 +27,6 @@ const projects = [
   { images: [`${base}/2013_2018/montevil/20160219_140813_11zon (1).webp`], alt: 'Монтевиль' },
   { images: [`${base}/2013_2018/truvill/20141123_115049_11zon.webp`], alt: 'Трувиль' },
   { images: [`${base}/2013_2018/lumoni/20140418_134827_11zon.webp`], alt: 'Лумони' },
-  {
-    images: [`${base}/2013_2018/gormoshka_iarat/20160206_154008_11zon.webp`],
-    alt: 'Гармошка Иарат'
-  },
-  { images: [`${base}/2013_2018/raisa/20130910_122012_11zon.webp`], alt: 'Раиса' },
   { images: [`${base}/2013_2018/zenitki/20140709_152121_11zon.webp`], alt: 'Зенитки' },
   { images: [`${base}/2008_2013/perevedenovskiy/6.webp`], alt: 'Переведеновский' },
   { images: [`${base}/2008_2013/frazino/10_11zon.webp`], alt: 'Фрязино' },

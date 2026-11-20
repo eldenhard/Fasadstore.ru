@@ -12,15 +12,15 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-    siteName: 'АлюПроект',
+    siteName: 'Алюминиевые Системы',
     siteUrl: 'https://fasadstore.ru',
     defaultTitle: 'Алюминиевые системы Алютех',
     defaultDescription: 'Производство и установка алюминиевых окон и дверей в Москве',
-    defaultOgImage: '/images/og-default.jpg',
+    defaultOgImage: '/images/slider/first.webp',
     locale: 'ru_RU',
-    companyName: 'АлюПроект',
+    companyName: 'Алюминиевые Системы',
     companyPhone: '+7(495) 765-50-26',
-    companyEmail: 'info@aluproject.ru',
+    companyEmail: '7655026@mail.ru',
     companyAddress: 'Москва, Россия'
 }
 

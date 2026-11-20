@@ -4,7 +4,7 @@ import type { NuxtError } from '#app'
 defineProps<{ error: NuxtError }>()
 
 useSeoMeta({
-  title: 'Ошибка — АлюПроект',
+  title: 'Ошибка — Алюминиевые Системы',
   robots: 'noindex, nofollow'
 })
 

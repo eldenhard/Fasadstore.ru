@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Главная страница — АлюПроект
+// Главная страница — Алюминиевые Системы
 // Секции: HomeHeroSlider → HomeIntroSection → HomeDirectionsSection → PartnerBlock
 // h1 находится в компоненте HomeIntroSection (единственный на странице)
 

@@ -6,7 +6,7 @@ useSchemaOrg({
     name: 'Остекление коттеджей',
     description: 'Остекление коттеджей ALUTECH: ALT W62, W72, W77.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 

@@ -8,7 +8,7 @@ useSchemaOrg({
     name: 'HD-двери крупноформатные ALUTECH',
     description: 'Крупноформатные HD-двери ALUTECH высотой до 3 м.',
     brand: { '@type': 'Brand', name: 'ALUTECH' },
-    manufacturer: { '@type': 'Organization', name: 'АлюПроект' }
+    manufacturer: { '@type': 'Organization', name: 'Алюминиевые Системы' }
   }
 })
 const tabs = DOOR_PRODUCT_TABS

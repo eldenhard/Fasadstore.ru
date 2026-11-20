@@ -13,7 +13,7 @@ useSeoData()
           height="400"
           frameborder="0"
           allowfullscreen
-          title="Карта — офис АлюПроект, Москва, Дмитровское шоссе 157, стр. 7"
+          title="Карта — офис Алюминиевые Системы, Москва, Дмитровское шоссе 157, стр. 7"
           loading="lazy"
         />
         <template #fallback>
