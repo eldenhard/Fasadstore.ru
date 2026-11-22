@@ -209,6 +209,12 @@ onBeforeUnmount(() => {
   flex-shrink: 0;
 }
 
+.navbar__phone:hover,
+.navbar__phone:active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
 .navbar__burger {
   min-width: 44px;
   min-height: 44px;

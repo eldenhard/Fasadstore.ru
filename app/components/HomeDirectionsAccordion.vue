@@ -31,6 +31,7 @@ function toggle(index: number) {
           class="home-directions-accordion__image"
           width="400"
           height="250"
+          sizes="80vw sm:400px"
           loading="lazy"
         />
         <p class="home-directions-accordion__description">{{ item.description }}</p>

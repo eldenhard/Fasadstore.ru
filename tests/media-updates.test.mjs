@@ -34,9 +34,9 @@ test('each sliding door model uses the video from its own email', async () => {
 })
 
 
-test('company video is compact and rounded', async () => {
+test('company video follows the shared content width and is rounded', async () => {
   const page = await source('app/pages/about.vue')
-  assert.match(page, /\.about-video\s*{[^}]*width:\s*min\(90%, 800px\)/)
+  assert.match(page, /\.about-video,[\s\S]*?\.dark-section__cards\s*{\s*width:\s*var\(--about-content-width\)/)
   assert.match(page, /\.about-video iframe\s*{[^}]*aspect-ratio:\s*16\s*\/\s*9[^}]*border-radius:\s*8px/)
 })
 

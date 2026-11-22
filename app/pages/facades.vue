@@ -21,7 +21,7 @@ interface FacadeSystem {
 
 const facadeSystems: FacadeSystem[] = [
   {
-    title: 'Классический фасад АЛТ Ф50',
+    title: 'ALT F50',
     subtitle: 'Стоечно-ригельная система для светопрозрачных конструкций разной сложности.',
     image: '/images/facades/alt-f50.png',
     description:
@@ -41,7 +41,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'Классический фасад АЛТ Ф60',
+    title: 'ALT F60',
     subtitle: 'Фасадная система с увеличенной видимой шириной и высокой несущей способностью.',
     image: '/images/facades/alt-f60.png',
     description:
@@ -63,7 +63,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'Структурный фасад АЛТ Ф50 СГ',
+    title: 'ALT F50 SG',
     subtitle: 'Решение с минимальной внешней видимой шириной для строгой стеклянной плоскости.',
     image: '/images/facades/alt-f50-sg.png',
     description:
@@ -85,7 +85,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'Имитация структурного остекления АЛТ Ф50 ССГ',
+    title: 'ALT F50 SSG',
     subtitle: 'Фасадная система с аккуратной внешней прижимной планкой 40 или 50 мм.',
     image: '/images/facades/alt-f50-ssg.png',
     description:
@@ -107,7 +107,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'Структурный угол АЛТ Ф50 СА',
+    title: 'ALT F50 SA',
     subtitle: 'Светопрозрачный угол с крупноформатными заполнениями без видимых стоек в угловой зоне.',
     image: '/images/facades/alt-f50-sa.png',
     description:
@@ -191,7 +191,7 @@ const facadeDetails = [
         </div>
         <NuxtImg
           src="/images/facades/alt-f50.png"
-          alt="Фасадное остекление АЛТ Ф50"
+          alt="Фасадное остекление ALT F50"
           class="facades-page__hero-image"
           width="586"
           height="586"

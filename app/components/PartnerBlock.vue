@@ -223,7 +223,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 }
 .partner-block__sub {
   text-align: center;
-  color: rgb(83, 83, 83);
+  color: #082c43;
   font-weight: 700;
   padding: 0.2% 2% 0;
 }

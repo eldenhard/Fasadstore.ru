@@ -21,7 +21,8 @@ export default defineNuxtConfig({
   ],
 
   ui: {
-    colorMode: false
+    colorMode: false,
+    theme: { colors: ['primary'] }
   },
 
   app: {

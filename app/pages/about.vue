@@ -279,7 +279,16 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 </template>
 <style scoped>
 .about-page {
+  --about-content-width: 80%;
   background: white;
+}
+.about-company,
+.about-office,
+.about-production,
+.about-video,
+.three-block-wrapper,
+.dark-section__cards {
+  width: var(--about-content-width);
 }
 .pic-about {
   filter: brightness(90%);
@@ -306,7 +315,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   text-align: center;
 }
 .about-company {
-  width: min(70%, 1180px);
   margin: 4% auto;
   display: grid;
   gap: 4%;
@@ -350,7 +358,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  width: min(70%, 1180px);
   margin: 0 auto;
   position: relative;
   gap: 5%;
@@ -419,7 +426,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   font-size: 18px;
 }
 .about-video {
-  width: min(90%, 800px);
   margin: 2rem auto;
 }
 
@@ -432,7 +438,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 }
 
 .about-production {
-  width: min(70%, 1180px);
   margin: clamp(2rem, 4vw, 4rem) auto 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -446,7 +451,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   border-radius: 8px;
 }
 .three-block-wrapper {
-  width: min(70%, 1180px);
   margin: 4% auto;
 }
 .three-block {
@@ -556,7 +560,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 }
 .dark-section__cards {
   position: relative;
-  width: 80%;
   top: 5vh;
   display: flex;
   justify-content: space-between;
@@ -674,16 +677,9 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 .btn-purple:hover {
   color: black;
 }
-@media screen and (max-width: 1650px) {
-  .about-company {
-    width: 90%;
-    grid-template-areas: 'text_block text_block' 'first_img second_img';
-    grid-template-columns: 1fr 1fr;
-  }
-}
 @media screen and (max-width: 1450px) {
-  .dark-section__cards {
-    width: 95%;
+  .about-page {
+    --about-content-width: 95%;
   }
   .dark-section__card {
     width: 30vw;
@@ -697,7 +693,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     text-align: justify;
   }
   .about-company {
-    width: 90%;
     grid-template-areas: 'text_block' 'first_img';
     grid-template-columns: 1fr;
     gap: 2%;
@@ -709,7 +704,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     display: none;
   }
   .about-office {
-    width: 90vw;
     flex-direction: column-reverse;
     margin-top: 8vh;
   }
@@ -721,12 +715,10 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     width: 100%;
   }
   .about-production {
-    width: 90vw;
     grid-template-columns: 1fr;
   }
 
   .three-block-wrapper {
-    width: 90%;
     margin-top: 10%;
   }
   .three-block {
@@ -738,7 +730,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     margin-top: 4%;
   }
   .dark-section__cards {
-    width: 95%;
     flex-direction: column;
   }
   .dark-section__card {
@@ -764,17 +755,14 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
 }
 
 @media screen and (max-width: 560px) {
+  .about-page {
+    --about-content-width: min(100% - 32px, 720px);
+  }
+
   .pic-about {
     height: auto;
     min-height: 380px;
     padding: 2rem 1rem;
-  }
-
-  .about-company,
-  .about-office,
-  .about-production,
-  .three-block-wrapper {
-    width: min(100% - 32px, 720px);
   }
 
   .about-company h1,
@@ -792,9 +780,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
     font-size: 1.35rem;
   }
 
-  .about-office {
-    width: min(100% - 32px, 720px);
-  }
 
   .about-office__mini {
     gap: 0.5rem;
@@ -807,7 +792,6 @@ const bgDarkOverlay = `url('${b('/images/about/about_why_overlay.png')}') center
   .dark-section__cards {
     position: static;
     transform: none;
-    width: min(100% - 32px, 720px);
     margin: 0 auto;
     padding-bottom: 2rem;
   }

@@ -142,7 +142,9 @@ onUnmounted(() => stopAutoplay())
             class="slider-hero__image"
             width="800"
             height="600"
-            :preload="i === 0"
+            :preload="i === 0 ? { fetchPriority: 'high' } : false"
+            format="avif"
+            quality="40"
             :loading="i === 0 ? 'eager' : 'lazy'"
             :fetchpriority="i === 0 ? 'high' : 'low'"
           />
@@ -183,14 +185,15 @@ onUnmounted(() => stopAutoplay())
       </svg>
     </button>
 
-    <!-- Индикаторы -->
-    <div class="slider-hero__dots">
+    <!-- Выбор слайда -->
+    <div class="slider-hero__pagination" role="group" aria-label="Выбор слайда">
       <button
         v-for="(_, i) in slides"
         :key="i"
-        class="slider-hero__dot"
-        :class="{ 'slider-hero__dot--active': i === current }"
+        class="slider-hero__page"
+        :class="{ 'slider-hero__page--active': i === current }"
         :aria-label="'Слайд ' + (i + 1)"
+        :aria-pressed="i === current"
         @click="goTo(i)"
       />
     </div>
@@ -314,27 +317,41 @@ onUnmounted(() => stopAutoplay())
   }
 }
 
-/* Индикаторы-точки */
-.slider-hero__dots {
+/* Полоски выбора слайда с увеличенной областью нажатия. */
+.slider-hero__pagination {
   position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
-.slider-hero__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.slider-hero__page {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: none;
-  background: rgba(255, 255, 255, 0.4);
+  background: transparent;
   cursor: pointer;
+  border-radius: 8px;
+}
+.slider-hero__page::before {
+  content: '';
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.4);
   transition: background 0.3s;
 }
-.slider-hero__dot--active {
+.slider-hero__page--active::before {
   background: white;
+}
+.slider-hero__page:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 /* Кнопка — оригинальный ButtonPurple */

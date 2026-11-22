@@ -59,7 +59,7 @@ test('site uses one light color scheme and the requested title', async () => {
   ])
 
   assert.match(nuxtConfig, /title:\s*'Алюминиевые окна и двери Алютех в Москве — производство и монтаж'/)
-  assert.match(nuxtConfig, /ui:\s*{\s*colorMode:\s*false\s*}/)
+  assert.match(nuxtConfig, /ui:\s*{\s*colorMode:\s*false\b/)
   assert.match(navbar, /content:\s*'[^']*bg-white/)
   assert.match(navbar, /childLink:\s*'[^']*text-gray-900/)
 })

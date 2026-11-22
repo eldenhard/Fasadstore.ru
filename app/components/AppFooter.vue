@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="bg-[#26272b] text-[#737373]">
+  <footer class="bg-[#26272b] text-[#b4b4b4]">
     <div class="max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Информация о компании -->
@@ -36,7 +36,7 @@ const currentYear = new Date().getFullYear()
 
         <!-- Контакты -->
         <div>
-          <h6 class="text-white text-base uppercase tracking-wider mb-4">Контакты</h6>
+          <h2 class="text-white text-base uppercase tracking-wider mb-4">Контакты</h2>
           <ul class="space-y-3 text-sm">
             <li>
               <a
