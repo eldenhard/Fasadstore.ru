@@ -58,7 +58,7 @@ test('site uses one light color scheme and the requested title', async () => {
     readFile(new URL('../app/components/AppNavbar.vue', import.meta.url), 'utf8')
   ])
 
-  assert.match(nuxtConfig, /title:\s*'Алюминиевые системы Алютех'/)
+  assert.match(nuxtConfig, /title:\s*'Алюминиевые окна и двери Алютех в Москве — производство и монтаж'/)
   assert.match(nuxtConfig, /ui:\s*{\s*colorMode:\s*false\s*}/)
   assert.match(navbar, /content:\s*'[^']*bg-white/)
   assert.match(navbar, /childLink:\s*'[^']*text-gray-900/)

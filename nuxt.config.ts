@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     head: {
-      title: 'Алюминиевые системы Алютех',
+      title: 'Алюминиевые окна и двери Алютех в Москве — производство и монтаж',
       htmlAttrs: { lang: 'ru' },
       meta: [
         { charset: 'utf-8' },
@@ -62,6 +62,9 @@ export default defineNuxtConfig({
     url: 'https://fasadstore.ru',
     trailingSlash: true
   },
+
+  // Keep the standalone error page instead of Nuxt's empty SPA fallback.
+  nitro: { prerender: { ignore: ['/404.html'] } },
 
   sitemap: {},
 

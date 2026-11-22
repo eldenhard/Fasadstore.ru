@@ -14,9 +14,9 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
     siteName: 'Алюминиевые Системы',
     siteUrl: 'https://fasadstore.ru',
-    defaultTitle: 'Алюминиевые системы Алютех',
+    defaultTitle: 'Алюминиевые окна и двери Алютех в Москве — производство и монтаж',
     defaultDescription: 'Производство и установка алюминиевых окон и дверей в Москве',
-    defaultOgImage: '/images/slider/first.webp',
+    defaultOgImage: '/images/og-default.jpg',
     locale: 'ru_RU',
     companyName: 'Алюминиевые Системы',
     companyPhone: '+7(495) 765-50-26',

@@ -14,7 +14,7 @@ useSeoMeta({
   ogType: 'website',
   ogUrl: `${config.siteUrl}${useRoute().path}`,
   ogLocale: config.locale,
-  ogImage: props.model.heroImage
+  ogImage: new URL(props.model.heroImage, config.siteUrl).href
 })
 useCanonical()
 useRobots()

@@ -9,8 +9,13 @@ export interface PageSeoData {
 
 const seoDataMap: Record<string, PageSeoData> = {
     '/': {
-        title: 'Алюминиевые системы Алютех',
+        title: 'Алюминиевые окна и двери Алютех в Москве — производство и монтаж',
         description: 'Производство и установка алюминиевых окон и дверей ALUTECH в Москве. Энергоэффективные конструкции, срок службы более 50 лет.',
+        ogType: 'website'
+    },
+    '/cottages': {
+        title: 'Остекление коттеджей Алютех в Москве — Алюминиевые Системы',
+        description: 'Алюминиевое остекление коттеджей и загородных домов ALUTECH: окна, двери и панорамные системы. Проектирование, изготовление и монтаж.',
         ogType: 'website'
     },
     '/terraces': {
@@ -116,7 +121,7 @@ export function useSeoData(): void {
         ogType: seo.ogType || 'website',
         ogUrl: `${config.siteUrl}${route.path}`,
         ogLocale: config.locale,
-        ogImage: seo.ogImage || config.defaultOgImage
+        ogImage: new URL(seo.ogImage || config.defaultOgImage, config.siteUrl).href
     })
 
     useCanonical()

@@ -203,7 +203,7 @@
     gap: 1.5rem;
   }
   .mini-about__images {
-    margin: 8% auto;
+    display: none;
   }
   .mini-about__quote {
     margin: 0 auto;

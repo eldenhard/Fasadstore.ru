@@ -5,9 +5,9 @@ const { baseURL } = useRuntimeConfig().app
 const b = (p: string) => `${baseURL}${p.startsWith('/') ? p.slice(1) : p}`
 
 const videos = [
-  { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Раздвижные системы' },
-  { src: '0ef116c9afce3cea236c4a5986083755/', title: 'Окна' },
-  { src: '85033df46441920caede6d19eabf80e5/', title: 'Двери' }
+  { src: 'a5f344e034afd121e5717cce1231f0d7/', title: 'Раздвижные двери Алютех' },
+  { src: '0ef116c9afce3cea236c4a5986083755/', title: 'Алюминиевые окна Алютех' },
+  { src: '85033df46441920caede6d19eabf80e5/', title: 'Алюминиевые двери Алютех' }
 ]
 
 const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
@@ -31,6 +31,7 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
         <!-- Видео -->
         <div class="partner-block__videos">
           <figure v-for="video in videos" :key="video.src" class="partner-block__card">
+            <figcaption class="partner-block__caption">{{ video.title }}</figcaption>
             <div class="partner-block__video">
               <RutubeVideo
                 :src="`https://rutube.ru/play/embed/${video.src}`"
@@ -247,6 +248,17 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 .partner-block__card {
   min-width: 0;
   margin: 0;
+}
+.partner-block__caption {
+  margin: 0 0 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #082c43;
+  color: #d7e8f7;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
 }
 .partner-block__video {
   aspect-ratio: 16 / 9;
@@ -498,6 +510,11 @@ const strongAsideBg = `url('${b('/images/partners/bee_overlay.png')}')`
 }
 
 @media screen and (max-width: 560px) {
+  .partner-block__card + .partner-block__card {
+    border-top: 1px solid rgba(215, 232, 247, 0.4);
+    padding-top: 1.5rem;
+  }
+
   .partner-block__content {
     padding: 1.25rem;
   }

@@ -7,8 +7,6 @@ useSeoMeta({
   title: 'Ошибка — Алюминиевые Системы',
   robots: 'noindex, nofollow'
 })
-
-const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <template>
@@ -25,12 +23,11 @@ const handleError = () => clearError({ redirect: '/' })
             : error.statusMessage || 'Попробуйте обновить страницу или вернуться на главную.'
         }}
       </p>
-      <button
+      <a href="/"
         class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-        @click="handleError"
       >
         На главную
-      </button>
+      </a>
     </div>
   </div>
 </template>

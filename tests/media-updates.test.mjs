@@ -40,14 +40,21 @@ test('company video is compact and rounded', async () => {
   assert.match(page, /\.about-video iframe\s*{[^}]*aspect-ratio:\s*16\s*\/\s*9[^}]*border-radius:\s*8px/)
 })
 
-test('home product videos use the full row without captions', async () => {
+test('home product videos use the full row with descriptive captions', async () => {
   const block = await source('app/components/PartnerBlock.vue')
   assert.match(block, /\.partner-block__videos\s*{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
   assert.match(block, /\.partner-block__video\s*{[^}]*aspect-ratio:\s*16\s*\/\s*9[^}]*border-radius:\s*8px/)
   assert.doesNotMatch(block, /min-height:\s*35vh/)
-  for (const title of ['Раздвижные системы', 'Окна', 'Двери']) {
+  for (const title of ['Раздвижные двери Алютех', 'Алюминиевые окна Алютех', 'Алюминиевые двери Алютех']) {
     assert.ok(block.includes(`title: '${title}'`))
   }
-  assert.doesNotMatch(block, /figcaption|partner-block__caption/)
+  assert.match(block, /<figcaption[^>]*>{{ video.title }}<\/figcaption>/)
+  assert.ok(block.indexOf('<figcaption') < block.indexOf('<div class="partner-block__video">'))
   assert.match(block, /\.partner-block__videos\s*{[^}]*width:\s*100%/)
+})
+
+test('stacked mobile videos have separators between cards', async () => {
+  const block = await source('app/components/PartnerBlock.vue')
+  const mobile = block.split('@media screen and (max-width: 560px)')[1]
+  assert.match(mobile, /\.partner-block__card\s*\+\s*\.partner-block__card\s*{[^}]*border-top:\s*1px solid[^}]*padding-top:\s*1\.5rem/)
 })
