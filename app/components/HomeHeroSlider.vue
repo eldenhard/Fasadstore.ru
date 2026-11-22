@@ -9,6 +9,7 @@ interface Slide {
   title: string
   description: string
   image: string
+  mobileImage: string
   alt: string
   to?: string
 }
@@ -19,6 +20,7 @@ const slides: Slide[] = [
     description:
       'Стильные светопрозрачные конструкции, которые позволяют освободить максимально широкий проем, соединить помещения между собой или с улицей.',
     image: '/images/slider/first.webp',
+    mobileImage: '/images/slider/first-mobile.avif',
     alt: 'Раздвижные двери АЛЮТЕХ',
     to: '/sliding-doors'
   },
@@ -27,10 +29,28 @@ const slides: Slide[] = [
     description:
       'Классические окна «АЛЮТЕХ» поистине универсальны: их устанавливают в гостиной и на кухне, в детской комнате и на террасе. При этом служат такие окна не менее полувека, обеспечивая в доме тепло и уют.',
     image: '/images/slider/second.webp',
+    mobileImage: '/images/slider/second-mobile.avif',
     alt: 'Окна АЛЮТЕХ',
     to: '/windows'
   }
 ]
+
+const firstDesktopImage = useImage().getSizes(slides[0]!.image, {
+  modifiers: { width: 800, height: 600, format: 'avif', quality: 40 }
+})
+useHead({
+  link: [
+    {
+      rel: 'preload', as: 'image', href: slides[0]!.mobileImage,
+      media: '(max-width: 480px)', fetchpriority: 'high'
+    },
+    {
+      rel: 'preload', as: 'image', href: firstDesktopImage.src,
+      imagesrcset: firstDesktopImage.srcset,
+      media: '(min-width: 481px)', fetchpriority: 'high'
+    }
+  ]
+})
 
 const current = ref(0)
 const animating = ref(false)
@@ -136,18 +156,20 @@ onUnmounted(() => stopAutoplay())
         </div>
         <!-- Изображение -->
         <div class="slider-hero__image-wrap">
-          <NuxtImg
-            :src="slide.image"
-            :alt="slide.alt"
-            class="slider-hero__image"
-            width="800"
-            height="600"
-            :preload="i === 0 ? { fetchPriority: 'high' } : false"
-            format="avif"
-            quality="40"
-            :loading="i === 0 ? 'eager' : 'lazy'"
-            :fetchpriority="i === 0 ? 'high' : 'low'"
-          />
+          <picture class="slider-hero__picture">
+            <source media="(max-width: 480px)" :srcset="slide.mobileImage" type="image/avif" />
+            <NuxtImg
+              :src="slide.image"
+              :alt="slide.alt"
+              class="slider-hero__image"
+              width="800"
+              height="600"
+              format="avif"
+              quality="40"
+              :loading="i === 0 ? 'eager' : 'lazy'"
+              :fetchpriority="i === 0 ? 'high' : 'low'"
+            />
+          </picture>
           <div class="slider-hero__gradient" />
         </div>
       </div>
@@ -273,6 +295,12 @@ onUnmounted(() => stopAutoplay())
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+
+.slider-hero__picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .slider-hero__image {

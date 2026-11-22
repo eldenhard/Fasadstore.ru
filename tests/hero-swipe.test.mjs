@@ -14,12 +14,13 @@ const code = ts.transpileModule(script.content, {
   compilerOptions: { module: ts.ModuleKind.CommonJS }
 }).outputText
 
-function slider(t) {
+function slider(t, setHead = () => {}) {
   t.mock.timers.enable({ apis: ['setInterval', 'setTimeout'] })
   const module = { exports: {} }
   const fakeVue = { ...vue, onMounted() {}, onUnmounted() {} }
-  new Function('require', 'module', 'exports', code)(
-    (name) => name === 'vue' ? fakeVue : require(name), module, module.exports
+  new Function('require', 'module', 'exports', 'useHead', 'useImage', code)(
+    (name) => name === 'vue' ? fakeVue : require(name), module, module.exports, setHead,
+    () => ({ getSizes: () => ({ src: '/desktop-1x.avif', srcset: '/desktop-1x.avif 1x, /desktop-2x.avif 2x' }) })
   )
   return module.exports.default.setup({}, { expose() {} })
 }
@@ -100,4 +101,20 @@ test('autoplay stays paused until all fingers are released after a pinch gesture
   hero.onTouchEnd(end(100, 100))
   t.mock.timers.tick(10000)
   assert.equal(hero.current.value, 1)
+})
+
+
+test('hero preloads exactly the matching mobile or desktop image', (t) => {
+  let head
+  slider(t, value => { head = value })
+  assert.ok(head, 'Responsive image preload metadata is missing')
+  assert.equal(head.link.length, 2)
+  const mobile = head.link.find(link => link.media === '(max-width: 480px)')
+  const desktop = head.link.find(link => link.media === '(min-width: 481px)')
+  assert.equal(mobile.href, '/images/slider/first-mobile.avif')
+  assert.equal(desktop.imagesrcset, '/desktop-1x.avif 1x, /desktop-2x.avif 2x')
+  for (const link of head.link) {
+    assert.equal(link.as, 'image')
+    assert.equal(link.fetchpriority, 'high')
+  }
 })
