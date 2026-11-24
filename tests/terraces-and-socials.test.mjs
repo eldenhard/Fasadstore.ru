@@ -48,7 +48,7 @@ test('terraces page is wired into the existing site navigation and metadata', as
   assert.match(directions, /title:\s*'Остекление террас и беседок'[\s\S]*to:\s*'\/terraces'/)
   assert.match(navbar, /label:\s*'Остекление террас и патио',\s*to:\s*'\/terraces'/)
   assert.match(breadcrumbs, /'\/terraces':\s*'Остекление террас и патио'/)
-  assert.match(seo, /'\/terraces':\s*{[\s\S]*title:\s*'Остекление террас и патио/)
+  assert.match(seo, /'\/terraces':\s*{[\s\S]*title:\s*'Алютех: остекление террас и патио в Москве'/)
   assert.match(nuxtConfig, /'\/terraces':\s*{\s*prerender:\s*true\s*}/)
 })
 

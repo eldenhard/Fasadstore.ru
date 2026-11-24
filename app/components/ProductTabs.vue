@@ -17,7 +17,6 @@ defineProps<{
           :class="{ 'product-page__nav-item--active': activeIndex === index }"
         >
           {{ item.label }}
-          <span v-if="activeIndex === index" class="product-page__nav-underline" />
         </NuxtLink>
       </li>
     </ul>

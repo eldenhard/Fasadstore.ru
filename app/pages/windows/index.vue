@@ -9,19 +9,19 @@ const { activeIndex } = useProductTabs(tabs)
 const windowTypes = [
   {
     title: 'Классические окна Алютех(Alutech)',
-    description: 'Универсальные алюминиевые окна для любых помещений',
+    description: 'Алюминиевые окна Alutech для жилых и коммерческих помещений',
     to: '/windows/classic',
     image: '/images/windows/classic-hero-window.png'
   },
   {
     title: 'Панорамные окна Алютех(Alutech)',
-    description: 'Максимум света и обзорности, визуально увеличивают пространство',
+    description: 'Окна Алютех с большой площадью остекления: больше света и обзорности',
     to: '/windows/panorama',
     image: '/images/windows/panorama-hero-window.png'
   },
   {
     title: 'Скрытая створка Алютех(Alutech)',
-    description: 'На 20% больше площадь остекления, современный стильный вид',
+    description: 'Окна алюминиевые со скрытой створкой: на 20% больше площадь остекления',
     to: '/windows/hidden',
     image: '/images/windows/hidden-sash-hero-window.jpg'
   }
@@ -34,7 +34,7 @@ const windowTypes = [
     :active-index="activeIndex"
     label="Каталог систем"
     title="Алюминиевые окна"
-    description="Каталог алюминиевых окон Алюминиевые Системы. Мы предлагаем классические, панорамные окна и окна со скрытой створкой на базе профильных систем."
+    description="Алюминиевые окна Алютех: Москва и область — подбор, изготовление и монтаж. В каталоге Алютех окна представлены в трёх вариантах: классические, панорамные и со скрытой створкой. Окна Alutech подбираем под размеры проёма, требования к теплоизоляции и внешний вид здания."
     panel-title="Виды окон"
     :items="windowTypes"
   />
