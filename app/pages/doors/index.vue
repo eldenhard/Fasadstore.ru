@@ -8,19 +8,19 @@ const { activeIndex } = useProductTabs(tabs)
 
 const doorTypes = [
   {
-    title: 'HD-двери крупноформатные',
+    title: 'HD-двери крупноформатные Алютех(Alutech)',
     description: 'Алюминиевые двери высотой до 3 м для особых проектов',
     to: '/doors/hd',
     image: '/images/windows/classic-hero-window.png'
   },
   {
-    title: 'Балконные (террасные)',
+    title: 'Балконные (террасные) Алютех(Alutech)',
     description: 'Решение для обустройства террасы или балкона',
     to: '/doors/balcony',
     image: '/images/doors/balcony/photo1.jpg'
   },
   {
-    title: 'Классические двери',
+    title: 'Классические двери Алютех(Alutech)',
     description: 'Двери для комфорта и безопасности, вписываются в любой стиль',
     to: '/doors/classic',
     image: '/images/doors/classic/photo1.jpg'

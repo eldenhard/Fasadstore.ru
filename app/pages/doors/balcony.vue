@@ -29,9 +29,8 @@ useScrollReveal()
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
           <p class="product-page__title">
-            Дверь балконная (Террасная) <span class="product-page__light-color">ALUTECH</span>
+            Дверь балконная (Террасная) <span class="product-page__brand">Алютех(Alutech)</span>
           </p>
-          <br />
           <p class="product-page__description">
             Решение для обустройства террасы или балкона. Благодаря запиранию фурнитуры по периметру
             конструкции достигается герметичность и взломостойкость дверей. Минимальная высота

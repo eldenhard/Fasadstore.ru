@@ -28,7 +28,7 @@ useScrollReveal()
       <AppBreadcrumbs />
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
-          <p class="product-page__title">Окна классические</p>
+          <p class="product-page__title">Окна классические <span class="product-page__brand">Алютех(Alutech)</span></p>
           <p class="product-page__description">
             Алюминиевые окна ALUTECH (Алютех) универсальны. Они могут устанавливаться в любых
             помещениях – в детской, спальне на кухне. Алюминиевые окна энергоэффективны и безопасны

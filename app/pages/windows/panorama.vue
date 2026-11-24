@@ -28,7 +28,7 @@ useScrollReveal()
       <AppBreadcrumbs />
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
-          <p class="product-page__title">Окна <br />панорамные</p>
+          <p class="product-page__title">Окна панорамные <span class="product-page__brand">Алютех(Alutech)</span></p>
           <p class="product-page__description">
             Алюминиевые окна ALUTECH (Алютех) универсальны. Панорамные окна пропускают значительно
             больше солнечного света, чем классические окна. Поэтому днем не придется использовать

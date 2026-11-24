@@ -18,27 +18,27 @@ interface TerraceOption {
 
 const terraceOptions: TerraceOption[] = [
   {
-    title: 'Раздвижные порталы',
+    title: 'Раздвижные порталы Алютех(Alutech)',
     image: '/images/terraces/sliding-portals.jpg',
     to: '/sliding-doors'
   },
   {
-    title: 'Входные группы и двери',
+    title: 'Входные группы и двери Алютех(Alutech)',
     image: '/images/terraces/entrance-groups.jpg',
     to: '/doors'
   },
   {
-    title: 'Алюминиевые окна',
+    title: 'Алюминиевые окна Алютех(Alutech)',
     image: '/images/terraces/aluminum-windows.jpg',
     to: '/windows'
   },
   {
-    title: 'Складные двери (гармошка)',
+    title: 'Складные двери (гармошка) Алютех(Alutech)',
     image: '/images/terraces/folding-doors.jpg',
     to: '/sliding-doors/bf73'
   },
   {
-    title: 'Витражное остекление',
+    title: 'Витражное остекление Алютех(Alutech)',
     image: '/images/terraces/stained-glass-glazing.jpeg',
     to: '/facades'
   }
@@ -50,7 +50,7 @@ const terraceOptions: TerraceOption[] = [
     <section class="terraces-page__hero">
       <div class="terraces-page__hero-inner">
         <AppBreadcrumbs />
-        <h1>Остекление террас и патио</h1>
+        <h1>Остекление террас и патио <span class="product-page__brand product-page__brand--light">Алютех(Alutech)</span></h1>
         <p>
           Беседка с алюминиевым остеклением становится полноценной зоной отдыха, где комфортно
           проводить время независимо от сезона и погодных условий. Современные профильные системы

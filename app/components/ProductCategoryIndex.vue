@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { ProductTab } from '~/constants/productTabs'
 
+const brand = 'Алютех(Alutech)'
+const shortTitle = (title: string) => title.replace(/ Алютех\(Alutech\)$/, '')
+
 interface CategoryItem {
   title: string
   description: string
@@ -26,7 +29,7 @@ defineProps<{
       <section class="category-index__hero">
         <div class="category-index__hero-copy">
           <p class="category-index__label">{{ label }}</p>
-          <h1>{{ title }}</h1>
+          <h1>{{ title }} <span class="category-index__brand">{{ brand }}</span></h1>
           <p>{{ description }}</p>
         </div>
         <nav class="category-index__panel" :aria-label="panelTitle">
@@ -36,7 +39,7 @@ defineProps<{
             :to="item.to"
             class="category-index__panel-link"
           >
-            {{ item.title }}
+            {{ shortTitle(item.title) }}
           </NuxtLink>
         </nav>
       </section>
@@ -58,7 +61,10 @@ defineProps<{
             />
           </span>
           <span class="category-index__card-body">
-            <span class="category-index__card-title">{{ item.title }}</span>
+            <span class="category-index__card-title">
+              {{ shortTitle(item.title) }}
+              <span class="category-index__card-brand">{{ brand }}</span>
+            </span>
             <span class="category-index__card-desc">{{ item.description }}</span>
             <span class="category-index__card-link">Подробнее</span>
           </span>
@@ -106,18 +112,27 @@ defineProps<{
   max-width: 760px;
   margin: 0;
   color: #111827;
-  font: 800 clamp(2rem, 5vw, 4rem) / 1 'Montserrat', sans-serif;
+  font: 700 clamp(1.75rem, 3vw, 2.75rem) / 1.15 'Montserrat', sans-serif;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: manual;
+}
+
+.category-index__brand {
+  display: block;
+  margin-top: 0.65rem;
+  color: #4b5563;
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .category-index__hero-copy p:last-child {
   max-width: 780px;
   margin: 1.25rem 0 0;
   color: #4b5563;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .category-index__panel {
@@ -212,12 +227,21 @@ defineProps<{
 
 .category-index__card-title {
   color: #111827;
-  font: 800 1.35rem/1.2 'Montserrat', sans-serif;
+  font: 700 clamp(1.125rem, 1.5vw, 1.25rem)/1.35 'Montserrat', sans-serif;
+}
+
+.category-index__card-brand {
+  display: block;
+  margin-top: 0.4rem;
+  color: #4b5563;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .category-index__card-desc {
   color: #4b5563;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
 }
 

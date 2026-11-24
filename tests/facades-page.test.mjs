@@ -11,9 +11,9 @@ test('home facade direction links to the facade glazing page', async () => {
 test('facade glazing page is available as a Nuxt route', async () => {
   const page = await readFile(new URL('../app/pages/facades.vue', import.meta.url), 'utf8')
 
-  assert.match(page, /<h1[^>]*>Фасадное остекление<\/h1>/)
+  assert.match(page, /<h1[^>]*>Фасадное остекление <span class="product-page__brand product-page__brand--light">Алютех\(Alutech\)<\/span><\/h1>/)
   for (const name of ['ALT F50', 'ALT F60', 'ALT F50 SG', 'ALT F50 SSG', 'ALT F50 SA']) {
-    assert.ok(page.includes(`title: '${name}'`))
+    assert.ok(page.includes(`title: '${name} Алютех(Alutech)'`))
   }
   assert.doesNotMatch(page, /АЛТ Ф(?:50|60)/)
   assert.doesNotMatch(page, />ALUTECH</)

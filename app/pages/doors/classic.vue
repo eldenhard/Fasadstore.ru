@@ -31,9 +31,8 @@ useScrollReveal()
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
           <p class="product-page__title">
-            Двери классические <span class="product-page__light-color">ALUTECH</span>
+            Двери классические <span class="product-page__brand">Алютех(Alutech)</span>
           </p>
-          <br />
           <p class="product-page__description">
             Алюминиевые двери Алютех- это решение для комфорта и безопасности. Двери «АЛЮТЕХ»
             эффективно сберегают тепло, вписываются в любой архитектурный стиль, обладают высокой

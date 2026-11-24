@@ -29,7 +29,7 @@ useScrollReveal()
       <AppBreadcrumbs />
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text product-page__hero-text--wide">
-          <h1 class="product-page__title">Скрытая <br />створка</h1>
+          <h1 class="product-page__title">Скрытая створка <span class="product-page__brand">Алютех(Alutech)</span></h1>
           <p class="product-page__description">
             Данный вид алюминиевого профиля на 20% увеличивает площадь остекления. В следствии чего
             пропускает больше солнечного света. В сравнении с классическим окном. Фасад вашего дома

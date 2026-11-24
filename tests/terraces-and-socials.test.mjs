@@ -5,14 +5,14 @@ import test from 'node:test'
 test('terraces page keeps the document section order and destinations', async () => {
   const page = await readFile(new URL('../app/pages/terraces.vue', import.meta.url), 'utf8')
   const expectedSections = [
-    ["title: 'Раздвижные порталы'", "to: '/sliding-doors'", "image: '/images/terraces/sliding-portals.jpg'"],
-    ["title: 'Входные группы и двери'", "to: '/doors'", "image: '/images/terraces/entrance-groups.jpg'"],
-    ["title: 'Алюминиевые окна'", "to: '/windows'", "image: '/images/terraces/aluminum-windows.jpg'"],
-    ["title: 'Складные двери (гармошка)'", "to: '/sliding-doors/bf73'", "image: '/images/terraces/folding-doors.jpg'"],
-    ["title: 'Витражное остекление'", "to: '/facades'", "image: '/images/terraces/stained-glass-glazing.jpeg'"]
+    ["title: 'Раздвижные порталы Алютех(Alutech)'", "to: '/sliding-doors'", "image: '/images/terraces/sliding-portals.jpg'"],
+    ["title: 'Входные группы и двери Алютех(Alutech)'", "to: '/doors'", "image: '/images/terraces/entrance-groups.jpg'"],
+    ["title: 'Алюминиевые окна Алютех(Alutech)'", "to: '/windows'", "image: '/images/terraces/aluminum-windows.jpg'"],
+    ["title: 'Складные двери (гармошка) Алютех(Alutech)'", "to: '/sliding-doors/bf73'", "image: '/images/terraces/folding-doors.jpg'"],
+    ["title: 'Витражное остекление Алютех(Alutech)'", "to: '/facades'", "image: '/images/terraces/stained-glass-glazing.jpeg'"]
   ]
 
-  assert.match(page, /<h1>Остекление террас и патио<\/h1>/)
+  assert.match(page, /<h1>Остекление террас и патио <span class="product-page__brand product-page__brand--light">Алютех\(Alutech\)<\/span><\/h1>/)
   assert.match(page, /Беседка с алюминиевым остеклением становится полноценной зоной отдыха/)
 
   let previousPosition = -1

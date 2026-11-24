@@ -21,7 +21,7 @@ interface FacadeSystem {
 
 const facadeSystems: FacadeSystem[] = [
   {
-    title: 'ALT F50',
+    title: 'ALT F50 Алютех(Alutech)',
     subtitle: 'Стоечно-ригельная система для светопрозрачных конструкций разной сложности.',
     image: '/images/facades/alt-f50.png',
     description:
@@ -41,7 +41,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'ALT F60',
+    title: 'ALT F60 Алютех(Alutech)',
     subtitle: 'Фасадная система с увеличенной видимой шириной и высокой несущей способностью.',
     image: '/images/facades/alt-f60.png',
     description:
@@ -63,7 +63,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'ALT F50 SG',
+    title: 'ALT F50 SG Алютех(Alutech)',
     subtitle: 'Решение с минимальной внешней видимой шириной для строгой стеклянной плоскости.',
     image: '/images/facades/alt-f50-sg.png',
     description:
@@ -85,7 +85,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'ALT F50 SSG',
+    title: 'ALT F50 SSG Алютех(Alutech)',
     subtitle: 'Фасадная система с аккуратной внешней прижимной планкой 40 или 50 мм.',
     image: '/images/facades/alt-f50-ssg.png',
     description:
@@ -107,7 +107,7 @@ const facadeSystems: FacadeSystem[] = [
     ]
   },
   {
-    title: 'ALT F50 SA',
+    title: 'ALT F50 SA Алютех(Alutech)',
     subtitle: 'Светопрозрачный угол с крупноформатными заполнениями без видимых стоек в угловой зоне.',
     image: '/images/facades/alt-f50-sa.png',
     description:
@@ -183,7 +183,7 @@ const facadeDetails = [
       <div class="facades-page__hero-inner">
         <div class="facades-page__hero-copy">
           <AppBreadcrumbs />
-          <h1>Фасадное остекление</h1>
+          <h1>Фасадное остекление <span class="product-page__brand product-page__brand--light">Алютех(Alutech)</span></h1>
           <p>
             Внешние ограждающие конструкции, которые частично или полностью состоят из
             стеклянных элементов на несущем алюминиевом каркасе.

@@ -8,19 +8,19 @@ const { activeIndex } = useProductTabs(tabs)
 
 const windowTypes = [
   {
-    title: 'Классические окна',
+    title: 'Классические окна Алютех(Alutech)',
     description: 'Универсальные алюминиевые окна для любых помещений',
     to: '/windows/classic',
     image: '/images/windows/classic-hero-window.png'
   },
   {
-    title: 'Панорамные окна',
+    title: 'Панорамные окна Алютех(Alutech)',
     description: 'Максимум света и обзорности, визуально увеличивают пространство',
     to: '/windows/panorama',
     image: '/images/windows/panorama-hero-window.png'
   },
   {
-    title: 'Скрытая створка',
+    title: 'Скрытая створка Алютех(Alutech)',
     description: 'На 20% больше площадь остекления, современный стильный вид',
     to: '/windows/hidden',
     image: '/images/windows/hidden-sash-hero-window.jpg'

@@ -8,19 +8,19 @@ const { activeIndex } = useProductTabs(tabs)
 
 const pocketDoorTypes = [
   {
-    title: 'SL160',
+    title: 'SL160 Алютех(Alutech)',
     description: 'Подъемно-раздвижная система для широких светопрозрачных проемов.',
     to: '/sliding-doors/sl160',
     image: '/images/sliding-doors/sl160-system-card.webp'
   },
   {
-    title: 'BF73',
+    title: 'BF73 Алютех(Alutech)',
     description: 'Система для гибкой организации широкого стеклянного проема.',
     to: '/sliding-doors/bf73',
     image: '/images/sliding-doors/bf73-system-card.webp'
   },
   {
-    title: 'SL130',
+    title: 'SL130 Алютех(Alutech)',
     description: 'Компактная раздвижная система с современным алюминиевым профилем.',
     to: '/sliding-doors/sl130',
     image: '/images/sliding-doors/sl130-system-card.png'

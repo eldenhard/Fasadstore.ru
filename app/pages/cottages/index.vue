@@ -23,7 +23,7 @@ useIntersectionObserver([line1, line2], (el: HTMLElement) => {
       <NuxtImg src="/images/cottages/1.jpg" alt="Остекление коттеджей" class="glass-cottages__bg" />
 
       <div class="glass-cottages__content">
-        <h1 class="glass-cottages__content-header">Остекление коттеджей</h1>
+        <h1 class="glass-cottages__content-header">Остекление коттеджей <span class="product-page__brand product-page__brand--light">Алютех(Alutech)</span></h1>
         <p>эстетика, надёжность и умные технологии</p>
       </div>
     </div>

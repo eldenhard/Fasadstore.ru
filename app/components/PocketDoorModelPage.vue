@@ -41,7 +41,7 @@ useScrollReveal()
       <AppBreadcrumbs />
       <section class="product-page__hero reveal">
         <div class="product-page__hero-text">
-          <p class="product-page__title">{{ model.title }}</p>
+          <p class="product-page__title">{{ model.title }} <span class="product-page__brand">Алютех(Alutech)</span></p>
           <p class="product-page__subtitle product-page__subtitle--compact">{{ model.subtitle }}</p>
           <p class="product-page__description">{{ model.heroDescription }}</p>
         </div>
